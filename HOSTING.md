@@ -1,38 +1,74 @@
-# Portfolio Hosting Guide (IONOS)
+# Portfolio Hosting Guide (IONOS Webspace + GitHub)
 
-Dein Portfolio ist nun bereit für den Einsatz! Hier ist eine einfache Anleitung, wie du es auf IONOS hosten kannst.
+In dieser Anleitung erfährst du, wie du Änderungen an deinem Portfolio vornimmst, diese lokal testest und anschließend sicher auf IONOS veröffentlichst.
 
-## 1. Lokale Vorschau
-Bevor du es hochlädst, kannst du es lokal testen:
+## 1. Arbeiten an der Seite (Entwicklungszyklus)
+Wenn du etwas am Design oder Text ändern möchtest, gehst du so vor:
+
+1. **Entwicklungsserver starten:** Stell sicher, dass dein Terminal im Projektordner ist und gib ein:
+   ```bash
+   npm run dev
+   ```
+2. **Echtzeit-Vorschau:** Öffne `http://localhost:5173` im Browser. 
+3. **Änderungen vornehmen:** Wenn du jetzt Dateien (z.B. `src/App.jsx`) änderst und speicherst, siehst du das Ergebnis **sofort** im Browser, ohne die Seite neu laden zu müssen (Hot Module Replacement).
+
+---
+
+## 2. Code-Sicherung mit GitHub
+Sobald du mit deinen Änderungen zufrieden bist, solltest du deinen Code sichern:
+
 ```bash
-npm run dev
-```
-Öffne dann `http://localhost:5173` im Browser.
+# 1. Alle geänderten Dateien für den Upload vormerken
+git add .
 
-## 2. Projekt bauen (Build)
-Falls du Änderungen am Code vornimmst, führe diesen Befehl aus, um die Dateien für den Webserver zu generieren:
+# 2. Die Änderungen mit einer kurzen Nachricht versehen
+git commit -m "Update: Portfolio Texte und Farben angepasst"
+
+# 3. Zu GitHub hochladen
+git push
+```
+
+---
+
+## 3. Veröffentlichung auf IONOS (Live-Gang)
+Wenn die lokale Version perfekt ist, bringst du sie auf deine echte Website:
+
+### Schritt A: Die Dateien für den Server bauen
+Reiner React-Code läuft nicht direkt auf dem Webserver. Du musst ihn erst "übersetzen" (builden):
 ```bash
 npm run build
 ```
-Dies erstellt einen Ordner namens `dist`. Nur der Inhalt dieses Ordners muss hochgeladen werden.
+Dies erstellt den Ordner `dist`. Darin befinden sich die fertigen Dateien (HTML, CSS, JS).
 
-## 3. Hosting auf IONOS (SFTP/FTP)
-1. **Login:** Logge dich in dein IONOS Control Center ein.
-2. **Webspace:** Navigiere zu "Hosting" -> "SFTP & SSH".
-3. **SFTP-Zugang:** Falls du noch keinen hast, erstelle einen neuen Benutzer. Notiere dir:
-   - Server (Host)
-   - Benutzername
-   - Passwort
-4. **FTP-Programm nutzen:** Öffne ein Tool wie **FileZilla** oder **WinSCP**.
-5. **Verbindung:** Gib deine IONOS-Daten ein und verbinde dich.
-6. **Hochladen:**
-   - Suche auf deinem PC den Ordner `c:\Users\sem27\Desktop\Portfolio\dist`.
-   - Suche auf dem IONOS-Server deinen Zielordner (meistens `/` oder `/htdocs`).
-   - Ziehe den kompletten **Inhalt** des `dist`-Ordners (nicht den Ordner selbstr, sonden die Dateien darin) in den IONOS-Zielordner.
-7. **Fertig:** Deine Seite sollte nun unter deiner Domain erreichbar sein!
+### Schritt B: Hochladen via FTP (FileZilla)
+1. **SFTP-Daten nutzen:**
+   - **Server:** `access-5019125526.webspace-host.com`
+   - **Benutzer:** (Dein Benutzername von der IONOS-Seite)
+2. **Verbinden:** Daten in FileZilla eingeben und verbinden.
+3. **Hochladen:** 
+   - Lokal: Ordner `dist` öffnen.
+   - Server: Zielordner (meist `/` oder `/htdocs`) öffnen.
+   - **Wichtig:** Markiere alle Dateien **im** `dist`-Ordner und ziehe sie auf den Server. Bestehende Dateien einfach überschreiben.
 
-## 4. Updates
-Wenn du etwas ändern möchtest (z.B. neue Projekte hinzufügen):
-1. Ändere den Code in `src/App.jsx`.
-2. Führe `npm run build` aus.
-3. Lade den neuen Inhalt von `dist` erneut auf den IONOS-Server hoch (überschreiben).
+---
+
+## 4. Wichtige Befehle im Überblick
+| Befehl | Zweck | Wann nutzen? |
+| :--- | :--- | :--- |
+| `npm run dev` | Lokale Vorschau | Während du programmierst |
+| `git push` | Backup auf GitHub | Wenn ein Arbeitsschritt fertig ist |
+| `npm run build` | Dist-Ordner erstellen | Kurz vor dem Hochladen auf IONOS |
+
+---
+
+## 5. Hinweis für später (Routing)
+Falls du später React Router verwendest und Unterseiten beim Neuladen einen 404-Fehler zeigen, lege eine `.htaccess` Datei in deinen Hauptordner auf dem Server mit diesem Inhalt:
+mach 
+```apache
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+```

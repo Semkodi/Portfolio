@@ -100,10 +100,24 @@ const About = () => {
                     viewport={{ once: true }}
                     className="relative flex justify-center"
                 >
-                    <div className="w-64 h-64 bg-primary rounded-3xl rotate-12 absolute -z-10 opacity-20 blur-2xl"></div>
-                    <div className="glass p-8 w-72 aspect-square flex flex-col justify-center items-center">
-                        <Terminal size={80} className="text-primary mb-4" />
-                        <p className="font-mono text-sm">npm run success</p>
+                    <div className="w-64 h-64 bg-primary rounded-full absolute -z-10 opacity-20 blur-3xl"></div>
+                    <div className="relative group">
+                        <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 p-2 glass transition-all duration-700 group-hover:border-primary/50 group-hover:scale-[1.02]">
+                            <img
+                                src="/profile.jpg"
+                                alt="Profile"
+                                className="w-full h-full object-cover object-center rounded-full grayscale hover:grayscale-0 transition-all duration-500"
+                            />
+                        </div>
+                        <motion.div
+                            initial={{ rotate: 0 }}
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 -m-4 pointer-events-none"
+                        ></motion.div>
+                        <div className="absolute -bottom-2 -right-2 glass p-4 rounded-2xl shadow-xl">
+                            <Terminal size={24} className="text-primary" />
+                        </div>
                     </div>
                 </motion.div>
             </div>
