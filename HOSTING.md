@@ -1,74 +1,51 @@
 # Portfolio Hosting Guide (IONOS Webspace + GitHub)
 
-In dieser Anleitung erfährst du, wie du Änderungen an deinem Portfolio vornimmst, diese lokal testest und anschließend sicher auf IONOS veröffentlichst.
+In dieser Anleitung erfährst du, wie du Änderungen an deinem Portfolio vornimmst und diese sicher auf deinen IONOS Webspace bringst.
 
-## 1. Arbeiten an der Seite (Entwicklungszyklus)
-Wenn du etwas am Design oder Text ändern möchtest, gehst du so vor:
-
-1. **Entwicklungsserver starten:** Stell sicher, dass dein Terminal im Projektordner ist und gib ein:
+## 1. Änderungen vornehmen & Lokal testen
+1. **Entwicklungsserver:** Öffne dein Terminal in VS Code und starte den Server (falls er nicht schon läuft):
    ```bash
    npm run dev
    ```
-2. **Echtzeit-Vorschau:** Öffne `http://localhost:5173` im Browser. 
-3. **Änderungen vornehmen:** Wenn du jetzt Dateien (z.B. `src/App.jsx`) änderst und speicherst, siehst du das Ergebnis **sofort** im Browser, ohne die Seite neu laden zu müssen (Hot Module Replacement).
+2. **Echtzeit-Vorschau:** Öffne `http://localhost:5173`. Jede Änderung in deinem Code (z.B. in `src/App.jsx`) wird hier sofort sichtbar.
 
 ---
 
-## 2. Code-Sicherung mit GitHub
-Sobald du mit deinen Änderungen zufrieden bist, solltest du deinen Code sichern:
-
+## 2. Code-Sicherung (GitHub)
+Bevor du die Seite veröffentlichst, speichere deinen Stand auf GitHub:
 ```bash
-# 1. Alle geänderten Dateien für den Upload vormerken
 git add .
-
-# 2. Die Änderungen mit einer kurzen Nachricht versehen
-git commit -m "Update: Portfolio Texte und Farben angepasst"
-
-# 3. Zu GitHub hochladen
+git commit -m "Deine Beschreibung der Änderung"
 git push
 ```
 
 ---
 
-## 3. Veröffentlichung auf IONOS (Live-Gang)
-Wenn die lokale Version perfekt ist, bringst du sie auf deine echte Website:
+## 3. Veröffentlichung auf IONOS (Der wichtigste Teil!)
 
-### Schritt A: Die Dateien für den Server bauen
-Reiner React-Code läuft nicht direkt auf dem Webserver. Du musst ihn erst "übersetzen" (builden):
+Du musst nicht auf die IONOS-Webseite gehen. **FileZilla ist dein Werkzeug, um alles live zu schalten.**
+
+### SCHRITT 1: Die Dateien "übersetzen" (BUILD)
+**WICHTIG:** Du musst nach jeder Code-Änderung diesen Befehl ausführen, sonst wird FileZilla nur deine alten Dateien hochladen!
 ```bash
 npm run build
 ```
-Dies erstellt den Ordner `dist`. Darin befinden sich die fertigen Dateien (HTML, CSS, JS).
+Dieser Befehl erstellt den Ordner `dist` mit den fertigen Dateien für das Internet.
 
-### Schritt B: Hochladen via FTP (FileZilla)
-1. **SFTP-Daten nutzen:**
-   - **Server:** `access-5019125526.webspace-host.com`
-   - **Benutzer:** (Dein Benutzername von der IONOS-Seite)
-2. **Verbinden:** Daten in FileZilla eingeben und verbinden.
-3. **Hochladen:** 
-   - Lokal: Ordner `dist` öffnen.
-   - Server: Zielordner (meist `/` oder `/htdocs`) öffnen.
-   - **Wichtig:** Markiere alle Dateien **im** `dist`-Ordner und ziehe sie auf den Server. Bestehende Dateien einfach überschreiben.
+### SCHRITT 2: Hochladen mit FileZilla
+1. Öffne **FileZilla**.
+2. Verbinde dich mit deinem IONOS-Server (`access-5019125526.webspace-host.com`).
+3. **Links (Dein PC):** Gehe in den Ordner `c:\Users\sem27\Desktop\Portfolio\dist`.
+4. **Rechts (IONOS):** Gehe in dein Hauptverzeichnis (meist `/` oder `/htdocs`).
+5. **Aktion:** Markiere **alle Dateien innerhalb** des `dist`-Ordners und ziehe sie auf die rechte Seite.
+6. Bestätige das Überschreiben ("Immer diese Aktion ausführen" anklicken).
 
----
-
-## 4. Wichtige Befehle im Überblick
-| Befehl | Zweck | Wann nutzen? |
-| :--- | :--- | :--- |
-| `npm run dev` | Lokale Vorschau | Während du programmierst |
-| `git push` | Backup auf GitHub | Wenn ein Arbeitsschritt fertig ist |
-| `npm run build` | Dist-Ordner erstellen | Kurz vor dem Hochladen auf IONOS |
+**Fertig!** Sobald FileZilla die Meldung "Übertragung erfolgreich" zeigt, ist deine Seite live.
 
 ---
 
-## 5. Hinweis für später (Routing)
-Falls du später React Router verwendest und Unterseiten beim Neuladen einen 404-Fehler zeigen, lege eine `.htaccess` Datei in deinen Hauptordner auf dem Server mit diesem Inhalt:
-mach 
-```apache
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
-```
+## Kurz-Checkliste für jedes Update:
+1. [ ] Code ändern & in VS Code speichern.
+2. [ ] `git push` (Sicherung auf GitHub).
+3. [ ] `npm run build` (**MUSS** ausgeführt werden!).
+4. [ ] Inhalt von `dist` via FileZilla hochladen.

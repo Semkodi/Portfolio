@@ -57,7 +57,7 @@ const Hero = () => {
                 </h1>
                 <p className="max-w-2xl mx-auto text-muted text-lg mb-10 text-pretty">
                     Leidenschaftlicher Full-Stack-Entwickler mit Fokus auf React, Node.js und sauberen Code.
-                    Ich verwandle komplexe Probleme in elegante, benutzerfreundliche Lösungen.
+                    Ich verwandle komplexe Probleme in simple, benutzerfreundliche Lösungen.
                 </p>
                 <div className="flex gap-4 justify-center">
                     <a href="#projects" className="btn btn-primary">Meine Projekte</a>
@@ -264,7 +264,7 @@ const App = () => {
                 <Contact />
             </main>
             <footer className="py-12 border-t border-gray-900 text-center text-muted text-sm">
-                <p>&copy; {new Date().getFullYear()} [Dein Name]. Entwickelt mit ❤️ und React.</p>
+                <p>&copy; {new Date().getFullYear()} [Semir Borogovac]. Entwickelt mit ❤️.</p>
             </footer>
         </div>
     );
