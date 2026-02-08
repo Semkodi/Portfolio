@@ -41,4 +41,4 @@ const Schreibmaschine = ({ words }) => {
     );
 };
 
-export default Typewriter;
+export default Schreibmaschine;

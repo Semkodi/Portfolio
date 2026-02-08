@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
+    /* Dark Theme (Default) */
     --primary: #6366f1;
     --primary-hover: #4f46e5;
     --secondary: #ec4899;
@@ -8,10 +9,23 @@
     --fg: #f9fafb;
     --muted: #9ca3af;
     --card-bg: rgba(31, 41, 55, 0.5);
-    --border: rgba(75, 85, 99, 0.3);
+    --border: rgba(255, 255, 255, 0.1);
     --glass: rgba(17, 24, 39, 0.7);
     --glass-border: rgba(255, 255, 255, 0.1);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --project-overlay: rgba(3, 7, 18, 0.8);
+}
+
+:root.light {
+    /* Light Theme */
+    --bg: #f8fafc;
+    --fg: #0f172a;
+    --muted: #475569;
+    --card-bg: #ffffff;
+    --border: rgba(0, 0, 0, 0.08);
+    --glass: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --project-overlay: rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -41,13 +55,18 @@ body::before {
     width: 200%;
     height: 200%;
     background:
-        radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+        radial-gradient(circle at center, var(--primary-glow, rgba(99, 102, 241, 0.15)) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, var(--secondary-glow, rgba(236, 72, 153, 0.1)) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, var(--primary-glow, rgba(59, 130, 246, 0.15)) 0%, transparent 50%);
     z-index: -1;
     pointer-events: none;
     animation: gradient-move 20s ease-in-out infinite alternate;
     transform-origin: center center;
+}
+
+:root.light body::before {
+    --primary-glow: rgba(99, 102, 241, 0.05);
+    --secondary-glow: rgba(236, 72, 153, 0.05);
 }
 
 @keyframes gradient-move {
@@ -536,11 +555,15 @@ nav {
 }
 
 .bg-modal-overlay {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(--overlay, rgba(0, 0, 0, 0.8));
+}
+
+:root.light .bg-modal-overlay {
+    --overlay: rgba(255, 255, 255, 0.5);
 }
 
 .bg-modal-content {
-    background-color: #1a1a1a;
+    background-color: var(--card-bg);
 }
 
 .border-b {
@@ -621,28 +644,45 @@ nav {
 }
 
 .scrolled {
-    background: rgba(3, 7, 18, 0.8) !important;
+    background: var(--glass) !important;
     margin-top: 0 !important;
     border-radius: 0 0 1rem 1rem !important;
     width: 100% !important;
 }
 
 /* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--border);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--primary);
 }
 
 /* Additions for 'Wow' effects */

@@ -23,7 +23,7 @@ Erfassung allgemeiner Informationen:
 Wenn Sie auf unsere Webseite zugreifen, werden automatisch Informationen allgemeiner Natur erfasst. Diese Informationen (Server-Logfiles) beinhalten etwa die Art des Webbrowsers, das verwendete Betriebssystem, den Domainnamen Ihres Internet-Service-Providers und ähnliches.`;
 
     return (
-        <footer className="py-12 border-t border-gray-900 text-center text-muted text-sm">
+        <footer className="py-12 border-t border-white/10 text-center text-muted text-sm">
             <div className="flex justify-center gap-6 mb-6">
                 <button onClick={() => setLegalOpen('impressum')} className="hover:text-primary transition-colors flex items-center gap-2">
                     <FileText size={14} /> Impressum
@@ -32,7 +32,7 @@ Wenn Sie auf unsere Webseite zugreifen, werden automatisch Informationen allgeme
                     <Shield size={14} /> Datenschutz
                 </button>
             </div>
-            <p>&copy; {new Date().getFullYear()} Semir Borogovac. Entwickelt mit ❤️.</p>
+            <p>&copy; {new Date().getFullYear()} Semir Borogovac</p>
 
             <RechtlichesModal
                 title="Impressum"
