@@ -39,21 +39,13 @@ Wir haben einen klaren Workflow für zukünftige Änderungen etabliert:
 
 ## 💡 Ideen für das nächste Mal (Backlog)
 
-Hier sind einige coole Features, die wir in zukünftigen Sessions einbauen könnten, um dein Portfolio noch professioneller zu machen:
-
 1. **Interaktives Kontaktformular:**
    - Ein funktionierendes Formular, das dir direkt eine E-Mail schickt (z. B. via *EmailJS* oder einem kleinen Backend).
 2. **Projekt-Detailseiten:**
    - Klickbare Projekte, die mehr Details, Bilder und vielleicht sogar ein Video deiner Software zeigen.
-3. **Dark/Light Mode:**
-   - Ein Umschalter, mit dem Besucher zwischen einem dunklen und hellen Design wählen können.
-4. **Lebenslauf-Download:**
-   - Ein schicker Button, mit dem man deinen Lebenslauf direkt als PDF herunterladen kann.
-5. **Blogbereich:**
+3. **Blogbereich:**
    - Ein kleiner Bereich, in dem du über deine Lernfortschritte als FIAE-Umschüler schreiben kannst (gut für SEO!).
-6. **Timeline-Komponente:**
-   - Eine visuelle Zeitachse deiner beruflichen Laufbahn und deiner Umschulung.
-7. **Social Media Feeds:**
+4. **Social Media Feeds:**
    - Integration deiner neuesten GitHub-Repositories oder LinkedIn-Posts.
 
 ---
@@ -62,7 +54,7 @@ Hier sind einige coole Features, die wir in zukünftigen Sessions einbauen könn
 
 Wir haben das Portfolio massiv überarbeitet, um es professioneller, moderner und persönlicher zu gestalten – mit einem klaren Fokus auf "Wow"-Effekte.
 
-### 1. **Content & Personal Branding (Feedback-Umsetzung)**
+### 1. **Content & Personal Branding**
 - **Header:**
     - Jobtitel angepasst: "Angehender Fachinformatiker für Anwendungsentwicklung".
     - "Open to Work"-Badge mit pulsierendem Indikator hinzugefügt.
@@ -85,35 +77,30 @@ Wir haben das Portfolio massiv überarbeitet, um es professioneller, moderner un
 - **Scroll-Progress:** Ein feiner Ladebalken am oberen Bildschirmrand, der den Lesefortschritt zeigt.
 - **Reveal-On-Scroll:**
     - Inhalte "ploppen" jetzt dynamisch auf, wenn man runter scrollt (Feder-Animation, Skalierung & Fade-In).
-    - Ersetzt statisches Einblenden für ein lebendigeres Gefühl.
 - **Hintergrund:**
     - Animierte, pulsierende Blobs im Hintergrund für mehr Tiefe.
     - Glassmorphismus im Header und bei Karten verstärkt.
 
-### 3. **Technik & SEO**
-- **Meta-Tags:** Titel und Beschreibung in `index.html` für Google optimiert ("Semir Borogovac | Angehender Fachinformatiker...").
-- **Performance:** Animationen sind performant mit `framer-motion` umgesetzt.
+### 3. **Premium Features & Theme-Management (Update 08.02.2026 - Abends)**
+
+- **Dark & Light Mode (Theme-Toggle):**
+    - Komplettes Redesign für beide Modi. Im hellen Modus wirkt das Portfolio jetzt "clean" und professionell, im dunklen Modus edel und technisch.
+    - **Mechanischer Lichtschalter:** Ein eckiger Schalter in der Navigationsleiste ermöglicht den Wechsel. Die Icons (Sonne/Mond) zeigen immer den Ziel-Modus an.
+    - Persistenz: Das gewählte Theme wird im `localStorage` gespeichert.
+- **Interaktives Terminal (Deutsch):**
+    - Ein voll funktionsfähiges Terminal mit Befehlen wie `hilfe`, `wer`, `projekte`, `skills`, `kontakt` und `werdegang`.
+- **Lebenslauf (Timeline):**
+    - Eine visuelle Zeitachse (`Lebenslauf.jsx`) zeigt deinen Werdegang (Schule, Umschulung, praktische Erfahrung) modern an.
 
 ---
+*Letztes Update: 08.02.2026 (21:26 Uhr)*
 
 ## 🛠 Was noch fehlt / Nächste Schritte (To-Do)
 
-Um das Portfolio final fertigzustellen, fehlen noch folgende Inhalte:
-
 1.  **Bilder & Screenshots:**
-    *   **Mendix-Projekt:** Ersetze den Platzhalter `<div ...>Hier Screenshot einfügen...</div>` in `App.jsx` mit einem echten Screenshot deiner App.
-    *   **Profilbild:** Prüfe, ob `public/profile.jpg` dein aktuelles Bild ist.
-    *   **Projekt-Vorschauen:** Auch für die anderen Projekte (LoveHub, etc.) fehlen noch Bilder.
-
+    *   **Mendix-Projekt:** Ersetze die Platzhalter in den Projektkarten mit echten Bildern.
 2.  **Verlinkungen:**
-    *   **Social Media:** Die Links zu LinkedIn und GitHub in der `Contact`-Sektion zeigen noch auf `#`. Hier müssen deine echten Profil-URLs rein.
-    *   **Projekt-Links:** Die "Zum Projekt"-Buttons führen noch nirgendwo hin.
-
-3.  **Inhaltliche Details:**
-    *   **Deep Dive Texte:** Die Texte bei den Projekten (außer Mendix) sind noch Platzhalter. Ergänze hier spezifische technische Herausforderungen, die du gelöst hast.
-
-4.  **Favicon:**
-    *   Das Standard-Vite-Icon im Browser-Tab sollte durch ein persönliches Logo (z.B. "SB" oder ein Terminal-Icon) ersetzt werden.
-
-5.  **Deployment:**
-    *   Nach dem Einfügen der Bilder: `npm run build` ausführen und den `dist`-Ordner erneut auf IONOS hochladen.
+    *   **Social Media:** Deine echten LinkedIn- und GitHub-Links in der Kontakt-Sektion eintragen.
+    *   **Case Studies:** Die Buttons "Details ansehen" zu echten PDF-Dokumenten oder Unterseiten verlinken.
+3.  **Deployment:**
+    *   Nach den finalen Inhalts-Fixes: `npm run build` und Upload auf IONOS (via FileZilla).
