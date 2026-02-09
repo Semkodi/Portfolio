@@ -62,51 +62,49 @@ const Navigationsleiste = () => {
         <nav className="px-4">
             <div className={`nav-content glass transition-all duration-500 ${scrolled ? (isLight ? 'scrolled bg-white/80 shadow-lg' : 'scrolled bg-black/80') : 'mt-4'}`}>
                 <div className="flex items-center gap-4">
-                    <div className="logo font-bold text-xl uppercase tracking-tighter flex items-center gap-2">
+                    {/* Logo & Name - Verlinkt zur Startseite (Landingpage) */}
+                    <a href="#home" className="logo font-bold text-xl uppercase tracking-tighter flex items-center gap-2 hover:opacity-80 transition-opacity">
                         <Terminal size={20} className="text-primary" />
                         Semir<span className="gradient-text">Borogovac</span>
-                    </div>
-
-                    {/* Mechanical Toggle - Clean & Intuitive - Larger Version */}
-                    <div className="flex items-center ml-8">
-                        <button
-                            onClick={toggleTheme}
-                            className={`relative w-20 h-10 rounded-lg p-1.5 transition-all duration-500 shadow-inner border
-                                ${isLight ? 'bg-slate-200 border-slate-300' : 'bg-slate-800 border-slate-700'}`}
-                            aria-label="Toggle Theme"
-                        >
-                            <motion.div
-                                animate={{ x: isLight ? 40 : 0 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                className={`h-full w-8 rounded flex items-center justify-center shadow-lg z-10 relative
-                                    ${isLight ? 'bg-slate-800 text-white' : 'bg-white text-amber-500'}`}
-                            >
-                                {/* Zeigt das Ziel-Icon an: Im Dunkeln die Sonne zum Einschalten, im Hellen den Mond */}
-                                {isLight ? <Moon size={18} fill="currentColor" /> : <Sun size={18} fill="currentColor" />}
-                            </motion.div>
-                        </button>
-                    </div>
+                    </a>
                 </div>
 
-                <ul className="nav-links">
-                    {navLinks.map((link) => (
-                        <li key={link.id}>
-                            <a
-                                href={link.href}
-                                className={`text-sm font-medium transition-all duration-300 relative py-1 px-2
-                                    ${activeSection === link.id ? 'text-primary' : 'hover:text-primary/70 text-muted'}`}
-                            >
-                                {link.name}
-                                {activeSection === link.id && (
-                                    <motion.div
-                                        layoutId="nav-underline"
-                                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                                    />
-                                )}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <div className="flex items-center gap-6">
+                    <ul className="nav-links hidden md:flex items-center gap-8">
+                        {navLinks.map((link) => (
+                            <li key={link.id}>
+                                <a
+                                    href={link.href}
+                                    className={`text-sm font-medium transition-all duration-300 relative py-1 px-2
+                                        ${activeSection === link.id ? 'text-primary' : 'hover:text-primary/70 text-muted'}`}
+                                >
+                                    {link.name}
+                                    {activeSection === link.id && (
+                                        <motion.div
+                                            layoutId="nav-underline"
+                                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                                        />
+                                    )}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* Theme-Button - Rechts, Glass-Style & Drehung */}
+                    <button
+                        onClick={toggleTheme}
+                        className={`glass px-3 py-1.5 rounded-xl transition-all duration-300 flex items-center justify-center text-muted hover:text-primary border
+                            ${isLight ? 'border-slate-300 hover:bg-slate-200/50' : 'border-white/10 hover:bg-white/10'}`}
+                        aria-label="Toggle Theme"
+                    >
+                        <motion.div
+                            animate={{ rotate: isLight ? 360 : 0 }}
+                            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                        >
+                            {isLight ? <Moon size={18} className="text-slate-700" /> : <Sun size={18} className="text-white" />}
+                        </motion.div>
+                    </button>
+                </div>
             </div>
         </nav>
     );

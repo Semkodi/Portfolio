@@ -84,7 +84,6 @@ const InteractiveTerminal = () => {
                             onKeyDown={handleCommand}
                             style={{ color: 'white', caretColor: '#6366f1' }}
                             className="bg-transparent border-none outline-none flex-grow"
-                            autoFocus
                             placeholder="tippe 'hilfe'..."
                         />
                     </div>

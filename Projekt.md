@@ -93,14 +93,31 @@ Wir haben das Portfolio massiv überarbeitet, um es professioneller, moderner un
     - Eine visuelle Zeitachse (`Lebenslauf.jsx`) zeigt deinen Werdegang (Schule, Umschulung, praktische Erfahrung) modern an.
 
 ---
-*Letztes Update: 08.02.2026 (21:26 Uhr)*
+*Letztes Update: 09.02.2026 (10:00 Uhr)*
 
-## 🛠 Was noch fehlt / Nächste Schritte (To-Do)
+## 🚀 Status-Update: UX-Optimierung & Navigation (09.02.2026)
 
-1.  **Bilder & Screenshots:**
-    *   **Mendix-Projekt:** Ersetze die Platzhalter in den Projektkarten mit echten Bildern.
-2.  **Verlinkungen:**
-    *   **Social Media:** Deine echten LinkedIn- und GitHub-Links in der Kontakt-Sektion eintragen.
-    *   **Case Studies:** Die Buttons "Details ansehen" zu echten PDF-Dokumenten oder Unterseiten verlinken.
-3.  **Deployment:**
-    *   Nach den finalen Inhalts-Fixes: `npm run build` und Upload auf IONOS (via FileZilla).
+Wir haben gezielte Verbesserungen an der Benutzerfreundlichkeit (UX) und dem Design vorgenommen:
+
+### 1. **Navigation & Logo**
+- **Logo-Link:** Das Logo (Terminal-Icon + Name) in der Navigationsleiste fungiert nun als aktiver Link (`<a>`-Tag) zum Startbereich (`#home`).
+- **Feedback:** Ein dezenter Hover-Effekt signalisiert die Klickbarkeit.
+
+### 2. **Theme-Toggle (Dark/Light Mode)**
+- **Design:** Eleganter Glass-Button auf der rechten Seite mit adaptivem Rahmen.
+- **Animation:** Interaktive 360°-Drehung beim Klicken.
+- **Farben:** Passt sich dem Modus an (weiße Sonne im Dark Mode, dunkler Mond im Light Mode).
+
+### 3. **Favicon (Browser-Tab-Icon)**
+- **Design:** Das standardmäßige Weltkugel-Icon wurde durch ein eigenes Logo ersetzt.
+- **Farben:** Ein weißes **S** und ein lila **B** auf dunklem Hintergrund sorgen für eine professionelle Wiedererkennung im Browser-Tab.
+
+## 🛠 Geplante Features (Roadmap)
+
+1. **Projekt-Detailansichten (Modals):** System implementiert (v3). Pop-ups zeigen Details ohne "Case Study"-Label, mit optimiertem großen Schließ-Button. Die Projektkarten nutzen jetzt markante, breite Pillen-Buttons mit dem Text "PROJEKT".
+2. **Scroll-Reveal-Animationen:** Inhalte sollen beim Scrollen elegant eingeblendet werden (FADE-IN / SLIDE-IN).
+3. **Interaktive Skills-Sektion:** Aufwertung der Fähigkeiten-Ansicht mit Hover-Effekten und Level-Anzeigen.
+4. **Hintergrund-Effekte:** Einbindung eines Mouse-Followers oder Glow-Effekts für eine dynamische User-Experience.
+
+---
+*Letztes Update: 09.02.2026 (12:50 Uhr)*

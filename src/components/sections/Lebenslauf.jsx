@@ -82,34 +82,6 @@ const Lebenslauf = () => {
             period: "seit 02.2025",
             description: "Fokus auf Anwendungsentwicklung, Softwarearchitektur und moderne Programmiersprachen wie Java und JavaScript. Vertiefung in Web-Technologien und agile Entwicklungsprozesse.",
             type: "education"
-        },
-        {
-            title: "Triebfahrzeugführer",
-            company: "Deutsche Bahn AG Fernverkehr, Frankfurt",
-            period: "02.2023 - 11.2024",
-            description: "Verantwortung für den sicheren und pünktlichen Betrieb von Fernverkehrszügen im komplexen Netz der DB. Überwachung technischer Systeme und Einhaltung strenger Sicherheitsvorschriften.",
-            type: "work"
-        },
-        {
-            title: "Berufskraftfahrer",
-            company: "Wilhelm Schütz Straßenbau GmbH",
-            period: "07.2020 - 01.2023",
-            description: "Sicherstellung der Baustellenlogistik und Materialtransporte. Verantwortung für schwere Fahrzeuge und die termingerechte Belieferung von Tiefbauprojekten.",
-            type: "work"
-        },
-        {
-            title: "Berufskraftfahrer",
-            company: "Bewa Plast / Bagger Schenk",
-            period: "06.2012 - 06.2020",
-            description: "Langjährige Erfahrung in der Logistik und im Transportwesen. Spezialisierung auf Materialtransporte und effizientes Zeitmanagement.",
-            type: "work"
-        },
-        {
-            title: "Ausbildung zum Tiefbaufacharbeiter",
-            company: "Gartenlandschaftsbau Emin Borogovac",
-            period: "09.2005 - 11.2007",
-            description: "Erfolgreicher Abschluss der Berufsausbildung. Erlernen von Bautechniken, Materialkunde und praktischer Umsetzung im Garten- und Landschaftsbau.",
-            type: "education"
         }
     ];
 

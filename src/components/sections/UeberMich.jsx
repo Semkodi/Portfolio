@@ -13,7 +13,7 @@ const UeberMich = () => {
                             Warum der Wechsel? Die Faszination daran, durch Code echte Probleme zu lösen und etwas zu erschaffen, hat mich zur Umschulung bewogen.
                         </p>
                         <p className="text-muted mb-6">
-                            Als angehender Fachinformatiker liegt mein Fokus darauf, nicht nur Code zu schreiben, sondern nachhaltige Lösungen zu entwickeln.
+                            Als Fachinformatiker liegt mein Fokus darauf, nicht nur Code zu schreiben, sondern nachhaltige Lösungen zu entwickeln.
                             Mein technisches Verständnis kombiniert mit meiner vorherigen Berufserfahrung hilft mir, Projekte ganzheitlich zu betrachten.
                         </p>
                         <div className="grid grid-cols-2 gap-4">
