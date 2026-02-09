@@ -4,28 +4,31 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 const MausVerfolger = () => {
     const [isHovering, setIsHovering] = useState(false);
 
-    // Positionen für den äußeren Ring
+    // Positionen für den Cursor
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
-    // Positionen für den inneren Punkt (folgt direkt ohne Verzögerung)
-    const dotX = useMotionValue(-100);
-    const dotY = useMotionValue(-100);
+    // Positionen für den großen Hintergrund-Glow (langsamer)
+    const glowX = useMotionValue(-500);
+    const glowY = useMotionValue(-500);
 
-    // Sanfte Federung für den äußeren Ring
-    const springConfig = { damping: 25, stiffness: 400 };
-    const cursorXSpring = useSpring(cursorX, springConfig);
-    const cursorYSpring = useSpring(cursorY, springConfig);
+    // Sanfte Federung für den Cursor
+    const cursorSpringConfig = { damping: 25, stiffness: 400 };
+    const cursorXSpring = useSpring(cursorX, cursorSpringConfig);
+    const cursorYSpring = useSpring(cursorY, cursorSpringConfig);
+
+    // Sehr sanfte Federung für den Hintergrund-Glow (langsamer für Tiefe)
+    const glowSpringConfig = { damping: 50, stiffness: 100 };
+    const glowXSpring = useSpring(glowX, glowSpringConfig);
+    const glowYSpring = useSpring(glowY, glowSpringConfig);
 
     useEffect(() => {
         const moveCursor = (e) => {
-            // Äußerer Ring (mit Versatz zum Zentrieren)
             cursorX.set(e.clientX - 20);
             cursorY.set(e.clientY - 20);
 
-            // Innerer Punkt
-            dotX.set(e.clientX - 4);
-            dotY.set(e.clientY - 4);
+            glowX.set(e.clientX - 300); // 300 ist die Hälfte der Glow-Breite (600px)
+            glowY.set(e.clientY - 300);
         };
 
         const handleMouseOver = (e) => {
@@ -47,7 +50,18 @@ const MausVerfolger = () => {
 
     return (
         <>
-            {/* Äußerer Ring: Reagiert mit Vergrößerung beim Hover */}
+            {/* 1. DER HINTERGRUND-GLOW (Living Background) */}
+            <motion.div
+                className="fixed top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none z-[-5] opacity-20 hidden md:block"
+                style={{
+                    translateX: glowXSpring,
+                    translateY: glowYSpring,
+                    background: 'radial-gradient(circle, rgba(99,102,241,0.2) 0%, rgba(139,92,246,0.1) 40%, transparent 70%)',
+                    filter: 'blur(80px)',
+                }}
+            />
+
+            {/* 2. ÄUBERER RING DES CURSORS */}
             <motion.div
                 className="fixed top-0 left-0 w-10 h-10 rounded-full border border-primary/60 pointer-events-none z-[9999] hidden md:block"
                 style={{
@@ -58,17 +72,15 @@ const MausVerfolger = () => {
                 }}
             />
 
-            {/* Innerer Punkt: Kleiner, präziser Glow */}
+            {/* 3. INNERER PUNKT DES CURSORS */}
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999] hidden md:block"
+                className="fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-[9999] hidden md:block shadow-[0_0_15px_rgba(99,102,241,1)]"
                 style={{
-                    translateX: dotX,
-                    translateY: dotY,
+                    translateX: cursorX.get() + 16, // Korrektur zum Zentrieren im Ring
+                    translateY: cursorY.get() + 16,
                     scale: isHovering ? 0.5 : 1,
                 }}
-            >
-                <div className="absolute inset-0 bg-primary blur-sm rounded-full opacity-50 shadow-[0_0_10px_rgba(99,102,241,0.8)]"></div>
-            </motion.div>
+            />
         </>
     );
 };

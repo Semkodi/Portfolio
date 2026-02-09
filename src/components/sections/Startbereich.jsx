@@ -15,17 +15,7 @@ const Startbereich = () => {
                 className="z-10"
             >
                 {/* Status Badge "Open to Work" */}
-                <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="inline-block"
-                >
-                    <span className="px-4 py-2 glass rounded-full text-xs font-bold uppercase tracking-widest text-primary mb-6 inline-flex items-center gap-2 border border-primary/20 shadow-lg shadow-primary/10">
-                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        Verfügbar
-                    </span>
-                </motion.div>
+
 
                 <h1 className="text-5xl md:text-7xl mb-6 font-extrabold tracking-tight">
                     Ich entwickle <br />

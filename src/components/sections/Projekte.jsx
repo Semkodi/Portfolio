@@ -98,11 +98,11 @@ const Projekte = () => {
 
     return (
         <section id="projects">
-            <ScrollEnthuellung>
-                <div className="flex justify-between items-end mb-12">
-                    <div>
-                        <h2 className="text-4xl mb-4 font-extrabold text-fg">Ausgewählte <span className="gradient-text">Projekte</span></h2>
-                        <p className="text-muted font-medium">Ein Einblick in meine bisherigen Arbeiten und Experimente.</p>
+            <ScrollEnthuellung direction="down">
+                <div className="flex justify-between items-end mb-12 text-center md:text-left">
+                    <div className="w-full">
+                        <h2 className="text-4xl md:text-5xl mb-4 font-extrabold text-fg uppercase tracking-tight">Ausgewählte <span className="gradient-text">Projekte</span></h2>
+                        <p className="text-muted text-lg font-medium max-w-2xl">Ein Einblick in meine bisherigen Arbeiten und Experimente.</p>
                     </div>
                 </div>
             </ScrollEnthuellung>

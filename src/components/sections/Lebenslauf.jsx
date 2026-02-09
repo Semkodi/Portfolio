@@ -87,7 +87,7 @@ const Lebenslauf = () => {
 
     return (
         <section id="resume" className="py-20">
-            <ScrollEnthuellung>
+            <ScrollEnthuellung direction="down">
                 <div className="text-center mb-20">
                     <h2 className="text-5xl font-extrabold mb-6 tracking-tight">Mein <span className="gradient-text">Werdegang</span></h2>
                     <p className="text-muted text-lg max-w-2xl mx-auto leading-relaxed">

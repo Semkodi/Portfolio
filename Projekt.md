@@ -112,12 +112,35 @@ Wir haben gezielte Verbesserungen an der Benutzerfreundlichkeit (UX) und dem Des
 - **Design:** Das standardmäßige Weltkugel-Icon wurde durch ein eigenes Logo ersetzt.
 - **Farben:** Ein weißes **S** und ein lila **B** auf dunklem Hintergrund sorgen für eine professionelle Wiedererkennung im Browser-Tab.
 
-## 🛠 Geplante Features (Roadmap)
+## 🚀 Status-Update: Dokumentation & High-End Polishing (09.02.2026 - Mittag)
 
-1. **Projekt-Detailansichten (Modals):** System implementiert (v3). Pop-ups zeigen Details ohne "Case Study"-Label, mit optimiertem großen Schließ-Button. Die Projektkarten nutzen jetzt markante, breite Pillen-Buttons mit dem Text "PROJEKT".
-2. **Scroll-Reveal-Animationen:** Inhalte sollen beim Scrollen elegant eingeblendet werden (FADE-IN / SLIDE-IN).
-3. **Interaktive Skills-Sektion:** Aufwertung der Fähigkeiten-Ansicht mit Hover-Effekten und Level-Anzeigen.
-4. **Hintergrund-Effekte:** Einbindung eines Mouse-Followers oder Glow-Effekts für eine dynamische User-Experience.
+Wir haben das Portfolio auf ein echtes Premium-Niveau gehoben und alle geplanten Features erfolgreich umgesetzt.
+
+### 1. **High-End Animationen (Scroll-Reveal)**
+- **Intelligente Richtungen:** Inhalte fließen jetzt dynamisch ein (Text von links, Bilder von rechts, Titel von oben).
+- **Premium Easing:** Nutzung von Cubic-Bezier Kurven für ultra-geschmeidige Bewegungen.
+- **Stagger-Effekte:** Karten (Skills & Projekte) tauchen nacheinander auf, was den visuellen Fluss massiv verbessert.
+
+### 2. **Interaktive Skills-Sektion (v2)**
+- **Level-Indikatoren:** Jede Fähigkeit hat nun eine Punkt-Skala (1-5) zur Visualisierung der Expertise.
+- **Visuals:** Karten haben einen Glow-Hover-Effekt und heben sich beim Draufzeigen an.
+- **Fokus:** Kategorien wie Frontend, Backend, Database und Low-Code/Tools sind klar getrennt.
+
+### 3. **Living Background & UI Fixes**
+- **Mouse-Follower Glow:** Ein großer, weicher Lichtfleck im Hintergrund folgt der Maus mit Trägheit (Parallax-Effekt).
+- **Aufräumarbeiten:** 
+    - "Verfügbar"-Badge entfernt für einen cleaner Look.
+    - Mobile Navigation optimiert (Links auf kleinen Screens versteckt).
+    - Terminal-Fokus-Fix (Seite startet jetzt immer ganz oben).
 
 ---
-*Letztes Update: 09.02.2026 (12:50 Uhr)*
+*Letztes Update: 09.02.2026 (13:00 Uhr)*
+
+## 🛠 Geplante Features (Roadmap)
+
+- [x] Projekt-Detailansichten (Modals)
+- [x] Scroll-Reveal-Animationen
+- [x] Interaktive Skills-Sektion
+- [x] Hintergrund-Effekte (Living Background)
+- [ ] **Blogbereich:** (Optional für die Zukunft) Bereich für Lernfortschritte.
+- [ ] **Echter E-Mail Versand:** Integration von EmailJS für das Kontaktformular.
