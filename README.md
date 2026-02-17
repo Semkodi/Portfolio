@@ -1,6 +1,6 @@
 # 🚀 Portfolio - Semir Borogovac
 
-![Portfolio Vorschau](public/profile.jpg)
+![Portfolio Vorschau]
 
 Ein hochmodernes, interaktives Portfolio eines angehenden Fachinformatikers für Anwendungsentwicklung. Dieses Projekt dient als technologisches Vorzeigestück und kombiniert Enterprise-Architektur mit modernstem UI/UX-Design.
 
