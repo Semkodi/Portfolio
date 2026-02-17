@@ -40,7 +40,7 @@ const PhysikHintergrund: React.FC = () => {
         let decke = Bodies.rectangle(breite / 2, -50, breite, 100, { isStatic: true });
 
         // Partikel generieren (etwas mehr für besseren Effekt)
-        const partikel = Array.from({ length: 60 }).map(() => {
+        const partikel = Array.from({ length: 120 }).map(() => {
             const radius = Math.random() * 12 + 6;
             return Bodies.circle(
                 Math.random() * breite,
@@ -90,7 +90,11 @@ const PhysikHintergrund: React.FC = () => {
                         rect.top + rect.height / 2,
                         rect.width,
                         rect.height,
-                        { isStatic: true, friction: 0.5 }
+                        {
+                            isStatic: true,
+                            friction: 0.5,
+                            render: { visible: false } // Hindernisse unsichtbar machen
+                        }
                     );
                     Composite.add(engine.world, körper);
                 } else {
