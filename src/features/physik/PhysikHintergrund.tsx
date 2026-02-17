@@ -40,7 +40,7 @@ const PhysikHintergrund: React.FC = () => {
         let decke = Bodies.rectangle(breite / 2, -50, breite, 100, { isStatic: true });
 
         // Partikel generieren (etwas mehr für besseren Effekt)
-        const partikel = Array.from({ length: 120 }).map(() => {
+        const partikel = Array.from({ length: 820 }).map(() => {
             const radius = Math.random() * 12 + 6;
             return Bodies.circle(
                 Math.random() * breite,

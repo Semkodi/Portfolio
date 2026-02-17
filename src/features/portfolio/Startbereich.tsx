@@ -1,11 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Schreibmaschine from '../../components/ui/Schreibmaschine';
+import { useSpracheStore } from '../../store/useSpracheStore';
+import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
  * Startbereich (Hero-Sektion) - Die erste visuelle Sektion mit dem Typewriter-Effekt.
  */
 const Startbereich: React.FC = () => {
+    const { sprache } = useSpracheStore();
+    const t = uebersetzungen[sprache];
+
     return (
         <section className="min-h-screen flex items-center justify-center text-center relative overflow-hidden" aria-label="Willkommensbereich">
             {/* Visuelle Hintergrund-Effekte für mehr Tiefe */}
@@ -19,14 +24,14 @@ const Startbereich: React.FC = () => {
                 className="z-10 px-4"
             >
                 <h1 className="text-5xl md:text-7xl mb-6 font-extrabold tracking-tight hindernis">
-                    Ich entwickle <br />
-                    <Schreibmaschine woerter={["moderne Web Apps", "Mendix Lösungen", "skalierbare APIs", "Java Software"]} />
+                    {t.hero.titelStart} <br />
+                    <Schreibmaschine woerter={t.hero.typewriter} />
                 </h1>
 
-                <p className="max-w-2xl mx-auto text-muted text-lg mb-10 text-pretty leading-relaxed font-medium hindernis">
-                    Leidenschaftlicher Entwickler mit Fokus auf <b>Java</b>, <b>Web-Technologien</b> und <b>Mendix</b>.
-                    Ich verwandle komplexe Anforderungen in effiziente, benutzerfreundliche Anwendungen.
-                </p>
+                <p
+                    className="max-w-2xl mx-auto text-muted text-lg mb-10 text-pretty leading-relaxed font-medium hindernis"
+                    dangerouslySetInnerHTML={{ __html: t.hero.beschreibung }}
+                />
 
                 <div className="flex gap-4 justify-center flex-wrap">
                     <a
@@ -34,14 +39,14 @@ const Startbereich: React.FC = () => {
                         className="btn btn-primary shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all active:scale-95"
                         aria-label="Zu meinen Projekten scrollen"
                     >
-                        Meine Projekte
+                        {t.hero.btnProjekte}
                     </a>
                     <a
                         href="#kontakt"
                         className="btn btn-outline hover:bg-white/5 active:scale-95 transition-all"
                         aria-label="Kontaktbereich öffnen"
                     >
-                        Kontakt aufnehmen
+                        {t.hero.btnKontakt}
                     </a>
                 </div>
             </motion.div>

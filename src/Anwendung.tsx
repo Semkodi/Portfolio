@@ -31,7 +31,6 @@ const Anwendung: React.FC = () => {
         <div className="anwendung min-h-screen bg-bg text-fg selection:bg-primary/30">
             {/* Globale UI-Effekte */}
             <PhysikHintergrund />
-            <ScrollFortschritt />
 
             {/* Navigation & Layout */}
             <Navigationsleiste />

@@ -51,7 +51,7 @@ const SpotlightKarte: React.FC<SpotlightKarteProps> = ({ children: kinder, klass
             onBlur={verarbeiteFokusVerlust}
             onMouseEnter={() => setzeDeckkraft(1)}
             onMouseLeave={() => setzeDeckkraft(0)}
-            className={`relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/50 transition-colors duration-500 spotlight-karte ${klasse}`}
+            className={`relative overflow-hidden rounded-xl border border-border bg-card transition-colors duration-500 spotlight-karte ${klasse}`}
         >
             {/* Der Spotlight-Effekt: Ein radialer Gradient, der der Maus folgt */}
             <div

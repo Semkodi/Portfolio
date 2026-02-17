@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FileText, Shield } from 'lucide-react';
 import RechtlichesModal from '../ui/RechtlichesModal';
+import { useSpracheStore } from '../../store/useSpracheStore';
+import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
  * Fusszeile - Beinhaltet das Impressum, den Datenschutz und rechtliche Hinweise.
@@ -8,6 +10,9 @@ import RechtlichesModal from '../ui/RechtlichesModal';
  */
 const Fusszeile: React.FC = () => {
     const [rechtlichesGeoeffnet, setzeRechtlichesGeoeffnet] = useState<string | null>(null);
+
+    const { sprache } = useSpracheStore();
+    const t = uebersetzungen[sprache];
 
     const impressumInhalt = `Angaben gemäß § 5 TMG
 Semir Borogovac
@@ -33,26 +38,26 @@ Wenn Sie mir per E-Mail (mailto:) Anfragen zukommen lassen, werden Ihre Angaben 
 Diese Webseite verwendet keine Cookies und keine Analyse-Tools (wie Google Analytics). Es findet kein Tracking Ihres Nutzerverhaltens statt.`;
 
     return (
-        <footer className="py-12 border-t border-white/10 text-center text-muted text-sm" role="contentinfo">
+        <footer className="py-12 border-t border-border text-center text-muted text-sm" role="contentinfo">
             <div className="flex justify-center gap-6 mb-6">
                 <button
                     onClick={() => setzeRechtlichesGeoeffnet('impressum')}
                     className="hover:text-primary transition-colors flex items-center gap-2 bg-transparent border-none cursor-pointer text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-2"
                     aria-label="Impressum anzeigen"
                 >
-                    <FileText size={14} aria-hidden="true" /> Impressum
+                    <FileText size={14} aria-hidden="true" /> {t.footer.impressum}
                 </button>
                 <button
                     onClick={() => setzeRechtlichesGeoeffnet('datenschutz')}
                     className="hover:text-primary transition-colors flex items-center gap-2 bg-transparent border-none cursor-pointer text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg px-2"
                     aria-label="Datenschutzerklärung anzeigen"
                 >
-                    <Shield size={14} aria-hidden="true" /> Datenschutz
+                    <Shield size={14} aria-hidden="true" /> {t.footer.datenschutz}
                 </button>
             </div>
 
             <p className="opacity-60 font-medium">
-                &copy; {new Date().getFullYear()} Semir Borogovac. Alle Rechte vorbehalten.
+                &copy; {new Date().getFullYear()} Semir Borogovac. {t.footer.rights}
             </p>
 
             {/* Rechtliche Modals */}

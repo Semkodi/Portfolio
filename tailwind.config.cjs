@@ -18,6 +18,10 @@ module.exports = {
                 bg: "var(--bg)",
                 fg: "var(--fg)",
                 muted: "var(--muted)",
+                card: "var(--card-bg)",
+                border: "var(--border)",
+                glass: "var(--glass)",
+                "glass-border": "var(--glass-border)",
             },
             fontFamily: {
                 inter: ['Inter', 'sans-serif'],
