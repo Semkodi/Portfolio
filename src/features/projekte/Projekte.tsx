@@ -32,7 +32,7 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
     return (
         <ScrollEnthuellung verzoegerung={index * 0.1}>
             <article className="h-full">
-                <SpotlightKarte klasse={`flex flex-col h-full group border-white/10 bg-slate-900/40 shadow-sm hover:shadow-xl transition-all duration-500 ${hervorgehoben ? 'ring-2 ring-primary/20' : ''}`}>
+                <SpotlightKarte klasse={`flex flex-col h-full group border-white/10 bg-slate-900/40 shadow-sm hover:shadow-xl transition-all duration-500`}>
                     {/* Visualisierung des Projekts */}
                     <div className="h-36 bg-gradient-to-br transition-all duration-500 group-hover:opacity-80 relative overflow-hidden flex items-center justify-center">
                         <div className={`absolute inset-0 bg-gradient-to-br ${gradienten[index % gradienten.length]}`} />
