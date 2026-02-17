@@ -29,14 +29,6 @@ Ein hochmodernes, interaktives Portfolio eines angehenden Fachinformatikers für
 
 ---
 
-## 📄 Dokumentation
-
-Für detaillierte Einblicke in den Projektfortschritt und die technische Dokumentation:
-- **[Projekt-Status](PROJEKT_STATUS.md):** Aktueller Stand der Entwicklung, erledigte Aufgaben und nächste Schritte.
-- **[Projekt-Historie](Projekt.md):** Umfassende Dokumentation aller bisherigen Änderungen und Meilensteine.
-
----
-
 ## 🏗 Architektur (Enterprise Standard)
 
 Das Projekt folgt dem **Master Blueprint: Fullstack Enterprise Standard**:
