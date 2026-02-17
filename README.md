@@ -39,33 +39,6 @@ Das Projekt folgt dem **Master Blueprint: Fullstack Enterprise Standard**:
 
 ---
 
-## 🚀 Installation & Setup
-
-Um das Portfolio lokal zu starten, folge diesen Schritten:
-
-1. **Repository klonen**
-   ```bash
-   git clone https://github.com/Semkodi/Portfolio.git
-   cd Portfolio
-   ```
-
-2. **Abhängigkeiten installieren**
-   ```bash
-   npm install
-   ```
-
-3. **Entwicklungsserver starten**
-   ```bash
-   npm run dev
-   ```
-
-4. **Produktions-Build erstellen**
-   ```bash
-   npm run build
-   ```
-
----
-
 ## 📬 Kontakt
 
 - **Name:** Semir Borogovac
