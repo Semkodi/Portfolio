@@ -52,7 +52,7 @@ const Navigationsleiste: React.FC = () => {
     return (
         <nav className="px-4 fixed top-0 left-0 w-full z-50">
             {/* Responsiver Nav-Container mit Glasmorphismus-Effekt */}
-            <div className={`nav-content glass transition-all duration-500 mx-auto max-w-7xl flex justify-between items-center p-4 rounded-3xl mt-4 
+            <div className={`nav-content glass transition-all duration-500 mx-auto max-w-7xl flex justify-between items-center py-3 px-6 rounded-3xl mt-4 
                 ${beimScrollen ? (istHell ? 'bg-white/80 shadow-lg' : 'bg-black/80 shadow-2xl') : ''}`}>
 
                 <div className="flex items-center gap-4">
@@ -64,12 +64,12 @@ const Navigationsleiste: React.FC = () => {
 
                 <div className="flex items-center gap-6">
                     {/* Desktop Navigation */}
-                    <ul className="nav-links hidden md:flex items-center gap-8 list-none m-0 p-0">
+                    <ul className="nav-links hidden md:flex items-center gap-6 list-none m-0 p-0">
                         {navigationsLinks.map((eintrag) => (
                             <li key={eintrag.id}>
                                 <a
                                     href={eintrag.link}
-                                    className={`text-sm font-bold uppercase tracking-widest transition-all duration-300 relative py-1 px-2
+                                    className={`text-[11px] font-bold uppercase tracking-wider transition-all duration-300 relative py-1 px-2
                                         ${aktiveSektion === eintrag.id ? 'text-primary' : 'hover:text-primary/70 text-muted'}`}
                                 >
                                     {eintrag.name}
