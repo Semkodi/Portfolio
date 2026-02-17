@@ -1,672 +1,672 @@
 @import "tailwindcss";
-/* Das neue Tailwind v4 Kern-System laden // Erklärung */
+/* Das neue Tailwind v4 Kern-System laden */
 
-/* Google Fonts entfernt wegen DSGVO - lokal eingebunden // Erklärung */
+/* Google Fonts entfernt wegen DSGVO - lokal eingebunden */
 
 :root {
-    /* Wurzel-Element für globale Variablen // Erklärung */
-    /* Dunkles Design (Standard) // Erklärung */
+    /* Wurzel-Element für globale Variablen */
+    /* Dunkles Design (Standard) */
     --primary: #6366f1;
-    /* Primärfarbe: Indigo // Erklärung */
+    /* Primärfarbe: Indigo */
     --primary-hover: #4f46e5;
-    /* Primärfarbe bei Interaktion // Erklärung */
+    /* Primärfarbe bei Interaktion */
     --secondary: #ec4899;
-    /* Sekundärfarbe: Pink // Erklärung */
+    /* Sekundärfarbe: Pink */
     --bg: #030712;
-    /* Hintergrundfarbe: Fast Schwarz // Erklärung */
+    /* Hintergrundfarbe: Fast Schwarz */
     --fg: #f9fafb;
-    /* Vordergrundfarbe: Fast Weiß // Erklärung */
+    /* Vordergrundfarbe: Fast Weiß */
     --muted: #9ca3af;
-    /* Abgeschwächte Textfarbe // Erklärung */
+    /* Abgeschwächte Textfarbe */
     --card-bg: rgba(31, 41, 55, 0.5);
-    /* Hintergrund für Karten // Erklärung */
+    /* Hintergrund für Karten */
     --border: rgba(255, 255, 255, 0.1);
-    /* Standard-Rahmenfarbe // Erklärung */
+    /* Standard-Rahmenfarbe */
     --glass: rgba(17, 24, 39, 0.7);
-    /* Glasmorphismus-Hintergrund // Erklärung */
+    /* Glasmorphismus-Hintergrund */
     --glass-border: rgba(255, 255, 255, 0.1);
-    /* Rahmen für Glas-Effekte // Erklärung */
+    /* Rahmen für Glas-Effekte */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Standard-Übergang // Erklärung */
+    /* Standard-Übergang */
     --project-overlay: rgba(3, 7, 18, 0.8);
-    /* Überlagerung für Projekte // Erklärung */
+    /* Überlagerung für Projekte */
 }
 
-/* Ende :root // Erklärung */
+/* Ende :root */
 
-/* Ende :root // Erklärung */
+/* Ende :root */
 
 :root.light {
-    /* Helles Design-Thema // Erklärung */
-    /* Helles Farbschema // Erklärung */
+    /* Helles Design-Thema */
+    /* Helles Farbschema */
     --bg: #f8fafc;
-    /* Hintergrund: Schieferweiß // Erklärung */
+    /* Hintergrund: Schieferweiß */
     --fg: #0f172a;
-    /* Vordergrund: Dunkelblau // Erklärung */
+    /* Vordergrund: Dunkelblau */
     --muted: #475569;
-    /* Abgeschwächter Text // Erklärung */
+    /* Abgeschwächter Text */
     --card-bg: #ffffff;
-    /* Weißer Kartenhintergrund // Erklärung */
+    /* Weißer Kartenhintergrund */
     --border: rgba(0, 0, 0, 0.08);
-    /* Dunklerer Rahmen // Erklärung */
+    /* Dunklerer Rahmen */
     --glass: rgba(255, 255, 255, 0.9);
-    /* Undurchsichtigeres Glas // Erklärung */
+    /* Undurchsichtigeres Glas */
     --glass-border: rgba(0, 0, 0, 0.05);
-    /* Dezenter Rahmen // Erklärung */
+    /* Dezenter Rahmen */
     --project-overlay: rgba(255, 255, 255, 0.05);
-    /* Helle Überlagerung // Erklärung */
+    /* Helle Überlagerung */
 }
 
-/* Ende .light // Erklärung */
+/* Ende .light */
 
 * {
-    /* Universeller Selektor // Erklärung */
+    /* Universeller Selektor */
     margin: 0;
-    /* Außenabstand zurücksetzen // Erklärung */
+    /* Außenabstand zurücksetzen */
     padding: 0;
-    /* Innenabstand zurücksetzen // Erklärung */
+    /* Innenabstand zurücksetzen */
     box-sizing: border-box;
-    /* Rahmen-Box-Modell verwenden // Erklärung */
+    /* Rahmen-Box-Modell verwenden */
 }
 
-/* Ende Reset // Erklärung */
+/* Ende Reset */
 
 html {
-    /* HTML-Wurzel // Erklärung */
+    /* HTML-Wurzel */
     scroll-behavior: smooth;
-    /* Sanftes Scrollen aktivieren // Erklärung */
+    /* Sanftes Scrollen aktivieren */
 }
 
-/* Ende html // Erklärung */
+/* Ende html */
 
 body {
-    /* Haupt-Textkörper // Erklärung */
+    /* Haupt-Textkörper */
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    /* Schriftart-Reihenfolge // Erklärung */
+    /* Schriftart-Reihenfolge */
     background-color: var(--bg);
-    /* Hintergrund aus Variable laden // Erklärung */
+    /* Hintergrund aus Variable laden */
     color: var(--fg);
-    /* Textfarbe aus Variable laden // Erklärung */
+    /* Textfarbe aus Variable laden */
     line-height: 1.6;
-    /* Zeilenhöhe für bessere Lesbarkeit // Erklärung */
+    /* Zeilenhöhe für bessere Lesbarkeit */
     overflow-x: hidden;
-    /* Horizontales Scrollen verhindern // Erklärung */
-    /* Wasserfall-Effekt: Sanfte Farbübergänge // Erklärung */
+    /* Horizontales Scrollen verhindern */
+    /* Wasserfall-Effekt: Sanfte Farbübergänge */
     transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1),
         color 1s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Dauer und Kurve der Farbanpassung // Erklärung */
+    /* Dauer und Kurve der Farbanpassung */
 }
 
-/* Ende body // Erklärung */
+/* Ende body */
 
-/* Hintergrund-Gradienten für visuelle Tiefe // Erklärung */
+/* Hintergrund-Gradienten für visuelle Tiefe */
 body::before {
-    /* Pseudo-Element vor dem Body // Erklärung */
+    /* Pseudo-Element vor dem Body */
     content: '';
-    /* Erforderlicher Inhalt für Pseudo-Elemente // Erklärung */
+    /* Erforderlicher Inhalt für Pseudo-Elemente */
     position: fixed;
-    /* Im Hintergrund fixieren // Erklärung */
+    /* Im Hintergrund fixieren */
     top: -50%;
-    /* Über den Rand hinausragen // Erklärung */
+    /* Über den Rand hinausragen */
     left: -50%;
-    /* Über den Rand hinaus // Erklärung */
+    /* Über den Rand hinaus */
     width: 200%;
-    /* Doppelte Breite // Erklärung */
+    /* Doppelte Breite */
     height: 200%;
-    /* Doppelte Höhe // Erklärung */
+    /* Doppelte Höhe */
     background:
-        /* Komplexe radiale Verläufe // Erklärung */
+        /* Komplexe radiale Verläufe */
         radial-gradient(circle at center, var(--primary-glow, rgba(99, 102, 241, 0.15)) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, var(--secondary-glow, rgba(236, 72, 153, 0.1)) 0%, transparent 50%),
         radial-gradient(circle at 20% 80%, var(--primary-glow, rgba(59, 130, 246, 0.15)) 0%, transparent 50%);
-    /* Farbpunkte definieren // Erklärung */
+    /* Farbpunkte definieren */
     z-index: -1;
-    /* Hinter alle anderen Elemente legen // Erklärung */
+    /* Hinter alle anderen Elemente legen */
     pointer-events: none;
-    /* Klicks durchlassen // Erklärung */
+    /* Klicks durchlassen */
     animation: gradient-move 20s ease-in-out infinite alternate;
-    /* Endlose Animation // Erklärung */
+    /* Endlose Animation */
     transform-origin: center center;
-    /* Mittelpunkt als Rotationsachse // Erklärung */
+    /* Mittelpunkt als Rotationsachse */
 }
 
-/* Ende body::before // Erklärung */
+/* Ende body::before */
 
 :root.light body::before {
-    /* Anpassung für helles Design // Erklärung */
+    /* Anpassung für helles Design */
     --primary-glow: rgba(99, 102, 241, 0.05);
-    /* Dezenteres dunkles Leuchten // Erklärung */
+    /* Dezenteres dunkles Leuchten */
     --secondary-glow: rgba(236, 72, 153, 0.05);
-    /* Dezenteres pinkes Leuchten // Erklärung */
+    /* Dezenteres pinkes Leuchten */
 }
 
-/* Ende .light body::before // Erklärung */
+/* Ende .light body::before */
 
 @keyframes gradient-move {
 
-    /* Definition der Hintergrund-Animation // Erklärung */
+    /* Definition der Hintergrund-Animation */
     0% {
-        /* Startpunkt // Erklärung */
+        /* Startpunkt */
         transform: rotate(0deg) scale(1);
-        /* Keine Drehung, normale Größe // Erklärung */
+        /* Keine Drehung, normale Größe */
     }
 
-    /* Ende 0% // Erklärung */
+    /* Ende 0% */
 
     50% {
-        /* Mittelpunkt // Erklärung */
+        /* Mittelpunkt */
         transform: rotate(10deg) scale(1.1);
-        /* Leichte Drehung und Vergrößerung // Erklärung */
+        /* Leichte Drehung und Vergrößerung */
     }
 
-    /* Ende 50% // Erklärung */
+    /* Ende 50% */
 
     100% {
-        /* Endpunkt // Erklärung */
+        /* Endpunkt */
         transform: rotate(-10deg) scale(1);
-        /* Gegenrotation, normale Größe // Erklärung */
+        /* Gegenrotation, normale Größe */
     }
 
-    /* Ende 100% // Erklärung */
+    /* Ende 100% */
 }
 
-/* Ende Keyframes // Erklärung */
+/* Ende Keyframes */
 
 a {
-    /* Basis-Stile für Links // Erklärung */
+    /* Basis-Stile für Links */
     text-decoration: none;
-    /* Keine Unterstreichung // Erklärung */
+    /* Keine Unterstreichung */
     color: inherit;
-    /* Farbe vom Elternelement erben // Erklärung */
+    /* Farbe vom Elternelement erben */
     transition: var(--transition);
-    /* Sanfter Übergang bei Interaktion // Erklärung */
+    /* Sanfter Übergang bei Interaktion */
 }
 
-/* Ende a // Erklärung */
+/* Ende a */
 
 ul {
-    /* Basis-Stile für Listen // Erklärung */
+    /* Basis-Stile für Listen */
     list-style: none;
-    /* Keine Aufzählungspunkte // Erklärung */
+    /* Keine Aufzählungspunkte */
 }
 
-/* Ende ul // Erklärung */
+/* Ende ul */
 
 section {
-    /* Standard-Layout für Inhalts-Sektionen // Erklärung */
+    /* Standard-Layout für Inhalts-Sektionen */
     padding: 5rem 1rem;
-    /* Innenabstand oben/unten und seitlich // Erklärung */
+    /* Innenabstand oben/unten und seitlich */
     max-width: 1100px;
-    /* Maximale Inhaltsbreite // Erklärung */
+    /* Maximale Inhaltsbreite */
     margin: 0 auto;
-    /* Zentrierung der Sektion // Erklärung */
-    /* Wasserfall-Effekt: Sektionen passen sich zeitversetzt an // Erklärung */
+    /* Zentrierung der Sektion */
+    /* Wasserfall-Effekt: Sektionen passen sich zeitversetzt an */
     transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
         border-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
-    /* Farbwechsel mit Verzögerung // Erklärung */
+    /* Farbwechsel mit Verzögerung */
 }
 
-/* Ende section // Erklärung */
+/* Ende section */
 
 h1,
-/* Hauptüberschriften // Erklärung */
+/* Hauptüberschriften */
 h2,
-/* Sekundärüberschriften // Erklärung */
+/* Sekundärüberschriften */
 h3 {
-    /* Tertiärüberschriften // Erklärung */
+    /* Tertiärüberschriften */
     font-weight: 800;
-    /* Sehr fett für starken visuellen Eindruck // Erklärung */
+    /* Sehr fett für starken visuellen Eindruck */
     line-height: 1.2;
-    /* Geringer Zeilenabstand für kompakte Optik // Erklärung */
+    /* Geringer Zeilenabstand für kompakte Optik */
 }
 
-/* Ende Überschriften // Erklärung */
+/* Ende Überschriften */
 
 .gradient-text {
-    /* Hilfsklasse für Text mit Farbverlauf // Erklärung */
+    /* Hilfsklasse für Text mit Farbverlauf */
     background: linear-gradient(to right, var(--primary), var(--secondary));
-    /* Verlauf von primär zu sekundär // Erklärung */
+    /* Verlauf von primär zu sekundär */
     -webkit-background-clip: text;
-    /* Verlauf auf Text begrenzen (Safari/Chrome) // Erklärung */
+    /* Verlauf auf Text begrenzen (Safari/Chrome) */
     -webkit-text-fill-color: transparent;
-    /* Textfarbe transparent machen für Verlauf // Erklärung */
+    /* Textfarbe transparent machen für Verlauf */
     background-clip: text;
-    /* Standard-Eigenschaft für Text-Verlauf // Erklärung */
+    /* Standard-Eigenschaft für Text-Verlauf */
 }
 
-/* Ende .gradient-text // Erklärung */
+/* Ende .gradient-text */
 
-/* Hilfsklassen für den Glasmorphismus-Effekt // Erklärung */
+/* Hilfsklassen für den Glasmorphismus-Effekt */
 .glass {
-    /* Container mit Glaseffekt // Erklärung */
+    /* Container mit Glaseffekt */
     background: var(--glass);
-    /* Transparenter Hintergrund // Erklärung */
+    /* Transparenter Hintergrund */
     backdrop-filter: blur(12px);
-    /* Hintergrund weichzeichnen // Erklärung */
+    /* Hintergrund weichzeichnen */
     -webkit-backdrop-filter: blur(12px);
-    /* Safari-Unterstützung // Erklärung */
+    /* Safari-Unterstützung */
     border: 1px solid var(--glass-border);
-    /* Dezenter Rahmen // Erklärung */
+    /* Dezenter Rahmen */
     border-radius: 1rem;
-    /* Abgerundete Ecken // Erklärung */
-    /* Wasserfall-Effekt: Glas-Elemente passen sich zeitversetzt an // Erklärung */
+    /* Abgerundete Ecken */
+    /* Wasserfall-Effekt: Glas-Elemente passen sich zeitversetzt an */
     transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
         border-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
         color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-    /* Verzögerter Farbübergang // Erklärung */
+    /* Verzögerter Farbübergang */
 }
 
-/* Ende .glass // Erklärung */
+/* Ende .glass */
 
 .card {
-    /* Standard-Kartendesign // Erklärung */
+    /* Standard-Kartendesign */
     background: var(--card-bg);
-    /* Moderner Karten-Hintergrund // Erklärung */
+    /* Moderner Karten-Hintergrund */
     border: 1px solid var(--border);
-    /* Rahmen der Karte // Erklärung */
+    /* Rahmen der Karte */
     padding: 2.5rem;
-    /* Großzügiger Innenabstand // Erklärung */
+    /* Großzügiger Innenabstand */
     border-radius: 2rem;
-    /* Stark abgerundete Ecken // Erklärung */
+    /* Stark abgerundete Ecken */
     position: relative;
-    /* Basis für absolute Positionierung von Inhalten // Erklärung */
+    /* Basis für absolute Positionierung von Inhalten */
     overflow: hidden;
-    /* Überstehende Inhalte abschneiden // Erklärung */
-    /* Wasserfall-Effekt: Karten passen sich als Letztes an // Erklärung */
+    /* Überstehende Inhalte abschneiden */
+    /* Wasserfall-Effekt: Karten passen sich als Letztes an */
     transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
         border-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
         transform 0.3s ease;
-    /* Übergang mit höchster Verzögerung // Erklärung */
+    /* Übergang mit höchster Verzögerung */
 }
 
-/* Ende .card // Erklärung */
+/* Ende .card */
 
 .btn {
-    /* Basisklasse für Schaltflächen // Erklärung */
+    /* Basisklasse für Schaltflächen */
     display: inline-block;
-    /* Element fließen lassen // Erklärung */
+    /* Element fließen lassen */
     padding: 0.75rem 1.5rem;
-    /* Innenabstand für gute Klickfläche // Erklärung */
+    /* Innenabstand für gute Klickfläche */
     border-radius: 0.5rem;
-    /* Leicht abgerundete Ecken // Erklärung */
+    /* Leicht abgerundete Ecken */
     font-weight: 600;
-    /* Halbfettes Schriftgewicht // Erklärung */
+    /* Halbfettes Schriftgewicht */
     cursor: pointer;
-    /* Zeiger bei Hover anzeigen // Erklärung */
+    /* Zeiger bei Hover anzeigen */
     transition: var(--transition);
-    /* Sanfter Zustandswechsel // Erklärung */
+    /* Sanfter Zustandswechsel */
     border: none;
-    /* Standard-Rahmen entfernen // Erklärung */
+    /* Standard-Rahmen entfernen */
 }
 
-/* Ende .btn // Erklärung */
+/* Ende .btn */
 
 .btn-primary {
-    /* Primäre Schaltfläche // Erklärung */
+    /* Primäre Schaltfläche */
     background: var(--primary);
-    /* Hintergrund in Primärfarbe // Erklärung */
+    /* Hintergrund in Primärfarbe */
     color: white;
-    /* Weißer Text // Erklärung */
+    /* Weißer Text */
 }
 
-/* Ende .btn-primary // Erklärung */
+/* Ende .btn-primary */
 
 .btn-primary:hover {
-    /* Primär-Button bei Maushover // Erklärung */
+    /* Primär-Button bei Maushover */
     background: var(--primary-hover);
-    /* Dunklere Primärfarbe // Erklärung */
+    /* Dunklere Primärfarbe */
     transform: translateY(-2px);
-    /* Leichtes Anheben // Erklärung */
+    /* Leichtes Anheben */
     box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
-    /* Schatten für Tiefe // Erklärung */
+    /* Schatten für Tiefe */
 }
 
-/* Ende .btn-primary:hover // Erklärung */
+/* Ende .btn-primary:hover */
 
 .btn-outline {
-    /* Schaltfläche mit Umrandung // Erklärung */
+    /* Schaltfläche mit Umrandung */
     background: transparent;
-    /* Durchsichtiger Hintergrund // Erklärung */
+    /* Durchsichtiger Hintergrund */
     border: 1px solid var(--border);
-    /* Rahmenfarbe aus Variable // Erklärung */
+    /* Rahmenfarbe aus Variable */
     color: var(--fg);
-    /* Textfarbe basierend auf Modus // Erklärung */
+    /* Textfarbe basierend auf Modus */
 }
 
-/* Ende .btn-outline // Erklärung */
+/* Ende .btn-outline */
 
 .btn-outline:hover {
-    /* Umrandeter Button bei Hover // Erklärung */
+    /* Umrandeter Button bei Hover */
     background: var(--primary);
-    /* Hintergrund füllt sich mit Primärfarbe // Erklärung */
+    /* Hintergrund füllt sich mit Primärfarbe */
     border-color: var(--primary);
-    /* Rahmenfarbe anpassen // Erklärung */
+    /* Rahmenfarbe anpassen */
     color: white;
-    /* Weißer Text für Kontrast // Erklärung */
+    /* Weißer Text für Kontrast */
     transform: translateY(-2px);
-    /* Leichtes Anheben // Erklärung */
+    /* Leichtes Anheben */
 }
 
-/* Ende .btn-outline:hover // Erklärung */
+/* Ende .btn-outline:hover */
 
-/* Navigationsleiste Stile // Erklärung */
+/* Navigationsleiste Stile */
 nav {
-    /* Äußerer Navigations-Container // Erklärung */
+    /* Äußerer Navigations-Container */
     position: fixed;
-    /* Fixierung am oberen Rand // Erklärung */
+    /* Fixierung am oberen Rand */
     top: 0;
-    /* Oben ausrichten // Erklärung */
+    /* Oben ausrichten */
     left: 0;
-    /* Links ausrichten // Erklärung */
+    /* Links ausrichten */
     width: 100%;
-    /* Gesamte Breite nutzen // Erklärung */
+    /* Gesamte Breite nutzen */
     height: 4rem;
-    /* Feste Höhe // Erklärung */
+    /* Feste Höhe */
     z-index: 100;
-    /* Vor anderen Inhalten anzeigen // Erklärung */
+    /* Vor anderen Inhalten anzeigen */
     display: flex;
-    /* Flexbox für Zentrierung // Erklärung */
+    /* Flexbox für Zentrierung */
     justify-content: center;
-    /* Horizontale Zentrierung // Erklärung */
+    /* Horizontale Zentrierung */
     align-items: center;
-    /* Vertikale Zentrierung // Erklärung */
+    /* Vertikale Zentrierung */
     transition: var(--transition);
-    /* Übergangseffekt // Erklärung */
+    /* Übergangseffekt */
 }
 
-/* Ende nav // Erklärung */
+/* Ende nav */
 
 .nav-content {
-    /* Innerer Inhaltsbereich der Navigation // Erklärung */
+    /* Innerer Inhaltsbereich der Navigation */
     width: 90%;
-    /* Breite relativ zum Fenster // Erklärung */
+    /* Breite relativ zum Fenster */
     max-width: 1100px;
-    /* Begrenzung für große Bildschirme // Erklärung */
+    /* Begrenzung für große Bildschirme */
     height: 3.5rem;
-    /* Etwas niedriger als der Container // Erklärung */
+    /* Etwas niedriger als der Container */
     display: flex;
-    /* Flex-Layout // Erklärung */
+    /* Flex-Layout */
     justify-content: space-between;
-    /* Platz zwischen Logo und Links // Erklärung */
+    /* Platz zwischen Logo und Links */
     align-items: center;
-    /* Vertikaler Ausgleich // Erklärung */
+    /* Vertikaler Ausgleich */
     padding: 0 1.5rem;
-    /* Seitlicher Innenabstand // Erklärung */
+    /* Seitlicher Innenabstand */
     border-radius: 2rem;
-    /* Pillen-Design // Erklärung */
+    /* Pillen-Design */
     margin-top: 1rem;
-    /* Abstand zum oberen Rand // Erklärung */
+    /* Abstand zum oberen Rand */
 }
 
-/* Ende .nav-content // Erklärung */
+/* Ende .nav-content */
 
 .nav-links {
-    /* Container für Navigations-Links // Erklärung */
+    /* Container für Navigations-Links */
     display: flex;
-    /* Horizontale Anordnung // Erklärung */
+    /* Horizontale Anordnung */
     gap: 2rem;
-    /* Abstand zwischen den Links // Erklärung */
+    /* Abstand zwischen den Links */
 }
 
-/* Ende .nav-links // Erklärung */
+/* Ende .nav-links */
 
 .nav-links li a:hover {
-    /* Hover-Effekt für einzelne Links // Erklärung */
+    /* Hover-Effekt für einzelne Links */
     color: var(--primary);
-    /* Farbe zu Primärfarbe wechseln // Erklärung */
+    /* Farbe zu Primärfarbe wechseln */
 }
 
-/* Ende :hover // Erklärung */
+/* Ende :hover */
 
-/* Responsives Spalten-Gitter // Erklärung */
+/* Responsives Spalten-Gitter */
 .grid {
-    /* Gitter-Layout Basis // Erklärung */
+    /* Gitter-Layout Basis */
     display: grid;
-    /* Aktivierung des CSS Grids // Erklärung */
+    /* Aktivierung des CSS Grids */
     gap: 2rem;
-    /* Abstand zwischen den Gitter-Elementen // Erklärung */
+    /* Abstand zwischen den Gitter-Elementen */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* Automatische Spaltenbreite // Erklärung */
+    /* Automatische Spaltenbreite */
 }
 
-/* Ende .grid // Erklärung */
+/* Ende .grid */
 
 @media (max-width: 768px) {
 
-    /* Anpassung für mobile Endgeräte // Erklärung */
+    /* Anpassung für mobile Endgeräte */
     .nav-links {
-        /* Nav-Links verstecken // Erklärung */
+        /* Nav-Links verstecken */
         display: none;
-        /* Ausblenden // Erklärung */
+        /* Ausblenden */
     }
 
-    /* Ende .nav-links // Erklärung */
+    /* Ende .nav-links */
 }
 
-/* Ende Media Query // Erklärung */
+/* Ende Media Query */
 
 /* Utility Classes */
-/* Hilfsklassen für Typografie (Utility Classes) // Erklärung */
+/* Hilfsklassen für Typografie (Utility Classes) */
 .text-xs {
-    /* Sehr kleine Schrift // Erklärung */
+    /* Sehr kleine Schrift */
     font-size: 0.75rem;
-    /* 12px Äquivalent // Erklärung */
+    /* 12px Äquivalent */
 }
 
 /* Erklärung */
 
 .text-sm {
-    /* Kleine Schrift // Erklärung */
+    /* Kleine Schrift */
     font-size: 0.875rem;
-    /* 14px Äquivalent // Erklärung */
+    /* 14px Äquivalent */
 }
 
 /* Erklärung */
 
 .text-lg {
-    /* Große Schrift // Erklärung */
+    /* Große Schrift */
     font-size: 1.125rem;
-    /* 18px Äquivalent // Erklärung */
+    /* 18px Äquivalent */
 }
 
 /* Erklärung */
 
 .text-xl {
-    /* Sehr große Schrift // Erklärung */
+    /* Sehr große Schrift */
     font-size: 1.25rem;
-    /* 20px Äquivalent // Erklärung */
+    /* 20px Äquivalent */
 }
 
 /* Erklärung */
 
 .text-2xl {
-    /* Überschriften-Größe 2 // Erklärung */
+    /* Überschriften-Größe 2 */
     font-size: 1.5rem;
-    /* 24px Äquivalent // Erklärung */
+    /* 24px Äquivalent */
 }
 
 /* Erklärung */
 
 .text-3xl {
-    /* Überschriften-Größe 3 // Erklärung */
+    /* Überschriften-Größe 3 */
     font-size: 1.875rem;
-    /* 30px Äquivalent // Erklärung */
+    /* 30px Äquivalent */
 }
 
 /* Erklärung */
 
 .text-4xl {
-    /* Überschriften-Größe 4 // Erklärung */
+    /* Überschriften-Größe 4 */
     font-size: 2.25rem;
-    /* 36px Äquivalent // Erklärung */
+    /* 36px Äquivalent */
 }
 
 /* Erklärung */
 
 .text-5xl {
-    /* Hero-Überschrift // Erklärung */
+    /* Hero-Überschrift */
     font-size: 3rem;
-    /* 48px Äquivalent // Erklärung */
+    /* 48px Äquivalent */
 }
 
 /* Erklärung */
 
 .text-7xl {
-    /* Gigantische Schrift // Erklärung */
+    /* Gigantische Schrift */
     font-size: 4.5rem;
-    /* 72px Äquivalent // Erklärung */
+    /* 72px Äquivalent */
 }
 
 /* Erklärung */
 
 .font-bold {
-    /* Fett gedruckt // Erklärung */
+    /* Fett gedruckt */
     font-weight: 700;
-    /* Starke Betonung // Erklärung */
+    /* Starke Betonung */
 }
 
 /* Erklärung */
 
 .font-semibold {
-    /* Halbfett // Erklärung */
+    /* Halbfett */
     font-weight: 600;
-    /* Moderate Betonung // Erklärung */
+    /* Moderate Betonung */
 }
 
 /* Erklärung */
 
 .font-mono {
-    /* Schreibmaschinenschrift // Erklärung */
+    /* Schreibmaschinenschrift */
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    /* Monospaced Font-Stack // Erklärung */
+    /* Monospaced Font-Stack */
 }
 
 /* Erklärung */
 
 .text-center {
-    /* Text zentrieren // Erklärung */
+    /* Text zentrieren */
     text-align: center;
-    /* Mittige Ausrichtung // Erklärung */
+    /* Mittige Ausrichtung */
 }
 
 /* Erklärung */
 
 .text-left {
-    /* Text linksbündig // Erklärung */
+    /* Text linksbündig */
     text-align: left;
-    /* Linke Ausrichtung // Erklärung */
+    /* Linke Ausrichtung */
 }
 
 /* Erklärung */
 
 .text-pretty {
-    /* Schöner Textumbruch // Erklärung */
+    /* Schöner Textumbruch */
     text-wrap: pretty;
-    /* Verhindert einzelne Wörter am Zeilenende // Erklärung */
+    /* Verhindert einzelne Wörter am Zeilenende */
 }
 
 /* Erklärung */
 
 .uppercase {
-    /* Großbuchstaben // Erklärung */
+    /* Großbuchstaben */
     text-transform: uppercase;
-    /* Alles in Versalien // Erklärung */
+    /* Alles in Versalien */
 }
 
 /* Erklärung */
 
 .tracking-widest {
-    /* Maximale Buchstabenabstände // Erklärung */
+    /* Maximale Buchstabenabstände */
     letter-spacing: 0.1em;
-    /* Weiter Laufweite // Erklärung */
+    /* Weiter Laufweite */
 }
 
 /* Erklärung */
 
 .tracking-tighter {
-    /* Engere Buchstabenabstände // Erklärung */
+    /* Engere Buchstabenabstände */
     letter-spacing: -0.05em;
-    /* Schmale Laufweite // Erklärung */
+    /* Schmale Laufweite */
 }
 
 /* Erklärung */
 
 .text-primary {
-    /* Text in Primärfarbe // Erklärung */
+    /* Text in Primärfarbe */
     color: var(--primary);
-    /* Nutzt die Indigo-Variable // Erklärung */
+    /* Nutzt die Indigo-Variable */
 }
 
 /* Erklärung */
 
 .text-muted {
-    /* Abgeschwächter Text // Erklärung */
+    /* Abgeschwächter Text */
     color: var(--muted);
-    /* Nutzt die Grau-Variable // Erklärung */
+    /* Nutzt die Grau-Variable */
 }
 
 /* Erklärung */
 
 .flex {
-    /* Flexbox-Container // Erklärung */
+    /* Flexbox-Container */
     display: flex;
-    /* Flex-Layout aktivieren // Erklärung */
+    /* Flex-Layout aktivieren */
 }
 
 /* Erklärung */
 
 .flex-col {
-    /* Spalten-Anordnung // Erklärung */
+    /* Spalten-Anordnung */
     flex-direction: column;
-    /* Elemente untereinander // Erklärung */
+    /* Elemente untereinander */
 }
 
 /* Erklärung */
 
 .items-center {
-    /* Vertikale Zentrierung im Flex // Erklärung */
+    /* Vertikale Zentrierung im Flex */
     align-items: center;
-    /* Mittige Ausrichtung // Erklärung */
+    /* Mittige Ausrichtung */
 }
 
 /* Erklärung */
 
 .justify-center {
-    /* Horizontale Zentrierung im Flex // Erklärung */
+    /* Horizontale Zentrierung im Flex */
     justify-content: center;
-    /* Mittige Verteilung // Erklärung */
+    /* Mittige Verteilung */
 }
 
 /* Erklärung */
 
 .justify-between {
-    /* Platz dazwischen verteilen // Erklärung */
+    /* Platz dazwischen verteilen */
     justify-content: space-between;
-    /* Elemente an die Ränder schieben // Erklärung */
+    /* Elemente an die Ränder schieben */
 }
 
 /* Erklärung */
 
 .items-end {
-    /* Am Ende ausrichten // Erklärung */
+    /* Am Ende ausrichten */
     align-items: flex-end;
-    /* Unten/Rechts bündig // Erklärung */
+    /* Unten/Rechts bündig */
 }
 
 /* Erklärung */
 
 .flex-wrap {
-    /* Zeilenumbruch im Flex // Erklärung */
+    /* Zeilenumbruch im Flex */
     flex-wrap: wrap;
-    /* Mehrzeiligkeit erlauben // Erklärung */
+    /* Mehrzeiligkeit erlauben */
 }
 
 /* Erklärung */
 
 .flex-grow {
-    /* Element ausdehnen // Erklärung */
+    /* Element ausdehnen */
     flex-grow: 1;
-    /* Verfügbaren Platz einnehmen // Erklärung */
+    /* Verfügbaren Platz einnehmen */
 }
 
 /* Erklärung */

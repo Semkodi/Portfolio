@@ -38,17 +38,3 @@ Das Projekt folgt dem **Master Blueprint: Fullstack Enterprise Standard**:
 - **DSGVO Konformität:** Vollständiges lokales Hosting (inkl. Schriftarten), keine externen CDNs.
 
 ---
-
-## 📬 Kontakt
-
-- **Name:** Semir Borogovac
-- **Position:** FIAE Umschüler
-- **Webseite:** [Dein Link hier]
-- **LinkedIn:** [Verlinken!]
-- **E-Mail:** borogovacsemir@gmail.com
-
----
-
-## 📜 Lizenz
-
-Dieses Projekt ist unter der **MIT Lizenz** lizenziert. Du kannst es gerne als Inspiration für dein eigenes Portfolio nutzen!
