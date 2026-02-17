@@ -15,15 +15,15 @@ const UeberMich: React.FC = () => {
                 {/* Text-Inhalte */}
                 <ScrollEnthuellung richtung="links">
                     <div className="relative z-10">
-                        <h2 id="about-title" className="text-4xl mb-6 font-extrabold tracking-tight">
+                        <h2 id="about-title" className="text-4xl mb-6 font-extrabold tracking-tight hindernis">
                             Mein Weg in die <span className="gradient-text">IT</span>
                         </h2>
 
-                        <p className="text-muted text-lg mb-6 leading-relaxed font-medium">
+                        <p className="text-muted text-lg mb-6 leading-relaxed font-medium hindernis">
                             Warum der Wechsel? Die Faszination daran, durch Code echte Probleme zu lösen und etwas zu erschaffen, hat mich zur Umschulung bewogen.
                         </p>
 
-                        <p className="text-muted text-lg mb-8 leading-relaxed font-medium">
+                        <p className="text-muted text-lg mb-8 leading-relaxed font-medium hindernis">
                             Als Fachinformatiker liegt mein Fokus darauf, nicht nur Code zu schreiben, sondern nachhaltige Lösungen zu entwickeln.
                             Mein technisches Verständnis kombiniert mit meiner vorherigen Berufserfahrung hilft mir, Projekte ganzheitlich zu betrachten.
                         </p>

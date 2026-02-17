@@ -3,24 +3,28 @@ import Matter from 'matter-js';
 
 /**
  * PhysikHintergrund - Eine interaktive Hintergrund-Komponente mit Matter.js.
- * Erzeugt schwebende Partikel, die auf physikalische Gesetze und Mausinteraktionen reagieren.
+ * Erzeugt schwebende Partikel, die auf physikalische Gesetze, Mausinteraktionen
+ * und echte UI-Elemente (als Hindernisse) reagieren.
  */
 const PhysikHintergrund: React.FC = () => {
     const leinwandReferenz = useRef<HTMLDivElement>(null);
     const engineReferenz = useRef<Matter.Engine>(Matter.Engine.create());
+    const hindernisKörperReferenz = useRef<Map<Element, Matter.Body>>(new Map());
 
     useEffect(() => {
         if (!leinwandReferenz.current) return;
 
         const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = Matter;
         const leinwand = leinwandReferenz.current;
-        const breite = window.innerWidth;
-        const hoehe = window.innerHeight;
+        let breite = window.innerWidth;
+        let hoehe = window.innerHeight;
 
-        // Initialisierung des Matter.js Renderers
+        const engine = engineReferenz.current;
+        engine.gravity.y = 0.5; // Leichte Erdanziehung
+
         const renderer = Render.create({
             element: leinwand,
-            engine: engineReferenz.current,
+            engine: engine,
             options: {
                 width: breite,
                 height: hoehe,
@@ -29,54 +33,109 @@ const PhysikHintergrund: React.FC = () => {
             }
         });
 
-        // Erstellung der unsichtbaren Weltgrenzen
-        const boden = Bodies.rectangle(breite / 2, hoehe + 50, breite, 100, { isStatic: true });
-        const links = Bodies.rectangle(-50, hoehe / 2, 100, hoehe, { isStatic: true });
-        const rechts = Bodies.rectangle(breite + 50, hoehe / 2, 100, hoehe, { isStatic: true });
-        const decke = Bodies.rectangle(breite / 2, -50, breite, 100, { isStatic: true });
+        // Weltgrenzen initialisieren
+        let boden = Bodies.rectangle(breite / 2, hoehe + 50, breite, 100, { isStatic: true });
+        let links = Bodies.rectangle(-50, hoehe / 2, 100, hoehe, { isStatic: true });
+        let rechts = Bodies.rectangle(breite + 50, hoehe / 2, 100, hoehe, { isStatic: true });
+        let decke = Bodies.rectangle(breite / 2, -50, breite, 100, { isStatic: true });
 
-        // Generierung interaktiver Partikel (Kreise)
-        const partikel = Array.from({ length: 15 }).map(() => {
-            const radius = Math.random() * 20 + 10;
+        // Partikel generieren (etwas mehr für besseren Effekt)
+        const partikel = Array.from({ length: 60 }).map(() => {
+            const radius = Math.random() * 12 + 6;
             return Bodies.circle(
                 Math.random() * breite,
-                Math.random() * hoehe,
+                -Math.random() * 500, // Von oben einfallen lassen
                 radius,
                 {
-                    restitution: 0.8, // Elastizität für Abprall-Effekt
-                    friction: 0.05,
+                    restitution: 0.6,
+                    friction: 0.1,
                     render: {
-                        fillStyle: 'rgba(99, 102, 241, 0.1)', // Indigo mit niedriger Deckkraft
-                        strokeStyle: 'rgba(99, 102, 241, 0.2)',
+                        fillStyle: 'rgba(99, 102, 241, 0.15)',
+                        strokeStyle: 'rgba(99, 102, 241, 0.3)',
                         lineWidth: 1
                     }
                 }
             );
         });
 
-        // Integration der Maus-Interaktion in die Physik-Welt
         const maus = Mouse.create(renderer.canvas);
-        const mausBeschraenkung = MouseConstraint.create(engineReferenz.current, {
+        const mausBeschraenkung = MouseConstraint.create(engine, {
             mouse: maus,
             constraint: {
-                stiffness: 0.2, // Weichheit der Anziehung
+                stiffness: 0.1,
                 render: { visible: false }
             }
         });
 
-        // Hinzufügen aller Objekte zur Simulation
-        Composite.add(engineReferenz.current.world, [boden, links, rechts, decke, ...partikel, mausBeschraenkung]);
+        Composite.add(engine.world, [boden, links, rechts, decke, ...partikel, mausBeschraenkung]);
 
-        // Start der Physik-Loop und des Renderers
+        /**
+         * Scannt das DOM nach interaktiven Elementen und erstellt physikalische Hindernisse.
+         */
+        const synchronisiereHindernisse = () => {
+            const hindernisElemente = document.querySelectorAll('.btn, .glass, button, .spotlight-karte, .hindernis');
+            const aktuelleKörper = new Map<Element, Matter.Body>();
+
+            hindernisElemente.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+
+                // Nur Hindernisse im Viewport (plus Puffer) hinzufügen
+                if (rect.bottom < -100 || rect.top > window.innerHeight + 100) return;
+
+                let körper = hindernisKörperReferenz.current.get(el);
+
+                if (!körper) {
+                    körper = Bodies.rectangle(
+                        rect.left + rect.width / 2,
+                        rect.top + rect.height / 2,
+                        rect.width,
+                        rect.height,
+                        { isStatic: true, friction: 0.5 }
+                    );
+                    Composite.add(engine.world, körper);
+                } else {
+                    // Position und Größe anpassen falls sich das Element bewegt hat (z.B. Scrollen)
+                    Matter.Body.setPosition(körper, {
+                        x: rect.left + rect.width / 2,
+                        y: rect.top + rect.height / 2
+                    });
+                }
+                aktuelleKörper.set(el, körper);
+            });
+
+            // Alte Körper entfernen die nicht mehr existieren oder sichtbar sind
+            for (const [el, körper] of hindernisKörperReferenz.current.entries()) {
+                if (!aktuelleKörper.has(el)) {
+                    Composite.remove(engine.world, körper);
+                }
+            }
+            hindernisKörperReferenz.current = aktuelleKörper;
+        };
+
+        const eventOptionen: AddEventListenerOptions = { passive: true };
+        window.addEventListener('scroll', synchronisiereHindernisse, eventOptionen);
+        window.addEventListener('resize', () => {
+            breite = window.innerWidth;
+            hoehe = window.innerHeight;
+            renderer.canvas.width = breite;
+            renderer.canvas.height = hoehe;
+            Matter.Body.setPosition(boden, { x: breite / 2, y: hoehe + 50 });
+            Matter.Body.setPosition(rechts, { x: breite + 50, y: hoehe / 2 });
+            synchronisiereHindernisse();
+        }, eventOptionen);
+
         Render.run(renderer);
         const runner = Runner.create();
-        Runner.run(runner, engineReferenz.current);
+        Runner.run(runner, engine);
 
-        // Sauberes Entfernen der Instanzen beim Unmount
+        // Initiale Synchronisierung
+        setTimeout(synchronisiereHindernisse, 500);
+
         return () => {
+            window.removeEventListener('scroll', synchronisiereHindernisse);
             Render.stop(renderer);
             Runner.stop(runner);
-            Engine.clear(engineReferenz.current);
+            Engine.clear(engine);
             renderer.canvas.remove();
         };
     }, []);
@@ -84,8 +143,8 @@ const PhysikHintergrund: React.FC = () => {
     return (
         <div
             ref={leinwandReferenz}
-            className="fixed inset-0 -z-20 pointer-events-none opacity-50"
-            aria-hidden="true" // Rein dekoratives Element, für Screenreader ausblenden
+            className="fixed inset-0 -z-20 pointer-events-none opacity-40"
+            aria-hidden="true"
         />
     );
 };

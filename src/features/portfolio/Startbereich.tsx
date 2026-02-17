@@ -18,12 +18,12 @@ const Startbereich: React.FC = () => {
                 transition={{ duration: 0.8 }}
                 className="z-10 px-4"
             >
-                <h1 className="text-5xl md:text-7xl mb-6 font-extrabold tracking-tight">
+                <h1 className="text-5xl md:text-7xl mb-6 font-extrabold tracking-tight hindernis">
                     Ich entwickle <br />
                     <Schreibmaschine woerter={["moderne Web Apps", "Mendix Lösungen", "skalierbare APIs", "Java Software"]} />
                 </h1>
 
-                <p className="max-w-2xl mx-auto text-muted text-lg mb-10 text-pretty leading-relaxed font-medium">
+                <p className="max-w-2xl mx-auto text-muted text-lg mb-10 text-pretty leading-relaxed font-medium hindernis">
                     Leidenschaftlicher Entwickler mit Fokus auf <b>Java</b>, <b>Web-Technologien</b> und <b>Mendix</b>.
                     Ich verwandle komplexe Anforderungen in effiziente, benutzerfreundliche Anwendungen.
                 </p>
