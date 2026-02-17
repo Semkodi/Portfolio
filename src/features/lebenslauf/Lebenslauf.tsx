@@ -48,7 +48,7 @@ const ZeitstrahlEintrag: React.FC<ZeitstrahlEintragProps> = ({
                     aria-expanded={istOffen}
                     aria-label={`${titel} bei ${unternehmen} Details umschalten`}
                 >
-                    {typ === 'arbeit' ? <Briefcase size={18} className="text-primary" /> : <GraduationCap size={18} className="text-primary" />}
+                    {typ === 'arbeit' ? <Briefcase size={18} className="text-primary" /> : <Briefcase size={18} className="text-primary" />}
                 </motion.button>
 
                 <SpotlightKarte
