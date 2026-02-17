@@ -34,7 +34,7 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
             <article className="h-full">
                 <SpotlightKarte klasse={`flex flex-col h-full group border-white/10 bg-slate-900/40 shadow-sm hover:shadow-xl transition-all duration-500 ${hervorgehoben ? 'ring-2 ring-primary/20' : ''}`}>
                     {/* Visualisierung des Projekts */}
-                    <div className="h-44 bg-gradient-to-br transition-all duration-500 group-hover:opacity-80 relative overflow-hidden flex items-center justify-center">
+                    <div className="h-36 bg-gradient-to-br transition-all duration-500 group-hover:opacity-80 relative overflow-hidden flex items-center justify-center">
                         <div className={`absolute inset-0 bg-gradient-to-br ${gradienten[index % gradienten.length]}`} />
                         <div className="absolute inset-0 opacity-5 bg-grid-white/[0.2] bg-[size:20px_20px]" />
 
@@ -45,10 +45,10 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
                         </div>
                     </div>
 
-                    <div className="p-6 flex-grow flex flex-col items-center text-center">
-                        <header className="mb-4 w-full">
+                    <div className="p-5 flex-grow flex flex-col items-center text-center">
+                        <header className="mb-3 w-full">
                             <span className="text-[10px] uppercase font-mono tracking-widest text-primary font-bold opacity-80">Entwicklung</span>
-                            <h3 className="text-2xl font-extrabold tracking-tight text-white mt-1 uppercase">
+                            <h3 className="text-xl font-extrabold tracking-tight text-white mt-1 uppercase">
                                 {titel}
                             </h3>
                         </header>
