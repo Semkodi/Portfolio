@@ -23,8 +23,8 @@ Semir Borogovac
 Wirtshof 15
 65599 Dornburg
 
-1. Lokales Hosting & Schriftarten
-Diese Webseite wird lokal gehostet. Alle Schriftarten (Google Fonts) werden lokal vom eigenen Server geladen. Es findet keine Verbindung zu Servern von Google statt.
+1. Hosting (IONOS) & Schriftarten
+Diese Webseite wird bei der IONOS SE gehostet. Der Hoster verarbeitet technisch notwendige Daten (z.B. IP-Adressen) zur Bereitstellung der Seite. Alle Schriftarten sind lokal eingebunden und senden keine Daten an Google.
 
 2. Kontaktformular
 Wenn Sie mir per E-Mail (mailto:) Anfragen zukommen lassen, werden Ihre Angaben aus der E-Mail inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.
