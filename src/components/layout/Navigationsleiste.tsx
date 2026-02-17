@@ -76,7 +76,7 @@ const Navigationsleiste: React.FC = () => {
                                     {aktiveSektion === eintrag.id && (
                                         <motion.div
                                             layoutId="nav-unterstreichung"
-                                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full shadow-[0_0_8px_rgba(99,102,241,0.5)]"
+                                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full shadow-[0_0_8px_rgba(99,102,241,0.3)]"
                                         />
                                     )}
                                 </a>
