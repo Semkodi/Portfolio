@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import MausVerfolger from './components/ui/MausVerfolger';
 import ScrollFortschritt from './components/ui/ScrollFortschritt';
 import Navigationsleiste from './components/layout/Navigationsleiste';
 import Fusszeile from './components/layout/Fusszeile';
@@ -32,7 +31,6 @@ const Anwendung: React.FC = () => {
         <div className="anwendung min-h-screen bg-bg text-fg selection:bg-primary/30">
             {/* Globale UI-Effekte */}
             <PhysikHintergrund />
-            <MausVerfolger />
             <ScrollFortschritt />
 
             {/* Navigation & Layout */}
