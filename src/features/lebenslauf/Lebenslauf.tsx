@@ -40,17 +40,7 @@ const ZeitstrahlEintrag: React.FC<ZeitstrahlEintragProps> = ({
                 <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/30 to-transparent group-last:from-transparent" aria-hidden="true" />
 
                 {/* Interaktiver Markierungspunkt */}
-                <motion.button
-                    animate={{ rotate: istOffen ? 360 : 0, scale: istOffen ? 1.2 : 1 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    className="absolute left-0 top-0 w-10 h-10 rounded-full bg-slate-900 border-2 border-primary flex items-center justify-center z-10 cursor-pointer shadow-lg shadow-primary/20 hover:shadow-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    onClick={() => setzeIstOffen(!istOffen)}
-                    aria-expanded={istOffen}
-                    aria-label={`${titel} bei ${unternehmen} Details umschalten`}
-                >
-                    {typ === 'arbeit' ? <Briefcase size={18} className="text-primary" /> : <Briefcase size={18} className="text-primary" />}
-                </motion.button>
-
+                
                 <SpotlightKarte
                     klasse={`transition-all duration-500 cursor-pointer overflow-visible ${istOffen ? 'ring-2 ring-primary/50 shadow-2xl shadow-primary/10' : ''}`}
                 >
