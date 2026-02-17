@@ -1,0 +1,22 @@
+src/features/kontakt/Kontakt.tsx(11,14): error TS2322: Type '{ children: (string | Element)[]; richtung: "oben"; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+src/features/lebenslauf/Lebenslauf.tsx(39,10): error TS2322: Type '{ children: (string | Element)[]; verzoegerung: number; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+src/features/lebenslauf/Lebenslauf.tsx(55,18): error TS2322: Type '{ children: (string | Element)[]; klasse: string; }' is not assignable to type 'IntrinsicAttributes & SpotlightKarteProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SpotlightKarteProps'.
+src/features/lebenslauf/Lebenslauf.tsx(127,14): error TS2322: Type '{ children: (string | Element)[]; richtung: "unten"; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+src/features/portfolio/Faehigkeiten.tsx(73,14): error TS2322: Type '{ children: (string | Element)[]; richtung: "unten"; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+src/features/portfolio/Faehigkeiten.tsx(87,22): error TS2322: Type '{ children: (string | Element)[]; key: string; verzoegerung: number; richtung: "oben"; distanz: number; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+src/features/portfolio/UeberMich.tsx(15,18): error TS2322: Type '{ children: (string | Element)[]; richtung: "links"; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+src/features/portfolio/UeberMich.tsx(43,18): error TS2322: Type '{ children: (string | Element)[]; richtung: "rechts"; verzoegerung: number; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+src/features/projekte/Projekte.tsx(34,10): error TS2322: Type '{ children: (string | Element)[]; verzoegerung: number; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+src/features/projekte/Projekte.tsx(35,14): error TS2322: Type '{ children: (string | Element)[]; klasse: string; }' is not assignable to type 'IntrinsicAttributes & SpotlightKarteProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & SpotlightKarteProps'.
+src/features/projekte/Projekte.tsx(121,14): error TS2322: Type '{ children: (string | Element)[]; richtung: "unten"; }' is not assignable to type 'IntrinsicAttributes & ScrollEnthuellungProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & ScrollEnthuellungProps'.

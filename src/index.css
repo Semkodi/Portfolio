@@ -1,344 +1,675 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+/* Das neue Tailwind v4 Kern-System laden // Erklärung */
+
+/* Google Fonts entfernt wegen DSGVO - lokal eingebunden // Erklärung */
 
 :root {
-    /* Dark Theme (Default) */
+    /* Wurzel-Element für globale Variablen // Erklärung */
+    /* Dunkles Design (Standard) // Erklärung */
     --primary: #6366f1;
+    /* Primärfarbe: Indigo // Erklärung */
     --primary-hover: #4f46e5;
+    /* Primärfarbe bei Interaktion // Erklärung */
     --secondary: #ec4899;
+    /* Sekundärfarbe: Pink // Erklärung */
     --bg: #030712;
+    /* Hintergrundfarbe: Fast Schwarz // Erklärung */
     --fg: #f9fafb;
+    /* Vordergrundfarbe: Fast Weiß // Erklärung */
     --muted: #9ca3af;
+    /* Abgeschwächte Textfarbe // Erklärung */
     --card-bg: rgba(31, 41, 55, 0.5);
+    /* Hintergrund für Karten // Erklärung */
     --border: rgba(255, 255, 255, 0.1);
+    /* Standard-Rahmenfarbe // Erklärung */
     --glass: rgba(17, 24, 39, 0.7);
+    /* Glasmorphismus-Hintergrund // Erklärung */
     --glass-border: rgba(255, 255, 255, 0.1);
+    /* Rahmen für Glas-Effekte // Erklärung */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Standard-Übergang // Erklärung */
     --project-overlay: rgba(3, 7, 18, 0.8);
+    /* Überlagerung für Projekte // Erklärung */
 }
+
+/* Ende :root // Erklärung */
+
+/* Ende :root // Erklärung */
 
 :root.light {
-    /* Light Theme */
+    /* Helles Design-Thema // Erklärung */
+    /* Helles Farbschema // Erklärung */
     --bg: #f8fafc;
+    /* Hintergrund: Schieferweiß // Erklärung */
     --fg: #0f172a;
+    /* Vordergrund: Dunkelblau // Erklärung */
     --muted: #475569;
+    /* Abgeschwächter Text // Erklärung */
     --card-bg: #ffffff;
+    /* Weißer Kartenhintergrund // Erklärung */
     --border: rgba(0, 0, 0, 0.08);
+    /* Dunklerer Rahmen // Erklärung */
     --glass: rgba(255, 255, 255, 0.9);
+    /* Undurchsichtigeres Glas // Erklärung */
     --glass-border: rgba(0, 0, 0, 0.05);
+    /* Dezenter Rahmen // Erklärung */
     --project-overlay: rgba(255, 255, 255, 0.05);
+    /* Helle Überlagerung // Erklärung */
 }
+
+/* Ende .light // Erklärung */
 
 * {
+    /* Universeller Selektor // Erklärung */
     margin: 0;
+    /* Außenabstand zurücksetzen // Erklärung */
     padding: 0;
+    /* Innenabstand zurücksetzen // Erklärung */
     box-sizing: border-box;
+    /* Rahmen-Box-Modell verwenden // Erklärung */
 }
+
+/* Ende Reset // Erklärung */
 
 html {
+    /* HTML-Wurzel // Erklärung */
     scroll-behavior: smooth;
+    /* Sanftes Scrollen aktivieren // Erklärung */
 }
+
+/* Ende html // Erklärung */
 
 body {
+    /* Haupt-Textkörper // Erklärung */
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* Schriftart-Reihenfolge // Erklärung */
     background-color: var(--bg);
+    /* Hintergrund aus Variable laden // Erklärung */
     color: var(--fg);
+    /* Textfarbe aus Variable laden // Erklärung */
     line-height: 1.6;
+    /* Zeilenhöhe für bessere Lesbarkeit // Erklärung */
     overflow-x: hidden;
-    /* Wasserfall-Effekt Part 1: Basis-Hintergrund wechselt (moderates Tempo) */
+    /* Horizontales Scrollen verhindern // Erklärung */
+    /* Wasserfall-Effekt: Sanfte Farbübergänge // Erklärung */
     transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1),
         color 1s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Dauer und Kurve der Farbanpassung // Erklärung */
 }
 
-/* Background Gradients */
+/* Ende body // Erklärung */
+
+/* Hintergrund-Gradienten für visuelle Tiefe // Erklärung */
 body::before {
+    /* Pseudo-Element vor dem Body // Erklärung */
     content: '';
+    /* Erforderlicher Inhalt für Pseudo-Elemente // Erklärung */
     position: fixed;
+    /* Im Hintergrund fixieren // Erklärung */
     top: -50%;
+    /* Über den Rand hinausragen // Erklärung */
     left: -50%;
+    /* Über den Rand hinaus // Erklärung */
     width: 200%;
+    /* Doppelte Breite // Erklärung */
     height: 200%;
+    /* Doppelte Höhe // Erklärung */
     background:
+        /* Komplexe radiale Verläufe // Erklärung */
         radial-gradient(circle at center, var(--primary-glow, rgba(99, 102, 241, 0.15)) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, var(--secondary-glow, rgba(236, 72, 153, 0.1)) 0%, transparent 50%),
         radial-gradient(circle at 20% 80%, var(--primary-glow, rgba(59, 130, 246, 0.15)) 0%, transparent 50%);
+    /* Farbpunkte definieren // Erklärung */
     z-index: -1;
+    /* Hinter alle anderen Elemente legen // Erklärung */
     pointer-events: none;
+    /* Klicks durchlassen // Erklärung */
     animation: gradient-move 20s ease-in-out infinite alternate;
+    /* Endlose Animation // Erklärung */
     transform-origin: center center;
+    /* Mittelpunkt als Rotationsachse // Erklärung */
 }
+
+/* Ende body::before // Erklärung */
 
 :root.light body::before {
+    /* Anpassung für helles Design // Erklärung */
     --primary-glow: rgba(99, 102, 241, 0.05);
+    /* Dezenteres dunkles Leuchten // Erklärung */
     --secondary-glow: rgba(236, 72, 153, 0.05);
+    /* Dezenteres pinkes Leuchten // Erklärung */
 }
+
+/* Ende .light body::before // Erklärung */
 
 @keyframes gradient-move {
+
+    /* Definition der Hintergrund-Animation // Erklärung */
     0% {
+        /* Startpunkt // Erklärung */
         transform: rotate(0deg) scale(1);
+        /* Keine Drehung, normale Größe // Erklärung */
     }
+
+    /* Ende 0% // Erklärung */
 
     50% {
+        /* Mittelpunkt // Erklärung */
         transform: rotate(10deg) scale(1.1);
+        /* Leichte Drehung und Vergrößerung // Erklärung */
     }
+
+    /* Ende 50% // Erklärung */
 
     100% {
+        /* Endpunkt // Erklärung */
         transform: rotate(-10deg) scale(1);
+        /* Gegenrotation, normale Größe // Erklärung */
     }
+
+    /* Ende 100% // Erklärung */
 }
+
+/* Ende Keyframes // Erklärung */
 
 a {
+    /* Basis-Stile für Links // Erklärung */
     text-decoration: none;
+    /* Keine Unterstreichung // Erklärung */
     color: inherit;
+    /* Farbe vom Elternelement erben // Erklärung */
     transition: var(--transition);
+    /* Sanfter Übergang bei Interaktion // Erklärung */
 }
+
+/* Ende a // Erklärung */
 
 ul {
+    /* Basis-Stile für Listen // Erklärung */
     list-style: none;
+    /* Keine Aufzählungspunkte // Erklärung */
 }
+
+/* Ende ul // Erklärung */
 
 section {
+    /* Standard-Layout für Inhalts-Sektionen // Erklärung */
     padding: 5rem 1rem;
+    /* Innenabstand oben/unten und seitlich // Erklärung */
     max-width: 1100px;
+    /* Maximale Inhaltsbreite // Erklärung */
     margin: 0 auto;
-    /* Wasserfall-Effekt Part 2: Sektionen folgen (moderates Tempo) */
+    /* Zentrierung der Sektion // Erklärung */
+    /* Wasserfall-Effekt: Sektionen passen sich zeitversetzt an // Erklärung */
     transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
         border-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+    /* Farbwechsel mit Verzögerung // Erklärung */
 }
+
+/* Ende section // Erklärung */
 
 h1,
+/* Hauptüberschriften // Erklärung */
 h2,
+/* Sekundärüberschriften // Erklärung */
 h3 {
+    /* Tertiärüberschriften // Erklärung */
     font-weight: 800;
+    /* Sehr fett für starken visuellen Eindruck // Erklärung */
     line-height: 1.2;
+    /* Geringer Zeilenabstand für kompakte Optik // Erklärung */
 }
+
+/* Ende Überschriften // Erklärung */
 
 .gradient-text {
+    /* Hilfsklasse für Text mit Farbverlauf // Erklärung */
     background: linear-gradient(to right, var(--primary), var(--secondary));
+    /* Verlauf von primär zu sekundär // Erklärung */
     -webkit-background-clip: text;
+    /* Verlauf auf Text begrenzen (Safari/Chrome) // Erklärung */
     -webkit-text-fill-color: transparent;
+    /* Textfarbe transparent machen für Verlauf // Erklärung */
     background-clip: text;
+    /* Standard-Eigenschaft für Text-Verlauf // Erklärung */
 }
 
-/* Glassmorphism utility */
+/* Ende .gradient-text // Erklärung */
+
+/* Hilfsklassen für den Glasmorphismus-Effekt // Erklärung */
 .glass {
+    /* Container mit Glaseffekt // Erklärung */
     background: var(--glass);
+    /* Transparenter Hintergrund // Erklärung */
     backdrop-filter: blur(12px);
+    /* Hintergrund weichzeichnen // Erklärung */
     -webkit-backdrop-filter: blur(12px);
+    /* Safari-Unterstützung // Erklärung */
     border: 1px solid var(--glass-border);
+    /* Dezenter Rahmen // Erklärung */
     border-radius: 1rem;
-    /* Wasserfall-Effekt Part 4: Glass-Elemente folgen (moderates Tempo) */
+    /* Abgerundete Ecken // Erklärung */
+    /* Wasserfall-Effekt: Glas-Elemente passen sich zeitversetzt an // Erklärung */
     transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
         border-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
         color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+    /* Verzögerter Farbübergang // Erklärung */
 }
 
+/* Ende .glass // Erklärung */
+
 .card {
+    /* Standard-Kartendesign // Erklärung */
     background: var(--card-bg);
+    /* Moderner Karten-Hintergrund // Erklärung */
     border: 1px solid var(--border);
+    /* Rahmen der Karte // Erklärung */
     padding: 2.5rem;
+    /* Großzügiger Innenabstand // Erklärung */
     border-radius: 2rem;
+    /* Stark abgerundete Ecken // Erklärung */
     position: relative;
+    /* Basis für absolute Positionierung von Inhalten // Erklärung */
     overflow: hidden;
-    /* Wasserfall-Effekt Part 3: Karten folgen als Letztes (moderates Tempo) */
+    /* Überstehende Inhalte abschneiden // Erklärung */
+    /* Wasserfall-Effekt: Karten passen sich als Letztes an // Erklärung */
     transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
         border-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
         transform 0.3s ease;
+    /* Übergang mit höchster Verzögerung // Erklärung */
 }
+
+/* Ende .card // Erklärung */
 
 .btn {
+    /* Basisklasse für Schaltflächen // Erklärung */
     display: inline-block;
+    /* Element fließen lassen // Erklärung */
     padding: 0.75rem 1.5rem;
+    /* Innenabstand für gute Klickfläche // Erklärung */
     border-radius: 0.5rem;
+    /* Leicht abgerundete Ecken // Erklärung */
     font-weight: 600;
+    /* Halbfettes Schriftgewicht // Erklärung */
     cursor: pointer;
+    /* Zeiger bei Hover anzeigen // Erklärung */
     transition: var(--transition);
+    /* Sanfter Zustandswechsel // Erklärung */
     border: none;
+    /* Standard-Rahmen entfernen // Erklärung */
 }
+
+/* Ende .btn // Erklärung */
 
 .btn-primary {
+    /* Primäre Schaltfläche // Erklärung */
     background: var(--primary);
+    /* Hintergrund in Primärfarbe // Erklärung */
     color: white;
+    /* Weißer Text // Erklärung */
 }
+
+/* Ende .btn-primary // Erklärung */
 
 .btn-primary:hover {
+    /* Primär-Button bei Maushover // Erklärung */
     background: var(--primary-hover);
+    /* Dunklere Primärfarbe // Erklärung */
     transform: translateY(-2px);
+    /* Leichtes Anheben // Erklärung */
     box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+    /* Schatten für Tiefe // Erklärung */
 }
+
+/* Ende .btn-primary:hover // Erklärung */
 
 .btn-outline {
+    /* Schaltfläche mit Umrandung // Erklärung */
     background: transparent;
+    /* Durchsichtiger Hintergrund // Erklärung */
     border: 1px solid var(--border);
+    /* Rahmenfarbe aus Variable // Erklärung */
     color: var(--fg);
+    /* Textfarbe basierend auf Modus // Erklärung */
 }
+
+/* Ende .btn-outline // Erklärung */
 
 .btn-outline:hover {
+    /* Umrandeter Button bei Hover // Erklärung */
     background: var(--primary);
+    /* Hintergrund füllt sich mit Primärfarbe // Erklärung */
     border-color: var(--primary);
+    /* Rahmenfarbe anpassen // Erklärung */
     color: white;
+    /* Weißer Text für Kontrast // Erklärung */
     transform: translateY(-2px);
+    /* Leichtes Anheben // Erklärung */
 }
 
-/* Navbar */
+/* Ende .btn-outline:hover // Erklärung */
+
+/* Navigationsleiste Stile // Erklärung */
 nav {
+    /* Äußerer Navigations-Container // Erklärung */
     position: fixed;
+    /* Fixierung am oberen Rand // Erklärung */
     top: 0;
+    /* Oben ausrichten // Erklärung */
     left: 0;
+    /* Links ausrichten // Erklärung */
     width: 100%;
+    /* Gesamte Breite nutzen // Erklärung */
     height: 4rem;
+    /* Feste Höhe // Erklärung */
     z-index: 100;
+    /* Vor anderen Inhalten anzeigen // Erklärung */
     display: flex;
+    /* Flexbox für Zentrierung // Erklärung */
     justify-content: center;
+    /* Horizontale Zentrierung // Erklärung */
     align-items: center;
+    /* Vertikale Zentrierung // Erklärung */
     transition: var(--transition);
+    /* Übergangseffekt // Erklärung */
 }
+
+/* Ende nav // Erklärung */
 
 .nav-content {
+    /* Innerer Inhaltsbereich der Navigation // Erklärung */
     width: 90%;
+    /* Breite relativ zum Fenster // Erklärung */
     max-width: 1100px;
-    height: 3rem;
+    /* Begrenzung für große Bildschirme // Erklärung */
+    height: 3.5rem;
+    /* Etwas niedriger als der Container // Erklärung */
     display: flex;
+    /* Flex-Layout // Erklärung */
     justify-content: space-between;
+    /* Platz zwischen Logo und Links // Erklärung */
     align-items: center;
+    /* Vertikaler Ausgleich // Erklärung */
     padding: 0 1.5rem;
+    /* Seitlicher Innenabstand // Erklärung */
     border-radius: 2rem;
+    /* Pillen-Design // Erklärung */
     margin-top: 1rem;
+    /* Abstand zum oberen Rand // Erklärung */
 }
+
+/* Ende .nav-content // Erklärung */
 
 .nav-links {
+    /* Container für Navigations-Links // Erklärung */
     display: flex;
+    /* Horizontale Anordnung // Erklärung */
     gap: 2rem;
+    /* Abstand zwischen den Links // Erklärung */
 }
+
+/* Ende .nav-links // Erklärung */
 
 .nav-links li a:hover {
+    /* Hover-Effekt für einzelne Links // Erklärung */
     color: var(--primary);
+    /* Farbe zu Primärfarbe wechseln // Erklärung */
 }
 
-/* Responsive Grid */
+/* Ende :hover // Erklärung */
+
+/* Responsives Spalten-Gitter // Erklärung */
 .grid {
+    /* Gitter-Layout Basis // Erklärung */
     display: grid;
+    /* Aktivierung des CSS Grids // Erklärung */
     gap: 2rem;
+    /* Abstand zwischen den Gitter-Elementen // Erklärung */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Automatische Spaltenbreite // Erklärung */
 }
+
+/* Ende .grid // Erklärung */
 
 @media (max-width: 768px) {
+
+    /* Anpassung für mobile Endgeräte // Erklärung */
     .nav-links {
+        /* Nav-Links verstecken // Erklärung */
         display: none;
+        /* Ausblenden // Erklärung */
     }
+
+    /* Ende .nav-links // Erklärung */
 }
+
+/* Ende Media Query // Erklärung */
 
 /* Utility Classes */
+/* Hilfsklassen für Typografie (Utility Classes) // Erklärung */
 .text-xs {
+    /* Sehr kleine Schrift // Erklärung */
     font-size: 0.75rem;
+    /* 12px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .text-sm {
+    /* Kleine Schrift // Erklärung */
     font-size: 0.875rem;
+    /* 14px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .text-lg {
+    /* Große Schrift // Erklärung */
     font-size: 1.125rem;
+    /* 18px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .text-xl {
+    /* Sehr große Schrift // Erklärung */
     font-size: 1.25rem;
+    /* 20px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .text-2xl {
+    /* Überschriften-Größe 2 // Erklärung */
     font-size: 1.5rem;
+    /* 24px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .text-3xl {
+    /* Überschriften-Größe 3 // Erklärung */
     font-size: 1.875rem;
+    /* 30px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .text-4xl {
+    /* Überschriften-Größe 4 // Erklärung */
     font-size: 2.25rem;
+    /* 36px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .text-5xl {
+    /* Hero-Überschrift // Erklärung */
     font-size: 3rem;
+    /* 48px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .text-7xl {
+    /* Gigantische Schrift // Erklärung */
     font-size: 4.5rem;
+    /* 72px Äquivalent // Erklärung */
 }
+
+/* Erklärung */
 
 .font-bold {
+    /* Fett gedruckt // Erklärung */
     font-weight: 700;
+    /* Starke Betonung // Erklärung */
 }
+
+/* Erklärung */
 
 .font-semibold {
+    /* Halbfett // Erklärung */
     font-weight: 600;
+    /* Moderate Betonung // Erklärung */
 }
+
+/* Erklärung */
 
 .font-mono {
+    /* Schreibmaschinenschrift // Erklärung */
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    /* Monospaced Font-Stack // Erklärung */
 }
+
+/* Erklärung */
 
 .text-center {
+    /* Text zentrieren // Erklärung */
     text-align: center;
+    /* Mittige Ausrichtung // Erklärung */
 }
+
+/* Erklärung */
 
 .text-left {
+    /* Text linksbündig // Erklärung */
     text-align: left;
+    /* Linke Ausrichtung // Erklärung */
 }
+
+/* Erklärung */
 
 .text-pretty {
+    /* Schöner Textumbruch // Erklärung */
     text-wrap: pretty;
+    /* Verhindert einzelne Wörter am Zeilenende // Erklärung */
 }
+
+/* Erklärung */
 
 .uppercase {
+    /* Großbuchstaben // Erklärung */
     text-transform: uppercase;
+    /* Alles in Versalien // Erklärung */
 }
+
+/* Erklärung */
 
 .tracking-widest {
+    /* Maximale Buchstabenabstände // Erklärung */
     letter-spacing: 0.1em;
+    /* Weiter Laufweite // Erklärung */
 }
+
+/* Erklärung */
 
 .tracking-tighter {
+    /* Engere Buchstabenabstände // Erklärung */
     letter-spacing: -0.05em;
+    /* Schmale Laufweite // Erklärung */
 }
+
+/* Erklärung */
 
 .text-primary {
+    /* Text in Primärfarbe // Erklärung */
     color: var(--primary);
+    /* Nutzt die Indigo-Variable // Erklärung */
 }
+
+/* Erklärung */
 
 .text-muted {
+    /* Abgeschwächter Text // Erklärung */
     color: var(--muted);
+    /* Nutzt die Grau-Variable // Erklärung */
 }
+
+/* Erklärung */
 
 .flex {
+    /* Flexbox-Container // Erklärung */
     display: flex;
+    /* Flex-Layout aktivieren // Erklärung */
 }
+
+/* Erklärung */
 
 .flex-col {
+    /* Spalten-Anordnung // Erklärung */
     flex-direction: column;
+    /* Elemente untereinander // Erklärung */
 }
+
+/* Erklärung */
 
 .items-center {
+    /* Vertikale Zentrierung im Flex // Erklärung */
     align-items: center;
+    /* Mittige Ausrichtung // Erklärung */
 }
+
+/* Erklärung */
 
 .justify-center {
+    /* Horizontale Zentrierung im Flex // Erklärung */
     justify-content: center;
+    /* Mittige Verteilung // Erklärung */
 }
+
+/* Erklärung */
 
 .justify-between {
+    /* Platz dazwischen verteilen // Erklärung */
     justify-content: space-between;
+    /* Elemente an die Ränder schieben // Erklärung */
 }
+
+/* Erklärung */
 
 .items-end {
+    /* Am Ende ausrichten // Erklärung */
     align-items: flex-end;
+    /* Unten/Rechts bündig // Erklärung */
 }
+
+/* Erklärung */
 
 .flex-wrap {
+    /* Zeilenumbruch im Flex // Erklärung */
     flex-wrap: wrap;
+    /* Mehrzeiligkeit erlauben // Erklärung */
 }
 
+/* Erklärung */
+
 .flex-grow {
+    /* Element ausdehnen // Erklärung */
     flex-grow: 1;
+    /* Verfügbaren Platz einnehmen // Erklärung */
 }
+
+/* Erklärung */
 
 .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
