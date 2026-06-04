@@ -50,8 +50,8 @@ const PhysikHintergrund: React.FC = () => {
                     restitution: 0.6,
                     friction: 0.1,
                     render: {
-                        fillStyle: 'rgba(99, 102, 241, 0.15)',
-                        strokeStyle: 'rgba(99, 102, 241, 0.3)',
+                        fillStyle: 'rgba(197, 168, 128, 0.12)',
+                        strokeStyle: 'rgba(197, 168, 128, 0.25)',
                         lineWidth: 1
                     }
                 }

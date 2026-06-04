@@ -138,7 +138,7 @@ const InteraktivesTerminal: React.FC = () => {
                             value={eingabe}
                             onChange={(ereignis) => setzeEingabe(ereignis.target.value)}
                             onKeyDown={verarbeiteBefehl}
-                            style={{ caretColor: '#6366f1' }}
+                            style={{ caretColor: '#c5a880' }}
                             className="bg-transparent border-none outline-none flex-grow text-white placeholder:text-gray-600"
                             placeholder={sprache === 'de' ? "tippe 'hilfe'..." : "type 'help'..."}
                             autoComplete="off"

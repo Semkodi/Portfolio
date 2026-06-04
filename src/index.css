@@ -6,29 +6,29 @@
 :root {
     /* Wurzel-Element für globale Variablen */
     /* Dunkles Design (Standard) */
-    --primary: #6366f1;
-    /* Primärfarbe: Indigo */
-    --primary-hover: #4f46e5;
-    /* Primärfarbe bei Interaktion */
-    --secondary: #ec4899;
-    /* Sekundärfarbe: Pink */
-    --bg: #030712;
-    /* Hintergrundfarbe: Fast Schwarz */
-    --fg: #f9fafb;
-    /* Vordergrundfarbe: Fast Weiß */
-    --muted: #9ca3af;
-    /* Abgeschwächte Textfarbe */
-    --card-bg: rgba(31, 41, 55, 0.5);
+    --primary: #c5a880;
+    /* Primärfarbe: Warmes Gold */
+    --primary-hover: #d8c09d;
+    /* Primärfarbe bei Interaktion: Helleres Gold */
+    --secondary: #cd7f32;
+    /* Sekundärfarbe: Bronze */
+    --bg: #09090b;
+    /* Hintergrundfarbe: Zink-Schwarz */
+    --fg: #f4f4f5;
+    /* Vordergrundfarbe: Zink-Weiß */
+    --muted: #a1a1aa;
+    /* Abgeschwächte Textfarbe: Zink-Grau */
+    --card-bg: rgba(20, 20, 25, 0.6);
     /* Hintergrund für Karten */
-    --border: rgba(255, 255, 255, 0.1);
-    /* Standard-Rahmenfarbe */
-    --glass: rgba(17, 24, 39, 0.7);
+    --border: rgba(197, 168, 128, 0.1);
+    /* Standard-Rahmenfarbe mit goldenem Hauch */
+    --glass: rgba(15, 15, 18, 0.75);
     /* Glasmorphismus-Hintergrund */
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(197, 168, 128, 0.15);
     /* Rahmen für Glas-Effekte */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     /* Standard-Übergang */
-    --project-overlay: rgba(3, 7, 18, 0.8);
+    --project-overlay: rgba(9, 9, 11, 0.85);
     /* Überlagerung für Projekte */
 }
 
@@ -116,9 +116,9 @@ body::before {
     /* Doppelte Höhe */
     background:
         /* Komplexe radiale Verläufe */
-        radial-gradient(circle at center, var(--primary-glow, rgba(99, 102, 241, 0.15)) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, var(--secondary-glow, rgba(236, 72, 153, 0.1)) 0%, transparent 50%),
-        radial-gradient(circle at 20% 80%, var(--primary-glow, rgba(59, 130, 246, 0.15)) 0%, transparent 50%);
+        radial-gradient(circle at center, var(--primary-glow, rgba(197, 168, 128, 0.08)) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, var(--secondary-glow, rgba(205, 127, 50, 0.06)) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, var(--primary-glow, rgba(197, 168, 128, 0.08)) 0%, transparent 50%);
     /* Farbpunkte definieren */
     z-index: -1;
     /* Hinter alle anderen Elemente legen */
@@ -132,12 +132,17 @@ body::before {
 
 /* Ende body::before */
 
+:root {
+    --primary-glow: rgba(197, 168, 128, 0.08);
+    --secondary-glow: rgba(205, 127, 50, 0.06);
+}
+
 :root.light body::before {
     /* Anpassung für helles Design */
-    --primary-glow: rgba(99, 102, 241, 0.05);
-    /* Dezenteres dunkles Leuchten */
-    --secondary-glow: rgba(236, 72, 153, 0.05);
-    /* Dezenteres pinkes Leuchten */
+    --primary-glow: rgba(197, 168, 128, 0.04);
+    /* Dezenteres goldenes Leuchten */
+    --secondary-glow: rgba(205, 127, 50, 0.03);
+    /* Dezenteres bronzenes Leuchten */
 }
 
 /* Ende .light body::before */
@@ -317,7 +322,7 @@ h3 {
     /* Dunklere Primärfarbe */
     transform: translateY(-2px);
     /* Leichtes Anheben */
-    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 10px 15px -3px rgba(197, 168, 128, 0.4);
     /* Schatten für Tiefe */
 }
 
@@ -1189,11 +1194,11 @@ nav {
 }
 
 .bg-primary\/20 {
-    background-color: rgba(99, 102, 241, 0.2);
+    background-color: rgba(197, 168, 128, 0.2);
 }
 
 .bg-secondary\/20 {
-    background-color: rgba(236, 72, 153, 0.2);
+    background-color: rgba(205, 127, 50, 0.2);
 }
 
 .bg-white\/5 {
@@ -1201,7 +1206,7 @@ nav {
 }
 
 .border-primary\/20 {
-    border-color: rgba(99, 102, 241, 0.2);
+    border-color: rgba(197, 168, 128, 0.2);
 }
 
 .border-white\/10 {
