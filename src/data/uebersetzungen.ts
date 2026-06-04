@@ -26,7 +26,17 @@ export const uebersetzungen = {
                 lernbereit: { titel: "Lernbereit", text: "Jeden Tag 1%" },
                 teamplayer: { titel: "Teamplayer", text: "Einer für Alle" }
             },
-            badge: "Open to Work"
+            badge: "Open to Work",
+            slider: {
+                polier: {
+                    titel: "Der Macher am Bau (Polier)",
+                    beschreibung: "Auf der Baustelle ging es um handfeste Resultate. Als Polier habe ich komplexe Abläufe koordiniert, Teams geführt und gelernt, auch unter extremem Druck Lösungen zu liefern. Diese Belastbarkeit bringe ich nun in die IT."
+                },
+                dev: {
+                    titel: "Der Architekt im Code (Softwareentwickler)",
+                    beschreibung: "Heute übersetze ich Baupläne in logische Algorithmen. In meiner Umschulung fokussiere ich mich auf Java, moderne Webtechniken und Mendix Low-Code. Ich code nicht nur – ich erschaffe digitale Fundamente."
+                }
+            }
         },
         skills: {
             titel: "Meine Skills",
@@ -122,7 +132,17 @@ export const uebersetzungen = {
                 lernbereit: { titel: "Eager to Learn", text: "1% Better Every Day" },
                 teamplayer: { titel: "Team Player", text: "All for One" }
             },
-            badge: "Open to Work"
+            badge: "Open to Work",
+            slider: {
+                polier: {
+                    titel: "The Maker on Site (Foreman)",
+                    beschreibung: "On the construction site, it was all about tangible results. As a foreman, I coordinated complex processes, led teams, and learned to deliver solutions under extreme pressure. I bring this resilience to IT."
+                },
+                dev: {
+                    titel: "The Architect in Code (Developer)",
+                    beschreibung: "Today, I translate construction plans into logical algorithms. In my retraining, I focus on Java, modern web technologies, and Mendix low-code. I don't just code – I build digital foundations."
+                }
+            }
         },
         skills: {
             titel: "My Skills",
