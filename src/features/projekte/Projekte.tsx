@@ -3,6 +3,9 @@ import { Database, Heart, Terminal } from 'lucide-react';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
 import SpotlightKarte from '../../components/ui/SpotlightKarte';
 import ProjektModal, { Projekt } from '../../components/ui/ProjektModal';
+import LaserRahmen from '../../components/ui/LaserRahmen';
+import GlitzerText from '../../components/ui/GlitzerText';
+import GlanzButton from '../../components/ui/GlanzButton';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
@@ -30,7 +33,9 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
 
     return (
         <ScrollEnthuellung verzoegerung={index * 0.1}>
-            <SpotlightKarte klasse="h-full border border-primary/20 bg-zinc-950/90 shadow-2xl transition-all duration-300 hover:border-primary/40">
+            <SpotlightKarte klasse="relative h-full border border-primary/20 bg-zinc-950/90 shadow-2xl transition-all duration-300 hover:border-primary/40">
+                <LaserRahmen />
+                
                 <article className="h-full flex flex-col justify-between p-6 min-h-[380px] select-none" role="group" aria-label={`Projekt: ${titel}`}>
                     <div className="flex flex-col gap-4">
                         <header className="flex justify-between items-start">
@@ -62,12 +67,12 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
                             ))}
                         </div>
                         
-                        <button
+                        <GlanzButton
                             onClick={() => beiOeffnen({ titel, beschreibung, technologien, link, vertiefung, hervorgehoben })}
-                            className="w-full py-2.5 rounded-2xl bg-[#c5a880] text-black font-extrabold text-xs tracking-wider uppercase hover:bg-white hover:shadow-lg transition-all active:scale-95 duration-300 cursor-pointer"
+                            klasse="w-full py-2.5 rounded-2xl bg-[#c5a880] text-black font-extrabold text-xs tracking-wider uppercase hover:bg-white hover:shadow-lg transition-all active:scale-95 duration-300 cursor-pointer"
                         >
                             {t.projekte.buttons.details}
-                        </button>
+                        </GlanzButton>
                     </div>
                 </article>
             </SpotlightKarte>
@@ -128,7 +133,7 @@ const Projekte: React.FC = () => {
                 <div className="flex justify-between items-end mb-12 text-center md:text-left mx-auto max-w-7xl">
                     <div className="w-full">
                         <h2 id="projects-title" className="text-4xl md:text-5xl mb-4 font-extrabold text-fg uppercase tracking-tight">
-                            {t.projekte.titel.split(" ")[0]} <span className="gradient-text">{t.projekte.titel.split(" ").slice(1).join(" ")}</span>
+                            <GlitzerText>{t.projekte.titel.split(" ")[0]}</GlitzerText> <span className="gradient-text">{t.projekte.titel.split(" ").slice(1).join(" ")}</span>
                         </h2>
                         <p className="text-muted text-lg font-medium max-w-2xl mx-auto md:mx-0">
                             {t.projekte.beschreibung}
@@ -153,3 +158,4 @@ const Projekte: React.FC = () => {
 };
 
 export default Projekte;
+

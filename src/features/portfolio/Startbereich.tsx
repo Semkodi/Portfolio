@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Schreibmaschine from '../../components/ui/Schreibmaschine';
+import GlitzerText from '../../components/ui/GlitzerText';
+import GlanzButton from '../../components/ui/GlanzButton';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
@@ -24,7 +26,7 @@ const Startbereich: React.FC = () => {
                 className="z-10 px-4"
             >
                 <h1 className="text-5xl md:text-7xl mb-6 font-extrabold tracking-tight hindernis">
-                    {t.hero.titelStart} <br />
+                    <GlitzerText>{t.hero.titelStart}</GlitzerText> <br />
                     <Schreibmaschine woerter={t.hero.typewriter} />
                 </h1>
 
@@ -34,20 +36,19 @@ const Startbereich: React.FC = () => {
                 />
 
                 <div className="flex gap-4 justify-center flex-wrap">
-                    <a
+                    <GlanzButton
                         href="#projekte"
-                        className="btn btn-primary shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all active:scale-95"
-                        aria-label="Zu meinen Projekten scrollen"
+                        klasse="btn btn-primary shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all active:scale-95"
+                        ariaLabel="Zu meinen Projekten scrollen"
                     >
                         {t.hero.btnProjekte}
-                    </a>
-                    <a
+                    </GlanzButton>
+                    <GlanzButton
                         href="#kontakt"
-                        className="btn btn-outline hover:bg-white/5 active:scale-95 transition-all"
-                        aria-label="Kontaktbereich öffnen"
+                        klasse="btn btn-outline hover:bg-white/5 active:scale-95 transition-all text-[#c5a880] border-primary/20 hover:border-primary"
                     >
                         {t.hero.btnKontakt}
-                    </a>
+                    </GlanzButton>
                 </div>
             </motion.div>
         </section>
@@ -55,3 +56,4 @@ const Startbereich: React.FC = () => {
 };
 
 export default Startbereich;
+

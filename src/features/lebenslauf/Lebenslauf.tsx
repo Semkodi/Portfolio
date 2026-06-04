@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, GraduationCap, Calendar, ChevronDown } from 'lucide-react';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
 import SpotlightKarte from '../../components/ui/SpotlightKarte';
+import LaserRahmen from '../../components/ui/LaserRahmen';
+import GlitzerText from '../../components/ui/GlitzerText';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 
 /**
@@ -40,11 +42,12 @@ const ZeitstrahlEintrag: React.FC<ZeitstrahlEintragProps> = ({
                 {/* Dynamische vertikale Verbindungslinie */}
                 <div className="absolute left-[19px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/30 to-transparent group-last:from-transparent" aria-hidden="true" />
 
-                {/* Interaktiver Markierungspunkt */}
-
                 <SpotlightKarte
-                    klasse={`transition-all duration-500 cursor-pointer overflow-visible ${istOffen ? 'ring-2 ring-primary/50 shadow-2xl shadow-primary/10' : ''}`}
+                    klasse={`transition-all duration-500 cursor-pointer overflow-visible relative ${istOffen ? 'ring-2 ring-primary/50 shadow-2xl shadow-primary/10' : ''}`}
                 >
+                    {/* Laserstrahl-Effekt auf der Karte */}
+                    <LaserRahmen radius={12} />
+
                     <div
                         className="p-6"
                         onClick={() => setzeIstOffen(!istOffen)}
@@ -121,7 +124,7 @@ const Lebenslauf: React.FC = () => {
             <ScrollEnthuellung richtung="unten">
                 <div className="text-center mb-20">
                     <h2 id="resume-title" className="text-5xl font-extrabold mb-6 tracking-tight text-fg">
-                        {sprache === 'de' ? 'Mein ' : 'My '}
+                        <GlitzerText>{sprache === 'de' ? 'Mein ' : 'My '}</GlitzerText>
                         <span className="gradient-text">{sprache === 'de' ? 'Werdegang' : 'Career'}</span>
                     </h2>
                     <p className="text-muted text-lg max-w-2xl mx-auto leading-relaxed font-medium">
@@ -142,3 +145,4 @@ const Lebenslauf: React.FC = () => {
 };
 
 export default Lebenslauf;
+

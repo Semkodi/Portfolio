@@ -9,7 +9,11 @@ import {
 import { VscJson, VscCode } from 'react-icons/vsc';
 import { motion, useDragControls } from 'framer-motion';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
+import GlitzerText from '../../components/ui/GlitzerText';
+import LaserRahmen from '../../components/ui/LaserRahmen';
+import KreisendeSkills from '../../components/ui/KreisendeSkills';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
+import { benutzeMagicSpeicher } from '@/speicher/magicSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
@@ -75,6 +79,9 @@ const FaehigkeitFenster: React.FC<{ kategorie: FaehigkeitsKategorie; index: numb
                     whileDrag={{ scale: 1.02, zIndex: 100, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
                     className={`relative flex flex-col h-full rounded-xl overflow-hidden border border-border bg-card shadow-lg hover:shadow-2xl transition-shadow duration-500 ${minimiert ? 'h-auto' : ''}`}
                 >
+                    {/* Laserstrahl-Effekt auf dem Fenster */}
+                    <LaserRahmen radius={12} />
+
                     {/* Fenster-Leiste (Drag Handle) */}
                     <div
                         className="h-9 bg-muted/10 border-b border-border flex items-center px-4 justify-between backdrop-blur-sm select-none cursor-grab active:cursor-grabbing touch-none"
@@ -162,6 +169,7 @@ const FaehigkeitFenster: React.FC<{ kategorie: FaehigkeitsKategorie; index: numb
  */
 const Faehigkeiten: React.FC = () => {
     const { sprache } = benutzeSpracheSpeicher();
+    const { kreisendeSkillsAktiv } = benutzeMagicSpeicher();
     const t = uebersetzungen[sprache];
 
     // Zentrales Daten-Array der technischen Kompetenzen
@@ -213,13 +221,19 @@ const Faehigkeiten: React.FC = () => {
             <ScrollEnthuellung richtung="unten">
                 <div className="text-center mb-16">
                     <h2 id="skills-title" className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 uppercase text-fg">
-                        {t.skills.titel.split(" ")[0]} <span className="gradient-text">{t.skills.titel.split(" ").slice(1).join(" ")}</span>
+                        <GlitzerText>{t.skills.titel.split(" ")[0]}</GlitzerText> <span className="gradient-text">{t.skills.titel.split(" ").slice(1).join(" ")}</span>
                     </h2>
                     <p className="text-muted max-w-2xl mx-auto text-lg leading-relaxed font-medium">
                         {t.skills.beschreibung}
                     </p>
                 </div>
             </ScrollEnthuellung>
+
+            {kreisendeSkillsAktiv && (
+                <div className="mb-16 flex justify-center animate-in fade-in duration-500">
+                    <KreisendeSkills />
+                </div>
+            )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
                 {faehigkeitsKategorien.map((kategorie, index) => (
@@ -231,3 +245,4 @@ const Faehigkeiten: React.FC = () => {
 };
 
 export default Faehigkeiten;
+

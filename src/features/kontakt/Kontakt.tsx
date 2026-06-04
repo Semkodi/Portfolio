@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, Github, Linkedin, Send } from 'lucide-react';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
+import GlitzerText from '../../components/ui/GlitzerText';
+import GlanzButton from '../../components/ui/GlanzButton';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
@@ -49,7 +51,7 @@ const Kontakt: React.FC = () => {
             <ScrollEnthuellung richtung="oben">
                 <div className="glass p-6 sm:p-10 md:p-16 w-full max-w-3xl mx-auto rounded-3xl border-glass-border shadow-2xl relative z-10">
                     <h2 id="contact-title" className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-6 tracking-tight leading-tight break-words text-fg text-center">
-                        {sprache === 'de' ? 'Lass uns ' : "Let's "} <br className="sm:hidden" />
+                        <GlitzerText>{sprache === 'de' ? 'Lass uns ' : "Let's "}</GlitzerText> <br className="sm:hidden" />
                         <span className="gradient-text text-3xl sm:text-4xl md:text-5xl">
                             {sprache === 'de' ? 'zusammenarbeiten' : 'work together'}
                         </span>
@@ -128,13 +130,13 @@ const Kontakt: React.FC = () => {
                             )}
                         </div>
 
-                        <button
-                            type="submit"
-                            className="btn btn-primary w-full py-4 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-98 transition-all"
+                        <GlanzButton
+                            typ="submit"
+                            klasse="btn btn-primary w-full py-4 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-98 transition-all"
                         >
                             <Send size={18} />
                             <span>{t.kontakt.formular.senden}</span>
-                        </button>
+                        </GlanzButton>
                     </form>
 
                     <div className="w-full border-t border-glass-border my-8" aria-hidden="true" />
@@ -142,26 +144,24 @@ const Kontakt: React.FC = () => {
                     {/* Soziale Verknüpfungen */}
                     <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-6">
                         {/* GitHub */}
-                        <a
+                        <GlanzButton
                             href="https://github.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-3 glass px-8 py-4 rounded-xl hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all text-fg border border-glass-border active:scale-95"
-                            aria-label="GitHub Profil von Semir Borogovac besuchen"
+                            klasse="flex items-center justify-center gap-3 glass px-8 py-4 rounded-xl hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all text-fg border border-glass-border active:scale-95"
+                            ariaLabel="GitHub Profil von Semir Borogovac besuchen"
                         >
                             <Github className="text-primary" size={20} />
                             <span className="font-bold uppercase tracking-wider text-sm">GitHub</span>
-                        </a>
+                        </GlanzButton>
 
                         {/* LinkedIn */}
-                        <a
+                        <GlanzButton
                             href="#"
-                            className="flex items-center justify-center gap-3 glass px-8 py-4 rounded-xl hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all text-fg border border-glass-border active:scale-95"
-                            aria-label="LinkedIn Profil von Semir Borogovac besuchen"
+                            klasse="flex items-center justify-center gap-3 glass px-8 py-4 rounded-xl hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all text-fg border border-glass-border active:scale-95"
+                            ariaLabel="LinkedIn Profil von Semir Borogovac besuchen"
                         >
                             <Linkedin className="text-primary" size={20} />
                             <span className="font-bold uppercase tracking-wider text-sm">LinkedIn</span>
-                        </a>
+                        </GlanzButton>
                     </div>
                 </div>
             </ScrollEnthuellung>
@@ -170,3 +170,4 @@ const Kontakt: React.FC = () => {
 };
 
 export default Kontakt;
+

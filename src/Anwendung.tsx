@@ -10,6 +10,9 @@ import Projekte from './features/projekte/Projekte';
 import Kontakt from './features/kontakt/Kontakt';
 import Lebenslauf from './features/lebenslauf/Lebenslauf';
 import PhysikHintergrund from './features/physik/PhysikHintergrund';
+import MeteoreHintergrund from './components/ui/MeteoreHintergrund';
+import MagicLab from './features/magic/MagicLab';
+import MagicKonfigurator from './features/magic/MagicKonfigurator';
 import { benutzeThemaSpeicher } from './speicher/themaSpeicher';
 
 /**
@@ -31,6 +34,7 @@ const Anwendung: React.FC = () => {
         <div className="anwendung min-h-screen bg-bg text-fg selection:bg-primary/30">
             {/* Globale UI-Effekte */}
             <PhysikHintergrund />
+            <MeteoreHintergrund />
 
             {/* Navigation & Layout */}
             <Navigationsleiste />
@@ -63,7 +67,14 @@ const Anwendung: React.FC = () => {
                 <section id="kontakt">
                     <Kontakt />
                 </section>
+
+                <section id="magic-lab">
+                    <MagicLab />
+                </section>
             </main>
+
+            {/* Schwebender Live-Konfigurator */}
+            <MagicKonfigurator />
 
             <Fusszeile />
         </div>
@@ -71,3 +82,4 @@ const Anwendung: React.FC = () => {
 };
 
 export default Anwendung;
+

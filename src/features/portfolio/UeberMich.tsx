@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Terminal } from 'lucide-react';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
 import SpotlightKarte from '../../components/ui/SpotlightKarte';
+import GlitzerText from '../../components/ui/GlitzerText';
+import LaserRahmen from '../../components/ui/LaserRahmen';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
@@ -22,7 +24,7 @@ const UeberMich: React.FC = () => {
                 <ScrollEnthuellung richtung="links">
                     <div className="relative z-10">
                         <h2 id="about-title" className="text-4xl mb-6 font-extrabold tracking-tight">
-                            {t.ueberMich.subtitel} <span className="gradient-text">{t.ueberMich.titel}</span>
+                            <GlitzerText>{t.ueberMich.subtitel}</GlitzerText> <span className="gradient-text">{t.ueberMich.titel}</span>
                         </h2>
 
                         <p className="text-muted text-lg mb-6 leading-relaxed font-medium">
@@ -55,7 +57,9 @@ const UeberMich: React.FC = () => {
 
                         <div className="relative group">
                             {/* 3D-Spotlight-Karte für sein Bild */}
-                            <SpotlightKarte klasse="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary/20 p-2 shadow-2xl transition-all duration-700 hover:border-primary/50">
+                            <SpotlightKarte klasse="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-primary/20 p-2 shadow-2xl transition-all duration-700 hover:border-primary/50 relative">
+                                <LaserRahmen radius={9999} />
+                                
                                 <img
                                     src="/profile.jpg"
                                     alt="Profilbild von Semir Borogovac"
@@ -84,3 +88,4 @@ const UeberMich: React.FC = () => {
 };
 
 export default UeberMich;
+
