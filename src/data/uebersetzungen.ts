@@ -74,7 +74,16 @@ export const uebersetzungen = {
             titel: "Kontakt",
             text: "Lass uns vernetzen! Ich bin offen für neue Chancen.",
             email: "borogovacsemir@gmail.com",
-            standort: "Dornburg, Hessen"
+            standort: "Dornburg, Hessen",
+            formular: {
+                name: "Dein Name",
+                betreff: "Betreff",
+                nachricht: "Deine Nachricht",
+                senden: "Nachricht senden",
+                fehlerName: "Bitte trage deinen Namen ein.",
+                fehlerBetreff: "Bitte trage einen Betreff ein.",
+                fehlerNachricht: "Bitte trage eine Nachricht ein."
+            }
         },
         footer: {
             impressum: "Impressum",
@@ -161,7 +170,16 @@ export const uebersetzungen = {
             titel: "Contact",
             text: "Let's connect! I am open to new opportunities.",
             email: "borogovacsemir@gmail.com",
-            standort: "Dornburg, Hesse (Germany)"
+            standort: "Dornburg, Hesse (Germany)",
+            formular: {
+                name: "Your Name",
+                betreff: "Subject",
+                nachricht: "Your Message",
+                senden: "Send Message",
+                fehlerName: "Please enter your name.",
+                fehlerBetreff: "Please enter a subject.",
+                fehlerNachricht: "Please enter a message."
+            }
         },
         footer: {
             impressum: "Imprint",
