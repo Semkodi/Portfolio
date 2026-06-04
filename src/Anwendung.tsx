@@ -29,7 +29,7 @@ const Anwendung: React.FC = () => {
     }, [istHell]);
 
     return (
-        <div className="anwendung min-h-screen bg-bg text-fg selection:bg-primary/30">
+        <div className="anwendung relative min-h-screen bg-bg text-fg selection:bg-primary/30">
             {/* Globale UI-Effekte */}
             <PhysikHintergrund />
             <SchaltkreisHintergrund />

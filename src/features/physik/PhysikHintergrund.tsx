@@ -147,28 +147,8 @@ const PhysikHintergrund: React.FC = () => {
         };
     }, []);
 
-    // Maus-Tracking für das 3D-Hintergrundgrid (Parallax-Effekt)
-    const gridRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        const verarbeiteMaus = (e: MouseEvent) => {
-            if (!gridRef.current) return;
-            // Berechnet die Abweichung vom Mittelpunkt des Bildschirms
-            const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2) * 15;
-            const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2) * 15;
-            gridRef.current.style.transform = `perspective(500px) rotateX(60deg) translate3d(${x}px, ${y}px, 0)`;
-        };
-        window.addEventListener('mousemove', verarbeiteMaus, { passive: true });
-        return () => window.removeEventListener('mousemove', verarbeiteMaus);
-    }, []);
-
     return (
         <div className="fixed inset-0 -z-20 pointer-events-none overflow-hidden bg-bg">
-            {/* 3D Cyber-Grid */}
-            <div
-                ref={gridRef}
-                className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(to_right,var(--primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--primary)_1px,transparent_1px)] bg-[size:45px_45px] [transform:perspective(500px)_rotateX(60deg)] [transform-origin:center_top] h-[150%] w-[120%] -left-[10%] -top-[10%] animate-grid-scroll"
-            />
-            
             {/* Physik Canvas Container */}
             <div
                 ref={leinwandReferenz}
