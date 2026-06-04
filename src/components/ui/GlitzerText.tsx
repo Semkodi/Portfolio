@@ -14,6 +14,7 @@ interface GlitzerStern {
     top: string;
     left: string;
     groesse: number;
+    farbe: string;
 }
 
 /**
@@ -28,7 +29,8 @@ export const GlitzerText: React.FC<GlitzerTextProps> = ({ children, klasse = '' 
                 id: Math.random(),
                 top: Math.random() * 80 - 10 + '%',
                 left: Math.random() * 100 + '%',
-                groesse: Math.random() * 0.6 + 0.4
+                groesse: Math.random() * 0.6 + 0.4,
+                farbe: Math.random() > 0.5 ? 'text-primary' : 'text-secondary'
             };
             setSterne(vorherige => [...vorherige.slice(-3), neuerStern]); // Maximal 4 Sterne gleichzeitig
         }, 600);
@@ -51,7 +53,7 @@ export const GlitzerText: React.FC<GlitzerTextProps> = ({ children, klasse = '' 
                         }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1.0, ease: "easeInOut" }}
-                        className="absolute text-amber-400 text-xs pointer-events-none"
+                        className={`absolute text-xs pointer-events-none drop-shadow-[0_0_4px_currentColor] ${stern.farbe}`}
                         style={{ top: stern.top, left: stern.left }}
                     >
                         ✦

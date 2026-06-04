@@ -43,7 +43,7 @@ export const FliessbandSkills: React.FC = () => {
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
 
             {/* Die Leiste (Das Förderband-Gehäuse) */}
-            <div className="relative border border-primary/20 bg-zinc-950/60 rounded-2xl py-5 px-6 backdrop-blur-sm overflow-hidden flex items-center shadow-[inset_0_0_25px_rgba(197,168,128,0.06)]">
+            <div className="relative border border-primary/20 bg-zinc-950/60 rounded-2xl py-5 px-6 backdrop-blur-sm overflow-hidden flex items-center shadow-[inset_0_0_25px_var(--primary-glow)]">
                 
                 {/* Zierlinien oben und unten für Maschinen-Optik */}
                 <div className="absolute inset-x-0 h-[1px] top-1.5 bg-gradient-to-r from-transparent via-primary/20 to-transparent pointer-events-none" />
@@ -60,7 +60,7 @@ export const FliessbandSkills: React.FC = () => {
                     {verdoppelteSkills.map((skill, index) => (
                         <div
                             key={`${skill.name}-${index}`}
-                            className="flex items-center gap-3 px-6 py-3.5 rounded-xl bg-zinc-900/90 border border-[#c5a880]/10 text-fg hover:border-primary hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(197,168,128,0.15)] cursor-pointer group shrink-0"
+                            className="flex items-center gap-3 px-6 py-3.5 rounded-xl bg-zinc-900/90 border border-primary/10 text-fg hover:border-primary hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_var(--primary-glow)] cursor-pointer group shrink-0"
                         >
                             <span className="text-2xl text-primary/70 group-hover:text-primary transition-colors duration-300">
                                 {skill.icon}

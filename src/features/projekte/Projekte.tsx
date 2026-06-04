@@ -39,12 +39,12 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
                 <article className="h-full flex flex-col justify-between p-6 min-h-[380px] select-none" role="group" aria-label={`Projekt: ${titel}`}>
                     <div className="flex flex-col gap-4">
                         <header className="flex justify-between items-start">
-                            <span className="text-[9px] font-extrabold tracking-widest text-[#c5a880] uppercase px-2.5 py-1 rounded-md bg-[#c5a880]/10 border border-[#c5a880]/20">
+                            <span className="text-[9px] font-extrabold tracking-widest text-primary uppercase px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20">
                                 {titel.includes('Mendix') ? t.projekte.typ.lowCode : t.projekte.typ.fullstack}
                             </span>
                             <div className="text-primary opacity-80">
                                 {titel.includes('Mendix') ? <Database size={22} /> :
-                                 titel.includes('LoveHub') ? <Heart size={22} className="text-[#cd7f32]" /> :
+                                 titel.includes('LoveHub') ? <Heart size={22} className="text-secondary" /> :
                                  <Terminal size={22} />}
                             </div>
                         </header>
@@ -69,7 +69,7 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
                         
                         <GlanzButton
                             onClick={() => beiOeffnen({ titel, beschreibung, technologien, link, vertiefung, hervorgehoben })}
-                            klasse="w-full py-2.5 rounded-2xl bg-[#c5a880] text-black font-extrabold text-xs tracking-wider uppercase hover:bg-white hover:shadow-lg transition-all active:scale-95 duration-300 cursor-pointer"
+                            klasse="w-full py-2.5 rounded-2xl bg-primary text-black font-extrabold text-xs tracking-wider uppercase hover:bg-white hover:shadow-lg transition-all active:scale-95 duration-300 cursor-pointer"
                         >
                             {t.projekte.buttons.details}
                         </GlanzButton>

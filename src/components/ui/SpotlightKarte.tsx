@@ -81,7 +81,7 @@ const SpotlightKarte: React.FC<SpotlightKarteProps> = ({ children: kinder, klass
                 className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
                 style={{
                     opacity: deckkraft,
-                    background: `radial-gradient(600px circle at ${mausPosition.x}px ${mausPosition.y}px, rgba(197, 168, 128, 0.12), transparent 40%)`
+                    background: `radial-gradient(600px circle at ${mausPosition.x}px ${mausPosition.y}px, rgba(0, 242, 254, 0.15), transparent 40%)`
                 }}
                 aria-hidden="true"
             />

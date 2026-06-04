@@ -40,8 +40,11 @@ const PhysikHintergrund: React.FC = () => {
         let decke = Bodies.rectangle(breite / 2, -50, breite, 100, { isStatic: true });
 
         // Partikel generieren (etwas mehr für besseren Effekt)
-        const partikel = Array.from({ length: 820 }).map(() => {
+        const partikel = Array.from({ length: 820 }).map((_, index) => {
             const radius = Math.random() * 12 + 6;
+            const istCyan = index % 2 === 0;
+            const fillStyle = istCyan ? 'rgba(0, 242, 254, 0.12)' : 'rgba(236, 72, 153, 0.12)';
+            const strokeStyle = istCyan ? 'rgba(0, 242, 254, 0.25)' : 'rgba(236, 72, 153, 0.25)';
             return Bodies.circle(
                 Math.random() * breite,
                 -Math.random() * 500, // Von oben einfallen lassen
@@ -50,8 +53,8 @@ const PhysikHintergrund: React.FC = () => {
                     restitution: 0.6,
                     friction: 0.1,
                     render: {
-                        fillStyle: 'rgba(197, 168, 128, 0.12)',
-                        strokeStyle: 'rgba(197, 168, 128, 0.25)',
+                        fillStyle: fillStyle,
+                        strokeStyle: strokeStyle,
                         lineWidth: 1
                     }
                 }

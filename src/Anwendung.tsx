@@ -10,6 +10,7 @@ import Projekte from './features/projekte/Projekte';
 import Kontakt from './features/kontakt/Kontakt';
 import Lebenslauf from './features/lebenslauf/Lebenslauf';
 import PhysikHintergrund from './features/physik/PhysikHintergrund';
+import SchaltkreisHintergrund from './components/ui/SchaltkreisHintergrund';
 import { benutzeThemaSpeicher } from './speicher/themaSpeicher';
 
 /**
@@ -31,6 +32,7 @@ const Anwendung: React.FC = () => {
         <div className="anwendung min-h-screen bg-bg text-fg selection:bg-primary/30">
             {/* Globale UI-Effekte */}
             <PhysikHintergrund />
+            <SchaltkreisHintergrund />
 
             {/* Navigation & Layout */}
             <Navigationsleiste />

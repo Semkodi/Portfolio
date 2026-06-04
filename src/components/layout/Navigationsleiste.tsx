@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 import ReactCountryFlag from "react-country-flag";
 import ScrollFortschritt from '../ui/ScrollFortschritt';
+import LogoIcon from '../ui/LogoIcon';
 import { benutzeThemaSpeicher } from '../../speicher/themaSpeicher';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
@@ -67,9 +68,9 @@ const Navigationsleiste: React.FC = () => {
                 ${beimScrollen ? (istHell ? 'shadow-lg' : 'shadow-2xl') : ''}`}>
 
                 <div className="flex items-center gap-4">
-                    <a href="#home" className="logo font-bold text-xl uppercase tracking-tighter flex items-center gap-2 hover:opacity-80 transition-opacity" aria-label="Zur Startseite">
-                        <Terminal size={20} className="text-primary" />
-                        Semir<span className="gradient-text">Borogovac</span>
+                    <a href="#home" className="logo font-bold text-xl uppercase tracking-tighter flex items-center gap-3.5 hover:opacity-90 transition-opacity" aria-label="Zur Startseite">
+                        <LogoIcon groesse={30} />
+                        <span className="text-white">Semir</span><span className="gradient-text font-black">Borogovac</span>
                     </a>
                 </div>
 

@@ -15,11 +15,17 @@ interface LaserRahmenProps {
 export const LaserRahmen: React.FC<LaserRahmenProps> = ({
     radius = 20,
     geschwindigkeitS = 5,
-    farbe = '#c5a880'
+    farbe = 'url(#laserGrad)'
 }) => {
     return (
         <div className="absolute inset-0 pointer-events-none rounded-[inherit] border border-transparent z-50">
             <svg className="absolute inset-0 w-full h-full rounded-[inherit]" fill="none">
+                <defs>
+                    <linearGradient id="laserGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="var(--primary, #00f2fe)" />
+                        <stop offset="100%" stopColor="var(--secondary, #ec4899)" />
+                    </linearGradient>
+                </defs>
                 <rect
                     rx={radius}
                     className="w-full h-full"

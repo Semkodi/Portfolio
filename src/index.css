@@ -5,30 +5,30 @@
 
 :root {
     /* Wurzel-Element für globale Variablen */
-    /* Dunkles Design (Standard) */
-    --primary: #c5a880;
-    /* Primärfarbe: Warmes Gold */
-    --primary-hover: #d8c09d;
-    /* Primärfarbe bei Interaktion: Helleres Gold */
-    --secondary: #cd7f32;
-    /* Sekundärfarbe: Bronze */
-    --bg: #09090b;
-    /* Hintergrundfarbe: Zink-Schwarz */
+    /* Dunkles Design (Standard) - Basierend auf dem neuen Logo */
+    --primary: #00f2fe;
+    /* Primärfarbe: Neon-Cyan */
+    --primary-hover: #38bdf8;
+    /* Primärfarbe bei Interaktion: Helles Cyan-Blau */
+    --secondary: #ec4899;
+    /* Sekundärfarbe: Neon-Pink */
+    --bg: #0b0b0f;
+    /* Hintergrundfarbe: Dunkles Titan/Metall-Grau */
     --fg: #f4f4f5;
-    /* Vordergrundfarbe: Zink-Weiß */
+    /* Vordergrundfarbe: Platin-Weiß */
     --muted: #a1a1aa;
     /* Abgeschwächte Textfarbe: Zink-Grau */
-    --card-bg: rgba(20, 20, 25, 0.6);
+    --card-bg: rgba(18, 18, 24, 0.6);
     /* Hintergrund für Karten */
-    --border: rgba(197, 168, 128, 0.1);
-    /* Standard-Rahmenfarbe mit goldenem Hauch */
-    --glass: rgba(15, 15, 18, 0.75);
+    --border: rgba(0, 242, 254, 0.1);
+    /* Standard-Rahmenfarbe mit Cyan-Hauch */
+    --glass: rgba(11, 11, 15, 0.75);
     /* Glasmorphismus-Hintergrund */
-    --glass-border: rgba(197, 168, 128, 0.15);
+    --glass-border: rgba(0, 242, 254, 0.15);
     /* Rahmen für Glas-Effekte */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     /* Standard-Übergang */
-    --project-overlay: rgba(9, 9, 11, 0.85);
+    --project-overlay: rgba(11, 11, 15, 0.85);
     /* Überlagerung für Projekte */
 }
 
@@ -133,16 +133,16 @@ body::before {
 /* Ende body::before */
 
 :root {
-    --primary-glow: rgba(197, 168, 128, 0.08);
-    --secondary-glow: rgba(205, 127, 50, 0.06);
+    --primary-glow: rgba(0, 242, 254, 0.08);
+    --secondary-glow: rgba(236, 72, 153, 0.06);
 }
 
 :root.light body::before {
     /* Anpassung für helles Design */
-    --primary-glow: rgba(197, 168, 128, 0.04);
-    /* Dezenteres goldenes Leuchten */
-    --secondary-glow: rgba(205, 127, 50, 0.03);
-    /* Dezenteres bronzenes Leuchten */
+    --primary-glow: rgba(0, 242, 254, 0.04);
+    /* Dezenteres cyanfarbenes Leuchten */
+    --secondary-glow: rgba(236, 72, 153, 0.03);
+    /* Dezenteres pinkfarbenes Leuchten */
 }
 
 /* Ende .light body::before */
@@ -322,7 +322,7 @@ h3 {
     /* Dunklere Primärfarbe */
     transform: translateY(-2px);
     /* Leichtes Anheben */
-    box-shadow: 0 10px 15px -3px rgba(197, 168, 128, 0.4);
+    box-shadow: 0 10px 15px -3px rgba(0, 242, 254, 0.3);
     /* Schatten für Tiefe */
 }
 
@@ -1194,11 +1194,11 @@ nav {
 }
 
 .bg-primary\/20 {
-    background-color: rgba(197, 168, 128, 0.2);
+    background-color: rgba(0, 242, 254, 0.2);
 }
 
 .bg-secondary\/20 {
-    background-color: rgba(205, 127, 50, 0.2);
+    background-color: rgba(236, 72, 153, 0.2);
 }
 
 .bg-white\/5 {
@@ -1206,7 +1206,7 @@ nav {
 }
 
 .border-primary\/20 {
-    border-color: rgba(197, 168, 128, 0.2);
+    border-color: rgba(0, 242, 254, 0.2);
 }
 
 .border-white\/10 {
