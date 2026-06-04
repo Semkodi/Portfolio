@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import Matter from 'matter-js';
-import { benutzeKonzeptSpeicher } from '@/speicher/konzeptSpeicher';
 
 /**
  * PhysikHintergrund - Eine interaktive Hintergrund-Komponente mit Matter.js.
@@ -8,7 +7,6 @@ import { benutzeKonzeptSpeicher } from '@/speicher/konzeptSpeicher';
  * und echte UI-Elemente (als Hindernisse) reagieren.
  */
 const PhysikHintergrund: React.FC = () => {
-    const { aktivesKonzept } = benutzeKonzeptSpeicher();
     const leinwandReferenz = useRef<HTMLDivElement>(null);
     const engineReferenz = useRef<Matter.Engine>(Matter.Engine.create());
     const hindernisKörperReferenz = useRef<Map<Element, Matter.Body>>(new Map());
@@ -162,13 +160,11 @@ const PhysikHintergrund: React.FC = () => {
 
     return (
         <div className="fixed inset-0 -z-20 pointer-events-none overflow-hidden bg-bg">
-            {/* 3D Cyber-Grid - Nur für Konzept 1 aktiv */}
-            {aktivesKonzept === 'konzept1' && (
-                <div
-                    ref={gridRef}
-                    className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(to_right,var(--primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--primary)_1px,transparent_1px)] bg-[size:45px_45px] [transform:perspective(500px)_rotateX(60deg)] [transform-origin:center_top] h-[150%] w-[120%] -left-[10%] -top-[10%] animate-grid-scroll"
-                />
-            )}
+            {/* 3D Cyber-Grid */}
+            <div
+                ref={gridRef}
+                className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(to_right,var(--primary)_1px,transparent_1px),linear-gradient(to_bottom,var(--primary)_1px,transparent_1px)] bg-[size:45px_45px] [transform:perspective(500px)_rotateX(60deg)] [transform-origin:center_top] h-[150%] w-[120%] -left-[10%] -top-[10%] animate-grid-scroll"
+            />
             
             {/* Physik Canvas Container */}
             <div

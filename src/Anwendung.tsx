@@ -10,7 +10,6 @@ import Projekte from './features/projekte/Projekte';
 import Kontakt from './features/kontakt/Kontakt';
 import Lebenslauf from './features/lebenslauf/Lebenslauf';
 import PhysikHintergrund from './features/physik/PhysikHintergrund';
-import KonzeptWaehler from './components/ui/KonzeptWaehler';
 import { benutzeThemaSpeicher } from './speicher/themaSpeicher';
 
 /**
@@ -67,9 +66,6 @@ const Anwendung: React.FC = () => {
             </main>
 
             <Fusszeile />
-
-            {/* Live-Umschalter für die Design-Konzepte */}
-            <KonzeptWaehler />
         </div>
     );
 };
