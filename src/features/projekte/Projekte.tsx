@@ -4,11 +4,14 @@ import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
 import SpotlightKarte from '../../components/ui/SpotlightKarte';
 import ProjektModal, { Projekt } from '../../components/ui/ProjektModal';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
+import { benutzeKonzeptSpeicher } from '@/speicher/konzeptSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
- * Hilfskomponente für eine einzelne Projekt-Questkarte (RPG-Quest-Style).
- * Verwendet die SpotlightKarte für 3D-Tilt und goldene Lichteffekte.
+ * Hilfskomponente für eine einzelne Projektkarte.
+ * Umschaltbar zwischen:
+ * - Standard-3D-Hologramm (Konzept 1 / 3): Klassischer, hochprofessioneller Tech-Look mit 3D-Tilt.
+ * - RPG-Questboard (Konzept 2): Spielerisches Quest-Design mit Beute- und Questbeschreibungen.
  */
 interface ProjektKarteProps extends Projekt {
     index: number;
@@ -26,62 +29,114 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
     beiOeffnen
 }) => {
     const { sprache } = benutzeSpracheSpeicher();
+    const { aktivesKonzept } = benutzeKonzeptSpeicher();
+    const t = uebersetzungen[sprache];
     const de = sprache === 'de';
 
+    // ----------------------------------------------------
+    // RENDERING FÜR KONZEPT 2: RPG-Questboard
+    // ----------------------------------------------------
+    if (aktivesKonzept === 'konzept2') {
+        return (
+            <ScrollEnthuellung verzoegerung={index * 0.1}>
+                <SpotlightKarte klasse="h-full border border-primary/20 bg-zinc-950/95 shadow-2xl transition-all duration-300 group hover:border-[#cd7f32]/40">
+                    <article className="h-full flex flex-col justify-between p-7 min-h-[420px] select-none font-mono text-xs" role="group" aria-label={`Quest: ${titel}`}>
+                        <div className="flex flex-col gap-3">
+                            <header className="flex justify-between items-center text-[10px] text-muted border-b border-white/5 pb-2">
+                                <span className="flex items-center gap-1.5 text-[#cd7f32] font-black uppercase tracking-widest">
+                                    <Sword size={12} className="animate-pulse" />
+                                    {de ? `QUEST // 0${index + 1}` : `QUEST // 0${index + 1}`}
+                                </span>
+                                <span className="text-primary font-bold opacity-60">
+                                    {titel.includes('Mendix') ? '[LOW-CODE]' : '[FULLSTACK]'}
+                                </span>
+                            </header>
+                            
+                            <h3 className="text-lg sm:text-xl font-black text-white leading-tight uppercase tracking-tight font-sans mt-2 group-hover:text-primary transition-colors">
+                                {titel}
+                            </h3>
+                            
+                            <div className="mt-2 space-y-1">
+                                <span className="text-[9px] uppercase font-extrabold tracking-widest text-[#c5a880] block">
+                                    {de ? '➤ HERAUSFORDERUNG:' : '➤ CHALLENGE:'}
+                                </span>
+                                <p className="text-muted text-xs leading-relaxed font-sans font-medium line-clamp-4">
+                                    {beschreibung}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col gap-4 mt-6">
+                            <div className="space-y-1.5">
+                                <span className="text-[9px] uppercase font-extrabold tracking-widest text-[#cd7f32] flex items-center gap-1">
+                                    <Trophy size={10} />
+                                    {de ? 'LOOT (TECH STACK):' : 'LOOT (TECH STACK):'}
+                                </span>
+                                <div className="flex flex-wrap gap-1.5">
+                                    {technologien.map(tech => (
+                                        <span key={tech} className="text-[9px] font-bold font-mono px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-muted group-hover:border-[#c5a880]/20 transition-colors">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                            
+                            <button
+                                onClick={() => beiOeffnen({ titel, beschreibung, technologien, link, vertiefung, hervorgehoben })}
+                                className="w-full py-2.5 mt-2 rounded-2xl bg-zinc-900 text-[#c5a880] border border-[#c5a880]/30 font-extrabold text-[10px] tracking-wider uppercase hover:bg-[#c5a880] hover:text-black transition-all active:scale-95 duration-300 cursor-pointer flex items-center justify-center gap-2"
+                            >
+                                <Shield size={12} />
+                                {de ? 'QUEST DETAILS' : 'QUEST DETAILS'}
+                            </button>
+                        </div>
+                    </article>
+                </SpotlightKarte>
+            </ScrollEnthuellung>
+        );
+    }
+
+    // ----------------------------------------------------
+    // RENDERING FÜR KONZEPT 1 / 3: Standard-3D-Hologramm
+    // ----------------------------------------------------
     return (
         <ScrollEnthuellung verzoegerung={index * 0.1}>
-            <SpotlightKarte klasse="h-full border border-primary/20 bg-zinc-950/95 shadow-2xl transition-all duration-300 group hover:border-[#cd7f32]/40">
-                <article className="h-full flex flex-col justify-between p-7 min-h-[420px] select-none font-mono text-xs" role="group" aria-label={`Quest: ${titel}`}>
-                    
-                    {/* Header-Bereich */}
-                    <div className="flex flex-col gap-3">
-                        <header className="flex justify-between items-center text-[10px] text-muted border-b border-white/5 pb-2">
-                            <span className="flex items-center gap-1.5 text-[#cd7f32] font-black uppercase tracking-widest">
-                                <Sword size={12} className="animate-pulse" />
-                                {de ? `QUEST // 0${index + 1}` : `QUEST // 0${index + 1}`}
+            <SpotlightKarte klasse="h-full border border-primary/10 bg-zinc-950/90 shadow-2xl transition-all duration-300 hover:border-primary/40">
+                <article className="h-full flex flex-col justify-between p-6 min-h-[380px] select-none" role="group" aria-label={`Projekt: ${titel}`}>
+                    <div className="flex flex-col gap-4">
+                        <header className="flex justify-between items-start">
+                            <span className="text-[9px] font-extrabold tracking-widest text-[#c5a880] uppercase px-2.5 py-1 rounded-md bg-[#c5a880]/10 border border-[#c5a880]/20">
+                                {titel.includes('Mendix') ? t.projekte.typ.lowCode : t.projekte.typ.fullstack}
                             </span>
-                            <span className="text-primary font-bold opacity-60">
-                                {titel.includes('Mendix') ? '[LOW-CODE]' : '[FULLSTACK]'}
-                            </span>
+                            <div className="text-primary opacity-80">
+                                {titel.includes('Mendix') ? <Database size={22} /> :
+                                 titel.includes('LoveHub') ? <Heart size={22} className="text-[#cd7f32]" /> :
+                                 <Terminal size={22} />}
+                            </div>
                         </header>
                         
-                        <h3 className="text-lg sm:text-xl font-black text-white leading-tight uppercase tracking-tight font-sans mt-2 group-hover:text-primary transition-colors">
+                        <h3 className="text-xl sm:text-2xl font-black text-white leading-tight mt-2">
                             {titel}
                         </h3>
                         
-                        {/* Quest-Herausforderung */}
-                        <div className="mt-2 space-y-1">
-                            <span className="text-[9px] uppercase font-extrabold tracking-widest text-[#c5a880] block">
-                                {de ? '➤ HERAUSFORDERUNG:' : '➤ CHALLENGE:'}
-                            </span>
-                            <p className="text-muted text-xs leading-relaxed font-sans font-medium line-clamp-4">
-                                {beschreibung}
-                            </p>
-                        </div>
+                        <p className="text-muted text-sm leading-relaxed font-medium line-clamp-4">
+                            {beschreibung}
+                        </p>
                     </div>
 
-                    {/* Loot / Tech Stack */}
                     <div className="flex flex-col gap-4 mt-6">
-                        <div className="space-y-1.5">
-                            <span className="text-[9px] uppercase font-extrabold tracking-widest text-[#cd7f32] flex items-center gap-1">
-                                <Trophy size={10} />
-                                {de ? 'LOOT (TECH STACK):' : 'LOOT (TECH STACK):'}
-                            </span>
-                            <div className="flex flex-wrap gap-1.5">
-                                {technologien.map(tech => (
-                                    <span key={tech} className="text-[9px] font-bold font-mono px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-muted group-hover:border-[#c5a880]/20 transition-colors">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
+                        <div className="flex flex-wrap gap-1.5">
+                            {technologien.slice(0, 3).map(tech => (
+                                <span key={tech} className="text-[10px] font-bold font-mono px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-muted">
+                                    {tech}
+                                </span>
+                            ))}
                         </div>
                         
                         <button
                             onClick={() => beiOeffnen({ titel, beschreibung, technologien, link, vertiefung, hervorgehoben })}
-                            className="w-full py-2.5 mt-2 rounded-2xl bg-zinc-900 text-[#c5a880] border border-[#c5a880]/30 font-extrabold text-[10px] tracking-wider uppercase hover:bg-[#c5a880] hover:text-black transition-all active:scale-95 duration-300 cursor-pointer flex items-center justify-center gap-2"
+                            className="w-full py-2.5 rounded-2xl bg-[#c5a880] text-black font-extrabold text-xs tracking-wider uppercase hover:bg-white hover:shadow-lg transition-all active:scale-95 duration-300 cursor-pointer"
                         >
-                            <Shield size={12} />
-                            {de ? 'QUEST DETAILS' : 'QUEST DETAILS'}
+                            {t.projekte.buttons.details}
                         </button>
                     </div>
                 </article>
@@ -91,7 +146,7 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
 };
 
 /**
- * Projekte - Die Galerie der ausgewählten Arbeiten als RPG-Questboard.
+ * Projekte - Die Galerie der ausgewählten Arbeiten.
  */
 const Projekte: React.FC = () => {
     const [ausgewaehltesProjekt, setzeAusgewaehltesProjekt] = useState<Projekt | null>(null);

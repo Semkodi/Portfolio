@@ -4,6 +4,7 @@ import { Terminal, Hammer, HardHat, Code2 } from 'lucide-react';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
 import SpotlightKarte from '../../components/ui/SpotlightKarte';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
+import { benutzeKonzeptSpeicher } from '@/speicher/konzeptSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
@@ -14,6 +15,7 @@ import { uebersetzungen } from '../../data/uebersetzungen';
 const UeberMich: React.FC = () => {
     const [istDev, setIstDev] = useState<boolean>(true);
     const { sprache } = benutzeSpracheSpeicher();
+    const { aktivesKonzept } = benutzeKonzeptSpeicher();
     const t = uebersetzungen[sprache];
 
     const de = sprache === 'de';
@@ -105,52 +107,54 @@ const UeberMich: React.FC = () => {
                         <div className="relative group">
                             
                             {/* Konzept 3: Morphing Vektor-Hintergründe */}
-                            <div className="absolute inset-0 -m-8 pointer-events-none opacity-[0.08] transition-opacity duration-500">
-                                <AnimatePresence mode="wait">
-                                    {!istDev ? (
-                                        // Polier: Technische Bauzeichnungs-Linien (Winkelmesser, Konstruktionskreise)
-                                        <motion.svg
-                                            key="bau-linien"
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 0.9 }}
-                                            className="w-full h-full stroke-current text-[#cd7f32]"
-                                            viewBox="0 0 100 100"
-                                            fill="none"
-                                            strokeWidth="0.5"
-                                        >
-                                            <circle cx="50" cy="50" r="40" strokeDasharray="2,2" />
-                                            <circle cx="50" cy="50" r="25" />
-                                            <line x1="50" y1="0" x2="50" y2="100" />
-                                            <line x1="0" y1="50" x2="100" y2="50" />
-                                            <path d="M 20 20 L 80 80 M 80 20 L 20 80" strokeDasharray="1,3" />
-                                        </motion.svg>
-                                    ) : (
-                                        // Developer: UML Diagramme & Klassen-Strukturen
-                                        <motion.svg
-                                            key="code-uml"
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 0.9 }}
-                                            className="w-full h-full stroke-current text-primary"
-                                            viewBox="0 0 100 100"
-                                            fill="none"
-                                            strokeWidth="0.5"
-                                        >
-                                            <rect x="10" y="10" width="30" height="20" rx="2" />
-                                            <line x1="10" y1="20" x2="40" y2="20" />
-                                            <rect x="60" y="15" width="30" height="25" rx="2" />
-                                            <line x1="60" y1="25" x2="90" y2="25" />
-                                            <rect x="35" y="65" width="35" height="20" rx="2" />
-                                            <line x1="35" y1="75" x2="70" y2="75" />
-                                            {/* Verbindungslinien (UML Pfeile) */}
-                                            <path d="M 25 30 L 25 75 L 35 75" strokeDasharray="1,1" />
-                                            <path d="M 75 40 L 75 65" />
-                                            <polygon points="75,65 72,60 78,60" fill="none" />
-                                        </motion.svg>
-                                    )}
-                                </AnimatePresence>
-                            </div>
+                            {aktivesKonzept === 'konzept3' && (
+                                <div className="absolute inset-0 -m-8 pointer-events-none opacity-[0.08] transition-opacity duration-500">
+                                    <AnimatePresence mode="wait">
+                                        {!istDev ? (
+                                            // Polier: Technische Bauzeichnungs-Linien (Winkelmesser, Konstruktionskreise)
+                                            <motion.svg
+                                                key="bau-linien"
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0, scale: 0.9 }}
+                                                className="w-full h-full stroke-current text-[#cd7f32]"
+                                                viewBox="0 0 100 100"
+                                                fill="none"
+                                                strokeWidth="0.5"
+                                            >
+                                                <circle cx="50" cy="50" r="40" strokeDasharray="2,2" />
+                                                <circle cx="50" cy="50" r="25" />
+                                                <line x1="50" y1="0" x2="50" y2="100" />
+                                                <line x1="0" y1="50" x2="100" y2="50" />
+                                                <path d="M 20 20 L 80 80 M 80 20 L 20 80" strokeDasharray="1,3" />
+                                            </motion.svg>
+                                        ) : (
+                                            // Developer: UML Diagramme & Klassen-Strukturen
+                                            <motion.svg
+                                                key="code-uml"
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0, scale: 0.9 }}
+                                                className="w-full h-full stroke-current text-primary"
+                                                viewBox="0 0 100 100"
+                                                fill="none"
+                                                strokeWidth="0.5"
+                                            >
+                                                <rect x="10" y="10" width="30" height="20" rx="2" />
+                                                <line x1="10" y1="20" x2="40" y2="20" />
+                                                <rect x="60" y="15" width="30" height="25" rx="2" />
+                                                <line x1="60" y1="25" x2="90" y2="25" />
+                                                <rect x="35" y="65" width="35" height="20" rx="2" />
+                                                <line x1="35" y1="75" x2="70" y2="75" />
+                                                {/* Verbindungslinien (UML Pfeile) */}
+                                                <path d="M 25 30 L 25 75 L 35 75" strokeDasharray="1,1" />
+                                                <path d="M 75 40 L 75 65" />
+                                                <polygon points="75,65 72,60 78,60" fill="none" />
+                                            </motion.svg>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            )}
 
                             {/* Dynamischer, pulsierender Leuchtkranz */}
                             <div className={`w-64 h-64 rounded-3xl absolute -z-10 opacity-20 blur-3xl transition-all duration-700
