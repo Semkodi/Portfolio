@@ -83,7 +83,7 @@ body {
     /* Haupt-Textkörper */
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     /* Hintergrund aus Variable laden und mit gebürsteter Metallstruktur veredeln */
-    background-color: #050508;
+    background-color: #101115;
     background-image: 
         radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 75%),
         linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 0.4) 100%),
@@ -247,45 +247,39 @@ h3 {
 
 /* Hilfsklassen für den Glasmorphismus-Effekt */
 .glass {
-    /* Container mit Glaseffekt */
-    background: var(--glass);
-    /* Transparenter Hintergrund */
+    /* Container mit Glaseffekt und 3D-Bevel (Workstation-Optik) */
+    background: rgba(18, 19, 24, 0.82);
     backdrop-filter: blur(12px);
-    /* Hintergrund weichzeichnen */
     -webkit-backdrop-filter: blur(12px);
-    /* Safari-Unterstützung */
-    border: 1px solid var(--glass-border);
-    /* Dezenter Rahmen */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+        0 12px 25px rgba(0, 0, 0, 0.6);
     border-radius: 1rem;
-    /* Abgerundete Ecken */
-    /* Wasserfall-Effekt: Glas-Elemente passen sich zeitversetzt an */
-    transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
-        border-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
-        color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
-    /* Verzögerter Farbübergang */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Ende .glass */
 
 .card {
-    /* Standard-Kartendesign */
-    background: var(--card-bg);
-    /* Moderner Karten-Hintergrund */
-    border: 1px solid var(--border);
-    /* Rahmen der Karte */
+    /* Standard-Kartendesign als 3D-Metallplatte */
+    background: #18191f;
+    background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 75%),
+        linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 0.4) 100%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.005) 0px, rgba(255, 255, 255, 0.005) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.005) 0px, rgba(255, 255, 255, 0.005) 1px, transparent 1px, transparent 3px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.6),
+        0 20px 45px rgba(0, 0, 0, 0.8);
     padding: 2.5rem;
-    /* Großzügiger Innenabstand */
     border-radius: 2rem;
-    /* Stark abgerundete Ecken */
     position: relative;
-    /* Basis für absolute Positionierung von Inhalten */
     overflow: hidden;
-    /* Überstehende Inhalte abschneiden */
-    /* Wasserfall-Effekt: Karten passen sich als Letztes an */
-    transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
-        border-color 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
-        transform 0.3s ease;
-    /* Übergang mit höchster Verzögerung */
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Ende .card */
@@ -1409,5 +1403,31 @@ nav {
 .animate-led-pink {
     color: #ec4899;
     animation: led-pulsieren 4.5s ease-in-out infinite;
+}
+
+/* 3D-Metall-Taste (Druckknopf-Vibe) */
+.btn-metall {
+    background: #1e2028;
+    background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 75%),
+        linear-gradient(to bottom, #252731 0%, #17181e 100%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.008) 0px, rgba(255, 255, 255, 0.008) 1px, transparent 1px, transparent 2px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+        0 4px 10px rgba(0, 0, 0, 0.4);
+    color: #f4f4f5;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-metall:hover {
+    background: #252731;
+    border-color: var(--primary);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 15px rgba(0, 242, 254, 0.35);
+    color: white;
 }
 

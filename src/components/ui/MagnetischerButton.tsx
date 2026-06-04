@@ -83,12 +83,12 @@ export const MagnetischerButton: React.FC<MagnetischerButtonProps> = ({
         setIstHovered(false);
     };
 
-    // Design-Varianten im Neon-Logo-Look
+    // Design-Varianten im physischen 3D-Metall-Look
     const varianten = {
         primary:
-            "bg-primary text-black hover:bg-white shadow-lg shadow-primary/15 hover:shadow-primary/35 transition-shadow duration-300",
+            "btn-metall hover:border-primary shadow-lg shadow-primary/5 hover:shadow-primary/25",
         outline:
-            "border border-primary/20 bg-zinc-950/40 text-primary hover:border-primary hover:bg-white/5",
+            "btn-metall border-primary/30 text-primary hover:border-primary hover:text-white",
         ghost:
             "text-muted hover:text-white hover:bg-white/5",
         dark:
