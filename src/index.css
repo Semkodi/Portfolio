@@ -103,35 +103,23 @@ body {
 
 /* Ende body */
 
-/* Hintergrund-Gradienten für visuelle Tiefe */
 body::before {
     /* Pseudo-Element vor dem Body */
     content: '';
-    /* Erforderlicher Inhalt für Pseudo-Elemente */
-    position: fixed;
     /* Im Hintergrund fixieren */
-    top: -50%;
-    /* Über den Rand hinausragen */
-    left: -50%;
-    /* Über den Rand hinaus */
-    width: 200%;
-    /* Doppelte Breite */
-    height: 200%;
-    /* Doppelte Höhe */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background:
-        /* Komplexe radiale Verläufe */
-        radial-gradient(circle at center, var(--primary-glow, rgba(197, 168, 128, 0.08)) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, var(--secondary-glow, rgba(205, 127, 50, 0.06)) 0%, transparent 50%),
-        radial-gradient(circle at 20% 80%, var(--primary-glow, rgba(197, 168, 128, 0.08)) 0%, transparent 50%);
-    /* Farbpunkte definieren */
+        /* Weiches LED-Leuchten an den Rändern statt in der Mitte */
+        radial-gradient(circle at 0% 50%, rgba(0, 242, 254, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 100% 50%, rgba(236, 72, 153, 0.14) 0%, transparent 45%);
     z-index: -1;
     /* Hinter alle anderen Elemente legen */
     pointer-events: none;
     /* Klicks durchlassen */
-    animation: gradient-move 20s ease-in-out infinite alternate;
-    /* Endlose Animation */
-    transform-origin: center center;
-    /* Mittelpunkt als Rotationsachse */
 }
 
 /* Ende body::before */
