@@ -13,8 +13,8 @@ import GlitzerText from '../../components/ui/GlitzerText';
 import LaserRahmen from '../../components/ui/LaserRahmen';
 import FliessbandSkills from '../../components/ui/FliessbandSkills';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
-import { benutzeMagicSpeicher } from '@/speicher/magicSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
+
 
 
 /**
@@ -170,7 +170,6 @@ const FaehigkeitFenster: React.FC<{ kategorie: FaehigkeitsKategorie; index: numb
  */
 const Faehigkeiten: React.FC = () => {
     const { sprache } = benutzeSpracheSpeicher();
-    const { fliessbandSkillsAktiv } = benutzeMagicSpeicher();
     const t = uebersetzungen[sprache];
 
     // Zentrales Daten-Array der technischen Kompetenzen
@@ -230,11 +229,9 @@ const Faehigkeiten: React.FC = () => {
                 </div>
             </ScrollEnthuellung>
 
-            {fliessbandSkillsAktiv && (
-                <div className="mb-16 flex justify-center animate-in fade-in duration-500">
-                    <FliessbandSkills />
-                </div>
-            )}
+            <div className="mb-16 flex justify-center animate-in fade-in duration-500">
+                <FliessbandSkills />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
                 {faehigkeitsKategorien.map((kategorie, index) => (

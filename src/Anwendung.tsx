@@ -10,8 +10,6 @@ import Projekte from './features/projekte/Projekte';
 import Kontakt from './features/kontakt/Kontakt';
 import Lebenslauf from './features/lebenslauf/Lebenslauf';
 import PhysikHintergrund from './features/physik/PhysikHintergrund';
-import MagicLab from './features/magic/MagicLab';
-import MagicKonfigurator from './features/magic/MagicKonfigurator';
 import { benutzeThemaSpeicher } from './speicher/themaSpeicher';
 
 /**
@@ -36,7 +34,6 @@ const Anwendung: React.FC = () => {
 
             {/* Navigation & Layout */}
             <Navigationsleiste />
-
 
             <main className="relative z-10">
                 <section id="home">
@@ -66,14 +63,7 @@ const Anwendung: React.FC = () => {
                 <section id="kontakt">
                     <Kontakt />
                 </section>
-
-                <section id="magic-lab">
-                    <MagicLab />
-                </section>
             </main>
-
-            {/* Schwebender Live-Konfigurator */}
-            <MagicKonfigurator />
 
             <Fusszeile />
         </div>
@@ -81,4 +71,5 @@ const Anwendung: React.FC = () => {
 };
 
 export default Anwendung;
+
 

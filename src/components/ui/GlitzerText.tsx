@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { benutzeMagicSpeicher } from '@/speicher/magicSpeicher';
 
 /**
  * Schnittstelle für Eigenschaften von GlitzerText.
@@ -18,18 +17,12 @@ interface GlitzerStern {
 }
 
 /**
- * Erzeugt glitzernde, rotierende Sterne um den Text herum, wenn der Effekt im Magic-Speicher aktiviert ist.
+ * Erzeugt glitzernde, rotierende Sterne um den Text herum.
  */
 export const GlitzerText: React.FC<GlitzerTextProps> = ({ children, klasse = '' }) => {
-    const { glitzerTextAktiv } = benutzeMagicSpeicher();
     const [sterne, setSterne] = useState<GlitzerStern[]>([]);
 
     useEffect(() => {
-        if (!glitzerTextAktiv) {
-            setSterne([]);
-            return;
-        }
-
         const intervall = setInterval(() => {
             const neuerStern: GlitzerStern = {
                 id: Math.random(),
@@ -41,11 +34,7 @@ export const GlitzerText: React.FC<GlitzerTextProps> = ({ children, klasse = '' 
         }, 600);
 
         return () => clearInterval(intervall);
-    }, [glitzerTextAktiv]);
-
-    if (!glitzerTextAktiv) {
-        return <span className={klasse}>{children}</span>;
-    }
+    }, []);
 
     return (
         <span className={`relative inline-block select-none ${klasse}`}>
@@ -74,3 +63,4 @@ export const GlitzerText: React.FC<GlitzerTextProps> = ({ children, klasse = '' 
 };
 
 export default GlitzerText;
+

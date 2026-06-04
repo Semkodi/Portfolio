@@ -1,5 +1,4 @@
 import React from 'react';
-import { benutzeMagicSpeicher } from '@/speicher/magicSpeicher';
 
 /**
  * Eigenschaften für den interaktiven GlanzButton.
@@ -14,8 +13,8 @@ interface GlanzButtonProps {
 }
 
 /**
- * Eine universelle Button-/Link-Komponente, die einen fließenden metallischen Lichtreflex zeigt,
- * wenn der GlanzButton-Effekt im Magic-Speicher aktiviert ist.
+ * Eine universelle Button-/Link-Komponente, die einen fließenden metallischen Lichtreflex zeigt
+ * bei Interaktion (Hover).
  */
 export const GlanzButton: React.FC<GlanzButtonProps> = ({
     children,
@@ -25,22 +24,16 @@ export const GlanzButton: React.FC<GlanzButtonProps> = ({
     typ = 'button',
     ariaLabel
 }) => {
-    const { glanzButtonAktiv } = benutzeMagicSpeicher();
-
-    // Dynamische Klassen für den glänzenden Button-Effekt
-    const basisKlassen = glanzButtonAktiv
-        ? `relative overflow-hidden group transition-all duration-300 active:scale-95 cursor-pointer shadow-lg ${klasse}`
-        : `transition-all active:scale-95 cursor-pointer ${klasse}`;
+    // Klassen für den glänzenden Button-Effekt
+    const basisKlassen = `relative overflow-hidden group transition-all duration-300 active:scale-95 cursor-pointer shadow-lg ${klasse}`;
 
     const inhalt = (
         <>
             <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
-            {glanzButtonAktiv && (
-                <span 
-                    className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] pointer-events-none"
-                    style={{ willChange: 'transform' }}
-                />
-            )}
+            <span 
+                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] pointer-events-none"
+                style={{ willChange: 'transform' }}
+            />
         </>
     );
 
@@ -70,3 +63,4 @@ export const GlanzButton: React.FC<GlanzButtonProps> = ({
 };
 
 export default GlanzButton;
+

@@ -6,7 +6,6 @@ import {
     SiGit, SiGithub, SiDocker
 } from 'react-icons/si';
 import { VscJson, VscCode } from 'react-icons/vsc';
-import { benutzeMagicSpeicher } from '@/speicher/magicSpeicher';
 
 /**
  * FliessbandSkills - Präsentiert Semirs technische Fähigkeiten als interaktives Fließband (Conveyor Belt).
@@ -14,10 +13,6 @@ import { benutzeMagicSpeicher } from '@/speicher/magicSpeicher';
  * Pausiert bei Hover und hebt das fokussierte Skill-Element mit Glanz- und Skalierungseffekten hervor.
  */
 export const FliessbandSkills: React.FC = () => {
-    const { fliessbandSkillsAktiv } = benutzeMagicSpeicher();
-
-    if (!fliessbandSkillsAktiv) return null;
-
     // Vollständige Skill-Liste für das Fließband
     const skills = [
         { name: 'React', icon: <SiReact /> },
