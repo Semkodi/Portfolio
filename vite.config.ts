@@ -1,14 +1,14 @@
-import { defineConfig } from 'vite'; // Vite Konfigurationstool importieren // Erklärung
-import react from '@vitejs/plugin-react'; // React-Plugin für Vite importieren // Erklärung
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-// https://vitejs.dev/config/ // Erklärung
 /**
- * Hauptkonfiguration für das Vite-Buildtool. // Erklärung
+ * Hauptkonfiguration für das Vite-Buildtool.
  */
-export default defineConfig({ // Konfiguration definieren // Erklärung
-    plugins: [react()], // React-Unterstützung aktivieren // Erklärung
-    server: { // Server-Einstellungen // Erklärung
-        port: 3000, // Den Standard-Port auf 3000 setzen // Erklärung
-        open: true, // Den Browser beim Start automatisch öffnen // Erklärung
-    }, // Erklärung
-}); // Erklärung
+export default defineConfig({
+    plugins: [react(), tsconfigPaths()],
+    server: {
+        port: 3000,
+        open: true,
+    },
+});

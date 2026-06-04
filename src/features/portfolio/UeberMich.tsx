@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Terminal } from 'lucide-react';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
@@ -10,7 +10,7 @@ import { uebersetzungen } from '../../data/uebersetzungen';
  * Kombiniert Storytelling mit visuellen Akzenten durch Profilbild-Effekte.
  */
 const UeberMich: React.FC = () => {
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
     const t = uebersetzungen[sprache];
 
     return (

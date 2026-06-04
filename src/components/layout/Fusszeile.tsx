@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FileText, Shield } from 'lucide-react';
 import RechtlichesModal from '../ui/RechtlichesModal';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
@@ -11,7 +11,7 @@ import { uebersetzungen } from '../../data/uebersetzungen';
 const Fusszeile: React.FC = () => {
     const [rechtlichesGeoeffnet, setzeRechtlichesGeoeffnet] = useState<string | null>(null);
 
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
     const t = uebersetzungen[sprache];
 
     const impressumInhalt = `Angaben gemäß § 5 TMG

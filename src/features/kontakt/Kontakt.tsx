@@ -1,14 +1,14 @@
 import React from 'react';
 import { Mail, Github, Linkedin } from 'lucide-react';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
  * Kontakt - Sektion mit Kontaktmöglichkeiten und sozialen Links.
  */
 const Kontakt: React.FC = () => {
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
     const t = uebersetzungen[sprache];
 
     return (

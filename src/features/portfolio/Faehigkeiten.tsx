@@ -9,7 +9,7 @@ import {
 import { VscJson, VscCode } from 'react-icons/vsc';
 import { motion, useDragControls } from 'framer-motion';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
@@ -161,7 +161,7 @@ const FaehigkeitFenster: React.FC<{ kategorie: FaehigkeitsKategorie; index: numb
  * Nutzt eine 5-Punkte-Skala zur Visualisierung der Expertise.
  */
 const Faehigkeiten: React.FC = () => {
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
     const t = uebersetzungen[sprache];
 
     // Zentrales Daten-Array der technischen Kompetenzen

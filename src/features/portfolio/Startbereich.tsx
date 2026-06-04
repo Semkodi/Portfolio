@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Schreibmaschine from '../../components/ui/Schreibmaschine';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
  * Startbereich (Hero-Sektion) - Die erste visuelle Sektion mit dem Typewriter-Effekt.
  */
 const Startbereich: React.FC = () => {
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
     const t = uebersetzungen[sprache];
 
     return (

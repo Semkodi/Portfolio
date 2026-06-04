@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, GraduationCap, Calendar, ChevronDown } from 'lucide-react';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
 import SpotlightKarte from '../../components/ui/SpotlightKarte';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 
 /**
  * Schnittstellen für die Lebenslauf-Datenstruktur.
@@ -102,7 +102,7 @@ const ZeitstrahlEintrag: React.FC<ZeitstrahlEintragProps> = ({
  * Lebenslauf - Strukturiert den beruflichen Werdegang in einer interaktiven Timeline.
  */
 const Lebenslauf: React.FC = () => {
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
 
     const lebenslaufDaten: LebenslaufEintrag[] = [
         {

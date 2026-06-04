@@ -4,7 +4,7 @@ import { Terminal, Sun, Moon } from 'lucide-react';
 import ReactCountryFlag from "react-country-flag";
 import ScrollFortschritt from '../ui/ScrollFortschritt';
 import { benutzeThemaSpeicher } from '../../speicher/themaSpeicher';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
@@ -19,7 +19,7 @@ const Navigationsleiste: React.FC = () => {
     const { istHell, umschalten: umschalteThema } = benutzeThemaSpeicher();
 
     // Zugriff auf den Sprach-Speicher
-    const { sprache, toggleSprache } = useSpracheStore();
+    const { sprache, umschaltenSprache: toggleSprache } = benutzeSpracheSpeicher();
     const t = uebersetzungen[sprache];
 
     useEffect(() => {

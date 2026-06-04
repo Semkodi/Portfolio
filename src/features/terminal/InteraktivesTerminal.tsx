@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, HelpCircle } from 'lucide-react';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 
 /**
  * Nachrichtentyps für den Verlauf des Terminals.
@@ -15,7 +15,7 @@ interface Verlaufseintrag {
  * Unterstützt verschiedene Befehle und reagiert dynamisch auf Benutzereingaben.
  */
 const InteraktivesTerminal: React.FC = () => {
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
     const scrollReferenz = useRef<HTMLDivElement>(null);
 
     const [verlauf, setzeVerlauf] = useState<Verlaufseintrag[]>([

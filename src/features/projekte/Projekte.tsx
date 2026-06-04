@@ -4,7 +4,7 @@ import { motion, useDragControls } from 'framer-motion';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
 import SpotlightKarte from '../../components/ui/SpotlightKarte';
 import ProjektModal, { Projekt } from '../../components/ui/ProjektModal';
-import { useSpracheStore } from '../../store/useSpracheStore';
+import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
 /**
@@ -32,7 +32,7 @@ const ProjektKarte: React.FC<ProjektKarteProps> = ({
     // Drag Controls für das Verschieben des Fensters
     const dragControls = useDragControls();
 
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
     const t = uebersetzungen[sprache];
 
     const schliesseFenster = () => {
@@ -175,7 +175,7 @@ const Projekte: React.FC = () => {
     const [ausgewaehltesProjekt, setzeAusgewaehltesProjekt] = useState<Projekt | null>(null);
     const [istModalOffen, setzeIstModalOffen] = useState<boolean>(false);
 
-    const { sprache } = useSpracheStore();
+    const { sprache } = benutzeSpracheSpeicher();
     const t = uebersetzungen[sprache];
 
     const oeffneProjekt = (projekt: Projekt) => {
