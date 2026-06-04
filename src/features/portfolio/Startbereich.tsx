@@ -17,16 +17,6 @@ const Startbereich: React.FC = () => {
 
     return (
         <section className="min-h-screen flex items-center justify-center text-center relative overflow-hidden py-20" aria-label="Willkommensbereich">
-            {/* 1. LED-Leuchtstäbe an den Seiten (Workstation-Atmosphäre aus dem Foto) */}
-            <div 
-                className="absolute left-6 top-1/2 -translate-y-1/2 w-1.5 h-[60vh] rounded-full bg-[#00f2fe] animate-led-cyan z-0 pointer-events-none hidden lg:block" 
-                style={{ content: "''" }}
-            />
-            <div 
-                className="absolute right-6 top-1/2 -translate-y-1/2 w-1.5 h-[60vh] rounded-full bg-[#ec4899] animate-led-pink z-0 pointer-events-none hidden lg:block" 
-                style={{ content: "''" }}
-            />
-
             {/* Weiches Hintergrundglühen */}
             <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#00f2fe]/10 rounded-full blur-[100px] -z-10 animate-pulse" />
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#ec4899]/10 rounded-full blur-[100px] -z-10 animate-pulse delay-1000" />

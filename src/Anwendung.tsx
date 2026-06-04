@@ -34,6 +34,16 @@ const Anwendung: React.FC = () => {
             <PhysikHintergrund />
             <SchaltkreisHintergrund />
 
+            {/* Globale LED-Leuchtstäbe an den Seiten (Workstation-Atmosphäre aus dem Foto) */}
+            <div 
+                className="fixed left-6 top-1/2 -translate-y-1/2 w-1.5 h-[65vh] rounded-full bg-[#00f2fe] animate-led-cyan z-0 pointer-events-none hidden lg:block" 
+                style={{ content: "''" }}
+            />
+            <div 
+                className="fixed right-6 top-1/2 -translate-y-1/2 w-1.5 h-[65vh] rounded-full bg-[#ec4899] animate-led-pink z-0 pointer-events-none hidden lg:block" 
+                style={{ content: "''" }}
+            />
+
             {/* Navigation & Layout */}
             <Navigationsleiste />
 
