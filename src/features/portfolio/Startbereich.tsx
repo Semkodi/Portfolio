@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Schreibmaschine from '../../components/ui/Schreibmaschine';
 import GlitzerText from '../../components/ui/GlitzerText';
-import GlanzButton from '../../components/ui/GlanzButton';
+import MagnetischerButton from '../../components/ui/MagnetischerButton';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
 
@@ -35,20 +35,21 @@ const Startbereich: React.FC = () => {
                     dangerouslySetInnerHTML={{ __html: t.hero.beschreibung }}
                 />
 
-                <div className="flex gap-4 justify-center flex-wrap">
-                    <GlanzButton
+                <div className="flex gap-2 justify-center items-center flex-wrap">
+                    <MagnetischerButton
                         href="#projekte"
-                        klasse="btn btn-primary shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all active:scale-95"
+                        variante="primary"
                         ariaLabel="Zu meinen Projekten scrollen"
                     >
                         {t.hero.btnProjekte}
-                    </GlanzButton>
-                    <GlanzButton
+                    </MagnetischerButton>
+                    <MagnetischerButton
                         href="#kontakt"
-                        klasse="btn btn-outline hover:bg-white/5 active:scale-95 transition-all text-[#c5a880] border-primary/20 hover:border-primary"
+                        variante="outline"
+                        ariaLabel="Kontaktbereich öffnen"
                     >
                         {t.hero.btnKontakt}
-                    </GlanzButton>
+                    </MagnetischerButton>
                 </div>
             </motion.div>
         </section>
@@ -56,4 +57,5 @@ const Startbereich: React.FC = () => {
 };
 
 export default Startbereich;
+
 
