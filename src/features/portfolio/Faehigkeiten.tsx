@@ -11,10 +11,11 @@ import { motion, useDragControls } from 'framer-motion';
 import ScrollEnthuellung from '../../components/ui/ScrollEnthuellung';
 import GlitzerText from '../../components/ui/GlitzerText';
 import LaserRahmen from '../../components/ui/LaserRahmen';
-import KreisendeSkills from '../../components/ui/KreisendeSkills';
+import FliessbandSkills from '../../components/ui/FliessbandSkills';
 import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { benutzeMagicSpeicher } from '@/speicher/magicSpeicher';
 import { uebersetzungen } from '../../data/uebersetzungen';
+
 
 /**
  * Definition der Datenstrukturen für technische Fähigkeiten.
@@ -169,7 +170,7 @@ const FaehigkeitFenster: React.FC<{ kategorie: FaehigkeitsKategorie; index: numb
  */
 const Faehigkeiten: React.FC = () => {
     const { sprache } = benutzeSpracheSpeicher();
-    const { kreisendeSkillsAktiv } = benutzeMagicSpeicher();
+    const { fliessbandSkillsAktiv } = benutzeMagicSpeicher();
     const t = uebersetzungen[sprache];
 
     // Zentrales Daten-Array der technischen Kompetenzen
@@ -229,9 +230,9 @@ const Faehigkeiten: React.FC = () => {
                 </div>
             </ScrollEnthuellung>
 
-            {kreisendeSkillsAktiv && (
+            {fliessbandSkillsAktiv && (
                 <div className="mb-16 flex justify-center animate-in fade-in duration-500">
-                    <KreisendeSkills />
+                    <FliessbandSkills />
                 </div>
             )}
 

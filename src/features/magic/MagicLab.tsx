@@ -3,7 +3,7 @@ import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 import { benutzeMagicSpeicher } from '@/speicher/magicSpeicher';
 import LaserRahmen from '../../components/ui/LaserRahmen';
 import GlanzButton from '../../components/ui/GlanzButton';
-import KreisendeSkills from '../../components/ui/KreisendeSkills';
+import FliessbandSkills from '../../components/ui/FliessbandSkills';
 import GlitzerText from '../../components/ui/GlitzerText';
 
 /**
@@ -18,13 +18,11 @@ export const MagicLab: React.FC = () => {
     const {
         laserRahmenAktiv,
         glanzButtonAktiv,
-        kreisendeSkillsAktiv,
-        meteorHintergrundAktiv,
+        fliessbandSkillsAktiv,
         glitzerTextAktiv,
         setzeLaserRahmenAktiv,
         setzeGlanzButtonAktiv,
-        setzeKreisendeSkillsAktiv,
-        setzeMeteorHintergrundAktiv,
+        setzeFliessbandSkillsAktiv,
         setzeGlitzerTextAktiv
     } = benutzeMagicSpeicher();
 
@@ -38,12 +36,12 @@ export const MagicLab: React.FC = () => {
                     </h2>
                     <p className="text-muted text-base font-medium">
                         {de 
-                            ? 'Willkommen im Test-Labor! Hier sind alle angefragten Magic UI Effekte live. Klicke dich durch und sag mir, welche wir in dein Portfolio übernehmen sollen.'
-                            : 'Welcome to the Test Lab! Here are all requested Magic UI effects live. Test them out and let me know which ones we should implement.'}
+                            ? 'Willkommen im Test-Labor! Hier sind alle verbleibenden Magic UI Effekte live. Klicke dich durch und sag mir, was du davon hältst.'
+                            : 'Welcome to the Test Lab! Here are all remaining Magic UI effects live. Test them out and let me know what you think.'}
                     </p>
                 </div>
 
-                {/* Grid der Effekte */}
+                {/* Grid der Effekte (1 Reihe für alle 3 verbleibenden Effekte) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
                     {/* Effekt A: Border Beam */}
@@ -105,53 +103,29 @@ export const MagicLab: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Effekt C: Orbiting Circles */}
+                    {/* Effekt C: Conveyor Belt Skills */}
                     <div className="flex flex-col gap-3">
                         <div className="flex justify-between items-center px-1">
                             <span className="font-mono text-[9px] uppercase tracking-widest text-[#cd7f32] font-bold">
-                                EFFEKT 03 // ORBITING SKILLS
+                                EFFEKT 03 // SKILL CONVEYOR
                             </span>
                             <button
-                                onClick={() => setzeKreisendeSkillsAktiv(!kreisendeSkillsAktiv)}
-                                className={`text-[10px] font-bold tracking-widest uppercase hover:underline cursor-pointer transition-colors ${kreisendeSkillsAktiv ? 'text-[#c5a880]' : 'text-zinc-600'}`}
+                                onClick={() => setzeFliessbandSkillsAktiv(!fliessbandSkillsAktiv)}
+                                className={`text-[10px] font-bold tracking-widest uppercase hover:underline cursor-pointer transition-colors ${fliessbandSkillsAktiv ? 'text-[#c5a880]' : 'text-zinc-600'}`}
                             >
-                                {kreisendeSkillsAktiv ? (de ? 'Deaktivieren' : 'Disable') : (de ? 'Aktivieren' : 'Enable')}
+                                {fliessbandSkillsAktiv ? (de ? 'Deaktivieren' : 'Disable') : (de ? 'Aktivieren' : 'Enable')}
                             </button>
                         </div>
                         <div className="flex flex-col gap-2 relative">
-                            {kreisendeSkillsAktiv ? (
-                                <KreisendeSkills />
+                            {fliessbandSkillsAktiv ? (
+                                <div className="border border-white/5 bg-zinc-950/20 rounded-3xl p-2 h-[220px] overflow-hidden flex items-center">
+                                    <FliessbandSkills />
+                                </div>
                             ) : (
-                                <div className="w-full h-[360px] flex items-center justify-center border border-white/5 bg-zinc-950/20 rounded-3xl text-muted text-xs select-none">
-                                    {de ? 'Orbit-Effekt ist deaktiviert' : 'Orbit effect is disabled'}
+                                <div className="w-full h-[220px] flex items-center justify-center border border-white/5 bg-zinc-950/20 rounded-3xl text-muted text-xs select-none">
+                                    {de ? 'Fließband-Effekt ist deaktiviert' : 'Conveyor effect is disabled'}
                                 </div>
                             )}
-                        </div>
-                    </div>
-
-                    {/* Effekt D: Sternschnuppen (Meteors) Toggle */}
-                    <div className="flex flex-col gap-3 md:col-span-2 lg:col-span-3">
-                        <span className="font-mono text-[9px] uppercase tracking-widest text-[#cd7f32] font-bold">
-                            EFFEKT 04 // BACKGROUND METEORS
-                        </span>
-                        <div className="glass bg-zinc-950 p-6 rounded-3xl border border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
-                            <div className="space-y-1 text-center sm:text-left select-none">
-                                <h4 className="text-lg font-bold text-white">Meteors Control Panel</h4>
-                                <p className="text-muted text-xs leading-relaxed font-sans font-medium">
-                                    {de 
-                                        ? 'Schalte goldene Sternschnuppen ein, die elegant und zufällig im gesamten Hintergrund der Website fliegen.' 
-                                        : 'Enable gold shooting stars flying elegantly and randomly across the background of the website.'}
-                                </p>
-                            </div>
-                            <button
-                                onClick={() => setzeMeteorHintergrundAktiv(!meteorHintergrundAktiv)}
-                                className={`py-3 px-8 rounded-2xl font-black text-xs tracking-wider uppercase active:scale-95 transition-all duration-300 cursor-pointer whitespace-nowrap
-                                    ${meteorHintergrundAktiv 
-                                        ? 'bg-primary text-black shadow-lg shadow-primary/20' 
-                                        : 'bg-zinc-900 border border-zinc-800 text-muted hover:text-white'}`}
-                            >
-                                {meteorHintergrundAktiv ? (de ? 'Meteore Deaktivieren' : 'Disable Meteors') : (de ? 'Meteore Aktivieren' : 'Enable Meteors')}
-                            </button>
                         </div>
                     </div>
 

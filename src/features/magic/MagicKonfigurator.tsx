@@ -6,8 +6,7 @@ import { benutzeSpracheSpeicher } from '@/speicher/spracheSpeicher';
 
 /**
  * MagicKonfigurator - Das interaktive Live-Effekt-Kontrollzentrum.
- * Erlaubt dem Benutzer, alle Magic UI-Effekte direkt auf der Live-Webseite zu testen
- * und auszuwählen, welche dauerhaft übernommen werden sollen.
+ * Erlaubt dem Benutzer, alle verbleibenden Magic UI-Effekte direkt auf der Live-Webseite zu testen.
  */
 export const MagicKonfigurator: React.FC = () => {
     const { sprache } = benutzeSpracheSpeicher();
@@ -16,13 +15,11 @@ export const MagicKonfigurator: React.FC = () => {
     const {
         laserRahmenAktiv,
         glanzButtonAktiv,
-        kreisendeSkillsAktiv,
-        meteorHintergrundAktiv,
+        fliessbandSkillsAktiv,
         glitzerTextAktiv,
         setzeLaserRahmenAktiv,
         setzeGlanzButtonAktiv,
-        setzeKreisendeSkillsAktiv,
-        setzeMeteorHintergrundAktiv,
+        setzeFliessbandSkillsAktiv,
         setzeGlitzerTextAktiv,
         alleAktivieren,
         alleDeaktivieren
@@ -75,7 +72,7 @@ export const MagicKonfigurator: React.FC = () => {
                                     <h4 className="text-sm font-black text-white tracking-wide uppercase">
                                         {de ? 'Effekt-Labor' : 'Effect Lab'}
                                     </h4>
-                                    <span className="text-[9px] text-[#cd7f32] font-mono tracking-widest">MAGIC UI v1.0</span>
+                                    <span className="text-[9px] text-[#cd7f32] font-mono tracking-widest">MAGIC UI v1.1</span>
                                 </div>
                             </div>
                             <button
@@ -102,16 +99,10 @@ export const MagicKonfigurator: React.FC = () => {
                                 setzeGlanzButtonAktiv
                             )}
                             {rendereSchalter(
-                                de ? '💫 Kreisende Skills' : '💫 Orbiting Skills',
-                                de ? 'Planeten-Layout für Core-Technologien im Skillbereich.' : 'Planet layout for core technologies in skills section.',
-                                kreisendeSkillsAktiv,
-                                setzeKreisendeSkillsAktiv
-                            )}
-                            {rendereSchalter(
-                                de ? '☄️ Sternschnuppen' : '☄️ Shooting Stars',
-                                de ? 'Fliegende Meteore sanft durch den Hintergrund gleiten.' : 'Flying meteors sliding smoothly through the background.',
-                                meteorHintergrundAktiv,
-                                setzeMeteorHintergrundAktiv
+                                de ? '⚙️ Skill-Fließband' : '⚙️ Skill Conveyor',
+                                de ? 'Fließband-Förderer für Core-Technologien im Skillbereich.' : 'Conveyor belt for core technologies in skills section.',
+                                fliessbandSkillsAktiv,
+                                setzeFliessbandSkillsAktiv
                             )}
                             {rendereSchalter(
                                 de ? '✨ Glitzer-Text' : '✨ Sparkle Text',
@@ -167,3 +158,4 @@ export const MagicKonfigurator: React.FC = () => {
 };
 
 export default MagicKonfigurator;
+

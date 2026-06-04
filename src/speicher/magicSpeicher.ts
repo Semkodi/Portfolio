@@ -2,18 +2,16 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 /**
- * Schnittstelle für den Zustand der Magic UI-Effekte.
+ * Schnittstelle für den Zustand der verbleibenden Magic UI-Effekte.
  */
 interface MagicZustand {
     laserRahmenAktiv: boolean;
     glanzButtonAktiv: boolean;
-    kreisendeSkillsAktiv: boolean;
-    meteorHintergrundAktiv: boolean;
+    fliessbandSkillsAktiv: boolean;
     glitzerTextAktiv: boolean;
     setzeLaserRahmenAktiv: (aktiv: boolean) => void;
     setzeGlanzButtonAktiv: (aktiv: boolean) => void;
-    setzeKreisendeSkillsAktiv: (aktiv: boolean) => void;
-    setzeMeteorHintergrundAktiv: (aktiv: boolean) => void;
+    setzeFliessbandSkillsAktiv: (aktiv: boolean) => void;
     setzeGlitzerTextAktiv: (aktiv: boolean) => void;
     alleAktivieren: () => void;
     alleDeaktivieren: () => void;
@@ -21,33 +19,29 @@ interface MagicZustand {
 
 /**
  * Zustand-Speicher für die interaktiven Magic-UI Effekte.
- * Speichert den Aktivierungsstatus der Effekte im LocalStorage.
+ * Verwaltet die Zustände der aktiven Effekte im LocalStorage.
  */
 export const benutzeMagicSpeicher = create<MagicZustand>()(
     persist(
         (setze) => ({
             laserRahmenAktiv: true,
             glanzButtonAktiv: true,
-            kreisendeSkillsAktiv: true,
-            meteorHintergrundAktiv: true,
+            fliessbandSkillsAktiv: true,
             glitzerTextAktiv: true,
             setzeLaserRahmenAktiv: (aktiv) => setze({ laserRahmenAktiv: aktiv }),
             setzeGlanzButtonAktiv: (aktiv) => setze({ glanzButtonAktiv: aktiv }),
-            setzeKreisendeSkillsAktiv: (aktiv) => setze({ kreisendeSkillsAktiv: aktiv }),
-            setzeMeteorHintergrundAktiv: (aktiv) => setze({ meteorHintergrundAktiv: aktiv }),
+            setzeFliessbandSkillsAktiv: (aktiv) => setze({ fliessbandSkillsAktiv: aktiv }),
             setzeGlitzerTextAktiv: (aktiv) => setze({ glitzerTextAktiv: aktiv }),
             alleAktivieren: () => setze({
                 laserRahmenAktiv: true,
                 glanzButtonAktiv: true,
-                kreisendeSkillsAktiv: true,
-                meteorHintergrundAktiv: true,
+                fliessbandSkillsAktiv: true,
                 glitzerTextAktiv: true,
             }),
             alleDeaktivieren: () => setze({
                 laserRahmenAktiv: false,
                 glanzButtonAktiv: false,
-                kreisendeSkillsAktiv: false,
-                meteorHintergrundAktiv: false,
+                fliessbandSkillsAktiv: false,
                 glitzerTextAktiv: false,
             }),
         }),
