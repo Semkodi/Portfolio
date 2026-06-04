@@ -55,12 +55,15 @@ const UeberMich: React.FC = () => {
                         <div className="relative group">
                             {/* Glass-Rahmen für das Bild */}
                             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 p-2 glass transition-all duration-700 group-hover:border-primary/50 group-hover:scale-[1.02] shadow-2xl shadow-primary/10">
-                                <img
-                                    src="/profile.jpg"
-                                    alt="Profilbild von Semir Borogovac"
-                                    className="w-full h-full object-cover object-center rounded-full grayscale group-hover:grayscale-0 transition-all duration-700 backdrop-blur-[2px] group-hover:backdrop-blur-0"
-                                    loading="lazy"
-                                />
+                                <picture>
+                                    <source srcSet="/profile.webp" type="image/webp" />
+                                    <img
+                                        src="/profile.jpg"
+                                        alt="Profilbild von Semir Borogovac"
+                                        className="w-full h-full object-cover object-center rounded-full grayscale group-hover:grayscale-0 transition-all duration-700 backdrop-blur-[2px] group-hover:backdrop-blur-0"
+                                        loading="lazy"
+                                    />
+                                </picture>
                             </div>
 
                             {/* Dynamischer, rotierender Zierring */}
