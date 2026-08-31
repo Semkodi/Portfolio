@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=Space+Mono:wght@400;700&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #4B2EE8; text-decoration: none; }
+    a:hover { color: #17171B; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(46px) rotate(2deg); }
+      to   { opacity: 1; transform: translateY(0) rotate(0deg); }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes draw {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+    @keyframes seal-spin { to { transform: rotate(360deg); } }
+    @keyframes march {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes blob {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50%      { transform: translate(-70px, 50px) scale(1.18); }
+    }
+    @keyframes tick { 0%, 45% { opacity: 1; } 50%, 100% { opacity: 0.25; } }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 2300px; background-color: #F1EDE4; font-family: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; color: #17171B; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+
+  <div style="position: absolute; top: 340px; right: -160px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(closest-side, rgba(75,46,232,0.22), rgba(75,46,232,0)); filter: blur(30px); animation: blob 19s ease-in-out infinite;"></div>
+  <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(23,23,27,0.055) 1px, transparent 1px); background-size: 3px 3px; opacity: 0.6;"></div>
+
+  <div style="position: relative; display: flex; align-items: center; justify-content: space-between; padding: 22px 52px; border-bottom: 1px solid rgba(23,23,27,0.14);">
+    <span style="font-size: 19px; font-weight: 800; letter-spacing: -0.03em;">Semir Borogovac</span>
+    <div style="display: flex; align-items: center; gap: 30px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">
+      <span>Über</span><span>Skills</span><span>Projekte</span><span>Werdegang</span>
+      <span style="background-color: #17171B; color: #F1EDE4; padding: 9px 17px; border-radius: 999px;">Kontakt</span>
+    </div>
+  </div>
+
+  <div style="position: relative; padding: 78px 52px 0 52px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: start;">
+    <div style="grid-column: span 9;">
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 26px; opacity: 0; animation: fade-in 0.7s ease-out 0.05s forwards;">
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #4B2EE8;">Portfolio 2026</span>
+        <div style="height: 2px; width: 220px; background-color: #17171B; transform-origin: left; animation: draw 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s both;"></div>
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B675F;">Dornburg, Hessen</span>
+      </div>
+
+      <h1 style="margin: 0; font-size: 132px; line-height: 0.9; letter-spacing: -0.05em; font-weight: 800;">
+        <span style="display: block; opacity: 0; animation: rise 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;">Ich baue</span>
+        <span style="display: block; opacity: 0; color: #4B2EE8; font-style: italic; animation: rise 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) 0.26s forwards;">saubere</span>
+        <span style="display: block; opacity: 0; animation: rise 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) 0.42s forwards;">Software.</span>
+      </h1>
+
+      <div style="display: flex; align-items: flex-start; gap: 44px; margin-top: 46px; opacity: 0; animation: fade-in 0.8s ease-out 0.7s forwards;">
+        <p style="margin: 0; max-width: 520px; font-size: 18px; line-height: 1.68; color: #443F38; text-wrap: pretty;">Fachinformatiker für Anwendungsentwicklung mit Fokus auf wartbarem Backend-Code, Enterprise-Low-Code und modernen Web-Oberflächen. Ich lerne schnell und setze Wissen direkt in Projekten um.</p>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-family: 'Space Mono', monospace; font-size: 12.5px; letter-spacing: 0.04em; text-transform: uppercase; padding-top: 3px;">
+          <span>Java &amp; Spring Boot</span>
+          <span>Mendix Low-Code</span>
+          <span>React &amp; TypeScript</span>
+          <span>REST-APIs &amp; SQL</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 14px; margin-top: 44px; opacity: 0; animation: fade-in 0.8s ease-out 0.85s forwards;">
+        <div style="display: flex; align-items: center; gap: 11px; background-color: #4B2EE8; color: #F1EDE4; padding: 17px 30px; border-radius: 999px; font-size: 15.5px; font-weight: 600; box-shadow: 6px 6px 0 #17171B;">
+          Projekte ansehen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F1EDE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div style="border: 2px solid #17171B; padding: 15px 30px; border-radius: 999px; font-size: 15.5px; font-weight: 600;">Kontakt aufnehmen</div>
+      </div>
+    </div>
+
+    <div style="grid-column: span 3; display: flex; justify-content: flex-end; padding-top: 40px;">
+      <div style="position: relative; width: 208px; height: 208px;">
+        <div style="position: absolute; inset: 0; animation: seal-spin 26s linear infinite;">
+          <svg width="208" height="208" viewBox="0 0 208 208">
+            <defs>
+              <path id="sealpath" d="M104,104 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/>
+            </defs>
+            <text font-family="Space Mono, monospace" font-size="13.5" letter-spacing="3.4" fill="#17171B">
+              <textPath href="#sealpath" startOffset="0">OFFEN FÜR NEUE AUFGABEN · VERFÜGBAR AB SOFORT · </textPath>
+            </text>
+          </svg>
+        </div>
+        <div style="position: absolute; inset: 44px; border-radius: 50%; background-color: #17171B; display: flex; align-items: center; justify-content: center;">
+          <span style="font-size: 40px; font-weight: 800; letter-spacing: -0.04em; color: #F1EDE4;">SB</span>
+        </div>
+        <div style="position: absolute; top: 52px; right: 46px; width: 11px; height: 11px; border-radius: 50%; background-color: #4B2EE8; animation: tick 1.6s ease-in-out infinite;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; margin-top: 84px; background-color: #17171B; color: #F1EDE4; padding: 15px 0; overflow: hidden;">
+    <div style="display: flex; width: 200%; animation: march 26s linear infinite;">
+      <div style="display: flex; gap: 40px; width: 50%; flex-shrink: 0; white-space: nowrap; font-family: 'Space Mono', monospace; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">
+        <span>Java 21</span><span style="color: #4B2EE8;">◆</span><span>Spring Boot 3</span><span style="color: #4B2EE8;">◆</span><span>Mendix Studio Pro</span><span style="color: #4B2EE8;">◆</span><span>React 18</span><span style="color: #4B2EE8;">◆</span><span>TypeScript</span><span style="color: #4B2EE8;">◆</span><span>PostgreSQL</span><span style="color: #4B2EE8;">◆</span><span>Docker</span><span style="color: #4B2EE8;">◆</span>
+      </div>
+      <div style="display: flex; gap: 40px; width: 50%; flex-shrink: 0; white-space: nowrap; font-family: 'Space Mono', monospace; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;">
+        <span>Java 21</span><span style="color: #4B2EE8;">◆</span><span>Spring Boot 3</span><span style="color: #4B2EE8;">◆</span><span>Mendix Studio Pro</span><span style="color: #4B2EE8;">◆</span><span>React 18</span><span style="color: #4B2EE8;">◆</span><span>TypeScript</span><span style="color: #4B2EE8;">◆</span><span>PostgreSQL</span><span style="color: #4B2EE8;">◆</span><span>Docker</span><span style="color: #4B2EE8;">◆</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; padding: 86px 52px 0 52px; display: flex; flex-direction: column; gap: 34px;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between;">
+      <h2 style="margin: 0; font-size: 44px; font-weight: 800; letter-spacing: -0.04em;">Ausgewählte Arbeiten</h2>
+      <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #6B675F;">Fünf Projekte</span>
+    </div>
+
+    <div style="background-color: #17171B; color: #F1EDE4; border: 2px solid #17171B; border-radius: 14px; padding: 30px 32px; display: grid; grid-template-columns: 1fr 320px; gap: 36px; align-items: center; box-shadow: 9px 9px 0 #4B2EE8;">
+      <div style="display: flex; flex-direction: column; gap: 11px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 9px; height: 9px; border-radius: 50%; background-color: #4B2EE8; animation: tick 1.6s ease-in-out infinite;"></div>
+          <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #A594FF;">Live in Produktion · Kundenprojekt</span>
+        </div>
+        <span style="font-size: 40px; font-weight: 800; letter-spacing: -0.04em;">simply-switch.de</span>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #B8B3AA; max-width: 560px; text-wrap: pretty;">Website eines freien Versicherungsmaklers — von mir umgesetzt und ausgeliefert. Rund neun Seiten mit Beratungsstrecken für Beamte und Privatkunden, Terminbuchung, Schadenmeldung und eingebundenen Google-Bewertungen.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px; font-family: 'Space Mono', monospace; font-size: 11.5px;">
+        <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(241,237,228,0.18);"><span style="color: #8B8780;">STACK</span><span>React · Vite · Tailwind</span></div>
+        <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(241,237,228,0.18);"><span style="color: #8B8780;">UMFANG</span><span>9 Routen · SEO</span></div>
+        <div style="display: flex; justify-content: space-between; color: #A594FF;"><span style="color: #8B8780;">LINK</span><span>simply-switch.de →</span></div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; align-items: start;">
+      <div style="background-color: #FBF8F2; border: 2px solid #17171B; border-radius: 14px; padding: 24px; min-height: 300px; display: flex; flex-direction: column; gap: 13px; box-shadow: 7px 7px 0 #17171B; transform: rotate(-1.4deg);">
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #4B2EE8;">001</span>
+        <span style="font-size: 25px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;">Mendix THM Enterprise Platform</span>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #56514A;">Rollen- und Rechtesystem, automatisierte Microflows, REST-Anbindung an Drittsysteme.</p>
+        <span style="margin-top: auto; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B675F; line-height: 1.7;">Mendix · Microflows · PostgreSQL</span>
+      </div>
+
+      <div style="background-color: #17171B; color: #F1EDE4; border: 2px solid #17171B; border-radius: 14px; padding: 24px; min-height: 300px; display: flex; flex-direction: column; gap: 13px; box-shadow: 7px 7px 0 #4B2EE8; transform: rotate(1.1deg);">
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #A594FF;">002</span>
+        <span style="font-size: 25px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;">DevGram</span>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #B8B3AA;">Code-Snippets teilen, diskutieren und bewerten — mit sauber geschichtetem Spring-Boot-Backend.</p>
+        <span style="margin-top: auto; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #8B8780; line-height: 1.7;">Java 21 · Spring Boot 3 · JWT</span>
+      </div>
+
+      <div style="background-color: #4B2EE8; color: #F1EDE4; border: 2px solid #17171B; border-radius: 14px; padding: 24px; min-height: 300px; display: flex; flex-direction: column; gap: 13px; box-shadow: 7px 7px 0 #17171B; transform: rotate(-0.8deg);">
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #D6CEFF;">003</span>
+        <span style="font-size: 25px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;">LoveHub</span>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #DAD4FF;">Matching nach Präferenzen und ein reaktiver Echtzeit-Chat über WebSockets.</p>
+        <span style="margin-top: auto; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #C4BAFF; line-height: 1.7;">React 18 · TypeScript · WebSockets</span>
+      </div>
+
+      <div style="background-color: #FBF8F2; border: 2px solid #17171B; border-radius: 14px; padding: 24px; min-height: 300px; display: flex; flex-direction: column; gap: 13px; box-shadow: 7px 7px 0 #17171B; transform: rotate(1.6deg);">
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #4B2EE8;">004</span>
+        <span style="font-size: 25px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;">Dieses Portfolio</span>
+        <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #56514A;">Partikel-Monogramm im Canvas, scroll-getriebene Animationen und ein interaktives Terminal.</p>
+        <span style="margin-top: auto; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B675F; line-height: 1.7;">React 18 · Vite · Canvas</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; padding: 78px 52px 0 52px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 7px; border-top: 2px solid #17171B; padding-top: 14px;">
+      <span style="font-size: 30px; font-weight: 800; letter-spacing: -0.035em;">Java 21</span>
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B675F;">Backend &amp; Spring Boot</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 7px; border-top: 2px solid #17171B; padding-top: 14px;">
+      <span style="font-size: 30px; font-weight: 800; letter-spacing: -0.035em;">Mendix</span>
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B675F;">Enterprise Low-Code</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 7px; border-top: 2px solid #17171B; padding-top: 14px;">
+      <span style="font-size: 30px; font-weight: 800; letter-spacing: -0.035em;">React 18</span>
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B675F;">TypeScript &amp; Tailwind</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 7px; border-top: 2px solid #17171B; padding-top: 14px;">
+      <span style="font-size: 30px; font-weight: 800; letter-spacing: -0.035em;">PostgreSQL</span>
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6B675F;">Datenmodellierung &amp; SQL</span>
+    </div>
+  </div>
+
+  <div style="position: relative; margin-top: auto; padding: 104px 52px 52px 52px; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #6B675F;">Schreib mir gern direkt</span>
+      <span style="font-size: 52px; font-weight: 800; letter-spacing: -0.045em;">borogovacsemir@gmail.com</span>
+      <div style="height: 5px; background-color: #4B2EE8; transform-origin: left; animation: draw 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;"></div>
+    </div>
+    <div style="display: flex; gap: 24px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding-bottom: 12px;">
+      <span>GitHub</span><span>LinkedIn</span><span>Lebenslauf</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

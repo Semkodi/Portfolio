@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #5FE3D0; text-decoration: none; }
+    a:hover { color: #A8F2E7; }
+    @keyframes drift-a {
+      0%   { transform: translate3d(0, 0, 0) scale(1); }
+      50%  { transform: translate3d(90px, 60px, 0) scale(1.12); }
+      100% { transform: translate3d(0, 0, 0) scale(1); }
+    }
+    @keyframes drift-b {
+      0%   { transform: translate3d(0, 0, 0) scale(1.05); }
+      50%  { transform: translate3d(-120px, 40px, 0) scale(0.92); }
+      100% { transform: translate3d(0, 0, 0) scale(1.05); }
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+    @keyframes spin-rev { to { transform: rotate(-360deg); } }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(95,227,208,0.55); }
+      70%      { opacity: 0.85; box-shadow: 0 0 0 9px rgba(95,227,208,0); }
+    }
+    @keyframes sweep {
+      0%   { transform: translateX(-120%); }
+      55%  { transform: translateX(320%); }
+      100% { transform: translateX(320%); }
+    }
+    @keyframes scanline {
+      0%   { transform: translateY(0); opacity: 0; }
+      12%  { opacity: 0.7; }
+      88%  { opacity: 0.7; }
+      100% { transform: translateY(620px); opacity: 0; }
+    }
+    @keyframes caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes float-soft {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 2300px; background-color: #07090C; font-family: 'Space Grotesk', system-ui, sans-serif; color: #E9EEF2; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+
+  <div style="position: absolute; top: -180px; left: -120px; width: 780px; height: 640px; border-radius: 50%; background: radial-gradient(closest-side, rgba(31,182,166,0.30), rgba(31,182,166,0)); filter: blur(40px); animation: drift-a 22s ease-in-out infinite;"></div>
+  <div style="position: absolute; top: 120px; right: -180px; width: 820px; height: 700px; border-radius: 50%; background: radial-gradient(closest-side, rgba(124,92,255,0.26), rgba(124,92,255,0)); filter: blur(50px); animation: drift-b 27s ease-in-out infinite;"></div>
+  <div style="position: absolute; top: 980px; left: 320px; width: 700px; height: 520px; border-radius: 50%; background: radial-gradient(closest-side, rgba(31,182,166,0.14), rgba(31,182,166,0)); filter: blur(60px); animation: drift-a 31s ease-in-out infinite;"></div>
+
+  <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(233,238,242,0.055) 1px, transparent 1px); background-size: 4px 4px; opacity: 0.55;"></div>
+  <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(233,238,242,0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(233,238,242,0.028) 1px, transparent 1px); background-size: 120px 120px;"></div>
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(95,227,208,0.75), transparent); animation: scanline 9s linear infinite;"></div>
+
+  <div style="position: relative; display: flex; align-items: center; justify-content: space-between; padding: 24px 30px 24px 56px;">
+    <div style="display: flex; align-items: center; gap: 13px;">
+      <div style="position: relative; width: 34px; height: 34px;">
+        <div style="position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(95,227,208,0.45); border-top-color: rgba(95,227,208,0); animation: spin-slow 6s linear infinite;"></div>
+        <div style="position: absolute; inset: 6px; border-radius: 50%; border: 1px solid rgba(124,92,255,0.5); border-bottom-color: rgba(124,92,255,0); animation: spin-rev 9s linear infinite;"></div>
+        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: #5FE3D0;">SB</div>
+      </div>
+      <span style="font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em;">Semir Borogovac</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; background: rgba(233,238,242,0.05); border: 1px solid rgba(233,238,242,0.09); border-radius: 999px; padding: 8px 10px 8px 18px;">
+      <div style="display: flex; gap: 26px; font-size: 13.5px; color: #9BA6B0; padding-right: 6px;">
+        <span>Über</span><span>Skills</span><span>Projekte</span><span>Werdegang</span>
+      </div>
+      <div style="background: rgba(95,227,208,0.14); border: 1px solid rgba(95,227,208,0.35); border-radius: 999px; padding: 8px 17px; font-size: 13.5px; color: #5FE3D0;">Kontakt</div>
+    </div>
+  </div>
+
+  <div style="position: relative; padding: 96px 56px 0 56px;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 34px;">
+      <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #5FE3D0; animation: pulse-dot 2.4s ease-out infinite;"></div>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: #7E8B96;">OFFEN FÜR NEUE AUFGABEN · DORNBURG, HESSEN</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: start;">
+      <div style="grid-column: span 7;">
+        <h1 style="margin: 0; font-size: 88px; line-height: 1.02; letter-spacing: -0.035em; font-weight: 600;">
+          Ich baue
+          <span style="background-image: linear-gradient(96deg, #5FE3D0 0%, #7C5CFF 62%, #E9EEF2 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">saubere</span>
+          Software.
+        </h1>
+        <p style="margin: 30px 0 0 0; font-size: 18px; line-height: 1.7; color: #9BA6B0; max-width: 620px; text-wrap: pretty;">Fachinformatiker für Anwendungsentwicklung mit Fokus auf wartbarem Backend-Code, Enterprise-Low-Code und modernen Web-Oberflächen. Ich lerne schnell und setze Wissen direkt in Projekten um.</p>
+
+        <div style="display: flex; gap: 14px; margin-top: 42px;">
+          <div style="position: relative; overflow: hidden; background: linear-gradient(180deg, #5FE3D0, #34BFAC); color: #04120F; border-radius: 10px; padding: 16px 30px; font-size: 15px; font-weight: 600; box-shadow: 0 14px 40px rgba(95,227,208,0.26);">
+            <span style="position: relative;">Projekte ansehen</span>
+            <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 60px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent); transform: skewX(-18deg); animation: sweep 4.5s ease-in-out infinite;"></div>
+          </div>
+          <div style="background: rgba(233,238,242,0.05); border: 1px solid rgba(233,238,242,0.13); border-radius: 10px; padding: 16px 30px; font-size: 15px; font-weight: 500; backdrop-filter: blur(14px);">Kontakt aufnehmen</div>
+        </div>
+      </div>
+
+      <div style="grid-column: span 5; animation: float-soft 7s ease-in-out infinite;">
+        <div style="background: rgba(233,238,242,0.045); border: 1px solid rgba(233,238,242,0.10); border-radius: 16px; backdrop-filter: blur(20px); box-shadow: 0 30px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08); overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 13px 18px; border-bottom: 1px solid rgba(233,238,242,0.08);">
+            <div style="width: 9px; height: 9px; border-radius: 50%; background-color: #E0655F;"></div>
+            <div style="width: 9px; height: 9px; border-radius: 50%; background-color: #E0B45F;"></div>
+            <div style="width: 9px; height: 9px; border-radius: 50%; background-color: #5FE3D0;"></div>
+            <span style="margin-left: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #7E8B96;">ProjektService.java</span>
+          </div>
+          <div style="padding: 20px 22px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.85;">
+            <div style="color: #7C5CFF;">@Service</div>
+            <div><span style="color: #7C5CFF;">public class</span> <span style="color: #E9EEF2;">ProjektService</span> {</div>
+            <div style="padding-left: 18px; color: #7E8B96;">// Geschäftslogik, klar gekapselt</div>
+            <div style="padding-left: 18px;"><span style="color: #7C5CFF;">public</span> <span style="color: #5FE3D0;">Projekt</span> anlegen(<span style="color: #5FE3D0;">Entwurf</span> e) {</div>
+            <div style="padding-left: 36px; color: #B7C1CA;">validiere(e);</div>
+            <div style="padding-left: 36px; color: #B7C1CA;"><span style="color: #7C5CFF;">return</span> repo.save(e.zuProjekt());</div>
+            <div style="padding-left: 18px;">}</div>
+            <div>}<span style="display: inline-block; width: 8px; height: 15px; background-color: #5FE3D0; margin-left: 5px; vertical-align: -2px; animation: caret 1.1s steps(1) infinite;"></span></div>
+          </div>
+          <div style="display: flex; gap: 8px; padding: 14px 22px; border-top: 1px solid rgba(233,238,242,0.08); font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #7E8B96;">
+            <span style="border: 1px solid rgba(233,238,242,0.12); border-radius: 5px; padding: 4px 9px;">Java 21</span>
+            <span style="border: 1px solid rgba(233,238,242,0.12); border-radius: 5px; padding: 4px 9px;">Spring Boot 3</span>
+            <span style="border: 1px solid rgba(233,238,242,0.12); border-radius: 5px; padding: 4px 9px;">JUnit 5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; padding: 92px 56px 0 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px;">
+    <div style="background: rgba(233,238,242,0.04); border: 1px solid rgba(233,238,242,0.09); border-radius: 14px; backdrop-filter: blur(16px); padding: 24px; display: flex; flex-direction: column; gap: 9px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);">
+      <span style="font-size: 27px; font-weight: 600; letter-spacing: -0.02em;">Java 21</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.09em; color: #7E8B96;">BACKEND &amp; SPRING BOOT</span>
+    </div>
+    <div style="background: rgba(233,238,242,0.04); border: 1px solid rgba(233,238,242,0.09); border-radius: 14px; backdrop-filter: blur(16px); padding: 24px; display: flex; flex-direction: column; gap: 9px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);">
+      <span style="font-size: 27px; font-weight: 600; letter-spacing: -0.02em;">Mendix</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.09em; color: #7E8B96;">ENTERPRISE LOW-CODE</span>
+    </div>
+    <div style="background: rgba(233,238,242,0.04); border: 1px solid rgba(233,238,242,0.09); border-radius: 14px; backdrop-filter: blur(16px); padding: 24px; display: flex; flex-direction: column; gap: 9px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);">
+      <span style="font-size: 27px; font-weight: 600; letter-spacing: -0.02em;">React 18</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.09em; color: #7E8B96;">TYPESCRIPT &amp; TAILWIND</span>
+    </div>
+    <div style="background: rgba(233,238,242,0.04); border: 1px solid rgba(233,238,242,0.09); border-radius: 14px; backdrop-filter: blur(16px); padding: 24px; display: flex; flex-direction: column; gap: 9px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);">
+      <span style="font-size: 27px; font-weight: 600; letter-spacing: -0.02em;">PostgreSQL</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.09em; color: #7E8B96;">DATENMODELLIERUNG &amp; SQL</span>
+    </div>
+  </div>
+
+  <div style="position: relative; padding: 110px 56px 0 56px; display: flex; flex-direction: column; gap: 26px;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between;">
+      <h2 style="margin: 0; font-size: 34px; font-weight: 600; letter-spacing: -0.025em;">Ausgewählte Arbeiten</h2>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #7E8B96;">05 PROJEKTE</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+      <div style="grid-column: span 2; position: relative; overflow: hidden; background: rgba(95,227,208,0.06); border: 1px solid rgba(95,227,208,0.28); border-radius: 18px; backdrop-filter: blur(18px); padding: 32px; display: grid; grid-template-columns: 1fr 340px; gap: 36px; align-items: center; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);">
+        <div style="position: absolute; top: -140px; left: 40%; width: 420px; height: 320px; background: radial-gradient(closest-side, rgba(95,227,208,0.22), rgba(95,227,208,0));"></div>
+        <div style="position: relative; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #5FE3D0; animation: pulse-dot 2.4s ease-out infinite;"></div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5FE3D0;">LIVE IN PRODUKTION · KUNDENPROJEKT</span>
+          </div>
+          <span style="font-size: 34px; font-weight: 600; letter-spacing: -0.03em;">simply-switch.de</span>
+          <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #9BA6B0; max-width: 580px; text-wrap: pretty;">Website eines freien Versicherungsmaklers — von mir umgesetzt und ausgeliefert. Rund neun Seiten mit Beratungsstrecken für Beamte und Privatkunden, Terminbuchung, Schadenmeldung und eingebundenen Google-Bewertungen.</p>
+        </div>
+        <div style="position: relative; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(233,238,242,0.1); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #9BA6B0;"><span style="color: #6C7883;">STACK</span><span>React 18 · Vite · Tailwind</span></div>
+          <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid rgba(233,238,242,0.1); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #9BA6B0;"><span style="color: #6C7883;">UMFANG</span><span>9 Routen · SEO</span></div>
+          <div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #5FE3D0;"><span style="color: #6C7883;">LINK</span><span>simply-switch.de →</span></div>
+        </div>
+      </div>
+
+      <div style="position: relative; overflow: hidden; background: rgba(233,238,242,0.04); border: 1px solid rgba(233,238,242,0.09); border-radius: 18px; backdrop-filter: blur(18px); padding: 30px; min-height: 210px; display: flex; flex-direction: column; gap: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);">
+        <div style="position: absolute; top: -90px; right: -70px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(closest-side, rgba(31,182,166,0.28), rgba(31,182,166,0));"></div>
+        <span style="position: relative; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5FE3D0;">001 · ENTERPRISE LOW-CODE</span>
+        <span style="position: relative; font-size: 25px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;">Mendix THM Enterprise Platform</span>
+        <p style="position: relative; margin: 0; font-size: 14.5px; line-height: 1.65; color: #9BA6B0;">Granulares Rollen- und Rechtesystem, automatisierte Microflow-Workflows und REST-Schnittstellen.</p>
+        <span style="position: relative; margin-top: auto; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6C7883;">MENDIX · MICROFLOWS · POSTGRESQL · REST</span>
+      </div>
+
+      <div style="position: relative; overflow: hidden; background: rgba(233,238,242,0.04); border: 1px solid rgba(233,238,242,0.09); border-radius: 18px; backdrop-filter: blur(18px); padding: 30px; min-height: 210px; display: flex; flex-direction: column; gap: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);">
+        <div style="position: absolute; top: -90px; right: -70px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(closest-side, rgba(124,92,255,0.28), rgba(124,92,255,0));"></div>
+        <span style="position: relative; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #A18CFF;">002 · JAVA &amp; SPRING BOOT</span>
+        <span style="position: relative; font-size: 25px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;">DevGram</span>
+        <p style="position: relative; margin: 0; font-size: 14.5px; line-height: 1.65; color: #9BA6B0;">Code-Snippets teilen, diskutieren und bewerten — sauber geschichtet in Controller, Service, Repository.</p>
+        <span style="position: relative; margin-top: auto; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6C7883;">JAVA 21 · SPRING BOOT 3 · JWT · REACT</span>
+      </div>
+
+      <div style="position: relative; overflow: hidden; background: rgba(233,238,242,0.04); border: 1px solid rgba(233,238,242,0.09); border-radius: 18px; backdrop-filter: blur(18px); padding: 30px; min-height: 210px; display: flex; flex-direction: column; gap: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);">
+        <div style="position: absolute; top: -90px; right: -70px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(closest-side, rgba(31,182,166,0.20), rgba(31,182,166,0));"></div>
+        <span style="position: relative; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5FE3D0;">003 · FULLSTACK WEB</span>
+        <span style="position: relative; font-size: 25px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;">LoveHub</span>
+        <p style="position: relative; margin: 0; font-size: 14.5px; line-height: 1.65; color: #9BA6B0;">Matching nach Präferenzen und ein reaktiver Echtzeit-Chat über WebSockets.</p>
+        <span style="position: relative; margin-top: auto; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6C7883;">REACT 18 · TYPESCRIPT · WEBSOCKETS · ZUSTAND</span>
+      </div>
+
+      <div style="position: relative; overflow: hidden; background: rgba(233,238,242,0.04); border: 1px solid rgba(233,238,242,0.09); border-radius: 18px; backdrop-filter: blur(18px); padding: 30px; min-height: 210px; display: flex; flex-direction: column; gap: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);">
+        <div style="position: absolute; top: -90px; right: -70px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(closest-side, rgba(124,92,255,0.20), rgba(124,92,255,0));"></div>
+        <span style="position: relative; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #A18CFF;">004 · INTERAKTIV · 3D &amp; CLI</span>
+        <span style="position: relative; font-size: 25px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2;">Dieses Portfolio</span>
+        <p style="position: relative; margin: 0; font-size: 14.5px; line-height: 1.65; color: #9BA6B0;">Eigenes Partikel-Monogramm im Canvas, scroll-getriebene Animationen und ein interaktives Terminal.</p>
+        <span style="position: relative; margin-top: auto; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6C7883;">REACT 18 · VITE · FRAMER MOTION · CANVAS</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; margin-top: auto; padding: 110px 56px 56px 56px; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.16em; color: #7E8B96;">KONTAKT</span>
+      <span style="font-size: 40px; font-weight: 600; letter-spacing: -0.03em; color: #5FE3D0; text-shadow: 0 0 40px rgba(95,227,208,0.35);">borogovacsemir@gmail.com</span>
+    </div>
+    <div style="display: flex; gap: 10px; padding-bottom: 8px;">
+      <span style="background: rgba(233,238,242,0.05); border: 1px solid rgba(233,238,242,0.10); border-radius: 999px; padding: 10px 18px; font-size: 13px; color: #9BA6B0;">GitHub</span>
+      <span style="background: rgba(233,238,242,0.05); border: 1px solid rgba(233,238,242,0.10); border-radius: 999px; padding: 10px 18px; font-size: 13px; color: #9BA6B0;">LinkedIn</span>
+      <span style="background: rgba(233,238,242,0.05); border: 1px solid rgba(233,238,242,0.10); border-radius: 999px; padding: 10px 18px; font-size: 13px; color: #9BA6B0;">Lebenslauf</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

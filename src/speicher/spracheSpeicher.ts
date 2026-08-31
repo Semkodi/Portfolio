@@ -1,23 +1,22 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export type Sprache = 'de' | 'en';
 
-/**
- * Schnittstelle für den globalen Sprach-Zustand.
- */
 interface SpracheZustand {
-    sprache: Sprache;
-    setzeSprache: (sprache: Sprache) => void;
-    umschaltenSprache: () => void;
+  sprache: Sprache;
+  setzeSprache: (sprache: Sprache) => void;
+  umschalten: () => void;
 }
 
-/**
- * Zustand-Speicher für die Internationalisierung (Deutsch/Englisch).
- */
-export const benutzeSpracheSpeicher = create<SpracheZustand>((setze) => ({
-    sprache: 'de', // Standardmäßig auf Deutsch
-    setzeSprache: (sprache) => setze({ sprache }),
-    umschaltenSprache: () => setze((zustand) => ({ 
-        sprache: zustand.sprache === 'de' ? 'en' : 'de' 
-    })),
-}));
+/** Globaler Sprach-Zustand (Deutsch / Englisch), dauerhaft im LocalStorage. */
+export const benutzeSpracheSpeicher = create<SpracheZustand>()(
+  persist(
+    (setze) => ({
+      sprache: 'de',
+      setzeSprache: (sprache) => setze({ sprache }),
+      umschalten: () => setze((z) => ({ sprache: z.sprache === 'de' ? 'en' : 'de' })),
+    }),
+    { name: 'sb-sprache' },
+  ),
+);

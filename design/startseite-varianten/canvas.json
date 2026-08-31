@@ -1,0 +1,65 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "Neue Entwürfe" },
+    { "id": "page-2", "name": "Bisher gut befunden" }
+  ],
+  "artboards": [
+    { "file": "VarianteG.dc.html", "title": "Variante G — Studio Prisma", "page": "page-1", "x": 0, "y": 0, "w": 1440, "h": 3400 },
+    { "file": "VarianteH.dc.html", "title": "Variante H — Kontrollraum", "page": "page-1", "x": 1640, "y": 0, "w": 1440, "h": 2800 },
+    { "file": "Main.dc.html", "title": "Variante A — Terminal Grid", "page": "page-2", "x": 0, "y": 0, "w": 1440, "h": 2300 },
+    { "file": "VarianteD.dc.html", "title": "Variante D — Stilles Studio", "page": "page-2", "x": 1640, "y": 0, "w": 1440, "h": 2300 },
+    { "file": "VarianteE.dc.html", "title": "Variante E — Nachtlabor", "page": "page-2", "x": 0, "y": 2700, "w": 1440, "h": 2300 },
+    { "file": "VarianteF.dc.html", "title": "Variante F — Kinetik", "page": "page-2", "x": 1640, "y": 2700, "w": 1440, "h": 2300 }
+  ],
+  "annotations": [
+    {
+      "id": "note-g",
+      "page": "page-1",
+      "x": 0,
+      "y": -250,
+      "w": 760,
+      "text": "VARIANTE G — STUDIO PRISMA (neu)\nD und F verschmolzen: helles Papier, Serif-Display, Zeilen fahren gestaffelt ein, Linien zeichnen sich — und in der Mitte kippt die Seite in ein tiefes Grün um. Dieser Bruch ist der Wow-Moment, nicht ein Effekt-Feuerwerk.\nDie Fallstudie zu simply-switch.de steht ganz oben als Beweisstück: Browser-Rahmen, Stack, Umfang, Status „live in Produktion“.\nTradeoff: lebt vom Farbwechsel — der muss beim Scrollen sauber sitzen, sonst wirkt er wie ein Fehler."
+    },
+    {
+      "id": "note-h",
+      "page": "page-1",
+      "x": 1640,
+      "y": -250,
+      "w": 760,
+      "text": "VARIANTE H — KONTROLLRAUM (neu)\nA und E verschmolzen: fixe Seitenleiste mit Fortschrittspunkten, Radar-Sweep, laufende Scanlinie, Ticker-Band, hochzählende Zahlen und ein Terminal als Kontaktblock.\nDie Headline ist die stärkste Bewerbung: „Eine meiner Anwendungen läuft gerade produktiv.“ Daneben das Live-Panel zu simply-switch.de.\nTradeoff: sehr technisch aufgeladen — überzeugt Entwicklerteams sofort, ist für reine HR-Augen dichter als G."
+    },
+    {
+      "id": "note-a",
+      "page": "page-2",
+      "x": 0,
+      "y": -210,
+      "w": 700,
+      "text": "VARIANTE A — TERMINAL GRID\nDunkel, monospaced, Hairline-Raster, eine Säure-Akzentfarbe. Dicht und sachlich, jede Zeile Information.\nNeu: simply-switch.de als hervorgehobenes Live-Projekt über der Projekttabelle."
+    },
+    {
+      "id": "note-d",
+      "page": "page-2",
+      "x": 1640,
+      "y": -210,
+      "w": 700,
+      "text": "VARIANTE D — STILLES STUDIO\nRuhig, warm-dunkel, Serif-Display mit viel Luft, ein gedämpfter Ton-Akzent.\nNeu: simply-switch.de als hervorgehobenes Live-Projekt über der Projektliste."
+    },
+    {
+      "id": "note-e",
+      "page": "page-2",
+      "x": 0,
+      "y": 2490,
+      "w": 700,
+      "text": "VARIANTE E — NACHTLABOR\nAurora-Flächen, Glas-Panels, Korn, Scanlinie, Glanz-Sweep, Code-Panel mit blinkendem Caret.\nNeu: simply-switch.de als breite Live-Karte über dem Projektraster."
+    },
+    {
+      "id": "note-f",
+      "page": "page-2",
+      "x": 1640,
+      "y": 2490,
+      "w": 700,
+      "text": "VARIANTE F — KINETIK\nBone-Papier, gestaffelte Einfahr-Animation, rotierendes Siegel, laufendes Tech-Band, gekippte Karten.\nNeu: simply-switch.de als breite Live-Karte über den Projektkarten."
+    }
+  ],
+  "launch": { "view": "canvas", "page": "page-1" }
+}

@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;500;700&amp;family=Chivo+Mono:wght@300;400;500&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #FF9A3C; text-decoration: none; }
+    a:hover { color: #FFC48C; }
+
+    .rv { opacity: 0; animation: rv 0.95s cubic-bezier(0.2, 0.75, 0.2, 1) both; }
+    @keyframes rv {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .rv-s { opacity: 0; animation: rv-s 1.1s cubic-bezier(0.2, 0.75, 0.2, 1) both; }
+    @keyframes rv-s {
+      from { opacity: 0; transform: scale(0.965); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    /* Im echten Build hängen diese Reveals am Scroll. */
+    @supports (animation-timeline: view()) {
+      .rv, .rv-s { animation-timeline: view(); animation-range: entry 4% cover 30%; animation-delay: 0s !important; }
+    }
+
+    @keyframes sweep-radar { to { transform: rotate(360deg); } }
+    @keyframes scan {
+      0%   { transform: translateY(-40px); opacity: 0; }
+      15%  { opacity: 0.9; }
+      85%  { opacity: 0.9; }
+      100% { transform: translateY(760px); opacity: 0; }
+    }
+    @keyframes blink { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0.15; } }
+    @keyframes caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes glow-breathe {
+      0%, 100% { opacity: 0.5; }
+      50%      { opacity: 1; }
+    }
+    @keyframes chip-scan {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(420%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rv, .rv-s { animation: none !important; opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 2800px; background-color: #060809; font-family: 'Chivo', system-ui, sans-serif; color: #E7ECEF; position: relative; overflow: hidden;">
+
+  <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(231,236,239,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(231,236,239,0.03) 1px, transparent 1px); background-size: 96px 96px;"></div>
+  <div style="position: absolute; bottom: -320px; left: 50%; margin-left: -640px; width: 1280px; height: 620px; background: radial-gradient(closest-side, rgba(255,154,60,0.22), rgba(255,154,60,0)); filter: blur(40px); animation: glow-breathe 11s ease-in-out infinite;"></div>
+  <div style="position: absolute; top: 240px; right: -220px; width: 700px; height: 700px; border-radius: 50%; background: conic-gradient(from 0deg, rgba(255,154,60,0.16), rgba(255,154,60,0) 45%); animation: sweep-radar 16s linear infinite;"></div>
+  <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(231,236,239,0.05) 1px, transparent 1px); background-size: 4px 4px; opacity: 0.5;"></div>
+
+  <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 88px; border-right: 1px solid rgba(231,236,239,0.09); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 26px 0 30px 0; background-color: rgba(6,8,9,0.6);">
+    <div style="width: 34px; height: 34px; border: 1px solid #FF9A3C; display: flex; align-items: center; justify-content: center; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; color: #FF9A3C;">SB</div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 22px;">
+      <div style="width: 9px; height: 9px; border-radius: 50%; background-color: #FF9A3C; box-shadow: 0 0 12px rgba(255,154,60,0.8);"></div>
+      <div style="width: 7px; height: 7px; border-radius: 50%; background-color: rgba(231,236,239,0.22);"></div>
+      <div style="width: 7px; height: 7px; border-radius: 50%; background-color: rgba(231,236,239,0.22);"></div>
+      <div style="width: 7px; height: 7px; border-radius: 50%; background-color: rgba(231,236,239,0.22);"></div>
+      <div style="width: 7px; height: 7px; border-radius: 50%; background-color: rgba(231,236,239,0.22);"></div>
+    </div>
+    <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; color: #6C767D; writing-mode: vertical-rl; transform: rotate(180deg);">SEMIR BOROGOVAC</span>
+  </div>
+
+  <div style="position: relative; margin-left: 88px;">
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; border-bottom: 1px solid rgba(231,236,239,0.09); font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.12em; color: #7A858C; overflow: hidden;">
+      <div style="display: flex; align-items: center; gap: 11px; flex-shrink: 0;">
+        <div style="width: 7px; height: 7px; border-radius: 50%; background-color: #FF9A3C; animation: blink 1.8s ease-in-out infinite;"></div>
+        <span style="color: #FF9A3C;">OFFEN FÜR NEUE AUFGABEN</span>
+      </div>
+      <div style="display: flex; gap: 30px; flex-shrink: 0;">
+        <span>ÜBER</span><span>ARBEITEN</span><span>SKILLS</span><span>WERDEGANG</span><span style="color: #E7ECEF;">KONTAKT</span>
+      </div>
+      <span style="flex-shrink: 0;">DORNBURG, HESSEN</span>
+    </div>
+
+    <div style="position: relative; padding: 104px 48px 0 48px;">
+      <div style="position: absolute; top: 0; left: 48px; right: 48px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,154,60,0.7), transparent); animation: scan 11s linear infinite;"></div>
+
+      <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: start;">
+        <div style="grid-column: span 7;">
+          <span class="rv" style="display: block; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.2em; color: #7A858C; margin-bottom: 28px;">FACHINFORMATIKER ANWENDUNGSENTWICKLUNG</span>
+          <h1 style="margin: 0; font-size: 82px; line-height: 1.0; letter-spacing: -0.04em; font-weight: 700;">
+            <span class="rv" style="display: block; animation-delay: 0.05s;">Eine meiner</span>
+            <span class="rv" style="display: block; animation-delay: 0.18s; color: #FF9A3C; text-shadow: 0 0 60px rgba(255,154,60,0.4);">Anwendungen läuft</span>
+            <span class="rv" style="display: block; animation-delay: 0.31s;">gerade produktiv.</span>
+          </h1>
+          <p class="rv" style="animation-delay: 0.46s; margin: 34px 0 0 0; font-size: 17.5px; line-height: 1.72; color: #98A2A9; max-width: 560px; text-wrap: pretty;">Backend mit Java und Spring Boot, Enterprise-Low-Code mit Mendix, Oberflächen mit React und TypeScript. Ausgebildet in der Umschulung, geprüft an echten Projekten.</p>
+          <div class="rv" style="animation-delay: 0.58s; display: flex; gap: 14px; margin-top: 40px;">
+            <div style="background-color: #FF9A3C; color: #120A03; padding: 16px 30px; font-size: 15px; font-weight: 500; box-shadow: 0 12px 44px rgba(255,154,60,0.3);">Arbeiten ansehen</div>
+            <div style="border: 1px solid rgba(231,236,239,0.18); padding: 16px 30px; font-size: 15px;">borogovacsemir@gmail.com</div>
+          </div>
+        </div>
+
+        <div class="rv-s" style="grid-column: span 5; animation-delay: 0.3s;">
+          <div style="border: 1px solid rgba(255,154,60,0.28); background-color: rgba(255,154,60,0.05); padding: 26px; display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #FF9A3C; animation: blink 1.6s ease-in-out infinite;"></div>
+                <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.16em; color: #FF9A3C;">LIVE IN PRODUKTION</span>
+              </div>
+              <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11.5px; color: #7A858C;">2026</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 30px; font-weight: 700; letter-spacing: -0.03em;">simply-switch.de</span>
+              <span style="font-size: 14.5px; line-height: 1.6; color: #98A2A9;">Website eines freien Versicherungsmaklers — Konzept, Umsetzung und Auslieferung von mir.</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; border-top: 1px solid rgba(231,236,239,0.1); padding-top: 18px;">
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 24px; font-weight: 700; letter-spacing: -0.02em;">{{ z2 }}</span>
+                <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #6C767D;">ROUTEN</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 24px; font-weight: 700; letter-spacing: -0.02em;">{{ z3 }}+</span>
+                <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #6C767D;">GOOGLE-REZENSIONEN</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: #FF9A3C;">{{ z1 }}</span>
+                <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #6C767D;">KUNDENPROJEKT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: relative; margin-top: 92px; border-top: 1px solid rgba(231,236,239,0.09); border-bottom: 1px solid rgba(231,236,239,0.09); padding: 13px 0; overflow: hidden;">
+      <div style="display: flex; width: 200%; animation: ticker 30s linear infinite;">
+        <div style="display: flex; gap: 34px; width: 50%; flex-shrink: 0; white-space: nowrap; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; color: #6C767D;">
+          <span>JAVA 21</span><span style="color: #FF9A3C;">/</span><span>SPRING BOOT 3</span><span style="color: #FF9A3C;">/</span><span>SPRING DATA JPA</span><span style="color: #FF9A3C;">/</span><span>MENDIX STUDIO PRO</span><span style="color: #FF9A3C;">/</span><span>MICROFLOWS</span><span style="color: #FF9A3C;">/</span><span>REACT 18</span><span style="color: #FF9A3C;">/</span><span>TYPESCRIPT</span><span style="color: #FF9A3C;">/</span><span>TAILWIND CSS</span><span style="color: #FF9A3C;">/</span><span>POSTGRESQL</span><span style="color: #FF9A3C;">/</span><span>REST</span><span style="color: #FF9A3C;">/</span><span>DOCKER</span><span style="color: #FF9A3C;">/</span>
+        </div>
+        <div style="display: flex; gap: 34px; width: 50%; flex-shrink: 0; white-space: nowrap; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; color: #6C767D;">
+          <span>JAVA 21</span><span style="color: #FF9A3C;">/</span><span>SPRING BOOT 3</span><span style="color: #FF9A3C;">/</span><span>SPRING DATA JPA</span><span style="color: #FF9A3C;">/</span><span>MENDIX STUDIO PRO</span><span style="color: #FF9A3C;">/</span><span>MICROFLOWS</span><span style="color: #FF9A3C;">/</span><span>REACT 18</span><span style="color: #FF9A3C;">/</span><span>TYPESCRIPT</span><span style="color: #FF9A3C;">/</span><span>TAILWIND CSS</span><span style="color: #FF9A3C;">/</span><span>POSTGRESQL</span><span style="color: #FF9A3C;">/</span><span>REST</span><span style="color: #FF9A3C;">/</span><span>DOCKER</span><span style="color: #FF9A3C;">/</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: relative; padding: 96px 48px 0 48px; display: flex; flex-direction: column; gap: 30px;">
+      <div class="rv" style="display: flex; align-items: baseline; justify-content: space-between;">
+        <h2 style="margin: 0; font-size: 15px; font-family: 'Chivo Mono', ui-monospace, monospace; letter-spacing: 0.2em; font-weight: 400;">01 / FALLSTUDIE</h2>
+        <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11.5px; color: #6C767D;">KUNDENPROJEKT</span>
+      </div>
+
+      <div class="rv-s" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; border: 1px solid rgba(231,236,239,0.1); background-color: rgba(231,236,239,0.025); padding: 34px;">
+        <div style="grid-column: span 7;">
+          <div style="border: 1px solid rgba(231,236,239,0.12); background-color: #0B0E10; overflow: hidden;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 11px 15px; border-bottom: 1px solid rgba(231,236,239,0.1);">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background-color: rgba(231,236,239,0.2);"></div>
+              <div style="width: 8px; height: 8px; border-radius: 50%; background-color: rgba(231,236,239,0.2);"></div>
+              <div style="width: 8px; height: 8px; border-radius: 50%; background-color: rgba(231,236,239,0.2);"></div>
+              <div style="margin-left: 12px; flex-grow: 1; background-color: rgba(231,236,239,0.06); padding: 4px 12px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; color: #7A858C;">https://simply-switch.de</div>
+            </div>
+            <div style="padding: 22px; display: flex; flex-direction: column; gap: 16px;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 13px; font-weight: 500;">simply switch</span>
+                <div style="display: flex; gap: 13px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10px; color: #6C767D;"><span>PRIVAT</span><span>BEAMTE</span><span>VERTRAGSCHECK</span><span>KONTAKT</span></div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 9px;">
+                <div style="height: 22px; width: 72%; background-color: rgba(231,236,239,0.11);"></div>
+                <div style="height: 22px; width: 46%; background-color: rgba(255,154,60,0.28);"></div>
+                <div style="height: 9px; width: 62%; background-color: rgba(231,236,239,0.07); margin-top: 6px;"></div>
+                <div style="height: 9px; width: 54%; background-color: rgba(231,236,239,0.07);"></div>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 4px;">
+                <div style="height: 62px; border: 1px solid rgba(231,236,239,0.1);"></div>
+                <div style="height: 62px; border: 1px solid rgba(231,236,239,0.1);"></div>
+                <div style="height: 62px; border: 1px solid rgba(231,236,239,0.1);"></div>
+                <div style="height: 62px; border: 1px solid rgba(255,154,60,0.3);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 18px;">
+          <span style="font-size: 32px; font-weight: 700; letter-spacing: -0.03em;">Simply Switch</span>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #98A2A9; text-wrap: pretty;">Rund neun Seiten mit getrennten Beratungsstrecken für Beamte und Privatkunden, Terminbuchung, Schadenmeldung und eingebundenen Google-Bewertungen. Als React-SPA gebaut, responsiv und auf Auffindbarkeit optimiert.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span style="border: 1px solid rgba(231,236,239,0.15); padding: 6px 12px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #B4BDC3;">React 18</span>
+            <span style="border: 1px solid rgba(231,236,239,0.15); padding: 6px 12px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #B4BDC3;">Vite</span>
+            <span style="border: 1px solid rgba(231,236,239,0.15); padding: 6px 12px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #B4BDC3;">Tailwind CSS</span>
+            <span style="border: 1px solid rgba(231,236,239,0.15); padding: 6px 12px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #B4BDC3;">Routing</span>
+            <span style="border: 1px solid rgba(231,236,239,0.15); padding: 6px 12px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #B4BDC3;">SEO</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 9px; margin-top: auto; color: #FF9A3C; font-size: 15px;">
+            Live ansehen
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF9A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: relative; padding: 96px 48px 0 48px; display: flex; flex-direction: column; gap: 30px;">
+      <div class="rv" style="display: flex; align-items: baseline; justify-content: space-between;">
+        <h2 style="margin: 0; font-size: 15px; font-family: 'Chivo Mono', ui-monospace, monospace; letter-spacing: 0.2em; font-weight: 400;">02 / WEITERE ARBEITEN</h2>
+        <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11.5px; color: #6C767D;">04 EINTRÄGE</span>
+      </div>
+
+      <div style="display: flex; flex-direction: column;">
+        <div class="rv" style="position: relative; display: grid; grid-template-columns: 60px 1fr 380px 120px; gap: 24px; align-items: center; padding: 26px 0 26px 18px; border-top: 1px solid rgba(231,236,239,0.09);">
+          <div style="position: absolute; left: 0; top: 18px; bottom: 18px; width: 2px; background-color: #FF9A3C; box-shadow: 0 0 14px rgba(255,154,60,0.6);"></div>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; color: #FF9A3C;">002</span>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 25px; font-weight: 500; letter-spacing: -0.025em;">Mendix THM Enterprise Platform</span>
+            <span style="font-size: 13.5px; color: #7A858C;">Domain Models, Microflows &amp; Rollenkonzept</span>
+          </div>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #98A2A9;">MENDIX · MICROFLOWS · POSTGRESQL</span>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #6C767D; text-align: right;">LOW-CODE</span>
+        </div>
+        <div class="rv" style="animation-delay: 0.08s; display: grid; grid-template-columns: 60px 1fr 380px 120px; gap: 24px; align-items: center; padding: 26px 0 26px 18px; border-top: 1px solid rgba(231,236,239,0.09);">
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; color: #FF9A3C;">003</span>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 25px; font-weight: 500; letter-spacing: -0.025em;">DevGram</span>
+            <span style="font-size: 13.5px; color: #7A858C;">Java 21, Spring Boot &amp; Code-Sharing</span>
+          </div>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #98A2A9;">JAVA 21 · SPRING BOOT 3 · JWT</span>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #6C767D; text-align: right;">JAVA</span>
+        </div>
+        <div class="rv" style="animation-delay: 0.16s; display: grid; grid-template-columns: 60px 1fr 380px 120px; gap: 24px; align-items: center; padding: 26px 0 26px 18px; border-top: 1px solid rgba(231,236,239,0.09);">
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; color: #FF9A3C;">004</span>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 25px; font-weight: 500; letter-spacing: -0.025em;">LoveHub</span>
+            <span style="font-size: 13.5px; color: #7A858C;">React, TypeScript &amp; Echtzeit-Chat</span>
+          </div>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #98A2A9;">REACT 18 · WEBSOCKETS · ZUSTAND</span>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #6C767D; text-align: right;">WEB</span>
+        </div>
+        <div class="rv" style="animation-delay: 0.24s; display: grid; grid-template-columns: 60px 1fr 380px 120px; gap: 24px; align-items: center; padding: 26px 0 26px 18px; border-top: 1px solid rgba(231,236,239,0.09); border-bottom: 1px solid rgba(231,236,239,0.09);">
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; color: #FF9A3C;">005</span>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-size: 25px; font-weight: 500; letter-spacing: -0.025em;">Dieses Portfolio</span>
+            <span style="font-size: 13.5px; color: #7A858C;">Canvas-Partikel, Scroll-Effekte &amp; Terminal</span>
+          </div>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #98A2A9;">REACT 18 · VITE · FRAMER MOTION</span>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #6C767D; text-align: right;">WEB</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="position: relative; padding: 96px 48px 0 48px; display: flex; flex-direction: column; gap: 30px;">
+      <div class="rv" style="display: flex; align-items: baseline; justify-content: space-between;">
+        <h2 style="margin: 0; font-size: 15px; font-family: 'Chivo Mono', ui-monospace, monospace; letter-spacing: 0.2em; font-weight: 400;">03 / WERKZEUGE</h2>
+      </div>
+      <div class="rv" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+        <div style="position: relative; overflow: hidden; border: 1px solid rgba(231,236,239,0.1); padding: 22px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 70px; background: linear-gradient(90deg, transparent, rgba(255,154,60,0.09), transparent); animation: chip-scan 7s ease-in-out infinite;"></div>
+          <span style="position: relative; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; color: #FF9A3C;">BACKEND</span>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 9px; font-size: 14px; color: #B4BDC3;">
+            <span>Java 21</span><span>Spring Boot 3</span><span>Spring Data JPA</span><span>REST-API-Design</span><span>JUnit 5</span><span>Maven</span>
+          </div>
+        </div>
+        <div style="position: relative; overflow: hidden; border: 1px solid rgba(231,236,239,0.1); padding: 22px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 70px; background: linear-gradient(90deg, transparent, rgba(255,154,60,0.09), transparent); animation: chip-scan 7s ease-in-out 0.9s infinite;"></div>
+          <span style="position: relative; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; color: #FF9A3C;">LOW-CODE</span>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 9px; font-size: 14px; color: #B4BDC3;">
+            <span>Mendix Studio Pro</span><span>Domain Models</span><span>Microflows</span><span>Rollen &amp; Rechte</span><span>REST-Integration</span>
+          </div>
+        </div>
+        <div style="position: relative; overflow: hidden; border: 1px solid rgba(231,236,239,0.1); padding: 22px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 70px; background: linear-gradient(90deg, transparent, rgba(255,154,60,0.09), transparent); animation: chip-scan 7s ease-in-out 1.8s infinite;"></div>
+          <span style="position: relative; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; color: #FF9A3C;">FRONTEND</span>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 9px; font-size: 14px; color: #B4BDC3;">
+            <span>React 18 &amp; Hooks</span><span>TypeScript</span><span>Tailwind CSS</span><span>Barrierefreiheit</span><span>Framer Motion</span>
+          </div>
+        </div>
+        <div style="position: relative; overflow: hidden; border: 1px solid rgba(231,236,239,0.1); padding: 22px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="position: absolute; top: 0; bottom: 0; left: 0; width: 70px; background: linear-gradient(90deg, transparent, rgba(255,154,60,0.09), transparent); animation: chip-scan 7s ease-in-out 2.7s infinite;"></div>
+          <span style="position: relative; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; color: #FF9A3C;">DATEN &amp; TOOLING</span>
+          <div style="position: relative; display: flex; flex-direction: column; gap: 9px; font-size: 14px; color: #B4BDC3;">
+            <span>PostgreSQL &amp; SQL</span><span>Git &amp; GitHub</span><span>Docker</span><span>Linux / CLI</span><span>Scrum / Kanban</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv-s" style="position: relative; padding: 104px 48px 60px 48px;">
+      <div style="border: 1px solid rgba(231,236,239,0.12); background-color: rgba(231,236,239,0.025); overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 9px; padding: 12px 18px; border-bottom: 1px solid rgba(231,236,239,0.1); font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; color: #6C767D;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #FF9A3C;"></div>
+          kontakt — bash
+        </div>
+        <div style="padding: 34px 30px 38px 30px; font-family: 'Chivo Mono', ui-monospace, monospace; display: flex; flex-direction: column; gap: 16px;">
+          <span style="font-size: 14px; color: #7A858C;"><span style="color: #FF9A3C;">semir@portfolio</span>:~$ kontakt --neue-aufgabe</span>
+          <span style="font-size: 40px; font-weight: 400; letter-spacing: -0.03em; color: #E7ECEF;">borogovacsemir@gmail.com<span style="display: inline-block; width: 13px; height: 34px; background-color: #FF9A3C; margin-left: 8px; vertical-align: -5px; animation: caret 1.1s steps(1) infinite;"></span></span>
+          <span style="font-size: 14px; color: #7A858C;">Dornburg, Hessen · GitHub · LinkedIn · Lebenslauf als PDF</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":2800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    // Endwerte als Startzustand: laufen die Zähler nicht, stimmen die Zahlen trotzdem.
+    this.state = { werte: [1, 9, 70] };
+  }
+
+  componentDidMount() {
+    const ziel = [1, 9, 70];
+    let schritt = 0;
+    this.setState({ werte: [0, 0, 0] });
+    this.timer = setInterval(() => {
+      schritt += 1;
+      const p = Math.min(schritt / 45, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      this.setState({ werte: ziel.map((z) => Math.round(z * eased)) });
+      if (p >= 1) {
+        clearInterval(this.timer);
+        this.timer = null;
+      }
+    }, 26);
+  }
+
+  componentWillUnmount() {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+  }
+
+  renderVals() {
+    const w = this.state.werte;
+    return { z1: w[0], z2: w[1], z3: w[2] };
+  }
+}
+</script>
+</body>
+</html>
