@@ -6,14 +6,14 @@ import Reveal from '../components/Reveal';
 
 export const Kontakt: React.FC = () => {
   const { sprache } = benutzeSpracheSpeicher();
-  const [kopiert, setKopiert] = useState(false);
-  const [zeit, setZeit] = useState('');
-  const [form, setForm] = useState({ name: '', email: '', nachricht: '' });
-  const [gesendet, setGesendet] = useState(false);
+  const [kopiert, setzeKopiert] = useState(false);
+  const [zeit, setzeZeit] = useState('');
+  const [form, setzeForm] = useState({ name: '', email: '', nachricht: '' });
+  const [gesendet, setzeGesendet] = useState(false);
 
   useEffect(() => {
-    const u = () =>
-      setZeit(
+    const aktualisiere = () =>
+      setzeZeit(
         new Date().toLocaleTimeString(sprache === 'de' ? 'de-DE' : 'en-GB', {
           timeZone: 'Europe/Berlin',
           hour: '2-digit',
@@ -22,15 +22,15 @@ export const Kontakt: React.FC = () => {
           hour12: false,
         }),
       );
-    u();
-    const id = window.setInterval(u, 1000);
+    aktualisiere();
+    const id = window.setInterval(aktualisiere, 1000);
     return () => window.clearInterval(id);
   }, [sprache]);
 
   const kopieren = () => {
     navigator.clipboard?.writeText(profil.email);
-    setKopiert(true);
-    window.setTimeout(() => setKopiert(false), 2000);
+    setzeKopiert(true);
+    window.setTimeout(() => setzeKopiert(false), 2000);
   };
 
   const absenden = (e: React.FormEvent) => {
@@ -39,98 +39,117 @@ export const Kontakt: React.FC = () => {
     window.location.href = `mailto:${profil.email}?subject=${encodeURIComponent(
       `Kontakt · ${form.name || 'Website'}`,
     )}&body=${encodeURIComponent(`${form.nachricht}\n\n— ${form.name} (${form.email})`)}`;
-    setGesendet(true);
-    window.setTimeout(() => setGesendet(false), 4000);
+    setzeGesendet(true);
+    window.setTimeout(() => setzeGesendet(false), 4000);
   };
 
   const feld =
-    'w-full bg-transparent border-b border-[color:var(--color-line)] py-3 outline-none font-display text-xl sm:text-2xl placeholder:text-[color:var(--color-ink-faint)] focus:border-[color:var(--color-sienna)] transition-colors';
+    'w-full border-b border-linie bg-transparent py-3 text-[17px] outline-none transition-colors placeholder:text-text-3 focus:border-signal';
 
   return (
-    <section id="kontakt" className="relative py-24 sm:py-36 px-5 sm:px-8 max-w-[1500px] mx-auto">
+    <section id="kontakt" className="relative px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
       <SektionKopf
-        nummer="06"
+        nummer="07"
         label={sprache === 'de' ? 'Kontakt' : 'Contact'}
-        titel={
-          <>
-            {sprache === 'de' ? 'Sag' : 'Say'}{' '}
-            <span className="italic-display text-[color:var(--color-sienna)]">{sprache === 'de' ? 'Hallo' : 'hello'}</span>
-          </>
-        }
+        rechts={`${kontakt.ortszeit[sprache]} ${zeit || '––:––:––'}`}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        <div className="lg:col-span-6 space-y-8">
-          <Reveal art="maske">
-            <p className="font-display text-2xl sm:text-3xl leading-snug">{kontakt.text[sprache]}</p>
-          </Reveal>
+      <Reveal art="auf">
+        <div className="overflow-hidden border border-linie bg-text/[0.025]">
+          <div className="flex items-center gap-2.5 border-b border-linie px-4 py-3 font-mono-code text-[11px] text-text-3">
+            <span className="h-2 w-2 rounded-full bg-signal" />
+            {sprache === 'de' ? 'kontakt — bash' : 'contact — bash'}
+          </div>
 
-          <Reveal art="auf" delay={0.1}>
-            <button
-              onClick={kopieren}
-              data-cursor
-              className="group block text-left"
-            >
-              <div className="label mb-2">{sprache === 'de' ? 'E-Mail' : 'Email'}</div>
-              <div className="font-display text-[7vw] sm:text-4xl lg:text-5xl leading-none link-unterstrich break-all">
-                {profil.email}
-              </div>
-              <div className="font-mono-code text-xs text-[color:var(--color-ink-faint)] mt-2">
-                {kopiert ? kontakt.kopiert[sprache] : `${kontakt.emailKopieren[sprache]} ↗`}
-              </div>
-            </button>
-          </Reveal>
+          <div className="grid grid-cols-1 gap-10 p-6 sm:p-9 lg:grid-cols-12 lg:gap-12">
+            <div className="flex flex-col gap-6 lg:col-span-6">
+              <p className="font-mono-code text-[13.5px] text-text-3">
+                <span className="text-signal">semir@portfolio</span>
+                :~$ kontakt --neue-aufgabe
+              </p>
 
-          <Reveal art="auf" delay={0.15} className="flex flex-wrap gap-x-8 gap-y-2 pt-4 regel font-mono-code text-xs">
-            <a href={profil.github} target="_blank" rel="noopener noreferrer" className="link-unterstrich" data-cursor>
-              GitHub ↗
-            </a>
-            <a href={profil.linkedin} target="_blank" rel="noopener noreferrer" className="link-unterstrich" data-cursor>
-              LinkedIn ↗
-            </a>
-            <span className="text-[color:var(--color-ink-faint)]">
-              {profil.standort[sprache]} · {kontakt.ortszeit[sprache]} {zeit || '––:––:––'}
-            </span>
-          </Reveal>
+              <button type="button" onClick={kopieren} data-cursor className="group block text-left">
+                <span className="block font-mono-code text-[clamp(1.25rem,3.2vw,2.25rem)] leading-tight font-normal tracking-[-0.02em] break-all">
+                  {profil.email}
+                  <span
+                    aria-hidden
+                    className="ml-2 inline-block h-[0.85em] w-[0.45em] translate-y-[0.08em] animate-caret bg-signal align-baseline"
+                  />
+                </span>
+                <span className="mt-2.5 block font-mono-code text-[11.5px] text-text-3 transition-colors group-hover:text-text-2">
+                  {kopiert ? kontakt.kopiert[sprache] : `${kontakt.emailKopieren[sprache]} ↗`}
+                </span>
+              </button>
+
+              <p className="max-w-[52ch] text-[15.5px] leading-[1.7] text-text-2">
+                {kontakt.text[sprache]}
+              </p>
+
+              <div className="flex flex-wrap gap-x-7 gap-y-2 border-t border-linie pt-5 font-mono-code text-[11.5px]">
+                <a
+                  href={profil.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-unterstrich text-text-2"
+                  data-cursor
+                >
+                  GitHub ↗
+                </a>
+                <a
+                  href={profil.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-unterstrich text-text-2"
+                  data-cursor
+                >
+                  LinkedIn ↗
+                </a>
+                <span className="text-text-3">{profil.standort[sprache]}</span>
+              </div>
+            </div>
+
+            <form onSubmit={absenden} className="flex flex-col gap-7 lg:col-span-5 lg:col-start-8">
+              <input
+                className={feld}
+                placeholder={kontakt.formName[sprache]}
+                aria-label={kontakt.formName[sprache]}
+                value={form.name}
+                onChange={(e) => setzeForm({ ...form, name: e.target.value })}
+              />
+              <input
+                type="email"
+                required
+                className={feld}
+                placeholder={`${kontakt.formEmail[sprache]} *`}
+                aria-label={kontakt.formEmail[sprache]}
+                value={form.email}
+                onChange={(e) => setzeForm({ ...form, email: e.target.value })}
+              />
+              <textarea
+                required
+                rows={3}
+                className={`${feld} resize-none`}
+                placeholder={`${kontakt.formNachricht[sprache]} *`}
+                aria-label={kontakt.formNachricht[sprache]}
+                value={form.nachricht}
+                onChange={(e) => setzeForm({ ...form, nachricht: e.target.value })}
+              />
+              <button
+                type="submit"
+                data-cursor
+                className="self-start bg-signal px-6 py-4 font-mono-code text-xs tracking-[0.12em] uppercase text-signal-tief transition-colors hover:bg-[#ffb066]"
+              >
+                {kontakt.formSenden[sprache]} →
+              </button>
+              {gesendet && (
+                <p role="status" className="font-mono-code text-[11.5px] text-signal">
+                  {kontakt.clientGeoeffnet[sprache]}
+                </p>
+              )}
+            </form>
+          </div>
         </div>
-
-        <Reveal art="blende" delay={0.1} className="lg:col-span-5 lg:col-start-8">
-          <form onSubmit={absenden} className="space-y-8">
-            <input
-              className={feld}
-              placeholder={kontakt.formName[sprache]}
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-            />
-            <input
-              type="email"
-              required
-              className={feld}
-              placeholder={`${kontakt.formEmail[sprache]} *`}
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-            />
-            <textarea
-              required
-              rows={3}
-              className={`${feld} resize-none`}
-              placeholder={`${kontakt.formNachricht[sprache]} *`}
-              value={form.nachricht}
-              onChange={(e) => setForm({ ...form, nachricht: e.target.value })}
-            />
-            <button
-              type="submit"
-              data-cursor
-              className="font-mono-code text-sm tracking-widest uppercase border border-[color:var(--color-ink)] px-6 py-4 hover:bg-[color:var(--color-ink)] hover:text-[color:var(--color-paper)] transition-colors"
-            >
-              {kontakt.formSenden[sprache]} →
-            </button>
-            {gesendet && (
-              <p className="font-mono-code text-xs text-[color:var(--color-sienna)]">{kontakt.clientGeoeffnet[sprache]}</p>
-            )}
-          </form>
-        </Reveal>
-      </div>
+      </Reveal>
     </section>
   );
 };

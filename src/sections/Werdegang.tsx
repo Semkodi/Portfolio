@@ -9,53 +9,55 @@ export const Werdegang: React.FC = () => {
   const { sprache } = benutzeSpracheSpeicher();
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 60%', 'end 85%'] });
-  const h = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const hoehe = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="werdegang" className="relative py-24 sm:py-36 px-5 sm:px-8 max-w-[1500px] mx-auto">
+    <section id="werdegang" className="relative px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
       <SektionKopf
-        nummer="04"
+        nummer="05"
         label={sprache === 'de' ? 'Werdegang' : 'Career'}
-        titel={
-          <>
-            {sprache === 'de' ? 'Der' : 'The'}{' '}
-            <span className="italic-display text-[color:var(--color-sienna)]">{sprache === 'de' ? 'Weg' : 'path'}</span>
-          </>
-        }
+        rechts={`${String(werdegang.length).padStart(2, '0')} ${sprache === 'de' ? 'Stationen' : 'stages'}`}
       />
 
-      <div ref={ref} className="relative pl-6 sm:pl-8">
-        <div className="absolute left-0 top-0 bottom-0 w-px bg-[color:var(--color-line)]" />
-        <motion.div className="absolute left-0 top-0 w-px bg-[color:var(--color-sienna)]" style={{ height: h }} />
+      {/* Die Linie füllt sich mit dem Scrollfortschritt — sie zeigt, wie weit
+          man in der Zeitleiste ist. */}
+      <div ref={ref} className="relative pl-7 sm:pl-9">
+        <div aria-hidden className="absolute top-0 bottom-0 left-0 w-px bg-linie" />
+        <motion.div
+          aria-hidden
+          className="absolute top-0 left-0 w-px bg-signal"
+          style={{ height: hoehe }}
+        />
 
-        <div className="regel">
-          {werdegang.map((s, i) => (
-            <Reveal
-              key={i}
-              art="auf"
-              delay={i * 0.06}
-              className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 py-10 regel"
-            >
+        {werdegang.map((s, i) => (
+          <Reveal key={s.titel.de} art="auf" delay={i * 0.06}>
+            <div className="grid grid-cols-1 gap-4 border-t border-linie py-9 md:grid-cols-12 md:gap-8">
               <div className="md:col-span-3">
-                <div className="font-display text-3xl sm:text-4xl">{s.zeitraum[sprache]}</div>
+                <div className="text-2xl font-medium tracking-[-0.02em]">{s.zeitraum[sprache]}</div>
                 <div className="label mt-2">{s.badge[sprache]}</div>
               </div>
-              <div className="md:col-span-9 space-y-3">
-                <h3 className="font-display text-2xl sm:text-3xl leading-tight">{s.titel[sprache]}</h3>
-                <p className="font-mono-code text-xs text-[color:var(--color-ink-faint)]">{s.organisation[sprache]}</p>
-                <p className="text-[color:var(--color-ink-soft)] leading-relaxed max-w-2xl">{s.beschreibung[sprache]}</p>
-                <ul className="flex flex-wrap gap-x-6 gap-y-1 pt-2">
-                  {s.punkte[sprache].map((p, pi) => (
-                    <li key={pi} className="font-mono-code text-xs text-[color:var(--color-ink-faint)] flex gap-2">
-                      <span className="text-[color:var(--color-sienna)]">—</span>
+              <div className="flex flex-col gap-3 md:col-span-9">
+                <h3 className="text-xl leading-snug font-medium tracking-[-0.02em] sm:text-[22px]">
+                  {s.titel[sprache]}
+                </h3>
+                <p className="font-mono-code text-[11.5px] tracking-[0.08em] text-text-3">
+                  {s.organisation[sprache]}
+                </p>
+                <p className="max-w-[64ch] text-[15px] leading-[1.7] text-text-2">
+                  {s.beschreibung[sprache]}
+                </p>
+                <ul className="mt-1 flex flex-wrap gap-x-6 gap-y-1.5">
+                  {s.punkte[sprache].map((p) => (
+                    <li key={p} className="flex gap-2 font-mono-code text-[11.5px] text-text-3">
+                      <span className="text-signal">—</span>
                       {p}
                     </li>
                   ))}
                 </ul>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

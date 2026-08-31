@@ -1,17 +1,17 @@
 import React from 'react';
 
-/** Endlos laufendes Textband. Inhalt wird für den nahtlosen Loop verdoppelt. */
+/** Endlos laufendes Technik-Band. Inhalt wird für den nahtlosen Loop verdoppelt. */
 export const Marquee: React.FC<{ eintraege: string[] }> = ({ eintraege }) => {
   const Spur = () => (
     <div className="laufband-spur">
       {[0, 1].map((k) => (
-        <div key={k} className="flex items-center shrink-0" aria-hidden={k === 1}>
-          {eintraege.map((e, i) => (
-            <span key={i} className="flex items-center">
-              <span className="px-6 font-display text-[clamp(2rem,5vw,4rem)] leading-none font-medium tracking-tight">
+        <div key={k} className="flex shrink-0 items-center" aria-hidden={k === 1}>
+          {eintraege.map((e) => (
+            <span key={e} className="flex items-center">
+              <span className="px-4 font-mono-code text-xs tracking-[0.14em] uppercase text-text-3">
                 {e}
               </span>
-              <span className="text-[color:var(--color-sienna)] text-lg">✳</span>
+              <span className="text-signal">/</span>
             </span>
           ))}
         </div>
@@ -20,7 +20,7 @@ export const Marquee: React.FC<{ eintraege: string[] }> = ({ eintraege }) => {
   );
 
   return (
-    <div className="laufband-halt overflow-hidden border-y border-[color:var(--color-line)] py-5 select-none">
+    <div className="laufband-halt select-none overflow-hidden border-y border-linie py-3.5">
       <Spur />
     </div>
   );

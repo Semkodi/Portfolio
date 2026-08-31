@@ -2,30 +2,44 @@
 
 /* =====================================================================
    SEMIR BOROGOVAC — Portfolio 2026
-   Warmes, editoriales "Studio"-Design auf Papier. Kein Neon.
+   Design "Kontrollraum": tiefes Schwarzgrau, ein Signalton, Messwerte
+   statt Deko. Kein Neon, keine bunten Verläufe.
    ===================================================================== */
 
 @theme {
-  --color-paper: #efe6d5;
-  --color-paper-2: #e7dbc4;
-  --color-paper-3: #ddcfb3;
-  --color-ink: #221a12;
-  --color-ink-soft: #5b4d3c;
-  --color-ink-faint: #8b7c64;
-  --color-line: rgba(34, 26, 18, 0.16);
-  --color-line-soft: rgba(34, 26, 18, 0.09);
-  --color-sienna: #bf5227;
-  --color-ochre: #b0842d;
-  --color-night: #1b140d;
+  /* --- Flächen ---------------------------------------------------- */
+  --color-raum: #060809;
+  --color-raum-2: #0b0e10;
+  --color-raum-3: #12161a;
+  --color-linie: rgba(231, 236, 239, 0.09);
+  --color-linie-stark: rgba(231, 236, 239, 0.18);
 
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* --- Text (alle >= 4.5:1 auf --color-raum) ----------------------- */
+  --color-text: #e7ecef;
+  --color-text-2: #98a2a9;
+  --color-text-3: #757f86;
+
+  /* --- Signal ------------------------------------------------------ */
+  --color-signal: #ff9a3c;
+  --color-signal-tief: #120a03;
+  --color-signal-weich: rgba(255, 154, 60, 0.14);
+
+  --font-sans: "Chivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Chivo Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* --- Bewegung ---------------------------------------------------- */
+  --animate-blinken: blinken 1.8s ease-in-out infinite;
+  --animate-radar: radar 16s linear infinite;
+  --animate-atmen: atmen 11s ease-in-out infinite;
+  --animate-scan: scan 11s linear infinite;
+  --animate-caret: caret 1.1s steps(1) infinite;
+  --animate-streifen: streifen 7s ease-in-out infinite;
+
 }
 
 @layer base {
   :root {
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   * {
@@ -37,43 +51,50 @@
   }
 
   body {
-    background-color: var(--color-paper);
-    color: var(--color-ink);
+    background-color: var(--color-raum);
+    color: var(--color-text);
     font-family: var(--font-sans);
     overflow-x: hidden;
-    font-feature-settings: "ss01";
-  }
-
-  ::selection {
-    background: var(--color-ink);
-    color: var(--color-paper);
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 0.98;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-signal-tief);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
   }
 }
 
-/* --- Helpers ----------------------------------------------------- */
+/* --- Helfer ------------------------------------------------------- */
 .font-mono-code { font-family: var(--font-mono); }
-.font-display { font-family: var(--font-display); }
-.italic-display { font-family: var(--font-display); font-style: italic; font-weight: 400; }
 
 .label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-ink-faint);
+  color: var(--color-text-3);
 }
 
-.regel { border-top: 1px solid var(--color-line); }
+/* Feines Messraster über der Grundfläche. */
+.raster {
+  background-image:
+    linear-gradient(var(--color-linie) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-linie) 1px, transparent 1px);
+  background-size: 96px 96px;
+}
 
 .link-unterstrich {
-  background-image: linear-gradient(var(--color-ink), var(--color-ink));
+  background-image: linear-gradient(var(--color-signal), var(--color-signal));
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -81,19 +102,41 @@
 }
 .link-unterstrich:hover { background-size: 100% 1px; }
 
-/* Papier-Textur */
-.papier::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+/* --- Bewegung ------------------------------------------------------ */
+@keyframes blinken {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0.2; }
 }
 
-/* --- Marquee --------------------------------------------------- */
+@keyframes radar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes atmen {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Messlinie, die einmal durch den Hero wandert. */
+@keyframes scan {
+  0% { transform: translateY(0); opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { transform: translateY(620px); opacity: 0; }
+}
+
+@keyframes caret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Lichtstreifen, der langsam über eine Werkzeugspalte läuft. */
+@keyframes streifen {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(420%); }
+}
+
+/* --- Laufband ------------------------------------------------------ */
 @keyframes laufband {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -105,25 +148,20 @@
 }
 .laufband-halt:hover .laufband-spur { animation-play-state: paused; }
 
-/* --- Custom cursor -------------------------------------------- */
+/* --- Eigener Cursor ------------------------------------------------ */
 @media (hover: hover) and (pointer: fine) {
   .cursor-aktiv, .cursor-aktiv * { cursor: none !important; }
 }
 
-/* --- Reveal ---------------------------------------------------- */
-@keyframes zeichnen { to { stroke-dashoffset: 0; } }
-
-@keyframes wippen {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-.animate-wippen { animation: wippen 2.4s ease-in-out infinite; }
-
-/* --- Scrollbar ---------------------------------------------- */
+/* --- Scrollbar ------------------------------------------------------ */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--color-paper-2); }
-::-webkit-scrollbar-thumb { background: var(--color-paper-3); border: 2px solid var(--color-paper-2); border-radius: 6px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-ink-faint); }
+::-webkit-scrollbar-track { background: var(--color-raum-2); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-raum-3);
+  border: 2px solid var(--color-raum-2);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-3); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

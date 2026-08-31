@@ -1,6 +1,8 @@
 import React from 'react';
 import Cursor from './components/Cursor';
-import Navigation from './components/Navigation';
+import Atmosphaere from './components/Atmosphaere';
+import Seitenleiste from './components/Seitenleiste';
+import Statusleiste from './components/Statusleiste';
 import Fussbereich from './components/Fussbereich';
 import Marquee from './components/Marquee';
 import Hero from './sections/Hero';
@@ -12,27 +14,34 @@ import Terminal from './sections/Terminal';
 import Kontakt from './sections/Kontakt';
 
 const band = [
-  'Java', 'Spring Boot', 'Mendix', 'React', 'TypeScript', 'PostgreSQL', 'REST', 'Git', 'Docker', 'Tailwind',
+  'Java 21', 'Spring Boot 3', 'Spring Data JPA', 'Mendix Studio Pro', 'Microflows',
+  'React 18', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'REST', 'Docker', 'Git',
 ];
 
-/** Portfolio von Semir Borogovac — 2026. Warmes, editoriales Design. */
+/** Portfolio von Semir Borogovac — 2026. Design "Kontrollraum". */
 const Anwendung: React.FC = () => (
-  <div className="papier relative min-h-screen">
+  <div className="relative min-h-screen bg-raum text-text">
     <Cursor />
-    <Navigation />
+    <Atmosphaere />
+    <Seitenleiste />
+    <Statusleiste />
 
-    <main className="relative z-[2]">
-      <Hero />
-      <Marquee eintraege={band} />
-      <Profil />
-      <Werk />
-      <Skills />
-      <Werdegang />
-      <Terminal />
-      <Kontakt />
-    </main>
+    <div className="relative z-[2] lg:pl-[88px]">
+      <main className="mx-auto max-w-[1520px]">
+        <Hero />
+        <Marquee eintraege={band} />
+        <Profil />
+        <Werk />
+        <Skills />
+        <Werdegang />
+        <Terminal />
+        <Kontakt />
+      </main>
 
-    <Fussbereich />
+      <div className="mx-auto max-w-[1520px]">
+        <Fussbereich />
+      </div>
+    </div>
   </div>
 );
 

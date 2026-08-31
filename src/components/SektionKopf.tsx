@@ -4,23 +4,24 @@ import Reveal from './Reveal';
 interface Props {
   nummer: string;
   label: string;
-  titel: React.ReactNode;
+  /** Kurze Angabe am rechten Rand, z. B. eine Anzahl. */
+  rechts?: string;
 }
 
-/** Redaktioneller Abschnitts-Kopf: Nummer · Label · großer Titel. */
-export const SektionKopf: React.FC<Props> = ({ nummer, label, titel }) => (
-  <div className="mb-14 sm:mb-20">
-    <Reveal art="blende" className="flex items-center gap-4 mb-6">
-      <span className="font-mono-code text-xs text-[color:var(--color-sienna)]">{nummer}</span>
-      <span className="h-px flex-1 bg-[color:var(--color-line)]" />
-      <span className="label">{label}</span>
-    </Reveal>
-    <Reveal art="maske">
-      <h2 className="font-display text-[clamp(2.5rem,9vw,5.5rem)] leading-[0.92] font-medium">
-        {titel}
-      </h2>
-    </Reveal>
-  </div>
+/** Abschnitts-Kopf im Kontrollraum: Kennung links, Messwert rechts. */
+export const SektionKopf: React.FC<Props> = ({ nummer, label, rechts }) => (
+  <Reveal art="auf" className="mb-9 flex items-baseline justify-between gap-6 border-b border-linie pb-4">
+    <h2 className="font-mono-code text-[13px] font-normal tracking-[0.2em] uppercase text-text">
+      <span className="text-signal">{nummer}</span>
+      <span className="px-2 text-text-3">/</span>
+      {label}
+    </h2>
+    {rechts && (
+      <span className="shrink-0 font-mono-code text-[11px] tracking-[0.12em] uppercase text-text-3">
+        {rechts}
+      </span>
+    )}
+  </Reveal>
 );
 
 export default SektionKopf;

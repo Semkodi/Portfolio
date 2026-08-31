@@ -56,12 +56,12 @@ export const Cursor: React.FC = () => {
     <div className="pointer-events-none fixed inset-0 z-[9999] hidden md:block" aria-hidden>
       <div
         ref={punkt}
-        className="absolute -left-[3px] -top-[3px] w-1.5 h-1.5 rounded-full bg-[color:var(--color-sienna)]"
+        className="absolute -left-[3px] -top-[3px] w-1.5 h-1.5 rounded-full bg-signal"
       />
       <div
         ref={ring}
         data-hover="0"
-        className="absolute -left-4 -top-4 w-8 h-8 rounded-full border border-[color:var(--color-ink)] transition-[width,height,left,top,background-color,opacity] duration-300 data-[hover=1]:w-14 data-[hover=1]:h-14 data-[hover=1]:-left-7 data-[hover=1]:-top-7 data-[hover=1]:bg-[color:var(--color-ink)]/10 data-[hover=1]:border-[color:var(--color-sienna)]"
+        className="absolute -left-4 -top-4 w-8 h-8 rounded-full border border-linie-stark transition-[width,height,left,top,background-color,opacity] duration-300 data-[hover=1]:w-14 data-[hover=1]:h-14 data-[hover=1]:-left-7 data-[hover=1]:-top-7 data-[hover=1]:bg-text/10 data-[hover=1]:border-signal"
       />
     </div>
   );

@@ -44,17 +44,19 @@ export const ui = {
 
 export const hero = {
   kicker: { de: 'Portfolio · 2026', en: 'Portfolio · 2026' } as LS,
-  titel1: { de: 'Ich baue', en: 'I build' } as LS,
-  titel2: { de: 'saubere Software.', en: 'clean software.' } as LS,
+  /* Dreizeilige Schlagzeile; Zeile 2 steht in Signalfarbe. */
+  zeile1: { de: 'Eine meiner', en: 'One of my' } as LS,
+  zeile2: { de: 'Anwendungen läuft', en: 'applications is' } as LS,
+  zeile3: { de: 'gerade produktiv.', en: 'live in production.' } as LS,
   rollen: {
     de: ['Java & Spring Boot', 'Mendix Low-Code', 'React & TypeScript', 'REST-APIs & SQL'],
     en: ['Java & Spring Boot', 'Mendix Low-Code', 'React & TypeScript', 'REST APIs & SQL'],
   } as LA,
   intro: {
-    de: 'Fachinformatiker für Anwendungsentwicklung mit Fokus auf wartbarem Backend-Code, Enterprise-Low-Code und modernen Web-Oberflächen. Ich lerne schnell und setze Wissen direkt in Projekten um.',
-    en: 'Application developer focused on maintainable backend code, enterprise low-code and modern web interfaces. I learn fast and turn knowledge straight into working projects.',
+    de: 'Backend mit Java und Spring Boot, Enterprise-Low-Code mit Mendix, Oberflächen mit React und TypeScript. Gelernt in der Umschulung, geprüft an echten Projekten.',
+    en: 'Backend with Java and Spring Boot, enterprise low-code with Mendix, interfaces with React and TypeScript. Learned in retraining, proven on real projects.',
   } as LS,
-  ctaProjekte: { de: 'Projekte ansehen', en: 'View projects' } as LS,
+  ctaProjekte: { de: 'Arbeiten ansehen', en: 'View work' } as LS,
   ctaKontakt: { de: 'Kontakt aufnehmen', en: 'Get in touch' } as LS,
 };
 
@@ -167,9 +169,50 @@ export interface Projekt {
   highlights: LA;
   tags: string[];
   farbe: string;
+  /** Öffentlich erreichbare Adresse, falls das Projekt live ist. */
+  live?: string;
+  /** Zahlen für das Live-Panel im Hero. Nur bei belegbaren Werten setzen. */
+  kennzahlen?: { wert: number; suffix?: string; label: LS }[];
 }
 
 export const projekte: Projekt[] = [
+  {
+    id: 'simply-switch',
+    kategorie: 'web',
+    badge: 'KUNDENPROJEKT · LIVE',
+    titel: 'Simply Switch',
+    live: 'https://simply-switch.de',
+    untertitel: {
+      de: 'Website für einen freien Versicherungsmakler',
+      en: 'Website for an independent insurance broker',
+    },
+    beschreibung: {
+      de: 'Auftritt eines freien Versicherungsmaklers – von mir umgesetzt und ausgeliefert. Getrennte Beratungsstrecken für Beamte und Privatkunden, Terminbuchung, Schadenmeldung und eingebundene Google-Bewertungen.',
+      en: 'The site of an independent insurance broker – built and shipped by me. Separate advisory paths for civil servants and private clients, appointment booking, claims reporting and embedded Google reviews.',
+    },
+    architektur: {
+      de: 'React 18 mit Vite und Tailwind CSS. Neun Seiten mit eigenem Routing, Komponenten je Zielgruppe getrennt, durchgängig responsiv und auf Auffindbarkeit optimiert.',
+      en: 'React 18 with Vite and Tailwind CSS. Nine pages with their own routing, components split per audience, fully responsive and optimised for search.',
+    },
+    highlights: {
+      de: [
+        'Getrennte Strecken für Beamte und Privatkunden',
+        'Terminbuchung und Schadenmeldung',
+        'Google-Bewertungen des Maklers eingebunden',
+      ],
+      en: [
+        'Separate paths for civil servants and private clients',
+        'Appointment booking and claims reporting',
+        "The broker's Google reviews embedded",
+      ],
+    },
+    tags: ['React 18', 'Vite', 'Tailwind CSS', 'Routing', 'SEO'],
+    farbe: '#ff9a3c',
+    kennzahlen: [
+      { wert: 9, label: { de: 'Routen', en: 'Routes' } },
+      { wert: 70, suffix: '+', label: { de: 'Bewertungen des Kunden', en: "Client's reviews" } },
+    ],
+  },
   {
     id: 'mendix-thm',
     kategorie: 'lowcode',
@@ -269,33 +312,33 @@ export const projekte: Projekt[] = [
   {
     id: 'portfolio',
     kategorie: 'web',
-    badge: 'INTERAKTIV · 3D & CLI',
+    badge: 'INTERAKTIV · CLI',
     titel: 'Dieses Portfolio',
     untertitel: {
-      de: 'Canvas-Partikel, Scroll-Effekte & Terminal',
-      en: 'Canvas particles, scroll effects & terminal',
+      de: 'Scroll-Reveals, Live-Zähler & Terminal',
+      en: 'Scroll reveals, live counters & terminal',
     },
     beschreibung: {
-      de: 'Diese Website: ein selbst gebautes Partikel-Monogramm im Canvas, scroll-getriebene Animationen, ein interaktives Terminal und volle Zweisprachigkeit (DE/EN).',
-      en: 'This website: a hand-built canvas particle monogram, scroll-driven animations, an interactive terminal and full DE/EN localisation.',
+      de: 'Diese Website: scroll-getriebene Einblendungen, eine Navigation, die per IntersectionObserver mitläuft, hochzählende Kennzahlen, ein interaktives Terminal und volle Zweisprachigkeit (DE/EN).',
+      en: 'This website: scroll-driven reveals, navigation that follows along via IntersectionObserver, counting-up figures, an interactive terminal and full DE/EN localisation.',
     },
     architektur: {
-      de: 'React 18 & TypeScript, Vite, Tailwind CSS v4, Framer Motion für Scroll-Animationen und eine eigene Canvas-2D-Projektion für den 3D-Effekt – ohne schwere 3D-Bibliothek.',
-      en: 'React 18 & TypeScript, Vite, Tailwind CSS v4, Framer Motion for scroll animations and a custom canvas 2D projection for the 3D effect – without a heavy 3D library.',
+      de: 'React 18 & TypeScript, Vite, Tailwind CSS v4 mit eigenem Token-Set, Framer Motion für die Reveals. Schriften liegen lokal, es geht kein Request an ein CDN.',
+      en: 'React 18 & TypeScript, Vite, Tailwind CSS v4 with a custom token set, Framer Motion for the reveals. Fonts are served locally, no request goes to a CDN.',
     },
     highlights: {
       de: [
-        'Eigene 3D-Punktwolke, Maus-reaktiv',
-        'Scroll-Reveal & Parallax durchgängig',
+        'Navigation folgt der Sektion im Blickfeld',
+        'Kennzahlen zählen beim Erscheinen hoch',
         'Interaktives Terminal mit Befehlen',
       ],
       en: [
-        'Custom 3D point cloud, mouse-reactive',
-        'Scroll reveal & parallax throughout',
+        'Navigation follows the section in view',
+        'Figures count up when they appear',
         'Interactive terminal with commands',
       ],
     },
-    tags: ['React 18', 'TypeScript', 'Vite', 'Tailwind v4', 'Framer Motion', 'Canvas'],
+    tags: ['React 18', 'TypeScript', 'Vite', 'Tailwind v4', 'Framer Motion'],
     farbe: '#cca35d',
   },
 ];

@@ -39,7 +39,7 @@ export const Terminal: React.FC = () => {
         id: nid(),
         art: 'bot',
         inhalt: (
-          <span className="text-[#d8c9ad]">
+          <span className="text-text-2">
             about · skills · projects · contact · clear
           </span>
         ),
@@ -50,8 +50,8 @@ export const Terminal: React.FC = () => {
         art: 'bot',
         inhalt: (
           <div>
-            <div className="text-[#e08a52]">{profil.name}</div>
-            <div className="text-[#a99575]">{profil.rolle[sprache]} — {profil.standort[sprache]}</div>
+            <div className="text-signal">{profil.name}</div>
+            <div className="text-text-2">{profil.rolle[sprache]} — {profil.standort[sprache]}</div>
           </div>
         ),
       };
@@ -63,8 +63,8 @@ export const Terminal: React.FC = () => {
           <div className="space-y-0.5">
             {skillGruppen.map((g) => (
               <div key={g.kategorie.de}>
-                <span className="text-[#e08a52]">{g.kategorie[sprache]}: </span>
-                <span className="text-[#a99575]">{g.items.map((i) => i.name).join(', ')}</span>
+                <span className="text-signal">{g.kategorie[sprache]}: </span>
+                <span className="text-text-2">{g.items.map((i) => i.name).join(', ')}</span>
               </div>
             ))}
           </div>
@@ -75,10 +75,10 @@ export const Terminal: React.FC = () => {
         id: nid(),
         art: 'bot',
         inhalt: (
-          <div className="space-y-0.5 text-[#a99575]">
+          <div className="space-y-0.5 text-text-2">
             {projekte.map((p) => (
               <div key={p.id}>
-                <span className="text-[#e08a52]">·</span> {p.titel} — {p.untertitel[sprache]}
+                <span className="text-signal">·</span> {p.titel} — {p.untertitel[sprache]}
               </div>
             ))}
           </div>
@@ -89,7 +89,7 @@ export const Terminal: React.FC = () => {
         id: nid(),
         art: 'bot',
         inhalt: (
-          <div className="text-[#a99575]">
+          <div className="text-text-2">
             {profil.email} · {profil.github}
           </div>
         ),
@@ -117,24 +117,19 @@ export const Terminal: React.FC = () => {
   };
 
   return (
-    <section id="terminal" className="relative py-24 sm:py-36 px-5 sm:px-8 max-w-[1500px] mx-auto">
+    <section id="terminal" className="relative px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
       <SektionKopf
-        nummer="05"
+        nummer="06"
         label={sprache === 'de' ? 'Interaktiv' : 'Interactive'}
-        titel={
-          <>
-            {sprache === 'de' ? 'Im' : 'In a'}{' '}
-            <span className="italic-display text-[color:var(--color-sienna)]">Terminal</span>
-          </>
-        }
+        rechts={sprache === 'de' ? 'help für Befehle' : 'help for commands'}
       />
 
-      <div className="bg-[color:var(--color-night)] text-[#d8c9ad] rounded-sm overflow-hidden shadow-[12px_12px_0_0_var(--color-ink)] border border-[color:var(--color-ink)]">
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#bf5227]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#b0842d]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#8b7c64]" />
-          <span className="ml-3 font-mono-code text-[11px] text-[#a99575]">semir@portfolio</span>
+      <div className="overflow-hidden border border-linie bg-raum-2">
+        <div className="flex items-center gap-2 border-b border-linie px-4 py-3">
+          <span className="h-2 w-2 rounded-full bg-signal" />
+          <span className="h-2 w-2 rounded-full bg-text/20" />
+          <span className="h-2 w-2 rounded-full bg-text/20" />
+          <span className="ml-3 font-mono-code text-[11px] text-text-3">semir@portfolio</span>
         </div>
         <div
           ref={bodyRef}
@@ -147,19 +142,19 @@ export const Terminal: React.FC = () => {
                 key={zl.id}
                 className={
                   zl.art === 'user'
-                    ? 'text-[#d8c9ad]'
+                    ? 'text-text'
                     : zl.art === 'system'
-                      ? 'text-[#7d6f58] italic'
+                      ? 'text-text-3'
                       : zl.art === 'warn'
-                        ? 'text-[#e08a52]'
-                        : ''
+                        ? 'text-signal'
+                        : 'text-text-2'
                 }
               >
                 {zl.inhalt}
               </div>
             ))}
             <div className="flex items-center gap-2 pt-1">
-              <span className="text-[#e08a52] shrink-0">~ $</span>
+              <span className="shrink-0 text-signal">~ $</span>
               <input
                 ref={inputRef}
                 value={input}
@@ -167,7 +162,8 @@ export const Terminal: React.FC = () => {
                 onKeyDown={onKey}
                 spellCheck={false}
                 autoComplete="off"
-                className="flex-1 bg-transparent outline-none text-[#f0e6d2] caret-[#e08a52]"
+                aria-label={sprache === 'de' ? 'Terminal-Eingabe' : 'Terminal input'}
+                className="flex-1 bg-transparent text-text caret-signal outline-none placeholder:text-text-3"
                 placeholder="help"
               />
             </div>

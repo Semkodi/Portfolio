@@ -3,102 +3,135 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { benutzeSpracheSpeicher } from '../speicher/spracheSpeicher';
 import { projekte } from '../data/inhalt';
 import SektionKopf from '../components/SektionKopf';
+import Fallstudie from '../components/Fallstudie';
 import Reveal from '../components/Reveal';
+
+const fallstudie = projekte.find((p) => p.live);
+const weitere = projekte.filter((p) => !p.live);
 
 export const Werk: React.FC = () => {
   const { sprache } = benutzeSpracheSpeicher();
-  const [offen, setOffen] = useState<string | null>(projekte[0]?.id ?? null);
+  const [offen, setzeOffen] = useState<string | null>(null);
 
   return (
-    <section id="werk" className="relative py-24 sm:py-36 px-5 sm:px-8 max-w-[1500px] mx-auto">
-      <SektionKopf
-        nummer="02"
-        label={sprache === 'de' ? 'Ausgewählte Arbeiten' : 'Selected work'}
-        titel={
-          <>
-            {sprache === 'de' ? 'Projekte' : 'Projects'}{' '}
-            <span className="italic-display text-[color:var(--color-sienna)]">({projekte.length})</span>
-          </>
-        }
-      />
+    <section id="werk" className="relative px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+      {fallstudie && (
+        <>
+          <SektionKopf
+            nummer="02"
+            label={sprache === 'de' ? 'Fallstudie' : 'Case study'}
+            rechts={sprache === 'de' ? 'Kundenprojekt' : 'Client project'}
+          />
+          <Fallstudie projekt={fallstudie} />
+        </>
+      )}
 
-      <div className="regel">
-        {projekte.map((p, i) => {
-          const aktiv = offen === p.id;
-          return (
-            <Reveal key={p.id} art="auf" delay={i * 0.05} className="regel">
-              <button
-                onClick={() => setOffen(aktiv ? null : p.id)}
-                data-cursor
-                className="group w-full text-left py-6 sm:py-8 grid grid-cols-[auto_1fr_auto] items-center gap-4 sm:gap-8"
-              >
-                <span className="font-mono-code text-xs text-[color:var(--color-ink-faint)] group-hover:text-[color:var(--color-sienna)] transition-colors">
-                  0{i + 1}
-                </span>
-                <span className="flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
-                  <span
-                    className={`font-display text-3xl sm:text-5xl lg:text-6xl leading-none transition-all duration-500 group-hover:translate-x-2 ${
-                      aktiv ? 'text-[color:var(--color-sienna)]' : ''
-                    }`}
-                  >
-                    {p.titel}
-                  </span>
-                  <span className="label mt-2 sm:mt-0">{p.badge}</span>
-                </span>
-                <span
-                  className={`font-display text-2xl leading-none transition-transform duration-500 ${
-                    aktiv ? 'rotate-45' : ''
-                  }`}
-                >
-                  +
-                </span>
-              </button>
+      <div className="mt-24 sm:mt-32">
+        <SektionKopf
+          nummer="03"
+          label={sprache === 'de' ? 'Weitere Arbeiten' : 'More work'}
+          rechts={`${String(weitere.length).padStart(2, '0')} ${sprache === 'de' ? 'Einträge' : 'entries'}`}
+        />
 
-              <AnimatePresence initial={false}>
-                {aktiv && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
+        <div>
+          {weitere.map((p, i) => {
+            const aktiv = offen === p.id;
+            return (
+              <Reveal key={p.id} art="auf" delay={i * 0.05}>
+                <div className="border-t border-linie last:border-b">
+                  <button
+                    type="button"
+                    onClick={() => setzeOffen(aktiv ? null : p.id)}
+                    aria-expanded={aktiv}
+                    data-cursor
+                    className="group relative grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 py-6 pl-5 text-left sm:gap-8"
                   >
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 pt-2">
-                      <div className="lg:col-span-1 hidden lg:block" />
-                      <div className="lg:col-span-6 space-y-5">
-                        <p className="font-display text-xl sm:text-2xl leading-snug">{p.beschreibung[sprache]}</p>
-                        <div>
-                          <div className="label mb-2">{sprache === 'de' ? 'Umsetzung' : 'Approach'}</div>
-                          <p className="text-[color:var(--color-ink-soft)] leading-relaxed">{p.architektur[sprache]}</p>
+                    {/* Signalkante der offenen Zeile */}
+                    <span
+                      aria-hidden
+                      className={`absolute top-4 bottom-4 left-0 w-0.5 transition-all duration-500 ${
+                        aktiv
+                          ? 'bg-signal shadow-[0_0_14px_rgba(255,154,60,0.6)]'
+                          : 'bg-transparent group-hover:bg-linie-stark'
+                      }`}
+                    />
+                    <span className="font-mono-code text-xs text-signal">
+                      {String(i + 2).padStart(3, '0')}
+                    </span>
+                    <span className="flex flex-col gap-1.5">
+                      <span className="text-2xl leading-tight font-medium tracking-[-0.025em] sm:text-[26px]">
+                        {p.titel}
+                      </span>
+                      <span className="text-[13.5px] text-text-3">{p.untertitel[sprache]}</span>
+                    </span>
+                    <span
+                      aria-hidden
+                      className={`text-xl leading-none text-text-3 transition-transform duration-500 ${
+                        aktiv ? 'rotate-45 text-signal' : 'group-hover:text-text'
+                      }`}
+                    >
+                      +
+                    </span>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {aktiv && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="grid grid-cols-1 gap-8 pb-10 pl-5 lg:grid-cols-12">
+                          <div className="flex flex-col gap-5 lg:col-span-6">
+                            <p className="max-w-[62ch] text-[15.5px] leading-[1.7] text-text-2">
+                              {p.beschreibung[sprache]}
+                            </p>
+                            <div>
+                              <div className="label mb-2">
+                                {sprache === 'de' ? 'Umsetzung' : 'Approach'}
+                              </div>
+                              <p className="max-w-[62ch] text-[15px] leading-[1.7] text-text-2">
+                                {p.architektur[sprache]}
+                              </p>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {p.tags.map((t) => (
+                                <span
+                                  key={t}
+                                  className="border border-linie px-2.5 py-1 font-mono-code text-[11px] text-text-3"
+                                >
+                                  {t}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="lg:col-span-5 lg:col-start-8">
+                            <div className="label mb-3">
+                              {sprache === 'de' ? 'Kern-Features' : 'Key features'}
+                            </div>
+                            <ul className="flex flex-col gap-3">
+                              {p.highlights[sprache].map((h, hi) => (
+                                <li key={h} className="flex gap-3 text-[14.5px] leading-snug text-text-2">
+                                  <span className="shrink-0 font-mono-code text-[11px] text-signal">
+                                    {String(hi + 1).padStart(2, '0')}
+                                  </span>
+                                  {h}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
-                        <div className="flex flex-wrap gap-x-4 gap-y-1 pt-2 regel">
-                          {p.tags.map((t) => (
-                            <span key={t} className="font-mono-code text-xs text-[color:var(--color-ink-faint)]">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="lg:col-span-4 lg:col-start-9">
-                        <div className="label mb-3">{sprache === 'de' ? 'Kern-Features' : 'Key features'}</div>
-                        <ul className="space-y-3">
-                          {p.highlights[sprache].map((h, hi) => (
-                            <li key={hi} className="flex gap-3 text-sm leading-snug">
-                              <span className="font-mono-code text-xs text-[color:var(--color-sienna)] shrink-0">
-                                {String(hi + 1).padStart(2, '0')}
-                              </span>
-                              {h}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </Reveal>
-          );
-        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
