@@ -3,16 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Seite nicht gefunden | Page Not Found</title>
+  <meta name="theme-color" content="#161311">
+  <title>404 // Ressource nicht gefunden — Semir Borogovac</title>
   <style>
     :root {
-      --bg: #0a0a0c;
-      --fg: #f4f4f5;
-      --muted: #a1a1aa;
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --card: rgba(255, 255, 255, 0.03);
-      --border: rgba(255, 255, 255, 0.08);
+      --raum: #161311;
+      --raum-2: #1e1917;
+      --raum-3: #28221f;
+      --linie: rgba(212, 163, 115, 0.18);
+      --text: #f5ebe0;
+      --text-2: #e3d5ca;
+      --text-3: #a6988d;
+      --signal: #ff9a3c;
+      --signal-tief: #161311;
+      --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     * {
@@ -22,161 +27,288 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--fg);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--raum);
+      color: var(--text);
+      font-family: var(--font-sans);
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      overflow: hidden;
+      padding: 24px;
+      overflow-x: hidden;
       position: relative;
     }
 
-    /* Dekorative Hintergrund-Glows */
-    .glow-1 {
+    /* Feines Hintergrund-Messraster */
+    .raster {
       position: absolute;
-      top: -10%;
-      left: -10%;
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
+      inset: 0;
+      background-image: 
+        linear-gradient(var(--linie) 1px, transparent 1px),
+        linear-gradient(90deg, var(--linie) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.35;
       pointer-events: none;
-      z-index: 1;
+      z-index: 0;
     }
 
-    .glow-2 {
+    /* Subtiler Glow am unteren Rand */
+    .glow {
       position: absolute;
-      bottom: -10%;
-      right: -10%;
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
+      bottom: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 154, 60, 0.14) 0%, transparent 70%);
       pointer-events: none;
-      z-index: 1;
+      z-index: 0;
     }
 
-    .container {
-      max-width: 500px;
+    /* Terminal-Fenster */
+    .terminal-card {
+      position: relative;
+      z-index: 1;
+      max-width: 580px;
       width: 100%;
-      text-align: center;
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 40px 30px;
-      border-radius: 24px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      position: relative;
-      z-index: 2;
-      animation: fadeIn 0.8s ease-out;
+      background: var(--raum-2);
+      border: 1px solid var(--linie);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      animation: auftauchen 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Terminal Header */
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      background: var(--raum-3);
+      border-bottom: 1px solid var(--linie);
+    }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-rot { background: #ff5f56; }
+    .dot-gelb { background: #ffbd2e; }
+    .dot-gruen { background: #27c93f; }
+
+    .header-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-2);
+      margin-left: 8px;
+    }
+
+    .header-status {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: #ff5f56;
+      letter-spacing: 0.1em;
+    }
+
+    /* Terminal Inhalt */
+    .terminal-body {
+      padding: 36px 32px;
+      text-align: left;
     }
 
     .error-code {
-      font-size: 120px;
+      font-family: var(--font-mono);
+      font-size: 64px;
       font-weight: 900;
       line-height: 1;
-      background: linear-gradient(135deg, var(--primary), #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-      letter-spacing: -2px;
-      animation: pulse 3s infinite ease-in-out;
+      color: var(--signal);
+      letter-spacing: -0.04em;
+      text-shadow: 0 0 24px rgba(255, 154, 60, 0.35);
+      margin-bottom: 16px;
+    }
+
+    .meta-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--signal);
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
     h1 {
       font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: -0.5px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.25;
     }
 
     p {
-      color: var(--muted);
-      font-size: 16px;
+      color: var(--text-2);
+      font-size: 14.5px;
       line-height: 1.6;
-      margin-bottom: 30px;
-      font-weight: 500;
+      margin-bottom: 24px;
     }
 
-    .btn {
+    .console-box {
+      background: var(--raum);
+      border: 1px solid var(--linie);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-3);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .console-box .prompt {
+      color: var(--signal);
+      font-weight: bold;
+    }
+
+    .console-box .err {
+      color: #ff5f56;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      background-color: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
+      gap: 8px;
+      background: var(--signal);
+      color: var(--signal-tief);
+      font-family: var(--font-mono);
+      font-size: 12px;
       font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 12px;
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 12px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 20px rgba(255, 154, 60, 0.3);
     }
 
-    .btn:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(99, 102, 241, 0.4);
+    .btn-primary:hover {
+      background: #ffb066;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 26px rgba(255, 154, 60, 0.45);
     }
 
-    .btn:active {
-      transform: translateY(0);
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      color: var(--text-2);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      padding: 12px 16px;
+      border: 1px solid var(--linie);
+      border-radius: 6px;
+      transition: all 0.25s ease;
     }
 
-    .divider {
-      height: 1px;
-      background-color: var(--border);
-      margin: 20px 0;
+    .btn-secondary:hover {
+      border-color: var(--signal);
+      color: var(--signal);
     }
 
-    @keyframes fadeIn {
+    .footer-bar {
+      margin-top: 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    @keyframes auftauchen {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
       }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.2));
-      }
-      50% {
-        transform: scale(1.03);
-        filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.4));
-      }
-    }
   </style>
 </head>
 <body>
-  <div class="glow-1"></div>
-  <div class="glow-2"></div>
+  <div class="raster" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
 
-  <main class="container">
-    <div class="error-code">404</div>
-    
-    <!-- Deutsch -->
-    <section aria-label="Fehlermeldung (Deutsch)">
-      <h1>Hoppla! Seite nicht gefunden.</h1>
-      <p>Die gesuchte Seite existiert leider nicht oder wurde verschoben.</p>
-    </section>
+  <main class="terminal-card">
+    <div class="terminal-header">
+      <div class="dots">
+        <span class="dot dot-rot"></span>
+        <span class="dot dot-gelb"></span>
+        <span class="dot dot-gruen"></span>
+        <span class="header-title">http_status_404.sh [ERROR]</span>
+      </div>
+      <span class="header-status">STATUS // 404</span>
+    </div>
 
-    <div class="divider" aria-hidden="true"></div>
+    <div class="terminal-body">
+      <div class="error-code">404</div>
+      <div class="meta-tag">HTTP 404 // NOT_FOUND</div>
+      <h1>Ressource nicht gefunden.</h1>
+      <p>
+        Die angeforderte Adresse existiert nicht auf diesem Server oder wurde verschoben.
+      </p>
 
-    <!-- English -->
-    <section aria-label="Error message (English)">
-      <h1>Oops! Page not found.</h1>
-      <p>The page you are looking for does not exist or has been moved.</p>
-    </section>
+      <div class="console-box">
+        <div><span class="prompt">$</span> curl -I https://semirborogovac.de<span id="route-display"></span></div>
+        <div class="err">HTTP/2 404 Not Found — Routing table resolved 0 matches.</div>
+      </div>
 
-    <a href="/" class="btn">Zur Startseite | Back to Home</a>
+      <div class="actions">
+        <a href="/" class="btn-primary">
+          <span>← ZUR STARTSEITE</span>
+        </a>
+        <a href="/#kontakt" class="btn-secondary">
+          <span>KONTAKT AUFNEHMEN</span>
+        </a>
+      </div>
+    </div>
   </main>
+
+  <footer class="footer-bar">
+    SEMIR BOROGOVAC // PORTFOLIO 2026
+  </footer>
+
+  <script>
+    // Zeigt den aktuellen fehlerhaften Pfad in der simulierten Konsole an
+    try {
+      const p = window.location.pathname;
+      if (p && p !== '/' && p !== '/404.html') {
+        document.getElementById('route-display').textContent = p;
+      }
+    } catch (e) {}
+  </script>
 </body>
 </html>
