@@ -27,3 +27,12 @@ dist-ssr
 # User specifics
 HOSTING.md
 *.pdf
+
+# Internal development & Private Guides
+.claude/
+AGENTS.md
+BEFEHLE.md
+FILEZILLA_ANLEITUNG.md
+*filezilla*
+*FILEZILLA*
+projekt.md
