@@ -7,13 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies & Build-Output
 node_modules
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Editor, Agenten & interne Konfigurationen
 .agent
+.claude/
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -24,15 +26,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# User specifics
-HOSTING.md
+# Interne Entwürfe & Binärdateien
+design/
 *.pdf
 
-# Internal development & Private Guides
-.claude/
-AGENTS.md
-BEFEHLE.md
-FILEZILLA_ANLEITUNG.md
-*filezilla*
-*FILEZILLA*
-projekt.md
+# Dokumentation: Nur offizielle README veröffentlichen
+*.md
+!README.md
