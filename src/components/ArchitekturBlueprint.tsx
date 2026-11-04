@@ -122,6 +122,7 @@ export const ArchitekturBlueprint: React.FC = () => {
   return (
     <div
       ref={sectionRef}
+      style={{ position: 'relative' }}
       className="relative h-[280vh] bg-raum-2 border-b border-linie-stark"
     >
       {/* Sticky Pinned Viewport Container */}

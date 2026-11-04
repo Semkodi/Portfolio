@@ -144,6 +144,7 @@ export const Profil: React.FC = () => {
     <div
       ref={sectionRef}
       id="profil"
+      style={{ position: 'relative' }}
       className="relative h-[270vh] bg-raum border-b border-linie-stark"
     >
       {/* Sticky Pinned Container über die gesamte Bildschirmhöhe */}

@@ -391,11 +391,11 @@ export const DevWorkspace3D: React.FC<DevWorkspace3DProps> = ({ aktiveStufe, onH
 
     // 10. Animation Loop
     let animId: number;
-    const clock = new THREE.Clock();
+    const startTime = performance.now();
 
     const animate = () => {
       animId = requestAnimationFrame(animate);
-      const time = clock.getElapsedTime();
+      const time = (performance.now() - startTime) * 0.001;
 
       // Flüssige 3D-Karussell-Drehung zur Ziel-Rotation (Smooth Interpolation)
       currentRotationY.current += (targetRotationY.current - currentRotationY.current) * 0.05;

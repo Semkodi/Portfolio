@@ -53,7 +53,7 @@ export const ScanHeadline: React.FC<ScanHeadlineProps> = ({
       className={`group relative cursor-default select-none ${className}`}
     >
       {/* Editorial Headline */}
-      <h2 className="relative text-[clamp(2.4rem,5.5vw,4.4rem)] font-bold tracking-[-0.035em] leading-[1.06] text-text">
+      <h2 className="relative text-[clamp(1.9rem,5.5vw,4.4rem)] font-bold tracking-[-0.035em] leading-[1.08] text-text">
         {renderText()}
 
         {/* Luminous Scanline Sweep Effekt über die Buchstaben */}

@@ -184,20 +184,23 @@ export const CineHero: React.FC = () => {
       />
 
       {/* Top Editorial Wordmark & Audio Controls Bar */}
-      <div className="relative z-20 flex items-center justify-between px-6 pt-8 sm:px-12">
-        <div className="flex items-center gap-3">
+      <div className="relative z-20 flex items-center justify-between px-5 pt-20 sm:px-12 sm:pt-8">
+        <div className="flex items-center gap-2.5">
           <span className="h-2 w-2 rounded-full bg-signal shadow-[0_0_8px_#ff9a3c]" />
-          <span className="font-mono-code text-[11px] font-semibold tracking-[0.22em] uppercase text-text">
+          <span className="hidden sm:inline font-mono-code text-[11px] font-semibold tracking-[0.22em] uppercase text-text">
             SEMIR BOROGOVAC // 3D CODE WORKSPACE
+          </span>
+          <span className="sm:hidden font-mono-code text-[10.5px] font-semibold tracking-[0.18em] uppercase text-text">
+            3D CODE WORKSPACE
           </span>
         </div>
 
         {/* Global Sound Toggle & Explore Action */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             onClick={toggleAudio}
             type="button"
-            className="flex items-center gap-2 rounded-full border border-linie bg-raum-2/80 px-3.5 py-1.5 font-mono-code text-[11px] text-text-2 tracking-wider transition-colors hover:border-signal hover:text-signal"
+            className="flex items-center gap-2 rounded-full border border-linie bg-raum-2/80 px-3 py-1 font-mono-code text-[10.5px] sm:text-[11px] text-text-2 tracking-wider transition-colors hover:border-signal hover:text-signal"
           >
             {isAudioAktiv ? (
               <>
@@ -224,9 +227,9 @@ export const CineHero: React.FC = () => {
       </div>
 
       {/* Main Editorial Content Overlay */}
-      <div className="relative z-10 flex min-h-[calc(100vh-140px)] flex-col justify-between px-6 py-10 sm:px-12 lg:py-16">
+      <div className="relative z-10 flex min-h-[calc(100vh-140px)] flex-col justify-between px-5 py-4 sm:px-12 sm:py-10 lg:py-16">
         {/* Left Column: Reiner Text-Bereich ohne störende 3D-Verdeckung */}
-        <div className="mt-8 max-w-[620px]">
+        <div className="mt-2 sm:mt-8 max-w-[620px]">
           {/* Stage Tag */}
           <div className="flex items-center gap-2.5">
             <span className="font-mono-code text-[11px] tracking-[0.24em] uppercase text-signal">

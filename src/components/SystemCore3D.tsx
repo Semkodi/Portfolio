@@ -313,12 +313,15 @@ export const SystemCore3D: React.FC<SystemCore3DProps> = ({ aktiveStufe, onHover
 
     // 13. Animation Loop
     let animId: number;
-    const clock = new THREE.Clock();
+    const startTime = performance.now();
+    let lastTime = startTime;
 
     const animate = () => {
       animId = requestAnimationFrame(animate);
-      const delta = clock.getDelta();
-      const time = clock.getElapsedTime();
+      const now = performance.now();
+      const delta = (now - lastTime) * 0.001;
+      lastTime = now;
+      const time = (now - startTime) * 0.001;
 
       // Continuous subtle ambient movements
       apiRing.rotation.z = time * 0.15;

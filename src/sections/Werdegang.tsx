@@ -42,7 +42,7 @@ export const Werdegang: React.FC = () => {
       </div>
 
       {/* Interaktive Timeline */}
-      <div ref={ref} className="relative mt-12 pl-6 sm:pl-10">
+      <div ref={ref} style={{ position: 'relative' }} className="relative mt-12 pl-6 sm:pl-10">
         {/* Durchgehende Timeline-Linie */}
         <div aria-hidden className="absolute top-0 bottom-0 left-2 w-0.5 bg-linie" />
         {/* Dynamisch mitscrollende Signallinie */}
