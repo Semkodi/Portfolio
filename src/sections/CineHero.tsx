@@ -173,7 +173,7 @@ export const CineHero: React.FC = () => {
       className="relative min-h-screen w-full overflow-hidden bg-raum border-b border-linie-stark"
     >
       {/* 3D WebGL Canvas Layer (Rechts fokussiert, dezent im Hintergrund) */}
-      <div className="absolute inset-0 z-0 pointer-events-auto">
+      <div className="absolute inset-0 z-0 pointer-events-auto max-w-full overflow-hidden">
         <DevWorkspace3D aktiveStufe={aktiveStufe} />
       </div>
 

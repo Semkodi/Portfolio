@@ -471,7 +471,7 @@ export const DevWorkspace3D: React.FC<DevWorkspace3DProps> = ({ aktiveStufe, onH
 
   return (
     <div
-      className="relative h-full w-full select-none"
+      className="relative h-full w-full max-w-full overflow-hidden select-none"
       onPointerDown={onPointerDown}
       onPointerUp={onPointerUp}
     >
@@ -481,7 +481,7 @@ export const DevWorkspace3D: React.FC<DevWorkspace3DProps> = ({ aktiveStufe, onH
       />
 
       {/* Floating 3D Interaction Hint */}
-      <div className="pointer-events-none absolute bottom-8 right-12 z-20 flex items-center gap-3">
+      <div className="pointer-events-none absolute bottom-8 right-4 sm:right-12 z-20 hidden sm:flex items-center gap-3">
         {hoverLabel ? (
           <div className="rounded border border-signal/70 bg-raum/90 px-4 py-2 font-mono-code text-[12px] tracking-wide text-signal shadow-[0_0_24px_rgba(255,154,60,0.35)] backdrop-blur-md">
             <span className="mr-2 inline-block h-2 w-2 animate-ping rounded-full bg-signal" />

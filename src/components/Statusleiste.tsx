@@ -26,11 +26,11 @@ export const Statusleiste: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 right-0 left-0 lg:left-[88px] z-40 border-b transition-colors duration-300 ${
+      className={`fixed top-0 right-0 left-0 lg:left-[88px] z-40 w-full max-w-full overflow-hidden border-b transition-colors duration-300 ${
         gescrollt ? 'border-linie bg-raum/90 backdrop-blur-md' : 'border-transparent'
       }`}
     >
-      <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-8 sm:py-4 lg:px-12">
+      <div className="flex items-center justify-between gap-2 px-3.5 py-3 sm:px-8 sm:py-4 lg:px-12 w-full max-w-full">
         {/* Linke Seite: Monogramm & Verfügbarkeits-Pill (Kompakt auf Mobile) */}
         <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
           <a
