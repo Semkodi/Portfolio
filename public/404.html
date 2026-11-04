@@ -302,13 +302,16 @@
   </footer>
 
   <script>
-    // Zeigt den aktuellen fehlerhaften Pfad in der simulierten Konsole an
+    // Zeigt die aufgerufene URL an – filtert lokale Dateipfade sauber heraus
     try {
-      const p = window.location.pathname;
-      if (p && p !== '/' && p !== '/404.html') {
-        document.getElementById('route-display').textContent = p;
+      let p = window.location.pathname;
+      if (!p || p === '/' || p.includes(':') || p.includes('dist') || p.includes('404')) {
+        p = '/nicht-gefunden';
       }
-    } catch (e) {}
+      document.getElementById('route-display').textContent = p;
+    } catch (e) {
+      document.getElementById('route-display').textContent = '/nicht-gefunden';
+    }
   </script>
 </body>
 </html>
