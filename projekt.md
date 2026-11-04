@@ -46,14 +46,25 @@
     - Dynamisch zusammengesetzte E-Mail-Adresse gegen Scraping-Crawler.
   - Server-seitiges PHP-Skript (`public/mail.php`) mit SSL-Header und doppelter Validierung.
 
-- [x] **FileZilla & Webhosting Deployment-Paket**
+- [x] **FileZilla & Webhosting Deployment-Paket & Mobile Responsiveness**
   - Produktions-Build in `dist/`.
   - Vollständige `.htaccess` für Apache-Webserver mit SPA-Routing, Caching-Headern, GZIP-Komprimierung und MIME-Type Definitionen.
+  - **Mobile-First Optimierung:**
+    - Starre Desktop-Scrollstrecken (`270vh` / `280vh`) und `overflow: hidden` auf Mobilgeräten (`< 1024px`) durch natürlichen Dokumentenfluss ersetzt (kein Steckenbleiben, keine leeren Scroll-Bereiche).
+    - Entwickler-ID-Ausweis und alle 3 Terminal-Konsolen auf Mobilgeräten vollständig sichtbar und interaktiv bedienbar.
+    - Architektur-Blueprint SVG-Schichten mobil dauerhaft sichtbar mit Touch-Auswahl.
+    - Statusleiste mit kompaktem `[☰ MENÜ]` Button gegen Clipping gesichert.
+    - 404-Seite im Warm-Mocha-Terminaldesign mit Pfad-Sanitierung.
+    - Three.js Deprecation (`THREE.Clock`) durch `performance.now()` ersetzt.
 
 ---
 
 ## 📝 Changelog
 - **2026-11-04:**
+  - Mobile Responsiveness Review & Bugfixing: Scroll-Traps im Profil und Architektur-Blueprint auf Smartphones aufgelöst, ID-Karte unbeschnitten dargestellt, SVG-Ebenen mobil sichtbar geschaltet.
+  - Header-Navigation mobil optimiert (`[☰ MENÜ]`-Button mit Hamburger-Icon).
+  - Three.js `THREE.Clock` Deprecation auf `performance.now()` umgestellt.
+  - 404-Fehlerseite im Warm-Mocha-Terminalstil erstellt.
   - Großes Cinematic 3D Update nach Vorlage Forma Studio implementiert.
   - 3D-Karussell mit 5 Codefenstern, Orbit-Ringen und leuchtendem Hologramm-Kern gebaut.
   - Echte Desktop- und Mobile-Screenshots für *simply switch* eingebunden.

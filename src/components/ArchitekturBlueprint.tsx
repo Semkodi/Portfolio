@@ -63,8 +63,21 @@ const SCHICHTEN: BlueprintSchicht[] = [
 export const ArchitekturBlueprint: React.FC = () => {
   const { sprache } = benutzeSpracheSpeicher();
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024;
+    }
+    return false;
+  });
 
-  // Scroll Progress über den gepinnten Container (300vh Scroll-Strecke)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Scroll Progress über den gepinnten Container (300vh Scroll-Strecke auf Desktop)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end end'],
@@ -75,6 +88,7 @@ export const ArchitekturBlueprint: React.FC = () => {
 
   // Synchronisiere Scroll-Fortschritt mit der aktiven Schicht (0, 1, 2, 3)
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (isMobile) return;
     let index = 0;
     if (latest < 0.25) index = 0;
     else if (latest < 0.55) index = 1;
@@ -109,32 +123,36 @@ export const ArchitekturBlueprint: React.FC = () => {
   const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   const springeZuSchicht = (index: number) => {
-    if (!sectionRef.current) return;
-    const targets = [0.05, 0.35, 0.65, 0.92];
-    const top = sectionRef.current.offsetTop;
-    const height = sectionRef.current.offsetHeight - window.innerHeight;
-    window.scrollTo({
-      top: top + height * targets[index],
-      behavior: 'smooth',
-    });
+    setAktiveSchicht(index);
+    audio.spieleKlick();
+
+    if (!isMobile && sectionRef.current) {
+      const targets = [0.05, 0.35, 0.65, 0.92];
+      const top = sectionRef.current.offsetTop;
+      const height = sectionRef.current.offsetHeight - window.innerHeight;
+      window.scrollTo({
+        top: top + height * targets[index],
+        behavior: 'smooth',
+      });
+    }
   };
 
   return (
     <div
       ref={sectionRef}
       style={{ position: 'relative' }}
-      className="relative h-[280vh] bg-raum-2 border-b border-linie-stark"
+      className="relative lg:h-[280vh] bg-raum-2 border-b border-linie-stark py-12 lg:py-0"
     >
-      {/* Sticky Pinned Viewport Container */}
-      <div className="sticky top-0 flex h-screen w-full items-center overflow-hidden px-6 sm:px-12">
+      {/* Sticky Pinned Viewport Container nur auf Desktop (lg:) */}
+      <div className="relative lg:sticky lg:top-0 flex flex-col justify-center lg:h-screen w-full lg:overflow-hidden px-5 sm:px-12">
         {/* Subtle Background Architectural Grid */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(212,163,115,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(212,163,115,0.035)_1px,transparent_1px)] bg-[size:4.5rem_4.5rem]"
         />
 
-        {/* Top Progress Line across the sticky header */}
-        <div className="absolute top-0 inset-x-0 h-1 bg-linie/30">
+        {/* Top Progress Line across the sticky header (nur Desktop) */}
+        <div className="hidden lg:block absolute top-0 inset-x-0 h-1 bg-linie/30">
           <motion.div
             style={{ width: progressWidth }}
             className="h-full bg-gradient-to-r from-signal/70 via-signal to-[#ffb066] shadow-[0_0_12px_#ff9a3c]"
@@ -170,6 +188,7 @@ export const ArchitekturBlueprint: React.FC = () => {
 
             {/* Scroll Indicator Hint */}
             <div className="flex items-center gap-2 font-mono-code text-[11px] text-text-3">
+              <span className="md:hidden">TIPPE ZUM AUSWÄHLEN</span>
               <span className="hidden md:inline">BEIM SCROLLEN BAUT SICH DAS SYSTEM AUF</span>
               <div className="flex h-7 w-7 items-center justify-center rounded border border-linie bg-raum text-signal">
                 <ChevronDown className="h-4 w-4 animate-bounce" />
@@ -197,7 +216,7 @@ export const ArchitekturBlueprint: React.FC = () => {
               >
                 {/* SCHICHT 1: REST-Schnittstellen & Sicherheit */}
                 <motion.g
-                  style={{ opacity: l1Opacity, y: l1Y }}
+                  style={isMobile ? { opacity: 1, y: 0 } : { opacity: l1Opacity, y: l1Y }}
                   className="cursor-pointer"
                   onClick={() => springeZuSchicht(0)}
                 >
@@ -223,7 +242,7 @@ export const ArchitekturBlueprint: React.FC = () => {
 
                 {/* SCHICHT 2: PostgreSQL Datenbank */}
                 <motion.g
-                  style={{ opacity: l2Opacity, y: l2Y }}
+                  style={isMobile ? { opacity: 1, y: 0 } : { opacity: l2Opacity, y: l2Y }}
                   className="cursor-pointer"
                   onClick={() => springeZuSchicht(1)}
                 >
@@ -253,7 +272,7 @@ export const ArchitekturBlueprint: React.FC = () => {
 
                 {/* SCHICHT 3: Java 21 & Spring Boot Logik */}
                 <motion.g
-                  style={{ opacity: l3Opacity, y: l3Y }}
+                  style={isMobile ? { opacity: 1, y: 0 } : { opacity: l3Opacity, y: l3Y }}
                   className="cursor-pointer"
                   onClick={() => springeZuSchicht(2)}
                 >
@@ -281,7 +300,7 @@ export const ArchitekturBlueprint: React.FC = () => {
 
                 {/* SCHICHT 4: React & UI Oberfläche */}
                 <motion.g
-                  style={{ opacity: l4Opacity, y: l4Y }}
+                  style={isMobile ? { opacity: 1, y: 0 } : { opacity: l4Opacity, y: l4Y }}
                   className="cursor-pointer"
                   onClick={() => springeZuSchicht(3)}
                 >
