@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { benutzeSpracheSpeicher } from '../speicher/spracheSpeicher';
 import { profil } from '../data/inhalt';
 import SektionKopf from '../components/SektionKopf';
 import { ScanHeadline } from '../components/ScanHeadline';
 import { audio } from '../utils/audio';
-import { Terminal, Check, Play, RefreshCw, ChevronDown, Layers } from 'lucide-react';
+import { Terminal, Check, Play, RefreshCw, ChevronDown } from 'lucide-react';
 
 interface TerminalKarte {
   id: string;
@@ -71,52 +71,6 @@ export const Profil: React.FC = () => {
   const { sprache } = benutzeSpracheSpeicher();
   const [aktiverTab, setAktiverTab] = useState<'kompakt' | 'deepdive'>('kompakt');
   const [reExecutingId, setReExecutingId] = useState<string | null>(null);
-  const [isMobile, setIsMobile] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < 1024;
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 1024);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
-  // Scroll Container für die gesamte Sektion (280vh Höhe für gepinnte Scroll-Erfahrung auf Desktop)
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end end'],
-  });
-
-  // Sound-Trigger bei Phasen-Übergang
-  const letztePhase = useRef<number>(0);
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    let phase = 0;
-    if (latest < 0.45) phase = 1;
-    else phase = 2;
-
-    if (phase !== letztePhase.current) {
-      letztePhase.current = phase;
-      audio.spieleKlick();
-    }
-  });
-
-  // Framer Motion Scroll Transforms:
-  // Phase 1 (0.0 - 0.45): Fokus auf Profil-Header, Text & 3D ID-Karte
-  // Phase 2 (0.45 - 1.0): Sanfter Übergang zu den 3 interaktiven Terminal-Konsolen
-  const progressWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-
-  // Oberer Bereich (Header + ID Card) gleitet sanft nach oben bei weiterem Scrollen
-  const upperY = useTransform(scrollYProgress, [0.35, 0.75], [0, -70]);
-  const upperOpacity = useTransform(scrollYProgress, [0.45, 0.8], [1, 0.45]);
-
-  // Unterer Bereich (3 Terminal-Fenster) gleitet dynamisch hoch und aktiviert sich voll
-  const lowerY = useTransform(scrollYProgress, [0.25, 0.65], [60, 0]);
-  const lowerOpacity = useTransform(scrollYProgress, [0.2, 0.55], [0.35, 1]);
 
   // 3D Parallax Tilt für die ID-Card
   const cardRef = useRef<HTMLDivElement>(null);
@@ -155,29 +109,18 @@ export const Profil: React.FC = () => {
 
   return (
     <div
-      ref={sectionRef}
       id="profil"
-      style={{ position: 'relative' }}
-      className="relative lg:h-[270vh] bg-raum border-b border-linie-stark py-12 lg:py-0"
+      className="relative bg-raum border-b border-linie-stark py-20 lg:py-28 px-5 sm:px-10 lg:px-14"
     >
-      {/* Sticky Pinned Container nur auf Desktop (lg:), auf Smartphones normaler, barrierefreier Fluss */}
-      <div className="relative lg:sticky lg:top-0 flex w-full flex-col justify-between lg:h-screen lg:overflow-hidden px-5 py-6 sm:px-10 lg:px-14">
-        {/* Subtiler Hintergrund-Grid */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(212,163,115,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(212,163,115,0.03)_1px,transparent_1px)] bg-[size:4.5rem_4.5rem]"
-        />
+      {/* Subtiler Hintergrund-Grid */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(212,163,115,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(212,163,115,0.03)_1px,transparent_1px)] bg-[size:4.5rem_4.5rem]"
+      />
 
-        {/* Leuchtender Fortschrittsbalken oben (nur Desktop) */}
-        <div className="hidden lg:block absolute top-0 inset-x-0 h-1 bg-linie/30">
-          <motion.div
-            style={{ width: progressWidth }}
-            className="h-full bg-gradient-to-r from-signal/60 via-signal to-[#ffb066] shadow-[0_0_12px_#ff9a3c]"
-          />
-        </div>
-
+      <div className="relative mx-auto w-full max-w-[1440px] space-y-12 lg:space-y-16">
         {/* 1. Sektions-Kopfzeile */}
-        <div className="relative z-10 w-full pt-2">
+        <div className="relative z-10 w-full">
           <SektionKopf
             nummer="01"
             label={sprache === 'de' ? 'Profil & Arbeitsweise' : 'Profile & Workflow'}
@@ -186,10 +129,7 @@ export const Profil: React.FC = () => {
         </div>
 
         {/* 2. Oberer Bereich: Text & 3D ID-Card */}
-        <motion.div
-          style={isMobile ? {} : { y: upperY, opacity: upperOpacity }}
-          className="relative z-10 grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12 mt-6 lg:mt-0"
-        >
+        <div className="relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
           {/* Linke Spalte: Typografie, Tab-Umschalter & Arbeitsweise */}
           <div className="lg:col-span-7">
             <ScanHeadline
@@ -281,7 +221,7 @@ export const Profil: React.FC = () => {
               ref={cardRef}
               onPointerMove={handlePointerMove}
               onPointerLeave={handlePointerLeave}
-              animate={isMobile ? { rotateY: 0, rotateX: 0 } : { rotateY: tilt.x, rotateX: tilt.y }}
+              animate={{ rotateY: tilt.x, rotateX: tilt.y }}
               transition={{ type: 'spring', stiffness: 260, damping: 20 }}
               style={{ perspective: 1000 }}
               className="group relative w-full max-w-[310px] rounded-xl border border-linie-stark bg-gradient-to-b from-raum-2 to-raum p-3.5 shadow-[0_16px_40px_rgba(0,0,0,0.6)]"
@@ -344,28 +284,24 @@ export const Profil: React.FC = () => {
               </div>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* 3. Unterer Bereich: 3 Terminal-Konsolen (Auf Desktop per Scroll hochgleitend, auf Mobile direkt erreichbar) */}
-        <motion.div
-          style={isMobile ? {} : { y: lowerY, opacity: lowerOpacity }}
-          className="relative z-10 w-full pt-8 pb-4 lg:pt-4 lg:pb-2 mt-8 lg:mt-0"
-        >
-          <div className="flex items-center justify-between pb-2.5 border-b border-linie/50">
+        {/* 3. Unterer Bereich: 3 Terminal-Konsolen (Kompakt und immer sauber sichtbar) */}
+        <div className="relative z-10 w-full pt-4 border-t border-linie/40">
+          <div className="flex items-center justify-between pb-3">
             <div className="flex items-center gap-2 font-mono-code text-[11px] text-signal">
               <Terminal className="h-3.5 w-3.5" />
               <span className="tracking-[0.2em] uppercase font-semibold">
-                INTERAKTIVE RUNTIME-KONSOLEN // SCROLL-PHASE 02
+                INTERAKTIVE RUNTIME-KONSOLEN // CODE-QUALITÄT & STATUS
               </span>
             </div>
-            <div className="flex items-center gap-2 font-mono-code text-[10px] text-text-3">
-              <span className="hidden sm:inline">KLICKE ZUM AUSFÜHREN // WEITERSCROLLEN ZU PROJEKTEN</span>
-              <ChevronDown className="h-3.5 w-3.5 text-signal animate-bounce" />
+            <div className="font-mono-code text-[10.5px] text-text-3">
+              <span>KLICKE ZUM AUSFÜHREN</span>
             </div>
           </div>
 
           {/* 3 Terminal-Fenster im Grid */}
-          <div className="mt-3.5 grid grid-cols-1 gap-4 lg:grid-cols-3">
+          <div className="mt-2 grid grid-cols-1 gap-4 lg:grid-cols-3">
             {TERMINAL_KARTEN.map((karte) => {
               const isRunning = reExecutingId === karte.id;
 
@@ -399,7 +335,7 @@ export const Profil: React.FC = () => {
                   </div>
 
                   {/* Body */}
-                  <div className="p-3 font-mono-code text-[11px] space-y-2">
+                  <div className="p-3.5 font-mono-code text-[11px] space-y-2">
                     <div className="flex items-center gap-2 text-text">
                       <span className="text-signal font-bold">$</span>
                       <span className="font-semibold text-text">{karte.befehl}</span>
@@ -438,7 +374,7 @@ export const Profil: React.FC = () => {
               );
             })}
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -48,7 +48,7 @@
 
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100vw;
     width: 100%;
     max-width: 100vw;
@@ -58,7 +58,7 @@
     background-color: var(--color-raum);
     color: var(--color-text);
     font-family: var(--font-sans);
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100vw;
     width: 100%;
   }
