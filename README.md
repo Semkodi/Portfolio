@@ -2,9 +2,9 @@
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-semirborogovac.de-ff9a3c?style=for-the-badge&logo=google-chrome&logoColor=white)](https://semirborogovac.de)
 [![Tech Stack](https://img.shields.io/badge/Stack-React%20%7C%20TypeScript%20%7C%20Three.js%20%7C%20Java-d4a373?style=for-the-badge)](https://semirborogovac.de)
-[![IHK Abschluss](https://img.shields.io/badge/IHK%20Koblenz-FIAE%202026-27c93f?style=for-the-badge)](https://semirborogovac.de)
+[![IHK Abschluss](https://img.shields.io/badge/IHK%20Koblenz-FIAE%20Januar%202027-27c93f?style=for-the-badge)](https://semirborogovac.de)
 
-> **Interaktives Portfolio im Kontrollraum-Design** mit Three.js 3D-Code-Engine, interaktivem Architektur-Blueprint und echter B2C-Fintech-Fallstudie (*simply switch*). Entwickelt von **Semir Borogovac** (Fachinformatiker für Anwendungsentwicklung, IHK Koblenz 2026).
+> **Interaktives Portfolio im Kontrollraum-Design** mit Three.js 3D-Code-Engine, interaktivem Architektur-Blueprint und echter B2C-Fintech-Fallstudie (*simply switch*). Entwickelt von **Semir Borogovac** (Fachinformatiker für Anwendungsentwicklung, IHK Koblenz, Abschluss Januar 2027).
 
 ---
 
@@ -65,7 +65,7 @@ npm run build
 ## 👤 Kontakt & Entwickler
 
 **Semir Borogovac**  
-*Fachinformatiker für Anwendungsentwicklung (IHK Koblenz 2026)*  
-📍 Dornburg, Hessen // Koblenz / Remote  
+*Fachinformatiker für Anwendungsentwicklung (IHK Koblenz, Abschluss Januar 2027)*  
+📍 Limburg an der Lahn (Hessen) & Remote  
 - **Website:** [semirborogovac.de](https://semirborogovac.de)  
 - **GitHub:** [@Semkodi](https://github.com/Semkodi)  

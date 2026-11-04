@@ -16,8 +16,8 @@ export const profil = {
     en: 'Application Developer',
   } as LS,
   standort: {
-    de: 'Dornburg, Hessen',
-    en: 'Dornburg, Hesse, Germany',
+    de: 'Limburg an der Lahn, Hessen',
+    en: 'Limburg an der Lahn, Hesse, Germany',
   } as LS,
   email: 'borogovacsemir@gmail.com',
   github: 'https://github.com/semkodi',
@@ -43,7 +43,7 @@ export const ui = {
 };
 
 export const hero = {
-  kicker: { de: 'Portfolio · 2026', en: 'Portfolio · 2026' } as LS,
+  kicker: { de: 'Portfolio · 2027', en: 'Portfolio · 2027' } as LS,
   /* Dreizeilige Schlagzeile; Zeile 2 steht in Signalfarbe. */
   zeile1: { de: 'Eine meiner', en: 'One of my' } as LS,
   zeile2: { de: 'Anwendungen läuft', en: 'applications is' } as LS,

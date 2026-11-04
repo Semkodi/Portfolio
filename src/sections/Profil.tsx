@@ -60,7 +60,7 @@ const TERMINAL_KARTEN: TerminalKarte[] = [
     },
     ausgaben: [
       { text: 'Umschulung: FIAE Anwendungsentwicklung', farbe: '#27c93f', icon: true },
-      { text: 'Zuständige Kammer: IHK Koblenz (2026)', farbe: '#f5ebe0', icon: true },
+      { text: 'Zuständige Kammer: IHK Koblenz (Januar 2027)', farbe: '#f5ebe0', icon: true },
       { text: 'Praxis: simply-switch.de live ausgeliefert', farbe: '#ff9a3c', icon: true },
       { text: 'Status: [READY] Bereit für Junior / Vollzeit', farbe: '#27c93f' },
     ],
@@ -140,7 +140,7 @@ export const Profil: React.FC = () => {
               }
               kursivWort="Architektur"
               akzentWort="Ganze."
-              subtitel="SEMIR BOROGOVAC // FIAE UMSCHULUNG 2026"
+              subtitel="SEMIR BOROGOVAC // FIAE UMSCHULUNG 2027"
             />
 
             {/* Tab-Umschalter */}
@@ -242,7 +242,7 @@ export const Profil: React.FC = () => {
 
               {/* ID Header */}
               <div className="flex items-center justify-between border-b border-linie/80 pb-2 font-mono-code text-[9.5px] text-text-3">
-                <span className="tracking-widest uppercase text-signal">DEV_ID // SB-2026</span>
+                <span className="tracking-widest uppercase text-signal">DEV_ID // SB-2027</span>
                 <span>FIAE ENTWICKLUNG</span>
               </div>
 
@@ -269,7 +269,7 @@ export const Profil: React.FC = () => {
                     Fullstack & Backend Entwickler
                   </p>
                 </div>
-                <span className="font-mono-code text-[10px] text-signal">2026</span>
+                <span className="font-mono-code text-[10px] text-signal">2027</span>
               </div>
 
               {/* Live Status */}

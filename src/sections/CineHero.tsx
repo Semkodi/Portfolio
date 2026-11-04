@@ -12,7 +12,7 @@ const STAGE_CONTENT = [
     titel: 'Architektur, gehalten in Code und Präzision.',
     kursiv: 'Code',
     akzent: 'Präzision.',
-    untertitel: 'FULLSTACK SOFTWARE ENGINEERING // 2026',
+    untertitel: 'FULLSTACK SOFTWARE ENGINEERING // 2027',
     beschreibung: {
       de: 'Moderne Software-Entwicklung vom responsiven Web-Frontend in React & TypeScript bis zu soliden Backends und APIs mit Java und Spring Boot.',
       en: 'Modern software engineering from responsive React & TypeScript frontends to solid APIs and backends with Java and Spring Boot.',
@@ -70,7 +70,7 @@ const STAGE_CONTENT = [
       de: 'Semir Borogovac — Fachinformatiker für Anwendungsentwicklung. Verfügbar für Vollzeit- und Junior-Entwickler-Positionen mit Fokus auf Fullstack & Java.',
       en: 'Semir Borogovac — Software Developer (FIAE). Available for Fullstack & Java engineering positions.',
     },
-    tech: ['Fullstack', 'Java & Spring Boot', 'React & Web', 'Koblenz / Remote'],
+    tech: ['Fullstack', 'Java & Spring Boot', 'React & Web', 'Limburg a.d. Lahn / Remote'],
     stat: { label: 'Verfügbarkeit', value: 'Sofort' },
   },
 ];

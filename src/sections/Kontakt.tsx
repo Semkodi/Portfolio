@@ -188,7 +188,7 @@ export const Kontakt: React.FC = () => {
                   <span className="font-bold">STANDORT // EINSATZGEBIET:</span>
                 </div>
                 <p className="text-text-2 pt-1">
-                  Dornburg (Hessen) • Koblenz • Frankfurt / Rhein-Main • Remote
+                  Limburg an der Lahn (Hessen) • Frankfurt / Rhein-Main • Remote
                 </p>
               </div>
             </div>
