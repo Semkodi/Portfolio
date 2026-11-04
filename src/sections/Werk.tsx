@@ -6,7 +6,7 @@ import SektionKopf from '../components/SektionKopf';
 import Fallstudie from '../components/Fallstudie';
 import Reveal from '../components/Reveal';
 import { audio } from '../utils/audio';
-import { FolderGit2, ChevronDown, ExternalLink, Github, Globe, ShieldCheck, Lock, Sparkles } from 'lucide-react';
+import { FolderGit2, ChevronDown, ExternalLink, Github, Globe, Lock } from 'lucide-react';
 
 const fallstudie = projekte.find((p) => p.id === 'simply-switch') || projekte[0];
 const weitere = projekte.filter((p) => p.id !== 'simply-switch');
@@ -147,9 +147,8 @@ export const Werk: React.FC = () => {
                             </p>
 
                             <div className="rounded-lg border border-linie/80 bg-raum/60 p-4 sm:p-5">
-                              <span className="font-mono-code text-[11px] text-signal font-semibold uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
-                                <Sparkles className="h-3.5 w-3.5" />
-                                <span>[ARCHITEKTUR & CODE-PATTERNS]</span>
+                              <span className="font-mono-code text-[11px] text-signal font-semibold uppercase tracking-wider block mb-1.5">
+                                [ARCHITEKTUR & CODE-PATTERNS]
                               </span>
                               <p className="text-[14px] leading-[1.7] text-text-2">
                                 {p.architektur[sprache]}
@@ -213,9 +212,8 @@ export const Werk: React.FC = () => {
                           {/* Rechte Spalte: Kernfunktionen & Meilensteine */}
                           <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-linie/60 lg:pl-8 flex flex-col justify-between">
                             <div>
-                              <span className="font-mono-code text-[11px] text-signal font-semibold uppercase tracking-wider block mb-4 flex items-center gap-1.5">
-                                <ShieldCheck className="h-3.5 w-3.5" />
-                                <span>[KERN-FUNKTIONEN & ERGEBNISSE]</span>
+                              <span className="font-mono-code text-[11px] text-signal font-semibold uppercase tracking-wider block mb-4">
+                                [KERN-FUNKTIONEN & ERGEBNISSE]
                               </span>
                               <ul className="space-y-3">
                                 {p.highlights[sprache].map((h, hi) => (
