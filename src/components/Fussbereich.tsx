@@ -6,6 +6,9 @@ export const Fussbereich: React.FC = () => {
   const { sprache } = benutzeSpracheSpeicher();
   const jahr = new Date().getFullYear();
 
+  // E-Mail dynamisch generieren (Schutz vor automatischen Scraping-Bots)
+  const emailAdresse = `${'borogovacsemir'}@${'gmail.com'}`;
+
   return (
     <footer className="relative border-t border-linie px-5 pt-10 pb-9 sm:px-8 lg:px-12">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -19,8 +22,8 @@ export const Fussbereich: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-7 gap-y-2 font-mono-code text-[11px] tracking-[0.1em] uppercase">
-          <a href={`mailto:${profil.email}`} className="link-unterstrich text-text-2" data-cursor>
-            {profil.email}
+          <a href={`mailto:${emailAdresse}`} className="link-unterstrich text-text-2" data-cursor>
+            {emailAdresse}
           </a>
           <a
             href={profil.github}

@@ -1,11 +1,24 @@
 {
   "pages": [
+    { "id": "page-4", "name": "Verspielt & bunt" },
+    { "id": "page-3", "name": "3D-Ideen" },
     { "id": "page-1", "name": "Neue Entwürfe" },
     { "id": "page-2", "name": "Bisher gut befunden" }
   ],
   "artboards": [
+    { "file": "VarianteM.dc.html", "title": "Variante M — Arcade", "page": "page-4", "x": 0, "y": 0, "w": 1440, "h": 1900 },
+    { "file": "VarianteN.dc.html", "title": "Variante N — Konfetti", "page": "page-4", "x": 1640, "y": 0, "w": 1440, "h": 1900 },
+    { "file": "VarianteO.dc.html", "title": "Variante O — Farbblöcke", "page": "page-4", "x": 0, "y": 2300, "w": 1440, "h": 1900 },
+    { "file": "VarianteP.dc.html", "title": "Variante P — Neon-Werkstatt", "page": "page-4", "x": 1640, "y": 2300, "w": 1440, "h": 1900 },
+
+    { "file": "VarianteI.dc.html", "title": "Variante I — Punktwolke", "page": "page-3", "x": 0, "y": 0, "w": 1440, "h": 1100 },
+    { "file": "VarianteJ.dc.html", "title": "Variante J — Ebenen im Raum", "page": "page-3", "x": 1640, "y": 0, "w": 1440, "h": 1100 },
+    { "file": "VarianteK.dc.html", "title": "Variante K — Shader-Feld", "page": "page-3", "x": 0, "y": 1520, "w": 1440, "h": 1100 },
+    { "file": "VarianteL.dc.html", "title": "Variante L — Drahtgitter-Knoten", "page": "page-3", "x": 1640, "y": 1520, "w": 1440, "h": 1100 },
+
     { "file": "VarianteG.dc.html", "title": "Variante G — Studio Prisma", "page": "page-1", "x": 0, "y": 0, "w": 1440, "h": 3400 },
-    { "file": "VarianteH.dc.html", "title": "Variante H — Kontrollraum", "page": "page-1", "x": 1640, "y": 0, "w": 1440, "h": 2800 },
+    { "file": "VarianteH.dc.html", "title": "Variante H — Kontrollraum (gebaut)", "page": "page-1", "x": 1640, "y": 0, "w": 1440, "h": 2800 },
+
     { "file": "Main.dc.html", "title": "Variante A — Terminal Grid", "page": "page-2", "x": 0, "y": 0, "w": 1440, "h": 2300 },
     { "file": "VarianteD.dc.html", "title": "Variante D — Stilles Studio", "page": "page-2", "x": 1640, "y": 0, "w": 1440, "h": 2300 },
     { "file": "VarianteE.dc.html", "title": "Variante E — Nachtlabor", "page": "page-2", "x": 0, "y": 2700, "w": 1440, "h": 2300 },
@@ -13,53 +26,45 @@
   ],
   "annotations": [
     {
-      "id": "note-g",
-      "page": "page-1",
+      "id": "note-verspielt",
+      "page": "page-4",
+      "x": 0,
+      "y": -700,
+      "w": 1600,
+      "text": "VERSPIELT & BUNT — AUFGEBAUT AUF VARIANTE A\nAlle vier behalten die Struktur, die dir gefallen hat: Monospace-Beschriftungen, Raster, nummerierte Abschnitte, Projekte als Tabelle. Neu ist die Farbigkeit — nicht ein Akzent, sondern vier bis fünf, und Elemente, die leicht schief sitzen, wackeln oder aus dem Raster fallen.\n\nDER VIDEOBLOCK: Jede Variante hat einen 16:9-Block mit Abspielleiste an der Stelle, wo dein Video hinkommt — mit der Markierung [DEIN VIDEO EINSETZEN]. Ein echtes Video kann ich hier nicht einbetten: die Vorschau darf nichts von außen laden, und eine Datei von dir habe ich noch nicht. Schick mir ein Screen-Recording von simply-switch.de (20–30 Sekunden, ohne Ton), dann setze ich es wirklich ein."
+    },
+    {
+      "id": "note-m",
+      "page": "page-4",
       "x": 0,
       "y": -250,
-      "w": 760,
-      "text": "VARIANTE G — STUDIO PRISMA (neu)\nD und F verschmolzen: helles Papier, Serif-Display, Zeilen fahren gestaffelt ein, Linien zeichnen sich — und in der Mitte kippt die Seite in ein tiefes Grün um. Dieser Bruch ist der Wow-Moment, nicht ein Effekt-Feuerwerk.\nDie Fallstudie zu simply-switch.de steht ganz oben als Beweisstück: Browser-Rahmen, Stack, Umfang, Status „live in Produktion“.\nTradeoff: lebt vom Farbwechsel — der muss beim Scrollen sauber sitzen, sonst wirkt er wie ein Fehler."
+      "w": 700,
+      "text": "VARIANTE M — ARCADE\nVariante A mit vier Farben statt einer: jede Projektzeile bekommt ihre eigene, die Navigation wird zu bunten Tasten, die Überschrift wechselt mitten im Wort die Farbe.\nStärke: bleibt technisch und lesbar, wirkt aber sofort gut gelaunt.\nTradeoff: vier Akzentfarben brauchen Disziplin — jede weitere Farbe kippt es ins Beliebige."
     },
     {
-      "id": "note-h",
-      "page": "page-1",
+      "id": "note-n",
+      "page": "page-4",
       "x": 1640,
       "y": -250,
-      "w": 760,
-      "text": "VARIANTE H — KONTROLLRAUM (neu)\nA und E verschmolzen: fixe Seitenleiste mit Fortschrittspunkten, Radar-Sweep, laufende Scanlinie, Ticker-Band, hochzählende Zahlen und ein Terminal als Kontaktblock.\nDie Headline ist die stärkste Bewerbung: „Eine meiner Anwendungen läuft gerade produktiv.“ Daneben das Live-Panel zu simply-switch.de.\nTradeoff: sehr technisch aufgeladen — überzeugt Entwicklerteams sofort, ist für reine HR-Augen dichter als G."
+      "w": 700,
+      "text": "VARIANTE N — KONFETTI\nDie einzige helle: Sandpapier statt Schwarz, dicke schwarze Rahmen, harte Schatten, Konfetti-Formen im Hintergrund, das Video wirkt aufgeklebt.\nStärke: fröhlich und sehr eigen — hebt sich von jeder Entwickler-Seite ab, die man sonst sieht.\nTradeoff: am weitesten weg von A. Wenn dir gerade das Dunkle gefiel, ist das hier ein Bruch."
     },
     {
-      "id": "note-a",
-      "page": "page-2",
+      "id": "note-o",
+      "page": "page-4",
       "x": 0,
-      "y": -210,
+      "y": 2050,
       "w": 700,
-      "text": "VARIANTE A — TERMINAL GRID\nDunkel, monospaced, Hairline-Raster, eine Säure-Akzentfarbe. Dicht und sachlich, jede Zeile Information.\nNeu: simply-switch.de als hervorgehobenes Live-Projekt über der Projekttabelle."
+      "text": "VARIANTE O — FARBBLÖCKE\nJeder Abschnitt bekommt eine eigene, satte Fläche: Violett für den Einstieg, Creme fürs Video, Türkis für die Projekte, Koralle für den Kontakt.\nStärke: die Farbe gliedert die Seite — beim Scrollen weiß man immer, wo man ist.\nTradeoff: der lauteste Entwurf. Auf dem Handy folgt Fläche auf Fläche, das muss man mögen."
     },
     {
-      "id": "note-d",
-      "page": "page-2",
+      "id": "note-p",
+      "page": "page-4",
       "x": 1640,
-      "y": -210,
+      "y": 2050,
       "w": 700,
-      "text": "VARIANTE D — STILLES STUDIO\nRuhig, warm-dunkel, Serif-Display mit viel Luft, ein gedämpfter Ton-Akzent.\nNeu: simply-switch.de als hervorgehobenes Live-Projekt über der Projektliste."
-    },
-    {
-      "id": "note-e",
-      "page": "page-2",
-      "x": 0,
-      "y": 2490,
-      "w": 700,
-      "text": "VARIANTE E — NACHTLABOR\nAurora-Flächen, Glas-Panels, Korn, Scanlinie, Glanz-Sweep, Code-Panel mit blinkendem Caret.\nNeu: simply-switch.de als breite Live-Karte über dem Projektraster."
-    },
-    {
-      "id": "note-f",
-      "page": "page-2",
-      "x": 1640,
-      "y": 2490,
-      "w": 700,
-      "text": "VARIANTE F — KINETIK\nBone-Papier, gestaffelte Einfahr-Animation, rotierendes Siegel, laufendes Tech-Band, gekippte Karten.\nNeu: simply-switch.de als breite Live-Karte über den Projektkarten."
+      "text": "VARIANTE P — NEON-WERKSTATT\nDunkel wie A, aber mit drei leuchtenden Farben, Umriss-Schrift, schief sitzenden Chips und einer gekritzelten Linie unter der Überschrift.\nStärke: am nächsten an A — wer A mochte, erkennt sie sofort wieder, nur lebendiger.\nTradeoff: Leuchteffekte sehen auf schlechten Bildschirmen matschig aus und kosten Akku."
     }
   ],
-  "launch": { "view": "canvas", "page": "page-1" }
+  "launch": { "view": "canvas", "page": "page-4" }
 }

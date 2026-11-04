@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;500;700&amp;family=Chivo+Mono:wght@300;400;500&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #FF9A3C; text-decoration: none; }
+    a:hover { color: #FFC48C; }
+    @keyframes blinken { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0.2; } }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 1100px; background-color: #060809; font-family: 'Chivo', system-ui, sans-serif; color: #E7ECEF; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+
+  <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(231,236,239,0.05) 1px, transparent 1px); background-size: 4px 4px; opacity: 0.5;"></div>
+
+  <div style="position: relative; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; border-bottom: 1px solid rgba(231,236,239,0.09); font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.12em; color: #7A858C;">
+    <span style="display: flex; align-items: center; gap: 10px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background-color: #FF9A3C; animation: blinken 1.8s ease-in-out infinite;"></span>
+      <span style="color: #FF9A3C;">OFFEN FÜR NEUE AUFGABEN</span>
+    </span>
+    <span>SEMIR BOROGOVAC · DORNBURG, HESSEN</span>
+  </div>
+
+  <div style="position: relative; flex-grow: 1;">
+    <!-- Drahtgitter-Knoten, mit eigener 3D-Projektion gezeichnet -->
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -52%);">
+      <canvas id="knoten" width="820" height="700" style="width: 820px; height: 700px; display: block;"></canvas>
+    </div>
+
+    <div style="position: relative; z-index: 2; display: flex; height: 100%; align-items: center; justify-content: space-between; padding: 0 48px; pointer-events: none;">
+      <div style="max-width: 400px;">
+        <span style="display: block; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.2em; color: #7A858C; margin-bottom: 24px;">FACHINFORMATIKER</span>
+        <h1 style="margin: 0; font-size: 66px; line-height: 1.0; letter-spacing: -0.04em; font-weight: 700;">
+          Semir<br>Borogovac
+        </h1>
+        <p style="margin: 26px 0 0 0; font-size: 16px; line-height: 1.7; color: #98A2A9; text-wrap: pretty;">Ich baue Software, die im Einsatz ist — vom Datenmodell bis zur Oberfläche.</p>
+      </div>
+
+      <div style="max-width: 300px; text-align: right; display: flex; flex-direction: column; gap: 22px; align-items: flex-end;">
+        <div style="display: flex; flex-direction: column; gap: 10px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12.5px; color: #98A2A9;">
+          <span>Java &amp; Spring Boot</span>
+          <span>Mendix Low-Code</span>
+          <span>React &amp; TypeScript</span>
+          <span>PostgreSQL &amp; REST</span>
+        </div>
+        <div style="border-top: 1px solid rgba(231,236,239,0.12); padding-top: 18px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: #FF9A3C;">simply-switch.de</span>
+          <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #757F86;">LIVE IN PRODUKTION</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid rgba(231,236,239,0.09); padding: 26px 48px;">
+    <div style="display: flex; gap: 14px;">
+      <div style="background-color: #FF9A3C; color: #120A03; padding: 15px 28px; font-size: 15px; font-weight: 500;">Arbeiten ansehen</div>
+      <div style="border: 1px solid rgba(231,236,239,0.18); padding: 15px 28px; font-size: 15px;">borogovacsemir@gmail.com</div>
+    </div>
+    <div style="display: flex; gap: 34px; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: #757F86;">
+      <span>9 ROUTEN AUSGELIEFERT</span>
+      <span>5 PROJEKTE</span>
+      <span>GITHUB</span>
+      <span>LINKEDIN</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    const leinwand = document.getElementById('knoten');
+    if (!leinwand || !leinwand.getContext) {
+      return;
+    }
+    const ctx = leinwand.getContext('2d');
+    const breite = 820;
+    const hoehe = 700;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    leinwand.width = breite * dpr;
+    leinwand.height = hoehe * dpr;
+    ctx.scale(dpr, dpr);
+
+    // Torusknoten (p=2, q=3) als Kurve abtasten.
+    const schritte = 460;
+    const kurve = [];
+    for (let i = 0; i < schritte; i++) {
+      const u = (i / schritte) * Math.PI * 2;
+      const r = Math.cos(3 * u) + 2.2;
+      kurve.push({
+        x: (r * Math.cos(2 * u)) / 3.2,
+        y: (r * Math.sin(2 * u)) / 3.2,
+        z: -Math.sin(3 * u) / 3.2,
+      });
+    }
+
+    let t = 0;
+    this.raf = 0;
+    const sparsam = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const projiziere = (p, cosA, sinA, cosB, sinB) => {
+      const x1 = p.x * cosA - p.z * sinA;
+      const z1 = p.x * sinA + p.z * cosA;
+      const y2 = p.y * cosB - z1 * sinB;
+      const z2 = p.y * sinB + z1 * cosB;
+      const skala = 2.0 / (2.9 - z2);
+      return {
+        x: breite / 2 + x1 * skala * 250,
+        y: hoehe / 2 + y2 * skala * 250,
+        tiefe: (z2 + 1.2) / 2.4,
+      };
+    };
+
+    const zeichne = () => {
+      ctx.clearRect(0, 0, breite, hoehe);
+
+      const cosA = Math.cos(t), sinA = Math.sin(t);
+      const cosB = Math.cos(t * 0.62), sinB = Math.sin(t * 0.62);
+
+      const punkte = kurve.map((p) => projiziere(p, cosA, sinA, cosB, sinB));
+
+      // Segmente von hinten nach vorne, damit vorne oben liegt.
+      const reihenfolge = punkte
+        .map((p, i) => ({ i: i, tiefe: p.tiefe }))
+        .sort((a, b) => a.tiefe - b.tiefe);
+
+      ctx.lineCap = 'round';
+      for (let k = 0; k < reihenfolge.length; k++) {
+        const i = reihenfolge[k].i;
+        const a = punkte[i];
+        const b = punkte[(i + 1) % punkte.length];
+        const tiefe = Math.max(0, Math.min(1, a.tiefe));
+
+        ctx.globalAlpha = 0.10 + tiefe * 0.85;
+        ctx.strokeStyle = tiefe > 0.72 ? '#FF9A3C' : '#8FA0AC';
+        ctx.lineWidth = 0.5 + tiefe * 2.4;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+
+      // Knotenpunkte in gleichmaessigem Abstand.
+      for (let i = 0; i < punkte.length; i += 23) {
+        const p = punkte[i];
+        const tiefe = Math.max(0, Math.min(1, p.tiefe));
+        ctx.globalAlpha = 0.2 + tiefe * 0.8;
+        ctx.fillStyle = '#FF9A3C';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1 + tiefe * 2.6, 0, 6.283185);
+        ctx.fill();
+      }
+
+      ctx.globalAlpha = 1;
+      if (!sparsam) {
+        t += 0.0042;
+        this.raf = requestAnimationFrame(zeichne);
+      }
+    };
+
+    zeichne();
+  }
+
+  componentWillUnmount() {
+    if (this.raf) {
+      cancelAnimationFrame(this.raf);
+    }
+  }
+}
+</script>
+</body>
+</html>

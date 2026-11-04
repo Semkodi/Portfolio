@@ -109,53 +109,36 @@ export const ueberMich = {
 export const skillGruppen: {
   kategorie: LS;
   farbe: string;
-  items: { name: string; level: number }[];
+  items: { name: string; info: LS }[];
 }[] = [
   {
-    kategorie: { de: 'Backend & Java', en: 'Backend & Java' },
-    farbe: '#e0a35c',
-    items: [
-      { name: 'Java 21', level: 85 },
-      { name: 'Spring Boot 3', level: 80 },
-      { name: 'Spring Data JPA / Hibernate', level: 76 },
-      { name: 'REST-API Design', level: 82 },
-      { name: 'JUnit 5 & Tests', level: 72 },
-      { name: 'Maven', level: 74 },
-    ],
-  },
-  {
-    kategorie: { de: 'Low-Code & Mendix', en: 'Low-code & Mendix' },
-    farbe: '#d47b52',
-    items: [
-      { name: 'Mendix Studio Pro', level: 88 },
-      { name: 'Domain Models & Entities', level: 85 },
-      { name: 'Microflows & Nanoflows', level: 84 },
-      { name: 'Rollen & Berechtigungen', level: 80 },
-      { name: 'REST-Integration', level: 78 },
-    ],
-  },
-  {
-    kategorie: { de: 'Frontend & Web', en: 'Frontend & web' },
+    kategorie: { de: 'Frontend & Web (Praxis)', en: 'Frontend & Web (Hands-on)' },
     farbe: '#cca35d',
     items: [
-      { name: 'React 18 & Hooks', level: 80 },
-      { name: 'TypeScript', level: 78 },
-      { name: 'Tailwind CSS', level: 84 },
-      { name: 'HTML5 & Barrierefreiheit', level: 82 },
-      { name: 'Framer Motion', level: 72 },
-    ],
+      { name: 'React', info: { de: 'Komponentenbasierte Oberflächen, State-Management und Hooks (eingesetzt bei simply-switch.de).', en: 'Component-driven interfaces, state management and hooks.' } },
+      { name: 'TypeScript', info: { de: 'Strikte Typisierung von Daten und Props zur Vermeidung von Laufzeitfehlern.', en: 'Strict typing for data structures and props.' } },
+      { name: 'Tailwind CSS', info: { de: 'Moderne, responsive Layouts für mobile Geräte und Desktop.', en: 'Modern responsive layouts across mobile and desktop.' } },
+      { name: 'Git & GitHub', info: { de: 'Versionskontrolle, Commits, Branches und Team-Arbeit über GitHub.', en: 'Version control, commits, branching and collaboration.' } }
+    ]
   },
   {
-    kategorie: { de: 'Daten & Werkzeuge', en: 'Data & tooling' },
-    farbe: '#a7ad82',
+    kategorie: { de: 'Java & Backend-Grundlagen', en: 'Java & Backend Basics' },
+    farbe: '#e0a35c',
     items: [
-      { name: 'PostgreSQL & SQL', level: 80 },
-      { name: 'Git & GitHub', level: 84 },
-      { name: 'Docker (Basics)', level: 68 },
-      { name: 'Scrum / Kanban', level: 80 },
-      { name: 'Linux / CLI', level: 74 },
-    ],
+      { name: 'Java (OOP Grundlagen)', info: { de: 'Solide Grundlagen objektorientierter Programmierung: Klassen, Vererbung, Methoden.', en: 'Solid OOP fundamentals: classes, inheritance, methods.' } },
+      { name: 'Spring Boot (Grundlagen)', info: { de: 'Erste Backend-Services, Controller-Aufbau und Strukturierung von REST-Endpunkten.', en: 'Backend service structuring and REST endpoint wiring.' } },
+      { name: 'REST-APIs', info: { de: 'Verständnis für HTTP-Methoden, Status-Codes und JSON-Datenaustausch.', en: 'Core understanding of HTTP verbs, status codes and JSON payloads.' } }
+    ]
   },
+  {
+    kategorie: { de: 'Datenbanken & Enterprise Tools', en: 'Databases & Enterprise Tools' },
+    farbe: '#d47b52',
+    items: [
+      { name: 'PostgreSQL & SQL', info: { de: 'Relationale Tabellen anlegen, Primär- und Fremdschlüssel sowie SQL-Abfragen.', en: 'Relational schemas, keys and SQL queries.' } },
+      { name: 'Mendix Studio Pro', info: { de: 'Visuelle Datenmodellierung, Microflow-Logik und Rollenberechtigungen im Ausbildungsbetrieb.', en: 'Visual data modeling, microflow workflows and security roles.' } },
+      { name: 'Agiles Arbeiten (Scrum / Kanban)', info: { de: 'Arbeiten mit Tickets, Sprints und strukturierter Aufgabenverteilung im Entwickler-Alltag.', en: 'Working with backlog tickets and structured sprints.' } }
+    ]
+  }
 ];
 
 export interface Projekt {
@@ -169,6 +152,8 @@ export interface Projekt {
   highlights: LA;
   tags: string[];
   farbe: string;
+  /** Pfad zu einem Vorschaubild/Screenshot. */
+  bild?: string;
   /** Öffentlich erreichbare Adresse, falls das Projekt live ist. */
   live?: string;
   /** Zahlen für das Live-Panel im Hero. Nur bei belegbaren Werten setzen. */
@@ -182,6 +167,7 @@ export const projekte: Projekt[] = [
     badge: 'KUNDENPROJEKT · LIVE',
     titel: 'Simply Switch',
     live: 'https://simply-switch.de',
+    bild: '/projekte/simply-switch.png',
     untertitel: {
       de: 'Website für einen freien Versicherungsmakler',
       en: 'Website for an independent insurance broker',
@@ -210,7 +196,6 @@ export const projekte: Projekt[] = [
     farbe: '#ff9a3c',
     kennzahlen: [
       { wert: 9, label: { de: 'Routen', en: 'Routes' } },
-      { wert: 70, suffix: '+', label: { de: 'Bewertungen des Kunden', en: "Client's reviews" } },
     ],
   },
   {
@@ -276,38 +261,6 @@ export const projekte: Projekt[] = [
     },
     tags: ['Java 21', 'Spring Boot 3', 'PostgreSQL', 'JWT', 'React'],
     farbe: '#e0a35c',
-  },
-  {
-    id: 'lovehub',
-    kategorie: 'web',
-    badge: 'FULLSTACK WEB',
-    titel: 'LoveHub',
-    untertitel: {
-      de: 'React, TypeScript & Echtzeit-Chat',
-      en: 'React, TypeScript & real-time chat',
-    },
-    beschreibung: {
-      de: 'Social- und Dating-Plattform mit Fokus auf klare UX, Matching nach Präferenzen und einen reaktiven Echtzeit-Chat.',
-      en: 'A social and dating platform focused on clear UX, preference-based matching and a reactive real-time chat.',
-    },
-    architektur: {
-      de: 'React 18 & TypeScript Frontend mit Zustand für State Management, WebSocket-Verbindungen für Instant Messaging und einem modularen Tailwind-Designsystem.',
-      en: 'React 18 & TypeScript frontend with Zustand for state management, WebSocket connections for instant messaging and a modular Tailwind design system.',
-    },
-    highlights: {
-      de: [
-        'Echtzeit-Chat & Typing-Status über WebSockets',
-        'Präferenz- und Entfernungsfilter',
-        'Responsive Micro-Interaktionen',
-      ],
-      en: [
-        'Real-time chat & typing status via WebSockets',
-        'Preference and distance filters',
-        'Responsive micro-interactions',
-      ],
-    },
-    tags: ['React 18', 'TypeScript', 'Tailwind CSS', 'WebSockets', 'Zustand'],
-    farbe: '#cf9a75',
   },
   {
     id: 'portfolio',
@@ -393,12 +346,12 @@ export const werdegang: Station[] = [
       de: [
         'Mendix THM Enterprise Platform',
         'DevGram – Java & Spring Boot',
-        'LoveHub – React & TypeScript',
+        'Interaktives Portfolio – React & TypeScript',
       ],
       en: [
         'Mendix THM enterprise platform',
         'DevGram – Java & Spring Boot',
-        'LoveHub – React & TypeScript',
+        'Interactive Portfolio – React & TypeScript',
       ],
     },
   },
@@ -414,12 +367,12 @@ export const werdegang: Station[] = [
     punkte: {
       de: [
         'Mendix Rapid Developer',
-        'Docker, CI/CD und Microservice-Muster',
+        'REST-APIs, Datenbank-Design und Web-Architekturen',
         'Eigene Open-Source- und Portfolio-Projekte',
       ],
       en: [
         'Mendix Rapid Developer',
-        'Docker, CI/CD and microservice patterns',
+        'REST APIs, database design and web architectures',
         'Own open-source and portfolio projects',
       ],
     },
@@ -440,4 +393,13 @@ export const kontakt = {
   emailKopieren: { de: 'E-Mail kopieren', en: 'Copy email' } as LS,
   ortszeit: { de: 'Ortszeit', en: 'Local time' } as LS,
   clientGeoeffnet: { de: 'E-Mail-Programm geöffnet.', en: 'Email client opened.' } as LS,
+  sendetStatus: { de: 'Wird gesendet...', en: 'Sending message...' } as LS,
+  gesendetErfolg: {
+    de: 'Danke für die Kontaktaufnahme! Deine Nachricht wurde versendet und eine Bestätigung ist per E-Mail unterwegs.',
+    en: 'Thank you for reaching out! Your message was sent and a confirmation email is on its way.',
+  } as LS,
+  fehlerStatus: {
+    de: 'Fehler beim Senden. Bitte schreib mir direkt an borogovacsemir@gmail.com',
+    en: 'Error sending message. Please email me directly at borogovacsemir@gmail.com',
+  } as LS,
 };

@@ -8,20 +8,20 @@
 
 @theme {
   /* --- Flächen ---------------------------------------------------- */
-  --color-raum: #060809;
-  --color-raum-2: #0b0e10;
-  --color-raum-3: #12161a;
-  --color-linie: rgba(231, 236, 239, 0.09);
-  --color-linie-stark: rgba(231, 236, 239, 0.18);
+  --color-raum: #161311;
+  --color-raum-2: #1e1917;
+  --color-raum-3: #28221f;
+  --color-linie: rgba(212, 163, 115, 0.14);
+  --color-linie-stark: rgba(212, 163, 115, 0.28);
 
   /* --- Text (alle >= 4.5:1 auf --color-raum) ----------------------- */
-  --color-text: #e7ecef;
-  --color-text-2: #98a2a9;
-  --color-text-3: #757f86;
+  --color-text: #f5ebe0;
+  --color-text-2: #e3d5ca;
+  --color-text-3: #a6988d;
 
   /* --- Signal ------------------------------------------------------ */
   --color-signal: #ff9a3c;
-  --color-signal-tief: #120a03;
+  --color-signal-tief: #161311;
   --color-signal-weich: rgba(255, 154, 60, 0.14);
 
   --font-sans: "Chivo", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -106,6 +106,13 @@
 @keyframes blinken {
   0%, 48% { opacity: 1; }
   49%, 100% { opacity: 0.2; }
+}
+
+@keyframes scanline {
+  0% { transform: translateX(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(500%); opacity: 0; }
 }
 
 @keyframes radar {

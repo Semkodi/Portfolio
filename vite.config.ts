@@ -6,6 +6,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
  * Hauptkonfiguration für das Vite-Buildtool.
  */
 export default defineConfig({
+    base: './',
     plugins: [react(), tsconfigPaths()],
     server: {
         port: 3000,

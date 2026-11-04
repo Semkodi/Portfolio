@@ -95,7 +95,11 @@ export const Hero: React.FC = () => {
                   : 'designed, built and shipped by me.'}
               </p>
 
-              <div className="mt-6 grid grid-cols-3 gap-4 border-t border-linie pt-5">
+              <div
+                className={`mt-6 grid gap-4 border-t border-linie pt-5 ${
+                  (liveProjekt.kennzahlen?.length ?? 0) >= 2 ? 'grid-cols-3' : 'grid-cols-2'
+                }`}
+              >
                 {liveProjekt.kennzahlen?.map((k) => (
                   <Kennzahl
                     key={k.label.de}

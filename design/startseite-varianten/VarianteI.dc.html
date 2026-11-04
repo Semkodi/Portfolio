@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;500;700&amp;family=Chivo+Mono:wght@300;400;500&amp;display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #FF9A3C; text-decoration: none; }
+    a:hover { color: #FFC48C; }
+    @keyframes blinken { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0.2; } }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 1100px; background-color: #060809; font-family: 'Chivo', system-ui, sans-serif; color: #E7ECEF; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+
+  <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(231,236,239,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(231,236,239,0.03) 1px, transparent 1px); background-size: 96px 96px;"></div>
+
+  <div style="position: relative; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; border-bottom: 1px solid rgba(231,236,239,0.09); font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.12em; color: #7A858C;">
+    <span style="display: flex; align-items: center; gap: 10px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background-color: #FF9A3C; animation: blinken 1.8s ease-in-out infinite;"></span>
+      <span style="color: #FF9A3C;">OFFEN FÜR NEUE AUFGABEN</span>
+    </span>
+    <span>SEMIR BOROGOVAC · DORNBURG, HESSEN</span>
+  </div>
+
+  <div style="position: relative; flex-grow: 1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: center; padding: 0 48px;">
+    <div style="grid-column: span 6;">
+      <span style="display: block; font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.2em; color: #7A858C; margin-bottom: 26px;">FACHINFORMATIKER ANWENDUNGSENTWICKLUNG</span>
+      <h1 style="margin: 0; font-size: 76px; line-height: 1.0; letter-spacing: -0.04em; font-weight: 700;">
+        Eine meiner<br>
+        <span style="color: #FF9A3C;">Anwendungen läuft</span><br>
+        gerade produktiv.
+      </h1>
+      <p style="margin: 30px 0 0 0; font-size: 17px; line-height: 1.7; color: #98A2A9; max-width: 520px; text-wrap: pretty;">Backend mit Java und Spring Boot, Enterprise-Low-Code mit Mendix, Oberflächen mit React und TypeScript. Gelernt in der Umschulung, geprüft an echten Projekten.</p>
+      <div style="display: flex; gap: 14px; margin-top: 36px;">
+        <div style="background-color: #FF9A3C; color: #120A03; padding: 15px 28px; font-size: 15px; font-weight: 500;">Arbeiten ansehen</div>
+        <div style="border: 1px solid rgba(231,236,239,0.18); padding: 15px 28px; font-size: 15px;">borogovacsemir@gmail.com</div>
+      </div>
+    </div>
+
+    <div style="grid-column: span 6; display: flex; justify-content: center; align-items: center;">
+      <canvas id="wolke" width="620" height="620" style="width: 620px; height: 620px; display: block;"></canvas>
+    </div>
+  </div>
+
+  <div style="position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(231,236,239,0.09);">
+    <div style="padding: 22px 24px 22px 48px; border-right: 1px solid rgba(231,236,239,0.09); display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #FF9A3C;">simply-switch.de</span>
+      <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #757F86;">LIVE IN PRODUKTION</span>
+    </div>
+    <div style="padding: 22px 24px; border-right: 1px solid rgba(231,236,239,0.09); display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em;">9</span>
+      <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #757F86;">ROUTEN AUSGELIEFERT</span>
+    </div>
+    <div style="padding: 22px 24px; border-right: 1px solid rgba(231,236,239,0.09); display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em;">5</span>
+      <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #757F86;">PROJEKTE IM PORTFOLIO</span>
+    </div>
+    <div style="padding: 22px 48px 22px 24px; display: flex; flex-direction: column; gap: 6px;">
+      <span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em;">Java · Mendix · React</span>
+      <span style="font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.1em; color: #757F86;">SCHWERPUNKTE</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    const leinwand = document.getElementById('wolke');
+    if (!leinwand || !leinwand.getContext) {
+      return;
+    }
+    const ctx = leinwand.getContext('2d');
+    const seite = 620;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    leinwand.width = seite * dpr;
+    leinwand.height = seite * dpr;
+    ctx.scale(dpr, dpr);
+
+    // Punkte gleichmaessig auf einer Kugel verteilen (Fibonacci-Spirale).
+    const anzahl = 950;
+    const punkte = [];
+    for (let i = 0; i < anzahl; i++) {
+      const y = 1 - (i / (anzahl - 1)) * 2;
+      const r = Math.sqrt(Math.max(0, 1 - y * y));
+      const winkel = i * 2.399963229728653;
+      punkte.push({ x: Math.cos(winkel) * r, y: y, z: Math.sin(winkel) * r });
+    }
+
+    let t = 0;
+    let mausX = 0;
+    let mausY = 0;
+    this.raf = 0;
+
+    this.beiMaus = (e) => {
+      const kasten = leinwand.getBoundingClientRect();
+      mausX = ((e.clientX - kasten.left) / kasten.width - 0.5) * 1.1;
+      mausY = ((e.clientY - kasten.top) / kasten.height - 0.5) * 0.7;
+    };
+    leinwand.addEventListener('mousemove', this.beiMaus);
+
+    const sparsam = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const zeichne = () => {
+      ctx.clearRect(0, 0, seite, seite);
+
+      const a = t + mausX;
+      const b = t * 0.35 + mausY;
+      const cosA = Math.cos(a), sinA = Math.sin(a);
+      const cosB = Math.cos(b), sinB = Math.sin(b);
+
+      for (let i = 0; i < punkte.length; i++) {
+        const p = punkte[i];
+        // Drehung um die Hochachse, danach kippen.
+        const x1 = p.x * cosA - p.z * sinA;
+        const z1 = p.x * sinA + p.z * cosA;
+        const y2 = p.y * cosB - z1 * sinB;
+        const z2 = p.y * sinB + z1 * cosB;
+
+        const skala = 1.9 / (2.7 - z2);
+        const px = seite / 2 + x1 * skala * 205;
+        const py = seite / 2 + y2 * skala * 205;
+        const tiefe = (z2 + 1) / 2;
+
+        ctx.globalAlpha = 0.12 + tiefe * 0.88;
+        ctx.fillStyle = tiefe > 0.74 ? '#FF9A3C' : '#E7ECEF';
+        ctx.beginPath();
+        ctx.arc(px, py, 0.5 + tiefe * 1.8, 0, 6.283185);
+        ctx.fill();
+      }
+
+      ctx.globalAlpha = 1;
+      if (!sparsam) {
+        t += 0.0032;
+        this.raf = requestAnimationFrame(zeichne);
+      }
+    };
+
+    zeichne();
+  }
+
+  componentWillUnmount() {
+    if (this.raf) {
+      cancelAnimationFrame(this.raf);
+    }
+    const leinwand = document.getElementById('wolke');
+    if (leinwand && this.beiMaus) {
+      leinwand.removeEventListener('mousemove', this.beiMaus);
+    }
+  }
+}
+</script>
+</body>
+</html>

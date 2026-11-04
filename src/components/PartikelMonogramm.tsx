@@ -112,7 +112,7 @@ export const PartikelMonogramm: React.FC<{ className?: string }> = ({ className 
         d.y += d.vy;
         if (Math.abs(d.x) > 150) d.vx *= -1;
         if (Math.abs(d.y) > 120) d.vy *= -1;
-        let x = d.x * cosY - d.z * sinY;
+        const x = d.x * cosY - d.z * sinY;
         let z = d.x * sinY + d.z * cosY;
         const y = d.y * cosX - z * sinX;
         z = d.y * sinX + z * cosX;
@@ -125,7 +125,7 @@ export const PartikelMonogramm: React.FC<{ className?: string }> = ({ className 
       }
 
       for (const p of punkte) {
-        let x = p.x * cosY - p.z * sinY;
+        const x = p.x * cosY - p.z * sinY;
         let z = p.x * sinY + p.z * cosY;
         const y = p.y * cosX - z * sinX;
         z = p.y * sinX + z * cosX;
